@@ -1,0 +1,46 @@
+:root {
+    --verde: #BCDF5D;
+    --azul: #3A437A;
+}
+
+.bg-principal {
+    background-color: var(--verde) !important;
+}
+.bg-secundario {
+    background-color: var(--azul) !important;
+}
+.text-principal {
+    color: var(--azul) !important;
+}
+.text-secundario {
+    color: var(--verde) !important;
+}
+
+.white-text-normal {
+    white-space: normal !important;
+}
+
+.bg-height-top {
+    height: 170px;
+}
+
+.bg-gray-2 {
+    background-color: #eee;
+}
+
+.card-body {
+    background-color: #fafafa;
+}
+
+.btn-flutuante {
+    position:fixed;
+    width:60px;
+    height:60px;
+    bottom:40px;
+    right:40px;
+    border-radius:50px;
+    text-align:center;
+    font-size:30px;
+    box-shadow: 1px 1px 2px #888;
+    z-index:1000;
+  }

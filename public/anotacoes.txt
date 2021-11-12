@@ -1,0 +1,7 @@
+leitura da etiqueta flex
+{
+    "id":"40657249042",
+    "sender_id":184440086,
+    "hash_code":"TBxbo1g33fsgCRI+DzLap/sk15eWT8+Zvx0XkL7zsQM=",
+    "security_digit":"0"
+}
