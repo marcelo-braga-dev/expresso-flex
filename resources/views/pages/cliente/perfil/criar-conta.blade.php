@@ -12,7 +12,7 @@
                         <div class="card-header bg-transparent text-center pb-2">
                             <div class="row mb-4 justify-content-center">
                                 <div class="col-6 col-md-4">
-                                    <img src="/assets/img/brand/logo-x256.jpg" style="width: 100%">
+                                    <img src="/assets/img/brand/logo-x256.png" style="width: 100%">
                                 </div>
                             </div>
                             <p>

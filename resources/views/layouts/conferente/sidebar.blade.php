@@ -7,7 +7,7 @@
         </button>
         <!-- Brand -->
         <a class="navbar-brand pt-0" href="{{ route('home') }}">
-            <img src="/assets/img/brand/logo-x256.jpg" class="navbar-brand-img" alt="...">
+            <img src="/assets/img/brand/logo-x256.png" class="navbar-brand-img" alt="...">
         </a>
 
         @include('layouts.entregadores.navbar.navbar-mb')
@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-6 collapse-brand">
                         <a href="{{ route('home') }}">
-                            <img src="/assets/img/brand/logo-x256.jpg">
+                            <img src="/assets/img/brand/logo-x256.png">
                         </a>
                     </div>
                     <div class="col-6 collapse-close">

@@ -7,7 +7,7 @@
         </button>
         <!-- Brand -->
         <a class="navbar-brand pt-0" href="{{ route('home') }}">
-            <img src="/assets/img/brand/logo-x256.jpg" class="navbar-brand-img" alt="...">
+            <img src="/assets/img/brand/logo-x256.png" class="navbar-brand-img" alt="...">
         </a>
 
         @include('layouts.admin.navbar.navbar-mb')

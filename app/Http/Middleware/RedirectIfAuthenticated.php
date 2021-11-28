@@ -19,6 +19,8 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, ...$guards)
     {
+        $this->setCookieLogin($request);
+
         $guards = empty($guards) ? [null] : $guards;
 
         foreach ($guards as $guard) {
@@ -28,5 +30,23 @@ class RedirectIfAuthenticated
         }
 
         return $next($request);
+    }
+
+    private function setCookieLogin($request)
+    {
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
+            
+            $config = config('session');
+
+            $time = time() + $config['lifetime'] * 60;
+
+            setcookie('ef_e', base64_encode($request->email), $time, "", "", true);
+            setcookie('ef_s', base64_encode($request->password), $time, "", "", true);
+        }
+
+        if (!$request->remember) {
+            setcookie('ef_e', null, -1);
+            setcookie('ef_s', null, -1);
+        }
     }
 }

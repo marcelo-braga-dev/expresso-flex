@@ -4,8 +4,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    //Auth::logout();
-    if (Auth::check()) return redirect()->back();//redirect()->route('home');
+    if (Auth::check()) return redirect()->route('home');
+    
     return view('auth/login');
 });
 

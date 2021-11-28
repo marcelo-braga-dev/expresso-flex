@@ -8,11 +8,8 @@
             <div class="card-header bg-white mb-0">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h5 class="card-title text-uppercase text-muted mb-0">
-                            Solicitar Coleta
-                        </h5>
                         <h4 class="card-title text-uppercase mb-0">
-                            Solicitar Coleta de Pacotes
+                            Solicitar Coleta
                         </h4>
                     </div>
                     <div class="col-auto">
@@ -84,6 +81,4 @@
 
             @include('layouts.footers.auth')
         </div>
-
-        <script src="/assets/js/components/busca-cep.js"></script>
     @endsection

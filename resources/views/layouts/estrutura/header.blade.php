@@ -10,7 +10,7 @@
 
     <title>{{ $title }}</title>
     <!-- Favicon -->
-    {{-- <link href="/assets/img/brand/logo-x256.jpg" rel="icon"> --}}
+    {{-- <link href="/assets/img/brand/logo-x256.png" rel="icon"> --}}
 
     <!-- Fonts -->
     <link type="text/css" href="/assets/css/font-google.css" rel="stylesheet">

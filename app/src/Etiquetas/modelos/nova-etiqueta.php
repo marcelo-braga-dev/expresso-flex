@@ -3,7 +3,7 @@
         <table style="font-size:12px">
             <tr>
                 <td>
-                    <img src="/assets/img/brand/logo-x256.jpg" width="100px">
+                    <img src="/assets/img/brand/logo-x256.png" width="100px">
                 </td>
                 <td style="padding-left:5px">
                     <span style="font-size:12px">
