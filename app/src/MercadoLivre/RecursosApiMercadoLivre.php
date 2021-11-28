@@ -87,7 +87,7 @@ class RecursosApiMercadoLivre
 
         $res = $this->comunicacaoGetAPI($link, $sellerId);
 
-        $dados['nickname'] = $res['nickname'];
+        $dados['nickname'] = $res['nickname'];        
         $dados['thumbnail'] = $res['thumbnail']['picture_url'];
         $dados['brand_name'] = $res['company']['brand_name'];
 
