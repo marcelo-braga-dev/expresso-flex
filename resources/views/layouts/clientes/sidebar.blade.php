@@ -110,14 +110,14 @@
                     </a>
                     <div class="collapse show" id="navbar-integracoes">
                         <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a class="nav-link ml-1 pl-4 p-1" href="{{ route('mercadolivre.nova-conta') }}">
                                     Vincular Mercado Livre
                                 </a>
-                            </li>
+                            </li> --}}
                             <li class="nav-item">
                                 <a class="nav-link ml-1 pl-4 p-1" href="{{ route('mercadolivre.todas-contas') }}">
-                                    Contas Vinculadas
+                                    Contas Mercado Livre
                                 </a>
                             </li>
                         </ul>

@@ -13,7 +13,6 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        @include('layouts.componentes.alerts')
                         <div class="row">
                             <div class="col-12">
                                 <h3></h3>

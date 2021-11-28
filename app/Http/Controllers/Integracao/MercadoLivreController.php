@@ -14,20 +14,24 @@ class MercadoLivreController extends Controller
     // Pagina mostrar todas as contas
     public function todasContas(IntegracaoMercadoLivre $integracao)
     {
+        $autenticacao = new AutenticacaoAutorizacaoMercadoLivre();
+
+        $urlIntegracao = $autenticacao->urlAutorizacao();
+
         $contas = $integracao->query()
             ->where('user_id', '=', id_usuario_atual())
             ->get()
             ->toArray();
 
-        return view('pages.cliente.integracao.mercadolivre.todas-contas', compact('contas'));
+        return view('pages.cliente.integracao.mercadolivre.todas-contas', compact('contas', 'urlIntegracao'));
     }
 
     // Pagina para integrar nova conta Mercado Livre
     public function novaConta()
     {
-        $autenticacao = new AutenticacaoAutorizacaoMercadoLivre();
+        // $autenticacao = new AutenticacaoAutorizacaoMercadoLivre();
 
-        $urlIntegracao = $autenticacao->urlAutorizacao();
+         $urlIntegracao = '';//$autenticacao->urlAutorizacao();
 
         return view('pages.cliente.integracao.mercadolivre.nova-conta', compact('urlIntegracao'));
     }

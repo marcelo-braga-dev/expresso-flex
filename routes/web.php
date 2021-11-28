@@ -1,11 +1,12 @@
 <?php
 
+use App\src\MercadoLivre\RecursosApiMercadoLivre;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     if (Auth::check()) return redirect()->route('home');
-    
+
     return view('auth/login');
 });
 
@@ -49,5 +50,16 @@ Route::get(
 )->name('cliente.criar-conta');
 
 Route::put(
-    'cliente/criar-conta', 'App\Http\Controllers\Cliente\PerfilController@new'
+    'cliente/criar-conta',
+    'App\Http\Controllers\Cliente\PerfilController@new'
 )->name('cliente.new');
+
+
+Route::get(
+    'teste/comunicacao-mercado-livre',
+    function () {
+        $cls = new RecursosApiMercadoLivre();
+        $res = $cls->teste();
+        print_pre($res);
+    }
+)->name('cliente.criar-conta');

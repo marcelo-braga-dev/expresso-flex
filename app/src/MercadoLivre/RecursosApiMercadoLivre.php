@@ -19,12 +19,13 @@ class RecursosApiMercadoLivre
 
     public function teste()
     {
-        
-        $sellerId = '143063860';
-        
+
+        $sellerId = '443790977';
+
         $link = 'https://api.mercadolibre.com/orders/search?seller=' . $sellerId;
         $link = 'https://api.mercadolibre.com/orders/4122599137/shipments';
         $link = 'https://api.mercadolibre.com/shipment_labels?shipment_ids=MLB1683859000&savePdf=Y';
+        $link = 'https://api.mercadolibre.com/users/' . $sellerId;
 
         $resposta = $this->comunicacaoGetAPI($link, $sellerId);
 
@@ -42,7 +43,7 @@ class RecursosApiMercadoLivre
             ->first();
 
         if (empty($chaves)) {
-            session()->flash('erro', 'Conta Mercado Livre #'.$sellerId.' não encontrado.');
+            session()->flash('erro', 'Conta Mercado Livre #' . $sellerId . ' não encontrado.');
             return;
         }
 
@@ -66,7 +67,6 @@ class RecursosApiMercadoLivre
 
             $json = $res->getBody();
             $resposta = json_decode($json, true);
-
         } catch (ClientException $exception) {
             exit('Erro ao comunicar com o Mercado Livre.');
         }
@@ -74,5 +74,20 @@ class RecursosApiMercadoLivre
         return $resposta;
     }
 
+    public function getInfoContaMeLi($sellerId)
+    {
+        $clsRecursosApi = new RecursosApiMercadoLivre();
 
+        $dados = [];
+
+        $link = 'https://api.mercadolibre.com/users/' . $sellerId;
+
+        $res = $clsRecursosApi->comunicacaoGetAPI($link, $sellerId);
+
+        $dados['nickname'] = $res['nickname'];
+        $dados['thumbnail'] = $res['thumbnail']['picture_url'];
+        $dados['brand_name'] = $res['company']['brand_name'];
+
+        return $dados;
+    }
 }

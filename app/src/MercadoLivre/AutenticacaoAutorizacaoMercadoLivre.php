@@ -75,10 +75,13 @@ class AutenticacaoAutorizacaoMercadoLivre
     private function salvarDadosIntegracao(array $dados)
     {
         $integracao = new IntegracaoMercadoLivre();
+        $clsRecursosApi = new RecursosApiMercadoLivre();
 
         $exist = $integracao->query()->where('seller_id', '=', $dados['user_id'])->get('seller_id');
 
         if ($exist->isEmpty()) {
+            $info = $clsRecursosApi->getInfoContaMeLi($dados['user_id']);
+
             $integracao->user_id = id_usuario_atual();
             $integracao->seller_id = $dados['user_id'];
             $integracao->access_token = $dados['access_token'];
@@ -87,9 +90,13 @@ class AutenticacaoAutorizacaoMercadoLivre
             $integracao->scope = $dados['scope'];
             $integracao->token_type = $dados['token_type'];
 
+            $integracao->nickname = $info['nickname'];
+            $integracao->thumbnail = $info['thumbnail'];
+            $integracao->brand_name = $info['brand_name'];
+
             $integracao->push();
 
-            session()->flash('sucesso', 'Conta vinculada com sucesso.');
+            session()->flash('sucesso', "Conta {$info['nickname']} vinculada com sucesso.");
             return;
         }
 
