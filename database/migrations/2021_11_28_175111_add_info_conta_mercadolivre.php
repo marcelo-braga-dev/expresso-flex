@@ -14,9 +14,9 @@ class AddInfoContaMercadolivre extends Migration
     public function up()
     {
         Schema::table('integracao_mercado_livres', function (Blueprint $table) {
-            $table->string('nickname');
-            $table->string('thumbnail');
-            $table->string('brand_name');
+            $table->string('nickname')->nullable();
+            $table->string('thumbnail')->nullable();
+            $table->string('brand_name')->nullable();
         });
     }
 
