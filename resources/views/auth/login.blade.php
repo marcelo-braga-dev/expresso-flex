@@ -11,10 +11,6 @@
                         <div class="row justify-content-center mx-auto mb-3">
                             <img src="/assets/img/brand/logo-x256.jpg" width="80%" />
                         </div>
-                        <small class="d-block">cliente1@email.com</small>
-                        <small class="d-block">entregador1@email.com</small>
-                        <small class="d-block">conferente1@email.com</small>
-
                         <form role="form" method="POST" action="{{ route('login') }}">
                             @csrf
 
