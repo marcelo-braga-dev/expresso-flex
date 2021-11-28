@@ -59,7 +59,8 @@ Route::get(
     'teste/comunicacao-mercado-livre',
     function () {
         $cls = new RecursosApiMercadoLivre();
-        $res = $cls->teste();
-        print_pre($res);
+        //$res = $cls->teste();
+        $cls->getInfoContaMeLi('443790977');
+        //print_pre($res);
     }
 )->name('cliente.criar-conta');

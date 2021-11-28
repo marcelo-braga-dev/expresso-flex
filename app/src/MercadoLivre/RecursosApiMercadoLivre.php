@@ -27,9 +27,14 @@ class RecursosApiMercadoLivre
         $link = 'https://api.mercadolibre.com/shipment_labels?shipment_ids=MLB1683859000&savePdf=Y';
         $link = 'https://api.mercadolibre.com/users/' . $sellerId;
 
-        $resposta = $this->comunicacaoGetAPI($link, $sellerId);
+        $res = $this->comunicacaoGetAPI($link, $sellerId);
 
-        return $resposta;
+        $dados['nickname'] = $res['nickname'];
+        $dados['thumbnail'] = $res['thumbnail']['picture_url'];
+        $dados['brand_name'] = $res['company']['brand_name'];
+
+        print_pre($dados);
+        ///return $resposta;
     }
 
     private function comunicacaoGetAPI(string $link, int $sellerId)
@@ -76,13 +81,11 @@ class RecursosApiMercadoLivre
 
     public function getInfoContaMeLi($sellerId)
     {
-        $clsRecursosApi = new RecursosApiMercadoLivre();
-
         $dados = [];
 
         $link = 'https://api.mercadolibre.com/users/' . $sellerId;
 
-        $res = $clsRecursosApi->comunicacaoGetAPI($link, $sellerId);
+        $res = $this->comunicacaoGetAPI($link, $sellerId);
 
         $dados['nickname'] = $res['nickname'];
         $dados['thumbnail'] = $res['thumbnail']['picture_url'];
