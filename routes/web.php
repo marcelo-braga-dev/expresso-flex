@@ -60,7 +60,7 @@ Route::get(
     function () {
         $cls = new RecursosApiMercadoLivre();
         //$res = $cls->teste();
-        $cls->getInfoContaMeLi('443790977');
+        $cls->atualizarInfoContas();
         //print_pre($res);
     }
 )->name('cliente.criar-conta');

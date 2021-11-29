@@ -7,6 +7,11 @@ Route::get(
     'mercadolivre/todas-contas', 'App\Http\Controllers\Integracao\MercadoLivreController@todasContas')
     ->name('mercadolivre.todas-contas');
 
+ // Excluir Conta
+Route::get(
+    'mercadolivre/excluir-conta/{id}', 'App\Http\Controllers\Integracao\MercadoLivreController@delete')
+    ->name('mercadolivre.excluir-conta');
+
 // Pagina nova conta
 Route::get(
     'mercadolivre/nova-conta', 'App\Http\Controllers\Integracao\MercadoLivreController@novaConta')

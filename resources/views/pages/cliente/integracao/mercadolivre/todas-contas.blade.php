@@ -26,54 +26,66 @@
                             Clique no botão abaixo para iniciar o processo de autorização de acesso.
                         </p>
                     </div>
-                    <div class="col-4">
+                    <div class="col-md-4">
                         <a class="btn btn-primary btn-block" href="{{ $urlIntegracao }}">
                             Autorizar Nova Conta
                         </a>
                     </div>
                 </div>
                 <hr>
+
                 <h3>Suas Contas Vinculadas</h3>
-                <div class="row justify-content-center">
-                    <div class="col-auto">
-                    </div>
-                </div>
-                <div class="col-12">
-                    @foreach ($contas as $conta)
-                        <ul class="list-group mb-3">
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <div>
-                                    <span class="d-block">
-                                        Conta Mercado Livre
-                                    </span>
-                                    <span class="d-block">
-                                        <small>ID da Conta: {{ $conta['seller_id'] }}</small>
-                                    </span>
-                                </div>
-                                <div>
-                                    <div class="dropdown">
-                                        <a class="btn border btn-sm btn-icon-only text-dark" href="#" role="button"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="">Excluir</a>
+                <div class="row">
+                    <div class="col-12">
+                        @foreach ($contas as $conta)
+                            <ul class="list-group mb-3">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <div class="avatar-group">
+                                                <a class="avatar avatar rounded-circle">
+                                                    <img src="{{ $conta['thumbnail'] }}">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <span class="d-block">
+                                                {{ $conta['brand_name'] }} @if (!empty($conta['nickname'])) ({{ $conta['nickname'] }}) @endif
+                                            </span>
+                                            <span class="d-block">
+                                                <small>ID da Conta: {{ $conta['seller_id'] }}</small>
+                                            </span>
                                         </div>
                                     </div>
-                                </div>
-                            </li>
-                        </ul>
-                    @endforeach
 
-                    @if (!count($contas))
-                        <div class="row">
-                            <div class="col-auto mx-auto p-3">
-                                <small class="text-muted">
-                                    Não há contas vinculadas.
-                                </small>
+                                    <div>
+                                        <div class="dropdown">
+                                            <a class="btn border btn-sm btn-icon-only text-dark" href="#" role="button"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                                <a href="{{ route('mercadolivre.excluir-conta', $conta['id']) }}"
+                                                    class="dropdown-item">
+                                                    Excluir
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        @endforeach
+
+                        @if (!count($contas))
+                            <div class="row">
+                                <div class="col-auto mx-auto p-3">
+                                    <small class="text-muted">
+                                        Não há contas vinculadas.
+                                    </small>
+                                </div>
                             </div>
-                        </div>
-                    @endif
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>

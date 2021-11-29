@@ -50,6 +50,19 @@ class MercadoLivreController extends Controller
         return redirect()->route('mercadolivre.todas-contas');
     }
 
+    // Deletar Conta Mercado Livre
+    public function delete($id) {
+        $conta = IntegracaoMercadoLivre::find($id);
+
+        if ($conta->user_id == id_usuario_atual()) {
+            $conta->delete();
+            
+            session()->flash('sucesso', 'Conta removida com sucesso.');
+        }
+        
+        return redirect()->back();
+    }
+
     // Recebe notificacoes do Mercado Livre
     public function getNotificacaoMeli()
     {

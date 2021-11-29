@@ -62,7 +62,7 @@ class RecursosApiMercadoLivre
 
             $token = $autenticacao->renovarAutenticacao($sellerId);
         }
-
+        
         try {
             $res = $client->request('GET', $link, [
                 'headers' => [
@@ -86,11 +86,31 @@ class RecursosApiMercadoLivre
         $link = 'https://api.mercadolibre.com/users/' . $sellerId;
 
         $res = $this->comunicacaoGetAPI($link, $sellerId);
-
-        $dados['nickname'] = $res['nickname'];        
-        $dados['thumbnail'] = $res['thumbnail']['picture_url'];
-        $dados['brand_name'] = $res['company']['brand_name'];
+        
+        $dados['nickname'] = $res['nickname'];      
+        $dados['thumbnail'] = !empty($res['thumbnail']) ? $res['thumbnail']['picture_url'] : '';
+        $dados['brand_name'] = !empty($res['company']['brand_name']) ? $res['company']['brand_name'] : '';
 
         return $dados;
+    }
+
+    public function atualizarInfoContas()
+    {
+        $clsContas = new IntegracaoMercadoLivre();
+        $contas = $clsContas->get('seller_id');
+
+        foreach ($contas as $conta) {
+            $dados = $this->getInfoContaMeLi($conta->seller_id);
+
+            $clsContas->where('seller_id', '=', $conta->seller_id)
+                ->update([
+                    'nickname' => $dados['nickname'],
+                    'thumbnail' => $dados['thumbnail'],
+                    'brand_name' => $dados['brand_name']
+                ]);
+
+            usleep(1000);
+        }
+
     }
 }

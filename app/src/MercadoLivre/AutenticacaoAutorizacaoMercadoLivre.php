@@ -77,10 +77,12 @@ class AutenticacaoAutorizacaoMercadoLivre
         $integracao = new IntegracaoMercadoLivre();
         $clsRecursosApi = new RecursosApiMercadoLivre();
 
-        $exist = $integracao->query()->where('seller_id', '=', $dados['user_id'])->get('seller_id');
+        $exist = $integracao->query()
+            ->where('seller_id', '=', $dados['user_id'])
+            ->get(['seller_id', 'brand_name', 'nickname']);
 
         if ($exist->isEmpty()) {
-            
+
             $integracao->user_id = id_usuario_atual();
             $integracao->seller_id = $dados['user_id'];
             $integracao->access_token = $dados['access_token'];
@@ -88,22 +90,23 @@ class AutenticacaoAutorizacaoMercadoLivre
             $integracao->expires_in = $dados['expires_in'];
             $integracao->scope = $dados['scope'];
             $integracao->token_type = $dados['token_type'];
-            
+
             $integracao->push();
-            
+
             $info = $clsRecursosApi->getInfoContaMeLi($dados['user_id']);
 
             $integracao->nickname = $info['nickname'];
             $integracao->thumbnail = $info['thumbnail'];
             $integracao->brand_name = $info['brand_name'];
-            
+
             $integracao->push();
 
             session()->flash('sucesso', "Conta {$info['nickname']} vinculada com sucesso.");
             return;
         }
 
-        session()->flash('erro', 'Conta Mercado Livre #' . $dados['user_id'] . ' já está cadastrada.');
+        session()->flash('erro', 'Conta Mercado Livre ' . $exist['brand_name'] . '(' . $exist['nickname'] . ') 
+        já está cadastrada em nosso sistema.');
     }
 
     // Ronova as chaves de autenticacao
