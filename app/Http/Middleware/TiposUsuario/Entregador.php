@@ -2,10 +2,11 @@
 
 namespace App\Http\Middleware\TiposUsuario;
 
+use App\Service\Usuarios\PermissoesService;
 use Closure;
 use Illuminate\Http\Request;
 
-class Entregador
+class Entregador extends PermissoesService
 {
     /**
      * Handle an incoming request.
@@ -16,6 +17,10 @@ class Entregador
      */
     public function handle(Request $request, Closure $next)
     {
+        $res = $this->verificaStatus($request);
+
+        if (!empty($res)) return $res;
+
         if ($request->user()->tipo != 'entregador') {
             return redirect()->route('home');
         }

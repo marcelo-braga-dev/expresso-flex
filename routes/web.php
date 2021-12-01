@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     if (Auth::check()) return redirect()->route('home');
 
-    return view('auth/login');
+    return view('auth.login');
 });
 
 Auth::routes();
@@ -21,7 +21,6 @@ Route::group(['middleware' => 'auth'], function () {
     include 'rota/mercadolivre.php';
 
     include 'rota/qrcode.php';
-
 
     Route::group(['middleware' => 'auth.admin'], function () {
         include 'rota/admin.php';
