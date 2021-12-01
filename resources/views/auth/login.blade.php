@@ -9,7 +9,7 @@
                 <div class="card bg-secondary shadow border-0">
                     <div class="card-body pb-1">
                         <div class="row justify-content-center mx-auto mb-3">
-                            <img src="/assets/img/brand/logo-x256.png" width="80%" />
+                            <img src="/assets/img/brand/logo-x256.png" width="50%" />
                         </div>
                         <form role="form" method="POST" action="{{ route('login') }}">
                             @csrf

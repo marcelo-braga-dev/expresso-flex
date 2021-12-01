@@ -12,7 +12,7 @@
                             Check-in de Pacotes
                         </h5>
                         <h4 class="card-title text-uppercase mb-0">
-                            Pacotes Cadastrados na Base
+                            Pacotes Localizados na Base
                         </h4>
                     </div>
                     <div class="form-group m-0">
@@ -33,13 +33,10 @@
                 </div>
             </div>
             <div class="card-body p-0"><?php $data = ''; ?>
-
                 <ul class="list-group list-group-flush">
                     @foreach ($pacotes as $pacote)
-
                         @include('layouts.componentes.list-pacotes',
-                        ['link' => 'conferente.pacotes.info', 'simples' => true, 'data' => true])
-
+                        ['link' => 'conferente.pacotes.info', 'simples' => false, 'data' => true])
                     @endforeach
                 </ul>
             </div>

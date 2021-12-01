@@ -49,21 +49,24 @@
                             </thead>
                             <tbody class="list">
 
-                                @foreach ($conferentes as $conferente)
+                                @foreach ($conferentes as $usuario)
                                     <tr>
                                         <th scope="row">
-                                            {{ $conferente->id }}
+                                            {{ $usuario->id }}
                                         </th>
                                         <td class="budget">
-                                            {{ $conferente->nome }}
-                                        </td>
-                                        <td @if (!$conferente->status) style="color: rgba(255,3,3,0.64)" @endif>
-                                            @if ($conferente->status) Ativo
-                                            @else Inativo
-                                            @endif
+                                            {{ $usuario->nome }}
                                         </td>
                                         <td>
-                                            {{ $conferente->email }}
+                                            <label class="custom-toggle">
+                                                <input type="checkbox" class="status-usuario" value="{{ $usuario->id }}"
+                                                    @if ($usuario->status) checked @endif>
+                                                <span class="custom-toggle-slider rounded-circle" data-label-off="No"
+                                                    data-label-on="Yes"></span>
+                                            </label>
+                                        </td>
+                                        <td>
+                                            {{ $usuario->email }}
                                         </td>
                                         <td class="text-right">
                                             <div class="dropdown">
@@ -73,11 +76,11 @@
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                                     <a class="dropdown-item"
-                                                        href="{{ route('admin.usuarios.conferente.edit', ['id' => "$conferente->id"]) }}">
+                                                        href="{{ route('admin.usuarios.conferente.edit', ['id' => "$usuario->id"]) }}">
                                                         Editar
                                                     </a>
                                                     <a class="dropdown-item"
-                                                        href="{{ route('admin.usuarios.conferente.info', ['id' => "$conferente->id"]) }}">
+                                                        href="{{ route('admin.usuarios.conferente.info', ['id' => "$usuario->id"]) }}">
                                                         Detalhes
                                                     </a>
                                                 </div>
@@ -88,35 +91,9 @@
                             </tbody>
                         </table>
                     </div>
-                    <!-- Card footer -->
-                    {{-- <div class="card-footer py-4">
-                        <nav aria-label="...">
-                            <ul class="pagination justify-content-end mb-0">
-                                <li class="page-item disabled">
-                                    <a class="page-link" href="#" tabindex="-1">
-                                        <i class="fas fa-angle-left"></i>
-                                        <span class="sr-only">Previous</span>
-                                    </a>
-                                </li>
-                                <li class="page-item active">
-                                    <a class="page-link" href="#">1</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">
-                                        <i class="fas fa-angle-right"></i>
-                                        <span class="sr-only">Next</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div> --}}
                 </div>
             </div>
         </div>
-        @include('layouts.footers.auth')
+        @include('pages.admin.usuarios.partials.modalAlteraStatus')
     </div>
 @endsection

@@ -48,23 +48,24 @@
                             </thead>
                             <tbody class="list">
 
-                                @foreach ($admins as $admin)
+                                @foreach ($admins as $usuario)
                                     <tr>
                                         <th>
-                                            #{{ $admin->id }}
+                                            #{{ $usuario->id }}
                                         </th>
                                         <td>
-                                            {{ $admin->nome }}
+                                            {{ $usuario->nome }}
                                         </td>
                                         <td>
-                                            @if ($admin->status)
-                                                <i class="fas fa-check text-success"></i>
-                                            @else
-                                                <i class="fas fa-times text-danger"></i>
-                                            @endif
+                                            <label class="custom-toggle">
+                                                <input type="checkbox" class="status-usuario" value="{{ $usuario->id }}"
+                                                    @if ($usuario->status) checked @endif>
+                                                <span class="custom-toggle-slider rounded-circle" data-label-off="No"
+                                                    data-label-on="Yes"></span>
+                                            </label>
                                         </td>
                                         <td>
-                                            {{ $admin->email }}
+                                            {{ $usuario->email }}
                                         </td>
                                         <td class="text-right">
                                             <div class="dropdown">
@@ -74,11 +75,11 @@
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                                     <a class="dropdown-item"
-                                                        href="{{ route('admin.usuarios.admin.edit', ['id' => "$admin->id"]) }}">
+                                                        href="{{ route('admin.usuarios.admin.edit', ['id' => "$usuario->id"]) }}">
                                                         Editar
                                                     </a>
                                                     <a class="dropdown-item"
-                                                        href="{{ route('admin.usuarios.admin.info', ['id' => "$admin->id"]) }}">
+                                                        href="{{ route('admin.usuarios.admin.info', ['id' => "$usuario->id"]) }}">
                                                         Detalhes
                                                     </a>
                                                 </div>
@@ -92,6 +93,6 @@
                 </div>
             </div>
         </div>
-        @include('layouts.footers.auth')
+        @include('pages.admin.usuarios.partials.modalAlteraStatus')
     </div>
 @endsection

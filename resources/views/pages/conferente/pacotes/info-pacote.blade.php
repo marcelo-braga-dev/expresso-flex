@@ -16,7 +16,7 @@
                 </div>
             </div>
 
-            <div class="card-body">
+            <div class="card-body p-1">
                 <div class="card p-3 mb-4">
                     <div class="row mb-2">
                         <div class="col-md-6">
@@ -58,7 +58,7 @@
                 </div>
 
                 <div class="card p-3 mb-4">
-                    <h3>Destinatário</h3>
+                    <h4>Destinatário</h4>
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <p class="text-sm mb-0">
@@ -90,7 +90,7 @@
 
                 {{-- Remetente --}}
                 <div class="card p-3 mb-4">
-                    <h3>Remetente</h3>
+                    <h4>Remetente</h4>
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <p class="text-sm mb-0">
@@ -118,7 +118,7 @@
                 </div>
 
                 <div class="card p-3 mb-4">
-                    <h3>Informações da Entrega</h3>
+                    <h4>Informações da Entrega</h4>
                     <div class="row mb-2">
                         <div class="col-md-6">
                             <p class="text-sm mb-0">
@@ -162,7 +162,7 @@
                 </div>
 
                 <div class="card p-3 mb-4">
-                    <h3 class="mb-3">Histórico</h3>
+                    <h4 class="mb-3">Histórico</h4>
                     <div class="row mb-2">
                         <div class="col-12">
                             <div class="table-responsive">

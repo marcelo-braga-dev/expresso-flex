@@ -52,23 +52,24 @@
                                 </tr>
                             </thead>
                             <tbody class="list">
-                                @foreach ($clientes as $cliente)
+                                @foreach ($clientes as $usuario)
                                     <tr>
                                         <th scope="row">
-                                            {{ $cliente->id }}
+                                            {{ $usuario->id }}
                                         </th>
                                         <td class="budget">
-                                            {{ $cliente->nome }}
+                                            {{ $usuario->nome }}
                                         </td>
                                         <td>
-                                            @if ($cliente->status)
-                                                <i class="fas fa-check text-success"></i>
-                                            @else
-                                                <i class="fas fa-times text-danger"></i>
-                                            @endif
+                                            <label class="custom-toggle">
+                                                <input type="checkbox" class="status-usuario" value="{{ $usuario->id }}"
+                                                    @if ($usuario->status) checked @endif>
+                                                <span class="custom-toggle-slider rounded-circle" data-label-off="No"
+                                                    data-label-on="Yes"></span>
+                                            </label>
                                         </td>
                                         <td>
-                                            {{ $cliente->email }}
+                                            {{ $usuario->email }}
                                         </td>
                                         <td class="text-right">
                                             <div class="dropdown">
@@ -78,11 +79,11 @@
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                                     <a class="dropdown-item"
-                                                        href="{{ route('admin.usuarios.clientes.edit', ['id' => "$cliente->id"]) }}">
+                                                        href="{{ route('admin.usuarios.clientes.edit', ['id' => "$usuario->id"]) }}">
                                                         Editar
                                                     </a>
                                                     <a class="dropdown-item"
-                                                        href="{{ route('admin.usuarios.clientes.info-clientes', ['id' => "$cliente->id"]) }}">
+                                                        href="{{ route('admin.usuarios.clientes.info-clientes', ['id' => "$usuario->id"]) }}">
                                                         Detalhes
                                                     </a>
                                                 </div>
@@ -124,5 +125,8 @@
         </div>
         @include('layouts.footers.auth')
     </div>
+    
+    @include('pages.admin.usuarios.partials.modalAlteraStatus')
+    
 
 @endsection

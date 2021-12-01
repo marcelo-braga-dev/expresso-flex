@@ -15,8 +15,7 @@ Route::get(
 Route::get(
     'usuarios/clientes/informacoes',
     'App\Http\Controllers\Usuarios\ClientesController@info'
-)
-    ->name('admin.usuarios.clientes.info-clientes');
+)->name('admin.usuarios.clientes.info-clientes');
 
 // Novo Cliente
 Route::get(
@@ -205,12 +204,12 @@ Route::get(
 )->name('admin.fretes.tabela');
 // formulario valores
 Route::get(
-    'admin/fretes/atualiza-preco', 
+    'admin/fretes/atualiza-preco',
     'App\Http\Controllers\Admin\FretesController@editaPrecoClientes'
 )->name('admin.fretes.atualiza-preco-clientes');
 // update valores frete
 Route::put(
-    'admin/fretes/atualiza-preco', 
+    'admin/fretes/atualiza-preco',
     'App\Http\Controllers\Admin\FretesController@atualizaPrecoClientes'
 )->name('admin.fretes.atualiza-preco-clientes');
 
@@ -330,3 +329,11 @@ Route::get(
     'admin/financeiro/entregador/detalhes-mensal',
     'App\Http\Controllers\Admin\Financeiro\EntregadoresController@historicoDetalhesMes'
 )->name('admin.financeiro.entregador.detalhes-mensal');
+
+/* AJAX */
+
+//atualiza status usuario 
+Route::get(
+    'ajax/admin/usuario/atualiza-status-usuario/',
+    'App\Http\Controllers\Usuarios\UsuariosController@modificaStatusUsuario'
+)->name('ajax.admin.usuario.atualiza-status-usuario');

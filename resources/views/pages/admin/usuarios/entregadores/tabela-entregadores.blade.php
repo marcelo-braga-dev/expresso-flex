@@ -50,34 +50,35 @@
                             </thead>
                             <tbody class="list">
 
-                                @foreach ($entregadores as $entregador)
+                                @foreach ($entregadores as $usuario)
                                     <tr>
                                         <td scope="row">
-                                            #{{ $entregador->id }}
+                                            #{{ $usuario->id }}
                                         </td>
                                         <td>
                                             <p class="text-sm mb-1">
-                                                <b>{{ $entregador->nome }}</b><br>
-                                                {{ $entregador->email }}
+                                                <b>{{ $usuario->nome }}</b><br>
+                                                {{ $usuario->email }}
                                             </p>
                                         </td>
-                                        <td @if (!$entregador->status) style="color: rgba(255,3,3,0.64)" @endif>
-                                            @if ($entregador->status)
-                                                <i class="fas fa-check text-success"></i>
-                                            @else
-                                                <i class="fas fa-times text-danger"></i>
-                                            @endif
+                                        <td>
+                                            <label class="custom-toggle">
+                                                <input type="checkbox" class="status-usuario" value="{{ $usuario->id }}"
+                                                    @if ($usuario->status) checked @endif>
+                                                <span class="custom-toggle-slider rounded-circle" data-label-off="No"
+                                                    data-label-on="Yes"></span>
+                                            </label>
                                         </td>
                                         <td style="white-space: normal">
-                                            @isset($regioes[$entregador->id]['regiao_coleta'])
-                                                @foreach ($regioes[$entregador->id]['regiao_coleta'] as $regiao)
+                                            @isset($regioes[$usuario->id]['regiao_coleta'])
+                                                @foreach ($regioes[$usuario->id]['regiao_coleta'] as $regiao)
                                                     {{ $regiao }},
                                                 @endforeach
                                             @endisset
                                         </td>
                                         <td style="white-space: normal">
-                                            @isset($regioes[$entregador->id]['regiao_entrega'])
-                                                @foreach ($regioes[$entregador->id]['regiao_entrega'] as $regiao)
+                                            @isset($regioes[$usuario->id]['regiao_entrega'])
+                                                @foreach ($regioes[$usuario->id]['regiao_entrega'] as $regiao)
                                                     {{ $regiao }},
                                                 @endforeach
                                             @endisset
@@ -90,11 +91,11 @@
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                                     <a class="dropdown-item"
-                                                        href="{{ route('admin.usuarios.entregador.edit', ['id' => "$entregador->id"]) }}">
+                                                        href="{{ route('admin.usuarios.entregador.edit', ['id' => "$usuario->id"]) }}">
                                                         Editar
                                                     </a>
                                                     <a class="dropdown-item"
-                                                        href="{{ route('admin.usuarios.conferente.info', ['id' => "$entregador->id"]) }}">
+                                                        href="{{ route('admin.usuarios.conferente.info', ['id' => "$usuario->id"]) }}">
                                                         Detalhes
                                                     </a>
                                                 </div>
@@ -108,6 +109,6 @@
                 </div>
             </div>
         </div>
-        @include('layouts.footers.auth')
+        @include('pages.admin.usuarios.partials.modalAlteraStatus')
     </div>
 @endsection

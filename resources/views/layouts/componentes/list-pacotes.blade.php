@@ -1,19 +1,3 @@
-<?php
-// $dataAtual = date('d/m/Y', strtotime($pacote->updated_at));
-// if (empty($dataAntiga)) {
-//     $dataAntiga = '';
-// }
-?>
-{{-- @if ($dataAtual != $dataAntiga)
-
-    @if (!empty($dataAntiga))
-        <hr class="m-3">
-    @endif
-{{$dataAntiga}}
-    <?php $dataAntiga = $dataAtual; ?>
-
-@endif --}}
-
 <li class="list-group-item info-list info-list">
     <div class="row d-flex justify-content-between align-items-center">
         <div class="col-12 col-md-10">
@@ -52,7 +36,7 @@
                 </small>
             @endempty
         </div>
-        <div class="col-12 col-md-2 text-righ t">
+        <div class="col-12 col-md-2 text-right">
             <a class="small pl-5" href="{{ route($link, ['id' => $pacote->id]) }}">
                 Detalhes
             </a>
