@@ -42,9 +42,9 @@
                                 <tr>
                                     <th scope="col" class="sort" data-sort="name">ID</th>
                                     <th scope="col" class="sort" data-sort="budget">Entregador</th>
-                                    <th scope="col" class="sort" data-sort="status">Status</th>
                                     <th scope="col" class="sort" data-sort="completion">Áreas de Coleta</th>
                                     <th scope="col" class="sort" data-sort="completion">Áreas de Entrega</th>
+                                    <th scope="col" class="sort" data-sort="status">Status</th>
                                     <th scope="col"></th>
                                 </tr>
                             </thead>
@@ -56,18 +56,14 @@
                                             #{{ $usuario->id }}
                                         </td>
                                         <td>
-                                            <p class="text-sm mb-1">
-                                                <b>{{ $usuario->nome }}</b><br>
-                                                {{ $usuario->email }}
-                                            </p>
-                                        </td>
-                                        <td>
-                                            <label class="custom-toggle">
-                                                <input type="checkbox" class="status-usuario" value="{{ $usuario->id }}"
-                                                    @if ($usuario->status) checked @endif>
-                                                <span class="custom-toggle-slider rounded-circle" data-label-off="No"
-                                                    data-label-on="Yes"></span>
-                                            </label>
+                                            <b>{{ $usuario->nome }}</b><br>
+                                            {{ $usuario->email }}<br>
+                                            @if (!empty($novaConta[$usuario->email]))
+                                                <a
+                                                    href="{{ route('admin.usuarios.clientes.info-clientes', ['id' => "$usuario->id"]) }}">
+                                                    <small>O usuário ainda não ativou a conta.</small>
+                                                </a>
+                                            @endif
                                         </td>
                                         <td style="white-space: normal">
                                             @isset($regioes[$usuario->id]['regiao_coleta'])
@@ -82,6 +78,14 @@
                                                     {{ $regiao }},
                                                 @endforeach
                                             @endisset
+                                        </td>
+                                        <td>
+                                            <label class="custom-toggle">
+                                                <input type="checkbox" class="status-usuario" value="{{ $usuario->id }}"
+                                                    @if ($usuario->status) checked @endif>
+                                                <span class="custom-toggle-slider rounded-circle" data-label-off="No"
+                                                    data-label-on="Yes"></span>
+                                            </label>
                                         </td>
                                         <td class="text-right">
                                             <div class="dropdown">

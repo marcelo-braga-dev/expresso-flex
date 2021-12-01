@@ -1,18 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\Usuarios;
+namespace App\Http\Controllers\Admin\Usuarios;
 
 use App\Models\User;
+use App\Service\Usuarios\UsuariosService;
 use App\src\Usuarios\Conferente;
 use Illuminate\Http\Request;
 
 class ConferenteController
 {
-    public function index()
+    public function index(UsuariosService $clsUsuarioService)
     {
+        $novaConta = $clsUsuarioService->getNovosUsuarios();
+
         $conferentes = User::where('tipo', '=', 'conferente')->orderBy('id', 'desc')->get();
 
-        return view('pages.admin.usuarios.conferente.tabela-conferente', compact('conferentes',));
+        return view('pages.admin.usuarios.conferente.tabela-conferente', compact('conferentes', 'novaConta'));
     }
 
     public function info(Request $request)

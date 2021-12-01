@@ -1,4 +1,3 @@
-<!-- Modal -->
 <div class="modal fade" id="modalMudarStatus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -24,7 +23,6 @@
 <script>
     $(function() {
         $('.status-usuario').change(function() {
-
             var id = $(this).val();
             var status = $(this).is(':checked');
 
@@ -41,5 +39,5 @@
                 }
             });
         });
-    })
+    });
 </script>

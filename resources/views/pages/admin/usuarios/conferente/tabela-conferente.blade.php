@@ -43,7 +43,6 @@
                                     <th scope="col" class="sort" data-sort="name">ID</th>
                                     <th scope="col" class="sort" data-sort="budget">Nome</th>
                                     <th scope="col" class="sort" data-sort="status">Status</th>
-                                    <th scope="col" class="sort" data-sort="completion">E-mail</th>
                                     <th scope="col"></th>
                                 </tr>
                             </thead>
@@ -51,22 +50,23 @@
 
                                 @foreach ($conferentes as $usuario)
                                     <tr>
-                                        <th scope="row">
-                                            {{ $usuario->id }}
-                                        </th>
+                                        <td scope="row">
+                                            #{{ $usuario->id }}
+                                        </td>
                                         <td class="budget">
-                                            {{ $usuario->nome }}
+                                            <b>{{ $usuario->nome }}</b><br>
+                                            {{ $usuario->email }}<br>
+                                            @if (!empty($novaConta[$usuario->email]))
+                                                <a href="{{ route('admin.usuarios.clientes.info-clientes', ['id' => "$usuario->id"]) }}"><small>O usuário ainda não ativou a conta.</small></a>
+                                            @endif
                                         </td>
                                         <td>
                                             <label class="custom-toggle">
                                                 <input type="checkbox" class="status-usuario" value="{{ $usuario->id }}"
                                                     @if ($usuario->status) checked @endif>
-                                                <span class="custom-toggle-slider rounded-circle" data-label-off="No"
-                                                    data-label-on="Yes"></span>
+                                                <span class="custom-toggle-slider rounded-circle" data-label-off="Não"
+                                                    data-label-on="Sim"></span>
                                             </label>
-                                        </td>
-                                        <td>
-                                            {{ $usuario->email }}
                                         </td>
                                         <td class="text-right">
                                             <div class="dropdown">

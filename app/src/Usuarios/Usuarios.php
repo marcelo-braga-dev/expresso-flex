@@ -31,14 +31,25 @@ class Usuarios
 
     protected function editaUsuario($data, $idUsuario)
     {
+        $clsPasswordNew = new PasswordNew();
+
         $user = User::find($idUsuario);
 
-        $user->update(
-            [
-                'nome' => $data['nome'],
-                'email' => strtolower($data['email'])
-            ]
-        );
+        try {
+            $clsPasswordNew->query()
+                ->where('email', '=', $user->email)
+                ->update(['email' => $data['email']]);
+
+            $user->update(
+                [
+                    'nome' => $data['nome'],
+                    'email' => strtolower($data['email'])
+                ]
+            );
+        } catch (QueryException $e) {            
+            session()->flash('erro', 'Já existe um usuário com esse email.');
+        }
+
 
         return $user;
     }

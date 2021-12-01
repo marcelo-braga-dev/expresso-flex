@@ -37,9 +37,10 @@
                         </div>
                     </div>
 
-                    @include('layouts.componentes.alerts')
+                    <div class="row justify-content-center">
+                        <div class="col-11">@include('layouts.componentes.alerts')</div>
+                    </div>                   
 
-                    <!-- Light table -->
                     <div class="table-responsive">
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
@@ -47,18 +48,21 @@
                                     <th scope="col" class="sort" data-sort="name">ID</th>
                                     <th scope="col" class="sort" data-sort="budget">Nome</th>
                                     <th scope="col" class="sort" data-sort="status">Status</th>
-                                    <th scope="col" class="sort" data-sort="completion">E-mail</th>
                                     <th scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody class="list">
                                 @foreach ($clientes as $usuario)
                                     <tr>
-                                        <th scope="row">
-                                            {{ $usuario->id }}
-                                        </th>
-                                        <td class="budget">
-                                            {{ $usuario->nome }}
+                                        <td>
+                                            #{{ $usuario->id }}
+                                        </td>
+                                        <td>
+                                            <b>{{ $usuario->nome }}</b><br>
+                                            {{ $usuario->email }}<br>
+                                            @if (!empty($novaConta[$usuario->email]))
+                                                <a href="{{ route('admin.usuarios.clientes.info-clientes', ['id' => "$usuario->id"]) }}"><small>O usuário ainda não ativou a conta.</small></a>
+                                            @endif
                                         </td>
                                         <td>
                                             <label class="custom-toggle">
@@ -67,9 +71,6 @@
                                                 <span class="custom-toggle-slider rounded-circle" data-label-off="No"
                                                     data-label-on="Yes"></span>
                                             </label>
-                                        </td>
-                                        <td>
-                                            {{ $usuario->email }}
                                         </td>
                                         <td class="text-right">
                                             <div class="dropdown">
@@ -125,8 +126,8 @@
         </div>
         @include('layouts.footers.auth')
     </div>
-    
+
     @include('pages.admin.usuarios.partials.modalAlteraStatus')
-    
+
 
 @endsection

@@ -2,24 +2,23 @@
 
 use Illuminate\Support\Facades\Route;
 
-/* --- Conferentes --- */
+/* --- CLientes --- */
 
 // Tabela de Clientes
 Route::get(
-    'usuarios/clientes',
-    'App\Http\Controllers\Usuarios\ClientesController@index'
-)
-    ->name('admin.usuarios.clientes.tabela');
+    'admin/usuarios/clientes',
+    'App\Http\Controllers\Admin\Usuarios\ClientesController@index'
+)->name('admin.usuarios.clientes.tabela');
 
 // Informacoes do Cliente
 Route::get(
-    'usuarios/clientes/informacoes',
-    'App\Http\Controllers\Usuarios\ClientesController@info'
+    'admin/usuarios/clientes/informacoes',
+    'App\Http\Controllers\Admin\Usuarios\ClientesController@info'
 )->name('admin.usuarios.clientes.info-clientes');
 
 // Novo Cliente
 Route::get(
-    'usuarios/cliente/novo',
+    'admin/usuarios/cliente/novo',
     function () {
         return view('pages.admin.usuarios.clientes.novo-cliente');
     }
@@ -27,20 +26,20 @@ Route::get(
 
 // Salvar Cliente
 Route::put(
-    'usuarios/clientes/salvar',
-    'App\Http\Controllers\Usuarios\ClientesController@create'
+    'admin/usuarios/clientes/salvar',
+    'App\Http\Controllers\Admin\Usuarios\ClientesController@create'
 )->name('admin.usuarios.clientes.create');
 
 // Editar Cliente
 Route::get(
-    'usuarios/clientes/editar',
-    'App\Http\Controllers\Usuarios\ClientesController@edit'
+    'admin/usuarios/clientes/editar',
+    'App\Http\Controllers\Admin\Usuarios\ClientesController@edit'
 )->name('admin.usuarios.clientes.edit');
 
 // Atualiza Cliente
 Route::put(
-    'usuarios/clientes/atualizar',
-    'App\Http\Controllers\Usuarios\ClientesController@update'
+    'admin/usuarios/clientes/atualizar',
+    'App\Http\Controllers\Admin\Usuarios\ClientesController@update'
 )->name('admin.usuarios.clientes.update');
 
 
@@ -49,7 +48,7 @@ Route::put(
 // Tabela de Conferente
 Route::get(
     'usuarios/conferentes',
-    'App\Http\Controllers\Usuarios\ConferenteController@index'
+    'App\Http\Controllers\Admin\Usuarios\ConferenteController@index'
 )
     ->name('admin.usuarios.conferentes.tabela');
 
@@ -64,26 +63,26 @@ Route::get(
 // Informacoes do Conferente
 Route::get(
     'usuarios/conferente/informacoes',
-    'App\Http\Controllers\Usuarios\ConferenteController@info'
+    'App\Http\Controllers\Admin\Usuarios\ConferenteController@info'
 )
     ->name('admin.usuarios.conferente.info');
 
 // Criar Conferente
 Route::put(
     'usuarios/conferente/salvar',
-    'App\Http\Controllers\Usuarios\ConferenteController@create'
+    'App\Http\Controllers\Admin\Usuarios\ConferenteController@create'
 )->name('admin.usuarios.conferente.create');
 
 // Editar Conferente
 Route::get(
     'usuarios/conferente/editar',
-    'App\Http\Controllers\Usuarios\ConferenteController@edit'
+    'App\Http\Controllers\Admin\Usuarios\ConferenteController@edit'
 )->name('admin.usuarios.conferente.edit');
 
 // Atualiza Conferente
 Route::put(
     'usuarios/conferente/atualizar',
-    'App\Http\Controllers\Usuarios\ConferenteController@update'
+    'App\Http\Controllers\Admin\Usuarios\ConferenteController@update'
 )->name('admin.usuarios.conferente.update');
 
 
@@ -92,7 +91,7 @@ Route::put(
 // Tabela de Admin
 Route::get(
     'usuarios/admin',
-    'App\Http\Controllers\Usuarios\AdminController@index'
+    'App\Http\Controllers\Admin\Usuarios\AdminController@index'
 )
     ->name('admin.usuarios.admin.tabela');
 
@@ -107,26 +106,26 @@ Route::get(
 // Informacoes do Admin
 Route::get(
     'usuarios/admin/informacoes',
-    'App\Http\Controllers\Usuarios\AdminController@info'
+    'App\Http\Controllers\Admin\Usuarios\AdminController@info'
 )
     ->name('admin.usuarios.admin.info');
 
 // Criar Admin
 Route::put(
     'usuarios/admin/salvar',
-    'App\Http\Controllers\Usuarios\AdminController@create'
+    'App\Http\Controllers\Admin\Usuarios\AdminController@create'
 )->name('admin.usuarios.admin.create');
 
 // Editar Admin
 Route::get(
     'usuarios/admin/editar',
-    'App\Http\Controllers\Usuarios\AdminController@edit'
+    'App\Http\Controllers\Admin\Usuarios\AdminController@edit'
 )->name('admin.usuarios.admin.edit');
 
 // Atualiza Conferente
 Route::put(
     'usuarios/admin/atualizar',
-    'App\Http\Controllers\Usuarios\AdminController@update'
+    'App\Http\Controllers\Admin\Usuarios\AdminController@update'
 )->name('admin.usuarios.admin.update');
 
 
@@ -135,7 +134,7 @@ Route::put(
 // Tabela de Entregador
 Route::get(
     'usuarios/entregadores',
-    'App\Http\Controllers\Usuarios\EntregadoresController@index'
+    'App\Http\Controllers\Admin\Usuarios\EntregadoresController@index'
 )
     ->name('admin.usuarios.entregadores.tabela');
 
@@ -150,26 +149,26 @@ Route::get(
 // Informacoes do Conferente
 Route::post(
     'usuarios/entregador/informacoes',
-    'App\Http\Controllers\Usuarios\EntregadoresController@info'
+    'App\Http\Controllers\Admin\Usuarios\EntregadoresController@info'
 )
     ->name('admin.usuarios.entregador.info');
 
 // Criar Conferente
 Route::put(
     'usuarios/entregador/salvar',
-    'App\Http\Controllers\Usuarios\EntregadoresController@create'
+    'App\Http\Controllers\Admin\Usuarios\EntregadoresController@create'
 )->name('admin.usuarios.entregador.create');
 
 // Editar Conferente
 Route::get(
     'usuarios/entregador/editar',
-    'App\Http\Controllers\Usuarios\EntregadoresController@edit'
+    'App\Http\Controllers\Admin\Usuarios\EntregadoresController@edit'
 )->name('admin.usuarios.entregador.edit');
 
 // Atualiza Conferente
 Route::put(
     'usuarios/entregador/atualizar',
-    'App\Http\Controllers\Usuarios\EntregadoresController@update'
+    'App\Http\Controllers\Admin\Usuarios\EntregadoresController@update'
 )->name('admin.usuarios.entregador.update');
 
 
@@ -335,5 +334,5 @@ Route::get(
 //atualiza status usuario 
 Route::get(
     'ajax/admin/usuario/atualiza-status-usuario/',
-    'App\Http\Controllers\Usuarios\UsuariosController@modificaStatusUsuario'
+    'App\Http\Controllers\Admin\Usuarios\UsuariosController@modificaStatusUsuario'
 )->name('ajax.admin.usuario.atualiza-status-usuario');

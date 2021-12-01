@@ -3,178 +3,102 @@
 @section('content')
     <div class="header bg-principal bg-height-top"></div>
 
-    <!-- Page content -->
     <div class="container-fluid mt--9">
-        <div class="row">
-            <div class="col">
-                <div class="card mb-4">
-                    <!-- Card header -->
-                    <div class="card-header border">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <h3 class="mb-0">Informações do Cliente</h3>
-                            <div class="d-flex">
-                                <span class="px-2">Status</span>
-                                <label class="custom-toggle">
-                                    <input type="checkbox" @if ($usuario->status) checked @endif>
-                                    <span class="custom-toggle-slider rounded-circle"></span>
-                                </label>
+        <div class="card shadow mb-4">
+            <div class="card-header border">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h3 class="mb-0">Informações do Usuário</h3>
+                </div>
+            </div>
+            <div class="card-body p-1">
+                @if (!empty($hash->token))
+                    <div class="card card-body bg-white mb-3">
+                        <div class="row">
+                            <div class="col-12">
+                                <h5>Link para cadastrar a senha do primeiro acesso:</h5>
+                                <span>{{ route('mail.usuario.retorno.novo-senha', [$usuario->email, $hash->token]) }}</span>
                             </div>
-
                         </div>
                     </div>
-
-                    <div class="container-fluid my-3">
-                        <h5>Informações Pessoais</h5>
-                        <div class="table-responsive card mb-4">
-                            <table class="table">
-                                <tbody>
-                                <tr>
-                                    <th scope="row" class="col-3">
-                                        <span>Nome:</span>
-                                    </th>
-                                    <td>
-                                        {{ $usuario->nome }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        <span>E-mail:</span>
-                                    </th>
-                                    <td>
-                                        {{ $usuario->email }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        <span>Celular:</span>
-                                    </th>
-                                    <td>
-                                        @if (isset($dados['celular'])) {{ $dados['celular'] }} @endif
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        <span>CPF:</span>
-                                    </th>
-                                    <td>
-                                        @if (isset($dados['cpf'])) {{ $dados['cpf'] }} @endif
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        <span>Endereço:</span>
-                                    </th>
-                                    <td>
-                                        @if (isset($dados['endereco'])) {{ $dados['endereco'] }} @endif
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
+                @endif
+                <div class="card card-body bg-white mb-3">
+                    <h5>Informações Pessoais</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>Nome: {{ $usuario->nome }}</p>
                         </div>
-
-                        <!-- Informacoes Comerciais -->
-                        <h5>Informações Comerciais</h5>
-                        <div class="table-responsive card mb-4">
-                            <table class="table">
-                                <tbody>
-                                <tr>
-                                    <th scope="row" class="col-3">
-                                        <span>CNPJ:</span>
-                                    </th>
-                                    <td>
-                                        @if (isset($dados['cnpj'])) {{ $dados['cnpj'] }} @endif
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        <span>Nome Fantasia:</span>
-                                    </th>
-                                    <td>
-                                        @if (isset($dados['nome_fantasia'])) {{ $dados['nome_fantasia'] }} @endif
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        <span>Razão Social:</span>
-                                    </th>
-                                    <td>
-                                        @if (isset($dados['razao_social'])) {{ $dados['razao_social'] }} @endif
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        <span>Representatante Comercial:</span>
-                                    </th>
-                                    <td>
-                                        @if (isset($dados['nome_comercial'])) {{ $dados['nome_comercial'] }} @endif
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        <span>Email Comercial:</span>
-                                    </th>
-                                    <td>
-                                        @if (isset($dados['email_comercial'])) {{ $dados['email_comercial'] }} @endif
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        <span>Perfil:</span>
-                                    </th>
-                                    <td>
-                                        @if (isset($dados['perfil'])) {{ $dados['perfil'] }} @endif
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
+                        <div class="col-md-6">
+                            <p>E-mail: {{ $usuario->email }}</p>
                         </div>
-
-                        <h5>Anotações</h5>
-                        <div class="table-responsive card mb-4">
-                            <table class="table">
-                                <tbody>
-                                <tr>
-                                    <th scope="row" class="col-3">
-                                        <span>Perfil:</span>
-                                    </th>
-                                    <td>
-                                        @if (isset($dados['perfil'])) {{ $dados['perfil'] }} @endif
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        <span>Cadastrado Dia:</span>
-                                    </th>
-                                    <td>
-                                        @if (isset($usuario->created_at)) {{ date('d/m/Y H:i:s', strtotime($usuario->created_at) )  }} @endif
-                                    </td>
-                                </tr>
-
-                                </tbody>
-                            </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>CPF: @if (isset($dados['cpf'])) {{ $dados['cpf'] }} @endif</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>Telefone: @if (isset($dados['celular'])) {{ $dados['celular'] }} @endif</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>Endereço: @if (isset($dados['endereco'])) {{ $dados['endereco'] }} @endif</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="card">
-                    <!-- Card header -->
-                    <div class="card-header border">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <h3 class="mb-0">Redefinir Senha</h3>
+                <div class="card card-body bg-white mb-3">
+                    <h5>Informações Comerciais</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>Nome Fantasia: @if (isset($dados['nome_fantasia'])) {{ $dados['nome_fantasia'] }} @endif</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>CNPJ: @if (isset($dados['cnpj'])) {{ $dados['cnpj'] }} @endif</p>
                         </div>
                     </div>
-                    <div class="container-fluid my-3">
-                        <div class="table-responsive">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>Razão Social: @if (isset($dados['razao_social'])) {{ $dados['razao_social'] }} @endif</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>Rep. Comercial: @if (isset($dados['nome_comercial'])) {{ $dados['nome_comercial'] }} @endif</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>Email Comercial: @if (isset($dados['email_comercial'])) {{ $dados['email_comercial'] }} @endif</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-body bg-white mb-3">
+                    <h5>Outros</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>Perfil: @if (isset($dados['perfil'])) {{ $dados['perfil'] }} @endif</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>Data do Cadastro: @if (isset($usuario->created_at)) {{ date('d/m/Y H:i:s', strtotime($usuario->created_at)) }} @endif</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    @include('layouts.footers.auth')
+
+        {{-- <div class="card">
+            <!-- Card header -->
+            <div class="card-header border">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h3 class="mb-0">Redefinir Senha</h3>
+                </div>
+            </div>
+            <div class="container-fluid my-3">
+                <div class="table-responsive">
+                </div>
+            </div>
+        </div> --}}
+
     </div>
 @endsection
-
-
-
-

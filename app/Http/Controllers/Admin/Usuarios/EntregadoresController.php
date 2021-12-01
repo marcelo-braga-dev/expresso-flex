@@ -1,22 +1,23 @@
 <?php
 
 
-namespace App\Http\Controllers\Usuarios;
+namespace App\Http\Controllers\Admin\Usuarios;
 
 use App\Models\RegioesEntregadores;
 use App\Models\User;
 use App\Service\Entregadores\EntregadoresService;
+use App\Service\Usuarios\UsuariosService;
 use App\src\Usuarios\Entregadores;
 use Illuminate\Http\Request;
 
 
 class EntregadoresController
 {
-    public function index(RegioesEntregadores $regioesEntregador)
+    public function index(RegioesEntregadores $regioesEntregador, UsuariosService $clsUsuarioService, User $users)
     {
-        $users = new User();
-
         $regioes = [];
+
+        $novaConta = $clsUsuarioService->getNovosUsuarios();
 
         $entregadores = $users->query()
             ->where('tipo', '=', 'entregador')
@@ -34,7 +35,7 @@ class EntregadoresController
 
         return view(
             'pages.admin.usuarios.entregadores.tabela-entregadores',
-            compact('entregadores', 'regioes')
+            compact('entregadores', 'regioes', 'novaConta')
         );
     }
 

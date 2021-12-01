@@ -42,19 +42,21 @@
                                     <th scope="col" class="sort" data-sort="name">ID</th>
                                     <th scope="col" class="sort" data-sort="budget">Nome</th>
                                     <th scope="col" class="sort" data-sort="status">Status</th>
-                                    <th scope="col" class="sort" data-sort="completion">E-mail</th>
                                     <th scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody class="list">
-
                                 @foreach ($admins as $usuario)
                                     <tr>
-                                        <th>
-                                            #{{ $usuario->id }}
-                                        </th>
                                         <td>
-                                            {{ $usuario->nome }}
+                                            #{{ $usuario->id }}
+                                        </td>
+                                        <td>
+                                            <b>{{ $usuario->nome }}</b><br>
+                                            {{ $usuario->email }}<br>
+                                            @if (!empty($novaConta[$usuario->email]))
+                                                <a href="{{ route('admin.usuarios.clientes.info-clientes', ['id' => "$usuario->id"]) }}"><small>O usuário ainda não ativou a conta.</small></a>
+                                            @endif
                                         </td>
                                         <td>
                                             <label class="custom-toggle">
@@ -63,9 +65,6 @@
                                                 <span class="custom-toggle-slider rounded-circle" data-label-off="No"
                                                     data-label-on="Yes"></span>
                                             </label>
-                                        </td>
-                                        <td>
-                                            {{ $usuario->email }}
                                         </td>
                                         <td class="text-right">
                                             <div class="dropdown">
