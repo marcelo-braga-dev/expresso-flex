@@ -124,7 +124,6 @@
                 <div class="row">
                     <div class="col-12">
                         @foreach ($lojas as $loja)
-                        @if ($loja['status'])                           
                             <ul class="list-group mb-3">
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     <div>
@@ -144,12 +143,12 @@
                                                 <i class="fas fa-ellipsis-v"></i>
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                <form method="POST"
+                                                <form method="POST" id="{{ $loja['id'] }}"
                                                     action="{{ route('cliente.coleta.pontos-de-coleta.desativar') }}">
                                                     @csrf @method('put')
                                                     <input type="hidden" name="id" value="{{ $loja['id'] }}">
-                                                    <button type="submit" class="dropdown-item"
-                                                        onclick="return confirm('Confirmar Exclusão?')">
+                                                    <button type="submit" class="dropdown-item btn-excluir"
+                                                        value="{{ $loja['id'] }}">
                                                         Excluir
                                                     </button>
                                                 </form>
@@ -158,28 +157,67 @@
                                     </div>
                                 </li>
                             </ul>
-                            @endif
                         @endforeach
 
                         @if (!count($lojas))
                             <div class="row justify-content-center">
                                 <div class="col-auto">
-                                    <span class="d-block">Você não possui nenhum ponto de coleta
-                                        cadastrado.</span>
+                                    <span class="d-block">
+                                        Você não possui nenhum ponto de coleta
+                                        cadastrado.
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col-auto">
                                     <button class="btn btn-primary btn-nova-loja my-3">
                                         Novo Ponto de Coleta
                                     </button>
                                 </div>
                             </div>
                         @endif
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    @include('layouts.footers.auth')
+    <div class="modal fade" id="modalConfirDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Excluir Ponto de Coleta</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Tem certeza que deseja excluir esse ponto de coleta?
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" id="id_no_modal">
+                    <button type="button" class="btn btn-danger btn-modal-excluir">Excuir</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function() {
+            $('.btn-excluir').click(function(e) {
+                e.preventDefault();
+
+                $('#id_no_modal').val($(this).val());
+                $('#modalConfirDelete').modal('show');
+            });
+
+            $('.btn-modal-excluir').click(function(e) {
+                var id_excluir = $('#id_no_modal').val();
+                $('#' + id_excluir).submit();
+            });
+        });
+    </script>
 
     <script>
         $(function() {

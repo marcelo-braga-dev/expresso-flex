@@ -11,9 +11,9 @@ class LojasService
 
         $lojas = $lojasClientes->query()
             ->where('user_id', '=', $id)
+            ->where('status', '=', '1')
             ->orderBy('id', 'DESC')
             ->get();
-            //->toArray()
 
         return $lojas;
     }

@@ -22,19 +22,26 @@ Route::group(['middleware' => 'auth'], function () {
 
     include 'rota/qrcode.php';
 
-    Route::group(['middleware' => 'auth.admin'], function () {
+    Route::group(['middleware' => 'auth.admin', 'prefix' => 'admin'], function () {
         include 'rota/admin.php';
     });
 
-    Route::group(['middleware' => 'auth.cliente'], function () {
-        include 'rota/cliente.php';
-    });
+    Route::group(
+        [
+            'namespace' => 'App\Http\Controllers\Cliente',
+            'middleware' => 'auth.cliente',
+            'prefix' => 'cliente'
+        ],
+        function () {
+            include 'rota/cliente.php';
+        }
+    );
 
-    Route::group(['middleware' => 'auth.entregador'], function () {
+    Route::group(['middleware' => 'auth.entregador', 'prefix' => 'entregadores'], function () {
         include 'rota/entregador.php';
     });
 
-    Route::group(['middleware' => 'auth.conferente'], function () {
+    Route::group(['middleware' => 'auth.conferente', 'prefix' => 'conferente'], function () {
         include 'rota/conferente.php';
     });
 

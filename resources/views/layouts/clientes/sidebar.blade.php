@@ -46,12 +46,12 @@
                     </a>
                     <div class="collapse show" id="navbar-coletas">
                         <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a class="nav-link ml-1 pl-4 p-1"
                                     href="{{ route('cliente.coleta.solicitar-coleta') }}">
                                     Solicitar Coleta
                                 </a>
-                            </li>
+                            </li> --}}
                             <li class="nav-item">
                                 <a class="nav-link ml-1 pl-4 p-1"
                                     href="{{ route('cliente.coleta.historico-coleta') }}">
@@ -61,7 +61,7 @@
                             <li class="nav-item">
                                 <a class="nav-link ml-1 pl-4 p-1"
                                     href="{{ route('cliente.coleta.pontos-de-coleta') }}">
-                                    Pontos de Coleta
+                                    Seus Pontos de Coleta
                                 </a>
                             </li>
                             <li class="nav-item">

@@ -11,31 +11,6 @@ use Illuminate\Http\Request;
 
 class MercadoLivreController extends Controller
 {
-    // Pagina mostrar todas as contas
-    public function todasContas(IntegracaoMercadoLivre $integracao)
-    {
-        $autenticacao = new AutenticacaoAutorizacaoMercadoLivre();
-
-        $urlIntegracao = $autenticacao->urlAutorizacao();
-
-        $contas = $integracao->query()
-            ->where('user_id', '=', id_usuario_atual())
-            ->get()
-            ->toArray();
-
-        return view('pages.cliente.integracao.mercadolivre.todas-contas', compact('contas', 'urlIntegracao'));
-    }
-
-    // Pagina para integrar nova conta Mercado Livre
-    public function novaConta()
-    {
-        // $autenticacao = new AutenticacaoAutorizacaoMercadoLivre();
-
-         $urlIntegracao = '';//$autenticacao->urlAutorizacao();
-
-        return view('pages.cliente.integracao.mercadolivre.nova-conta', compact('urlIntegracao'));
-    }
-
     // Rota para Autenticar conta Mercado Livre
     public function retornoAutenticacao(Request $request)
     {
@@ -48,20 +23,7 @@ class MercadoLivreController extends Controller
         $autenticacao->autenticar($code);
 
         return redirect()->route('mercadolivre.todas-contas');
-    }
-
-    // Deletar Conta Mercado Livre
-    public function delete($id) {
-        $conta = IntegracaoMercadoLivre::find($id);
-
-        if ($conta->user_id == id_usuario_atual()) {
-            $conta->delete();
-            
-            session()->flash('sucesso', 'Conta removida com sucesso.');
-        }
-        
-        return redirect()->back();
-    }
+    }    
 
     // Recebe notificacoes do Mercado Livre
     public function getNotificacaoMeli()

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+
 class HomeController extends Controller
 {
     /**
@@ -20,12 +22,14 @@ class HomeController extends Controller
 
         switch ($tipoUsuario)
         {
-            case 'admin'        : return view('pages.admin.home');
+            case 'admin'        : return redirect()->route('admin.home.index');
             case 'cliente'      : return redirect()->route('cliente.home.index');
             case 'entregador'   : return redirect()->route('entregador.home.index');
             case 'conferente'   : return redirect()->route('conferente.home.index');
         }
 
-        return view('dashboard');
+        Auth::logout();
+        session()->flash('erro', 'Não foi posível identificar sua conta.');
+        return redirect()->route('login');
     }
 }

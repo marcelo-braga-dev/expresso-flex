@@ -3,22 +3,27 @@
 use Illuminate\Support\Facades\Route;
 
 /* --- CLientes --- */
+// Home
+Route::get(
+    'home',
+    'App\Http\Controllers\Admin\HomeController@index'
+)->name('admin.home.index');
 
 // Tabela de Clientes
 Route::get(
-    'admin/usuarios/clientes',
+    'usuarios/clientes',
     'App\Http\Controllers\Admin\Usuarios\ClientesController@index'
 )->name('admin.usuarios.clientes.tabela');
 
 // Informacoes do Cliente
 Route::get(
-    'admin/usuarios/clientes/informacoes',
+    'usuarios/clientes/informacoes',
     'App\Http\Controllers\Admin\Usuarios\ClientesController@info'
 )->name('admin.usuarios.clientes.info-clientes');
 
 // Novo Cliente
 Route::get(
-    'admin/usuarios/cliente/novo',
+    'usuarios/cliente/novo',
     function () {
         return view('pages.admin.usuarios.clientes.novo-cliente');
     }
@@ -26,19 +31,19 @@ Route::get(
 
 // Salvar Cliente
 Route::put(
-    'admin/usuarios/clientes/salvar',
+    'usuarios/clientes/salvar',
     'App\Http\Controllers\Admin\Usuarios\ClientesController@create'
 )->name('admin.usuarios.clientes.create');
 
 // Editar Cliente
 Route::get(
-    'admin/usuarios/clientes/editar',
+    'usuarios/clientes/editar',
     'App\Http\Controllers\Admin\Usuarios\ClientesController@edit'
 )->name('admin.usuarios.clientes.edit');
 
 // Atualiza Cliente
 Route::put(
-    'admin/usuarios/clientes/atualizar',
+    'usuarios/clientes/atualizar',
     'App\Http\Controllers\Admin\Usuarios\ClientesController@update'
 )->name('admin.usuarios.clientes.update');
 
@@ -177,19 +182,19 @@ Route::put(
  */
 // Retorna pagina de dados da conta principal
 Route::get(
-    'admin/mercadolivre/conta-sincronizada',
+    'mercadolivre/conta-sincronizada',
     'App\Http\Controllers\Admin\MercadoLivre\IntegracaoMeLiAdminController@contaPrincipal'
 )->name('admin.mercadolivre.conta-sincronizada');
 
 // Retorna pagina de dados da conta principal
 Route::put(
-    'admin/mercadolivre/conta-sincronizada',
+    'mercadolivre/conta-sincronizada',
     'App\Http\Controllers\Admin\MercadoLivre\IntegracaoMeLiAdminController@update'
 )->name('admin.mercadolivre.conta-sincronizada.update');
 
 // Todas contas MeLi sincronizadas
 Route::get(
-    'admin/mercadolivre/contas-sincronizadas',
+    'mercadolivre/contas-sincronizadas',
     'App\Http\Controllers\Admin\MercadoLivre\ContasMercadoLivreController@todasContas'
 )->name('admin.mercadolivre.contas-sincronizadas');
 
@@ -198,17 +203,17 @@ Route::get(
  */
 // tabela
 Route::get(
-    'admin/fretes/tabela/{tipo}',
+    'fretes/tabela/{tipo}',
     'App\Http\Controllers\Admin\FretesController@tabela'
 )->name('admin.fretes.tabela');
 // formulario valores
 Route::get(
-    'admin/fretes/atualiza-preco',
+    'fretes/atualiza-preco',
     'App\Http\Controllers\Admin\FretesController@editaPrecoClientes'
 )->name('admin.fretes.atualiza-preco-clientes');
 // update valores frete
 Route::put(
-    'admin/fretes/atualiza-preco',
+    'fretes/atualiza-preco',
     'App\Http\Controllers\Admin\FretesController@atualizaPrecoClientes'
 )->name('admin.fretes.atualiza-preco-clientes');
 
@@ -221,12 +226,12 @@ Route::put(
  */
 // Pagina
 Route::get(
-    'admin/config/config-geral',
+    'config/config-geral',
     'App\Http\Controllers\Admin\ConfigController@geral'
 )->name('admin.config.config-geral');
 // rota 
 Route::put(
-    'admin/config/config-geral',
+    'config/config-geral',
     'App\Http\Controllers\Admin\ConfigController@update'
 )->name('admin.config.config-geral');
 
@@ -234,17 +239,17 @@ Route::put(
  * PACOTES
  */
 Route::get(
-    'admin/pacotes/historico',
+    'pacotes/historico',
     'App\Http\Controllers\Admin\Pacotes\PacotesController@historico'
 )->name('admin.pacotes.historico');
 
 Route::get(
-    'admin/pacotes/historico-diario',
+    'pacotes/historico-diario',
     'App\Http\Controllers\Admin\Pacotes\PacotesController@historicoDiario'
 )->name('admin.pacotes.historico-diario');
 
 Route::get(
-    'admin/pacotes/detalhes',
+    'pacotes/detalhes',
     'App\Http\Controllers\Admin\Pacotes\PacotesController@info'
 )->name('admin.pacotes.detalhes');
 
@@ -253,29 +258,29 @@ Route::get(
  * Coletas
  */
 Route::get(
-    'admin/coletas/historico',
+    'coletas/historico',
     'App\Http\Controllers\Admin\Coletas\ColetasController@historico'
 )->name('admin.coletas.historico');
 
 Route::get(
-    'admin/coletas/historico-diario',
+    'coletas/historico-diario',
     'App\Http\Controllers\Admin\Coletas\ColetasController@historicoDiario'
 )->name('admin.coletas.historico-diario');
 
 Route::get(
-    'admin/coletas/detalhes',
+    'coletas/detalhes',
     'App\Http\Controllers\Admin\Coletas\ColetasController@info'
 )->name('admin.coletas.detalhes');
 
 //Config Coletas
 Route::get(
-    'admin/coletas/config',
+    'coletas/config',
     'App\Http\Controllers\Admin\Coletas\ColetasController@config'
 )->name('admin.coletas.config');
 
 //Config Coletas
 Route::put(
-    'admin/coletas/config',
+    'coletas/config',
     'App\Http\Controllers\Admin\Coletas\ColetasController@update'
 )->name('admin.coletas.config-update');
 
@@ -285,12 +290,12 @@ Route::put(
  */
 /*  Conta Mercado Pago */
 Route::get(
-    'admin/financeiro/conta-mercadopago',
+    'financeiro/conta-mercadopago',
     'App\Http\Controllers\Admin\Financeiro\MercadoPagoController@index'
 )->name('admin.financeiro.conta-mercadopago');
 
 Route::put(
-    'admin/financeiro/conta-mercadopago',
+    'financeiro/conta-mercadopago',
     'App\Http\Controllers\Admin\Financeiro\MercadoPagoController@update'
 )->name('admin.financeiro.conta-mercadopago');
 
@@ -298,34 +303,34 @@ Route::put(
 
 // todos clientes
 Route::get(
-    'admin/financeiro/clientes',
+    'financeiro/clientes',
     'App\Http\Controllers\Admin\Financeiro\ClientesController@index'
 )->name('admin.financeiro.cliente');
 // historico mes
 Route::get(
-    'admin/financeiro/cliente',
+    'financeiro/cliente',
     'App\Http\Controllers\Admin\Financeiro\ClientesController@historicoMes'
 )->name('admin.financeiro.cliente-mes');
 // historico mes
 Route::get(
-    'admin/financeiro/cliente/detalhes-mensal',
+    'financeiro/cliente/detalhes-mensal',
     'App\Http\Controllers\Admin\Financeiro\ClientesController@historicoDetalhesMes'
 )->name('admin.financeiro.cliente.detalhes-mensal');
 
 /* Entregadores Financeiro */
 // todos entregadores
 Route::get(
-    'admin/financeiro/entregadores',
+    'financeiro/entregadores',
     'App\Http\Controllers\Admin\Financeiro\EntregadoresController@index'
 )->name('admin.financeiro.entregadores');
 // historico mes
 Route::get(
-    'admin/financeiro/entregador',
+    'financeiro/entregador',
     'App\Http\Controllers\Admin\Financeiro\EntregadoresController@historicoMes'
 )->name('admin.financeiro.entregador-mes');
 // historico mes
 Route::get(
-    'admin/financeiro/entregador/detalhes-mensal',
+    'financeiro/entregador/detalhes-mensal',
     'App\Http\Controllers\Admin\Financeiro\EntregadoresController@historicoDetalhesMes'
 )->name('admin.financeiro.entregador.detalhes-mensal');
 
@@ -333,6 +338,6 @@ Route::get(
 
 //atualiza status usuario 
 Route::get(
-    'ajax/admin/usuario/atualiza-status-usuario/',
+    'ajax/usuario/atualiza-status-usuario/',
     'App\Http\Controllers\Admin\Usuarios\UsuariosController@modificaStatusUsuario'
 )->name('ajax.admin.usuario.atualiza-status-usuario');

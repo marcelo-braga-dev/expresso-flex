@@ -1,104 +1,121 @@
 <?php
 
 /**
+ * Home
+ */
+// Index
+Route::get('home', 'HomeClienteController@index')
+    ->name('cliente.home.index');
+
+/**
  * Coletas
  */
 
 // Solicitar Coleta
-Route::get('cliente/coleta/solicitar-coleta', 'App\Http\Controllers\Cliente\ColetaController@solicitarColeta')
+Route::get('coleta/solicitar-coleta', 'ColetaController@solicitarColeta')
     ->name('cliente.coleta.solicitar-coleta');
 
-Route::put('cliente/coleta/solicitar-coleta', 'App\Http\Controllers\Cliente\ColetaController@store')
+Route::put('coleta/solicitar-coleta', 'ColetaController@store')
     ->name('cliente.coleta.solicitar-coleta');
 
 // Cancelar Coleta
-Route::put('cliente/coleta/cancelar-coleta', 'App\Http\Controllers\Cliente\ColetaController@cancelarColeta')
+Route::put('coleta/cancelar-coleta', 'ColetaController@cancelarColeta')
     ->name('cliente.coleta.cancelar-coleta');
 
 // Historico de Coleta (meses)
-Route::get('cliente/coleta/historico', 'App\Http\Controllers\Cliente\Coletas\HistoricoController@historicoMeses')
+Route::get('coleta/historico', 'Coletas\HistoricoController@historicoMeses')
     ->name('cliente.coleta.historico-coleta');
 // Historico de Coleta (dias)
-Route::get('cliente/coleta/historico/dias', 'App\Http\Controllers\Cliente\Coletas\HistoricoController@historicoDias')
+Route::get('coleta/historico/dias', 'Coletas\HistoricoController@historicoDias')
     ->name('cliente.coleta.historico.dias');
 
 // Pontos de Coleta
-Route::get('cliente/pontos-de-coleta', 'App\Http\Controllers\Cliente\LojasController@todasLojas')
+Route::get('pontos-de-coleta', 'LojasController@todasLojas')
     ->name('cliente.coleta.pontos-de-coleta');
-Route::put('cliente/pontos-de-coleta', 'App\Http\Controllers\Cliente\LojasController@novaLoja')
+Route::put('pontos-de-coleta', 'LojasController@novaLoja')
     ->name('cliente.coleta.pontos-de-coleta');
 
 //Desativar Loja    
-Route::put('cliente/pontos-de-coleta/desativar', 'App\Http\Controllers\Cliente\LojasController@desativar')
+Route::put('pontos-de-coleta/desativar', 'LojasController@desativar')
     ->name('cliente.coleta.pontos-de-coleta.desativar');
 
 /*
  * Pacotes
  */
 //      Historico Mes Pacotes
-Route::get('cliente/pacotes/historico', 'App\Http\Controllers\Cliente\PacotesControllers@historicoMes')
+Route::get('pacotes/historico', 'PacotesControllers@historicoMes')
     ->name('cliente.pacotes.historico');
 
 //      Historico Pacotes
-Route::get('cliente/pacotes/historico-diario', 'App\Http\Controllers\Cliente\PacotesControllers@historicoDia')
+Route::get('pacotes/historico-diario', 'PacotesControllers@historicoDia')
     ->name('cliente.pacotes.historico-diario');
 
 //      Historico Pacotes
-Route::get('cliente/pacotes/historico-diario-detalhes', 'App\Http\Controllers\Cliente\PacotesControllers@historicoDetalhesDia')
+Route::get('pacotes/historico-diario-detalhes', 'PacotesControllers@historicoDetalhesDia')
     ->name('cliente.pacotes.historico-diario-detalhes');
 
 //      Info Pacote
-Route::get('cliente/pacotes/descricao', 'App\Http\Controllers\Cliente\PacotesControllers@info')
+Route::get('pacotes/descricao', 'PacotesControllers@info')
     ->name('cliente.pacotes.info-pacote');
 
-    //      Pesquisar Pacote
-Route::get('cliente/pacotes/pesquisar', 'App\Http\Controllers\Cliente\PacotesControllers@pesquisar')
+//      Pesquisar Pacote
+Route::get('pacotes/pesquisar', 'PacotesControllers@pesquisar')
     ->name('cliente.pacotes.pesquisar');
 
-/**
- * Home
- */
-// Index
-Route::get('cliente/home/', 'App\Http\Controllers\Cliente\HomeClienteController@index')
-    ->name('cliente.home.index');
 
 /*
  * Etiqueta
  */
 
 // Pagina Nova Etiqueta
-Route::get('cliente/etiqueta/emitir-etiqueta', 'App\Http\Controllers\Cliente\EtiquetasClienteController@new')
+Route::get('etiqueta/emitir-etiqueta', 'EtiquetasClienteController@new')
     ->name('cliente.etiqueta.emitir-etiqueta');
 
 // TotaCriar Etiqueta
-Route::put('cliente/etiqueta/criar-etiqueta', 'App\Http\Controllers\Cliente\EtiquetasClienteController@store')
+Route::put('etiqueta/criar-etiqueta', 'EtiquetasClienteController@store')
     ->name('cliente.etiqueta.criar-etiqueta');
 
 // Todas Etiqueta
-Route::get('cliente/etiqueta/todas-etiquetas', 'App\Http\Controllers\Cliente\EtiquetasClienteController@index')
+Route::get('etiqueta/todas-etiquetas', 'EtiquetasClienteController@index')
     ->name('cliente.etiqueta.todas-etiquetas');
 
 // Imprimir Etiqueta
-Route::post('cliente/etiqueta/imprimir-etiqueta', 'App\Http\Controllers\Cliente\EtiquetasClienteController@imprimir')
+Route::post('etiqueta/imprimir-etiqueta', 'EtiquetasClienteController@imprimir')
     ->name('cliente.etiqueta.imprimir-etiqueta');
 
 /*
  * Financeiro
  */
 Route::get(
-    'cliente/financeiro/pagamentos',
-    'App\Http\Controllers\Cliente\FinanceiroController@pagamentos'
+    'financeiro/pagamentos',
+    'FinanceiroController@pagamentos'
 )->name('cliente.financeiro.pagamentos');
 
 Route::get(
-    'cliente/financeiro/pagamentos/detalhes-mensal',
-    'App\Http\Controllers\Cliente\FinanceiroController@detalhesMensal'
+    'financeiro/pagamentos/detalhes-mensal',
+    'FinanceiroController@detalhesMensal'
 )->name('cliente.financeiro.pagamentos.detalhes-mensal');
 
 /*
  * Perfil
  */
 Route::get(
-    'cliente/perfil/qrcode-usuario',
-    'App\Http\Controllers\Cliente\PerfilController@getQrcodeUsuario'
+    'perfil/qrcode-usuario',
+    'PerfilController@getQrcodeUsuario'
 )->name('cliente.perfil.qrcode-usuario');
+
+/*
+ * Mercado Livre
+ */
+// Todas as contas do usuario
+Route::get(
+    'mercadolivre/todas-contas',
+    'MercadoLivreController@todasContas'
+)->name('mercadolivre.todas-contas');
+
+// Excluir Conta
+Route::get(
+    'mercadolivre/excluir-conta/{id}',
+    'MercadoLivreController@delete'
+)->name('mercadolivre.excluir-conta');
+
