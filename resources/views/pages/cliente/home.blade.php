@@ -85,6 +85,32 @@
             </div>
         </div>
 
-        @include('layouts.footers.auth')
+        <div class="row">
+            {{-- Coletas --}}
+            <div class="col-md-6 mb-3">
+                <div class="card card-stats shadow">
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col">
+                                <h5 class="card-title text-uppercase text-muted mb-0">
+                                    Pontos de Coletas
+                                </h5>
+                                <span class="h2 font-weight-bold mb-0">
+                                    Ver QrCode de Identificação dos Pontos de Coletas
+                                </span>
+                            </div>
+                            <div class="col-auto">
+                                <div class="icon icon-shape bg-dark text-white rounded-circle shadow">
+                                    <i class="fas fa-qrcode"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="btn btn-dark" href="{{ route('cliente.perfil.qrcode-usuario') }}">
+                            QrCode do Pondo de Coleta
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection

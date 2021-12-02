@@ -86,4 +86,13 @@ class ClientesController extends Controller
         }
         return $dados;
     }
+
+    public function newExterno(Request $request)
+    {
+        $cliente = new Clientes();
+
+        $cliente->create($request, false);
+
+        return redirect()->back();
+    }
 }

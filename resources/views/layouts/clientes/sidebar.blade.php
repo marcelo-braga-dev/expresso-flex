@@ -64,6 +64,11 @@
                                     Pontos de Coleta
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link ml-1 pl-4 p-1" href="{{ route('cliente.perfil.qrcode-usuario') }}">
+                                    QrCode Pontos de Coleta
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>
@@ -126,7 +131,7 @@
 
                 <div class="dropdown-divider"></div>
 
-                <!-- Entregas -->
+                <!-- Financeiro -->
                 <li class="nav-item">
                     <span class="nav-link p-0 ml-3 m-2" href="#navbar-entregas" data-toggle="collapse" role="button"
                         aria-expanded="true" aria-controls="navbar-entregas">
@@ -136,13 +141,35 @@
                     <div class="collapse show" id="navbar-entregas">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a class="nav-link ml-1 pl-4 p-1" href="{{ route('cliente.financeiro.pagamentos') }}">
+                                <a class="nav-link ml-1 pl-4 p-1"
+                                    href="{{ route('cliente.financeiro.pagamentos') }}">
                                     Pagamentos
                                 </a>
                             </li>
                         </ul>
                     </div>
                 </li>
+
+                {{-- <div class="dropdown-divider"></div>
+
+                <!-- Sua conta -->
+                <li class="nav-item">
+                    <span class="nav-link p-0 ml-3 m-2" href="#navbar-entregas" data-toggle="collapse" role="button"
+                        aria-expanded="true" aria-controls="navbar-entregas">
+                        <i class="fas fa-user text-principal"></i>
+                        <span class="nav-link-text text-principal">Perfil</span>
+                    </span>
+                    <div class="collapse show" id="navbar-entregas">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link ml-1 pl-4 p-1"
+                                    href="{{ route('cliente.perfil.qrcode-usuario') }}">
+                                    Seu ID QrCode
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li> --}}
             </ul>
         </div>
     </div>

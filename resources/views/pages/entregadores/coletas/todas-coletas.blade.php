@@ -61,7 +61,7 @@
                                                     <p class="mb-0">
                                                         <i class="fas fa-user mr-2 text-primary"></i>
                                                         <b>{{ get_nome_usuario($coleta['user_id']) }}
-                                                            ({{ get_info_ponto_coleta($coleta['loja'])->nome }})</b>
+                                                            ({{ get_loja($coleta['loja'])->nome }})</b>
                                                     </p>
 
                                                     <p class="mb-0">
@@ -111,7 +111,7 @@
                                             <p class="mb-0">
                                                 <i class="fas fa-user mr-2 text-primary"></i>
                                                 <b>{{ get_nome_usuario($solicitacao['user_id']) }}
-                                                    ({{ get_info_ponto_coleta($solicitacao['loja'])->nome }})</b>
+                                                    ({{ get_loja($solicitacao['loja'])->nome }})</b>
                                             </p>
 
                                             <p class="mb-0">

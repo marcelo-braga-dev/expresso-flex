@@ -94,3 +94,11 @@ Route::get(
     'cliente/financeiro/pagamentos/detalhes-mensal',
     'App\Http\Controllers\Cliente\FinanceiroController@detalhesMensal'
 )->name('cliente.financeiro.pagamentos.detalhes-mensal');
+
+/*
+ * Perfil
+ */
+Route::get(
+    'cliente/perfil/qrcode-usuario',
+    'App\Http\Controllers\Cliente\PerfilController@getQrcodeUsuario'
+)->name('cliente.perfil.qrcode-usuario');

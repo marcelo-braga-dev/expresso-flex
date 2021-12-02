@@ -57,7 +57,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-12">
                             <p>Razão Social: @if (isset($dados['razao_social'])) {{ $dados['razao_social'] }} @endif</p>
                         </div>
                     </div>

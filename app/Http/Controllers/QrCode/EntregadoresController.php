@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\QrCode;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Entregadores\Coleta\ColetasController;
+use App\Service\ColetaService;
 
 class EntregadoresController extends Controller
 {
@@ -69,5 +71,28 @@ class EntregadoresController extends Controller
         }
 
         return false;
+    }
+
+    public function identificaUsuario()
+    {
+        $resposta = json_decode($_GET['json'], true);
+
+        if (empty($resposta['id']) || empty($resposta['origem'] || empty($resposta['id_loja']))) {
+            session()->flash('erro', 'Ocorreu um erro na leitura do QrCode.');
+
+            return redirect()->route('entregadores.coletas.criar-coleta');
+        }
+
+        if ($resposta['origem'] != 'identifica_usuario') {
+            session()->flash('erro', 'Esse QrCode não é de identificação de pontos de coleta.');
+
+            return redirect()->route('entregadores.coletas.criar-coleta');
+        }
+        
+        $coletaService = new ColetaService();
+
+        $coletaService->criarColetaComEntregador($resposta['id_loja']);
+        
+        return redirect()->route('entregadores.coletas.todas-coletas');
     }
 }

@@ -163,7 +163,7 @@ class ColetasController
                 'nome' => $loja->nome
             ];
         }
-        
+
         return view('pages.entregadores.coletas.nova-coleta', compact('clientes'));
     }
 

@@ -4,28 +4,6 @@
 
     <div class="header bg-principal bg-height-top"></div>
 
-    {{-- <div class="container-fluid mb-3">
-        <div class="card p-3">
-            <div class="row justify-content-between">
-                <div class="col-auto">
-                    <span class="d-block">
-                        <b>Cliente:</b>
-                        {{ get_nome_usuario($solicitacao['user_id']) }}
-                        [{{ get_info_ponto_coleta($solicitacao['loja'])->nome }}]
-                    </span>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-12">
-                    <small class="d-block">
-                        <b>Endereço:</b>
-                        {{ get_endereco_loja($solicitacao['loja']) }}
-                    </small>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-
     <div class="container-fluid mt--9">
         <div class="card bg-secondary shadow mb-3">
             <div class="card-header bg-white mb-0">
@@ -47,7 +25,7 @@
                         <span class="d-block">
                             <b>Cliente:</b>
                             {{ get_nome_usuario($solicitacao['user_id']) }}
-                            [{{ get_info_ponto_coleta($solicitacao['loja'])->nome }}]
+                            [{{ get_loja($solicitacao['loja'])->nome }}]
                         </span>
                     </div>
                 </div>
@@ -90,7 +68,6 @@
                 </ul>
             </div>
         </div>
-
 
         <!-- Botao Flutuante -->
         <a href="{{ route('entregadores.pacotes.qrcode.cadastro.meli.start', [$idColeta, $solicitacao['user_id']]) }}"

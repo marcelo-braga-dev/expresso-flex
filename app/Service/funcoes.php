@@ -2,12 +2,9 @@
 
 use App\Models\Destinatarios;
 use App\Models\Enderecos;
-use App\Models\Entregadores;
 use App\Models\LojasClientes;
 use App\Models\Meta;
-use App\Models\MetaValues;
 use App\Models\User;
-use App\Service\EnderecosService;
 
 function id_usuario_atual()
 {
@@ -75,24 +72,6 @@ function get_status_pacote(string $key)
     return $resposta->value;
 }
 
-// function get_endereco_por_cep(string $cep, string $numero = '')
-// {
-//     $endereco = new EnderecosService();
-
-//     $resposta = $endereco->getEnderecoCompleto($cep, $numero);
-
-//     return $resposta;
-// }
-
-// function get_cidade_por_id(string $idCidade)
-// {
-//     $endereco = new EnderecosService();
-
-//     $cidade = $endereco->getCidade($idCidade);
-
-//     return $cidade;
-// }
-
 function get_origem_pacote(string $origem)
 {
     $meta = Meta::all();
@@ -102,29 +81,6 @@ function get_origem_pacote(string $origem)
     $res = $res->values()->where('meta_key', '=', $origem)->first('value');
 
     return $res->value;
-}
-
-// function get_cep_ponto_coleta(int $idLoja, int $idUsuario = null)
-// {
-//     $loja = new LojasClientes();
-
-//     $loja = $loja::query()
-//         ->where('id', '=', $idLoja)
-//         ->where('user_id', '=', $idUsuario)
-//         ->first();
-
-//     return $loja->cep;
-// }
-
-function get_info_ponto_coleta(int $id)
-{
-    $loja = new LojasClientes();
-
-    $loja = $loja::query()
-        ->where('id', '=', $id)
-        ->first();
-
-    return $loja;
 }
 
 function get_dados_usuario(int $id)
@@ -174,7 +130,6 @@ function get_endereco(int $id)
 
     $endereco = $dados->rua . ', n. ' . $dados->numero . $complemento . ', ' .
         $dados->bairro . ', ' . $dados->cidade;
-    // . ', Cep: ' . $cep . ', Cidade: ' . $dados->cidade . ' - SP';
 
     return $endereco;
 }

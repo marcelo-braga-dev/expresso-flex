@@ -33,7 +33,7 @@
                             <ul class="list-group list-group-flush" style="font-size: 14px">
                                 <li class="list-group-item py-2">
                                     <b>Ponto de Coleta: </b>
-                                    {{ get_info_ponto_coleta($solicitacoes[0]['loja'])['nome'] }}
+                                    {{ get_loja($solicitacoes[0]['loja'])['nome'] }}
                                 </li>
                                 <li class="list-group-item py-2">
                                     <div class="row">

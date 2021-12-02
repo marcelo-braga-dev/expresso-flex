@@ -22,25 +22,18 @@
 
             <div class="card-body">
                 <form method="POST" action="{{ route('entregadores.coletas.criar-coleta') }}"> @csrf @method('put')
-                    
+
                     <div class="row mb-4">
                         <div class="col-md-6 mb-3">
                             <select class="form-control select2" name="id">
-
                                 <option>Selecione o Cliente</option>
-
                                 @foreach ($clientes as $cliente)
-                                    {{-- <optgroup class="border" label="{{ get_nome_usuario($cliente['user_id']) }}"> --}}
-
-                                        @foreach ($cliente['lojas'] as $loja)
-                                            <option value="{{ $loja['id'] }}">
-                                                {{ get_nome_usuario($cliente['user_id']) .' [' . $loja['nome'] . ']' }}
-                                            </option>
-                                        @endforeach
-
-                                    {{-- </optgroup> --}}
+                                    @foreach ($cliente['lojas'] as $loja)
+                                        <option value="{{ $loja['id'] }}">
+                                            {{ get_nome_usuario($cliente['user_id']) . ' [' . $loja['nome'] . ']' }}
+                                        </option>
+                                    @endforeach
                                 @endforeach
-
                             </select>
                         </div>
                         <div class="col-md-6">
@@ -50,6 +43,11 @@
                 </form>
             </div>
         </div>
-        @include('layouts.footers.auth')
     </div>
+
+    <!-- Botao Flutuante -->
+    <a href="{{ route('entregador.qrcode.usuario.cliente.start') }}" class="btn-flutuante btn-danger btn-camera"
+        target="_blank" style="display: Xnone">
+        <i style="margin-top:12px" class="fas fa-camera"></i>
+    </a>
 @endsection

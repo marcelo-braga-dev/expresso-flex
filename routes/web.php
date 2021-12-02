@@ -50,7 +50,7 @@ Route::get(
 
 Route::put(
     'cliente/criar-conta',
-    'App\Http\Controllers\Cliente\PerfilController@new'
+    'App\Http\Controllers\Admin\Usuarios\ClientesController@newExterno'
 )->name('cliente.new');
 
 
