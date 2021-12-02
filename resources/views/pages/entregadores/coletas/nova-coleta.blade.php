@@ -47,7 +47,7 @@
 
     <!-- Botao Flutuante -->
     <a href="{{ route('entregador.qrcode.usuario.cliente.start') }}" class="btn-flutuante btn-danger btn-camera"
-        target="_blank" style="display: Xnone">
+        target="_blank" style="display: none">
         <i style="margin-top:12px" class="fas fa-camera"></i>
     </a>
 @endsection
