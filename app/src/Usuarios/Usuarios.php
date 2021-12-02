@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Mail;
 
 class Usuarios
 {
-    public function criaUsuario($dados, $tipo)
+    public function criaUsuario($dados, $tipo, $status)
     {
         try {
             $user = User::create(
@@ -17,7 +17,7 @@ class Usuarios
                     'tipo' => $tipo,
                     'nome' => $dados['nome'],
                     'email' => strtolower($dados['email']),
-                    'status' => 1
+                    'status' => $status
                 ]
             );
         } catch (QueryException $e) {

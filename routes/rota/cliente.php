@@ -16,7 +16,7 @@ Route::get('coleta/solicitar-coleta', 'ColetaController@solicitarColeta')
     ->name('cliente.coleta.solicitar-coleta');
 
 Route::put('coleta/solicitar-coleta', 'ColetaController@store')
-    ->name('cliente.coleta.solicitar-coleta');
+    ->name('cliente.coleta.solicitar-coleta.put');
 
 // Cancelar Coleta
 Route::put('coleta/cancelar-coleta', 'ColetaController@cancelarColeta')
@@ -33,7 +33,7 @@ Route::get('coleta/historico/dias', 'Coletas\HistoricoController@historicoDias')
 Route::get('pontos-de-coleta', 'LojasController@todasLojas')
     ->name('cliente.coleta.pontos-de-coleta');
 Route::put('pontos-de-coleta', 'LojasController@novaLoja')
-    ->name('cliente.coleta.pontos-de-coleta');
+    ->name('cliente.coleta.pontos-de-coleta.put');
 
 //Desativar Loja    
 Route::put('pontos-de-coleta/desativar', 'LojasController@desativar')

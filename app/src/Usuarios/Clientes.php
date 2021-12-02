@@ -9,10 +9,10 @@ use App\Service\FretesService;
 
 class Clientes extends Usuarios
 {
-    public function create($request, $setFrete = true)
+    public function create($request, $setFrete = true, $status = '1')
     {        
         // Cria Usuario
-        $user = $this->criaUsuario($request, 'cliente');
+        $user = $this->criaUsuario($request, 'cliente', $status);
 
         if (session('erro')) return;
 

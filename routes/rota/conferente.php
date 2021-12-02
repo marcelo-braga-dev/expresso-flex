@@ -13,7 +13,7 @@ Route::get('checkin/pacotes-base', 'App\Http\Controllers\Pacotes\ConferenteContr
 
 // Mostra as informacoes do pacote para checkin
 Route::put('checkin/info-checkin', 'App\Http\Controllers\Pacotes\ConferenteController@infoCheckin')
-    ->name('conferente.checkin.info-checkin');
+    ->name('conferente.checkin.info-checkin.put');
 
 Route::get('checkin/info-checkin', 'App\Http\Controllers\Pacotes\ConferenteController@infoCheckin')
     ->name('conferente.checkin.info-checkin');

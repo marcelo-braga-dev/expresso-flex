@@ -21,7 +21,7 @@
                                     Horário limite para realizar chamados de coleta:
                                 </div>
                                 <div>
-                                    <form class="form-inline" method="POST" action="{{ route('admin.config.config-geral') }}">
+                                    <form class="form-inline" method="POST" action="{{ route('admin.config.config-geral.put') }}">
                                         @csrf @method('put')
                                         <input type="time" name="horario_limite_coleta" class="form-control"
                                             value="{{ $data['horario_limite'] }}" required>

@@ -215,7 +215,7 @@ Route::get(
 Route::put(
     'fretes/atualiza-preco',
     'App\Http\Controllers\Admin\FretesController@atualizaPrecoClientes'
-)->name('admin.fretes.atualiza-preco-clientes');
+)->name('admin.fretes.atualiza-preco-clientes.put');
 
 // entregadores
 
@@ -233,7 +233,7 @@ Route::get(
 Route::put(
     'config/config-geral',
     'App\Http\Controllers\Admin\ConfigController@update'
-)->name('admin.config.config-geral');
+)->name('admin.config.config-geral.put');
 
 /*
  * PACOTES
@@ -297,7 +297,7 @@ Route::get(
 Route::put(
     'financeiro/conta-mercadopago',
     'App\Http\Controllers\Admin\Financeiro\MercadoPagoController@update'
-)->name('admin.financeiro.conta-mercadopago');
+)->name('admin.financeiro.conta-mercadopago.put');
 
 /*  Clientes Financeiro */
 

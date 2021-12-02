@@ -17,7 +17,7 @@
             </div>
             <div class="card-body">
                 <p>{{ get_dados_usuario($cliente['user_id'])->nome }}</p>
-                <form method="post" action="{{ route('admin.fretes.atualiza-preco-clientes') }}">
+                <form method="post" action="{{ route('admin.fretes.atualiza-preco-clientes.put') }}">
                     @csrf @method('put')
                     <div class="row align-items-center">
                         <div class="col-md-auto mb-3">

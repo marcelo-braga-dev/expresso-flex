@@ -21,7 +21,7 @@
             </div>
 
             <div class="card-body">
-                <form method="POST" action="{{ route('entregadores.coletas.criar-coleta') }}"> @csrf @method('put')
+                <form method="POST" action="{{ route('entregadores.coletas.criar-coleta.put') }}"> @csrf @method('put')
                     <div class="row mb-3"> 
                         <div class="col-12">
                             <p>

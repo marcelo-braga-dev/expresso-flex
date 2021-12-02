@@ -91,7 +91,7 @@ class ClientesController extends Controller
     {
         $cliente = new Clientes();
 
-        $cliente->create($request, false);
+        $cliente->create($request, false, '0');
 
         return redirect()->back();
     }

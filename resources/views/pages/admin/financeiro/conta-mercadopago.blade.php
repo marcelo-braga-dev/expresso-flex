@@ -12,7 +12,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <form method="post" action="{{ route('admin.financeiro.conta-mercadopago') }}"
+                <form method="post" action="{{ route('admin.financeiro.conta-mercadopago.put') }}"
                     autocomplete="off">
                     @csrf
                     @method('put')

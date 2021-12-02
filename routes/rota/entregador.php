@@ -23,7 +23,7 @@ Route::get('coleta/criar-coleta', 'App\Http\Controllers\Entregadores\Coleta\Cole
     ->name('entregadores.coletas.criar-coleta');
 
 Route::put('coleta/criar-coleta', 'App\Http\Controllers\Entregadores\Coleta\ColetasController@salvarNovaColeta')
-    ->name('entregadores.coletas.criar-coleta');
+    ->name('entregadores.coletas.criar-coleta.put');
 
 // Coletas Cancelar
 Route::put('coleta/cancelar-coleta', 'App\Http\Controllers\Entregadores\Coleta\ColetasController@cancelarColeta')
@@ -39,7 +39,7 @@ Route::get('coleta/{idColeta}/cadastrar-pacotes', 'App\Http\Controllers\Pacotes\
 
 // Rota para cadastrar novo pacote
 Route::put('coleta/salvar-pacote', 'App\Http\Controllers\Pacotes\EntregadorPacotesController@create')
-    ->name('entregadores.pacotes.salvar-pacote');
+    ->name('entregadores.pacotes.salvar-pacote.put');
 //QR Code
 Route::get('coleta/salvar-pacote', 'App\Http\Controllers\Pacotes\EntregadorPacotesController@create')
     ->name('entregadores.pacotes.salvar-pacote');
@@ -80,7 +80,7 @@ Route::get(
 Route::put(
     'entrega/cadastrar-pacotes',
     'App\Http\Controllers\Entregadores\Entregas\CadastrarPacotesController@update'
-)->name('entregadores.entrega.cadastrar-pacotes');
+)->name('entregadores.entrega.cadastrar-pacotes.put');
 // Rota Cadastrar Pacote
 Route::get(
     'entrega/cadastrar-pacotes/qr-code',
@@ -102,7 +102,7 @@ Route::get(
 Route::put(
     'entrega/entregas-iniciadas',
     'App\Http\Controllers\Entregadores\Entregas\IniciadoEntregaController@update'
-)->name('entregadores.entrega.entrega-iniciadas');
+)->name('entregadores.entrega.entrega-iniciadas.put');
 
 
 // Entrega em Andamento
@@ -124,7 +124,7 @@ Route::get(
 Route::put(
     'entrega/em-andamento',
     'App\Http\Controllers\Entregadores\Entregas\AndamentoEntregasController@update'
-)->name('entregadores.entrega.em-andamento');
+)->name('entregadores.entrega.em-andamento.put');
 
 
 // Rota Finaliza Entrega

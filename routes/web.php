@@ -48,6 +48,7 @@ Route::group(['middleware' => 'auth'], function () {
     include 'rota/padrao.php';
 });
 
+// Formulario Externo Criar Criar Conta Cliente 
 Route::get(
     'cliente/criar-conta',
     function () {
@@ -59,7 +60,7 @@ Route::put(
     'cliente/criar-conta',
     'App\Http\Controllers\Admin\Usuarios\ClientesController@newExterno'
 )->name('cliente.new');
-
+//
 
 Route::get(
     'teste/comunicacao-mercado-livre',

@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <form method="post" action="{{ route('cliente.coleta.solicitar-coleta') }}" autocomplete="off">
+                <form method="post" action="{{ route('cliente.coleta.solicitar-coleta.put') }}" autocomplete="off">
                     @csrf
                     @method('put')
 

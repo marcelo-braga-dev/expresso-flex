@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <form method="post" action="{{ route('cliente.coleta.pontos-de-coleta') }}" autocomplete="off">
+                <form method="post" action="{{ route('cliente.coleta.pontos-de-coleta.put') }}" autocomplete="off">
                     @csrf @method('put')
 
                     @include('layouts.componentes.alerts')
