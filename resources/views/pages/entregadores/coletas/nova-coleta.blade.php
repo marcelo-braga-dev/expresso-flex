@@ -22,8 +22,15 @@
 
             <div class="card-body">
                 <form method="POST" action="{{ route('entregadores.coletas.criar-coleta') }}"> @csrf @method('put')
-
-                    <div class="row mb-4">
+                    <div class="row mb-3"> 
+                        <div class="col-12">
+                            <p>
+                                Selecione o cliente ou abra a câmera para ler o QrCode de identifição 
+                                do Ponto de Coleta do cliente.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row mb-3">                    
                         <div class="col-md-6 mb-3">
                             <select class="form-control select2" name="id">
                                 <option>Selecione o Cliente</option>
