@@ -150,7 +150,7 @@
                     </div>
                 </li>
 
-                {{-- <div class="dropdown-divider"></div>
+                <div class="dropdown-divider"></div>
 
                 <!-- Sua conta -->
                 <li class="nav-item">
@@ -163,13 +163,13 @@
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a class="nav-link ml-1 pl-4 p-1"
-                                    href="{{ route('cliente.perfil.qrcode-usuario') }}">
-                                    Seu ID QrCode
+                                    href="{{ route('cliente.perfil.editar') }}">
+                                    Editar Perfil
                                 </a>
                             </li>
                         </ul>
                     </div>
-                </li> --}}
+                </li>
             </ul>
         </div>
     </div>

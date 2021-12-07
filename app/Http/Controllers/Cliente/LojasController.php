@@ -10,13 +10,18 @@ use Illuminate\Http\Request;
 
 class LojasController extends Controller
 {
-    public function todasLojas()
-    {       
+    public function index()
+    {
         $lojasService = new LojasService();
 
         $lojas = $lojasService->getLojasCliente(id_usuario_atual());
 
         return view('pages.cliente.lojas.todas-lojas', compact('lojas'));
+    }
+
+    public function new()
+    {
+        return view('pages.cliente.lojas.nova-loja');
     }
 
     public function novaLoja(Request $request)
@@ -25,20 +30,12 @@ class LojasController extends Controller
 
         $endereco = $request->endereco;
 
-        $cep = preg_replace('/\D/', '', $endereco['cep']);        
+        $cep = preg_replace('/\D/', '', $endereco['cep']);
 
         if (empty($endereco['complemento'])) $endereco['complemento'] = '';
         if (empty($endereco['estado'])) $endereco['estado'] = '';
         if (empty($endereco['latitude'])) $endereco['latitude'] = '';
         if (empty($endereco['longitude'])) $endereco['longitude'] = '';
-        
-        /*
-        if (empty($endereco['cep'])) $endereco['cep'] = '';
-        if (empty($endereco['rua'])) $endereco['rua'] = '';
-        if (empty($endereco['numero'])) $endereco['numero'] = '';
-        if (empty($endereco['bairro'])) $endereco['bairro'] = '';
-        if (empty($endereco['cidade'])) $endereco['cidade'] = '';
-        */
 
         $idEndereco = Enderecos::create(
             [
@@ -61,7 +58,9 @@ class LojasController extends Controller
         $lojasClientes->celular = $request->celular;
         $lojasClientes->endereco = $idEndereco->id;
 
-        $lojasClientes->push();    
+        $lojasClientes->push();
+
+        session()->flash('sucesso', 'Ponto de Coleta cadastrado com sucesso.');
 
         return redirect()->route('cliente.coleta.pontos-de-coleta');
     }

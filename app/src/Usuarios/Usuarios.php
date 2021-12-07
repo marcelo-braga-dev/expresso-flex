@@ -29,7 +29,7 @@ class Usuarios
         return $user;
     }
 
-    protected function editaUsuario($data, $idUsuario)
+    public function editaUsuario($data, $idUsuario)
     {
         $clsPasswordNew = new PasswordNew();
 
@@ -49,7 +49,6 @@ class Usuarios
         } catch (QueryException $e) {            
             session()->flash('erro', 'Já existe um usuário com esse email.');
         }
-
 
         return $user;
     }

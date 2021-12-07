@@ -29,9 +29,15 @@ Route::get('coleta/historico', 'Coletas\HistoricoController@historicoMeses')
 Route::get('coleta/historico/dias', 'Coletas\HistoricoController@historicoDias')
     ->name('cliente.coleta.historico.dias');
 
+    
 // Pontos de Coleta
-Route::get('pontos-de-coleta', 'LojasController@todasLojas')
+Route::get('pontos-de-coleta', 'LojasController@index')
     ->name('cliente.coleta.pontos-de-coleta');
+
+//Form Nova Loja
+Route::get('novo-ponto-de-coleta', 'LojasController@new')
+    ->name('cliente.coleta.novo-pontos-de-coleta');
+
 Route::put('pontos-de-coleta', 'LojasController@novaLoja')
     ->name('cliente.coleta.pontos-de-coleta.put');
 
@@ -99,6 +105,19 @@ Route::get(
 /*
  * Perfil
  */
+// Edita Perfil
+Route::get(
+    'perfil/editar',
+    'PerfilController@edit'
+)->name('cliente.perfil.editar');
+
+// Update Perfil
+Route::put(
+    'perfil/update',
+    'PerfilController@update'
+)->name('cliente.perfil.update');
+
+// Mostra Qrcode Ponto de Coleta
 Route::get(
     'perfil/qrcode-usuario',
     'PerfilController@getQrcodeUsuario'

@@ -36,7 +36,7 @@ class Clientes extends Usuarios
         session()->flash('sucesso', 'Cliente ' . $request['nome'] . ' editado com sucesso.');
     }
 
-    private function metaValues($request, $userId)
+    public function metaValues($request, $userId)
     {
         $metaValues = new UserMeta();
 
