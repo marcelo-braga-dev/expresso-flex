@@ -66,6 +66,11 @@
                             </a>
                         @endif
                     </div>
+                    <div class="col-6 text-right">
+                        <a href="https://play.google.com/store/apps/details?id=com.expressoflexapp">
+                            <img src="/assets/img/theme/playstore.png">
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

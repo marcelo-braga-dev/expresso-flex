@@ -20,68 +20,63 @@
                     </div>
                 </div>
             </div>
-            <div class="card-body">
-                @include('layouts.componentes.alerts')
-                <div class="row mb-4">
-                    <div class="col-12">
-                        @foreach ($pacotes as $pacote)
-                            <div class="card shadow-sm p-3 mb-4">
-                                <div class="row justify-content-between align-items-center">
-                                    <div class="col-12 col-lg-10">
-                                        <small class="d-block mb-2 justify-content-between">
-                                            <div class="row justify-content-between">
-                                                <div class="col">
-                                                    <b>Código:</b> {{ $pacote->rastreio }}
-                                                </div>
-                                                <div class="col">
-                                                    <b>Data:</b>
-                                                    {{ date('d/m/Y H:i', strtotime($pacote->created_at)) }}
-                                                </div>
-                                            </div>
-                                        </small>
-                                        <small class="d-block mb-2">
-                                            <b>Destinatário:</b>
-                                            {{ get_destinatario_pacote($pacote->destinatario)->nome }}
-                                        </small>
-                                        <small class="d-block mb-2">
-                                            <b>Endereço de Entrega:</b>
-                                            {{ get_endereco_destinatario($pacote->destinatario) }}
-                                        </small>
+            <div class="card-body p-1">
+                @foreach ($pacotes as $pacote)
+                    <div class="card shadow-sm p-3 mb-2">
+                        <div class="row justify-content-between align-items-center">
+                            <div class="col-12 col-lg-10">
+                                <small class="d-block mb-2 justify-content-between">
+                                    <div class="row justify-content-between">
+                                        <div class="col-md-6">
+                                            <b>Código:</b> {{ $pacote->rastreio }}
+                                        </div>
+                                        <div class="col-md-6">
+                                            <b>Data:</b>
+                                            {{ date('d/m/Y H:i', strtotime($pacote->created_at)) }}
+                                        </div>
                                     </div>
-                                    <div class="col-12 col-lg-2">
-                                        <form method="POST" action="{{ route('cliente.etiqueta.imprimir-etiqueta') }}"
-                                            target="_blank">
-                                            @csrf
-                                            <input type="hidden" name="id" value="{{ $pacote->id }}">
-                                            <button class="btn mr-4 btn-link">
-                                                <i class="fas fa-file-pdf text-danger d-block" style="font-size: 28px"></i>
-                                                <small class="d-block text-muted">
-                                                    Imprimir Etiqueta
-                                                </small>
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
+                                </small>
+                                <small class="d-block mb-2">
+                                    <b>Destinatário:</b>
+                                    {{ get_destinatario_pacote($pacote->destinatario)->nome }}
+                                </small>
+                                <small class="d-block mb-2">
+                                    <b>Endereço de Entrega:</b>
+                                    {{ get_endereco_destinatario($pacote->destinatario) }}
+                                </small>
                             </div>
-                        @endforeach
-                        @if (!count($pacotes))
-                            <div class="row">
-                                <div class="col-auto mx-auto text-muted pt-4 text-center">
-                                    <small class="text-muted d-block">
-                                        Não há etiquetas emitidas para imprimir.
-                                    </small>
-                                    <a class="btn btn-primary my-2"
-                                        href="{{ route('cliente.etiqueta.emitir-etiqueta') }}">
-                                        Emitir Etiqueta
-                                    </a>
-                                </div>
+                            <div class="d-none d-md-block text-center col-md-2">
+                                <form method="POST" action="{{ route('cliente.etiqueta.imprimir-etiqueta') }}"
+                                    target="_blank">
+                                    @csrf
+                                    <input type="hidden" name="id" value="{{ $pacote->id }}">
+                                    <button class="btn mr-4 btn-link">
+                                        <i class="fas fa-file-pdf text-danger d-block" style="font-size: 28px"></i>
+                                        <small class="d-block text-muted">
+                                            Imprimir Etiqueta
+                                        </small>
+                                    </button>
+                                </form>
                             </div>
-                        @endif
+                            <div class="d-md-none text-center col-md-2">
+                                Só é póssível imprimir etiquetas pelo computador.
+                            </div>
+                        </div>
                     </div>
-                </div>
+                @endforeach
+                @if (!count($pacotes))
+                    <div class="row">
+                        <div class="col-auto mx-auto text-muted pt-4 text-center">
+                            <small class="text-muted d-block">
+                                Não há etiquetas emitidas para imprimir.
+                            </small>
+                            <a class="btn btn-primary my-2" href="{{ route('cliente.etiqueta.emitir-etiqueta') }}">
+                                Emitir Etiqueta
+                            </a>
+                        </div>
+                    </div>
+                @endif
             </div>
         </div>
-
-        @include('layouts.footers.auth')
     </div>
 @endsection

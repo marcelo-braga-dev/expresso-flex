@@ -32,7 +32,7 @@
         </div>
 
         <div class="row">
-            {{-- Coletas --}}
+            {{-- Coletas 
             <div class="col-md-6 mb-3">
                 <div class="card card-stats shadow">
                     <div class="card-body">
@@ -56,7 +56,7 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </div>--}}
 
             {{-- Gerar Etiqueta --}}
             <div class="col-md-6 mb-3">
