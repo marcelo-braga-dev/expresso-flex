@@ -97,10 +97,17 @@ Route::get(
     'FinanceiroController@pagamentos'
 )->name('cliente.financeiro.pagamentos');
 
+// historico quinzena
+Route::get(
+    'financeiro/quinzena',
+    'FinanceiroController@historicoQuinzena'
+)->name('cliente.financeiro.quinzena');
+
 Route::get(
     'financeiro/pagamentos/detalhes-mensal',
     'FinanceiroController@detalhesMensal'
 )->name('cliente.financeiro.pagamentos.detalhes-mensal');
+
 
 /*
  * Perfil

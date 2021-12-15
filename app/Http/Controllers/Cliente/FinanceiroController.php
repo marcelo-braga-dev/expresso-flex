@@ -27,33 +27,38 @@ class FinanceiroController extends Controller
         return view('pages.cliente.financeiro.historico-completo', compact('fretes'));
     }
 
+    public function historicoQuinzena(Request $request)
+    {
+        $user = id_usuario_atual();
+        $fretesRealizados = new FretesRealizados();
+        $financeiroService = new FinanceiroService();
+        $request->id = $user;
+
+        $fretes = $financeiroService->getHistoricoQuinzena($fretesRealizados, $request);
+
+        return view('pages.cliente.financeiro.quinzena', compact('fretes', 'user'));
+    }
+
     public function detalhesMensal(Request $request)
     {
-        $clienteFinanceiro = new ClienteFinanceiro(); 
         $financeiroService = new FinanceiroService();
         $fretesRealizados = new FretesRealizados();
+        $clienteFinanceiro = new ClienteFinanceiro();
 
-        
-        $todosFretes = $fretesRealizados->query()
-        ->where('user_id', '=', id_usuario_atual())
-        ->whereMonth('created_at', $request->mes)
-        ->whereYear('created_at', $request->ano)
-        ->orderBy('created_at', 'ASC')
-        ->get();
-        
-        $res = $financeiroService->getHistoricoMensal($request, $todosFretes);
-        
-        $fretes = $res['fretes'];
-        $total = $res['total'];
-        
+        $user = id_usuario_atual();
+        $request->id = $user;
+
+        $fretes = $financeiroService->getInfoQuinzena($fretesRealizados, $request);
+
         // Modal Pagamento
-        $idPagamento = 0;
-        if ($total['valor_pagar']){
-            $desc = 'Pag. Fatura - ' . $fretes['mes'] . ' de ' . $fretes['ano'];
+        $emAberto = $fretes['faturamento']['aberto'];
+        $idMercadoPago = 0;
+        if ($emAberto) {
+            $desc = 'Pag. Fatura ' . $request->quinzena .'° quinz. de ' . $fretes['mes'] . '-' . $fretes['ano'];
 
-            $idPagamento = $clienteFinanceiro->getModel($total['valor_pagar'], $desc);
-        }         
+            $idMercadoPago = $clienteFinanceiro->getModel($emAberto, $desc);
+        }
 
-        return view('pages.cliente.financeiro.detalhes-mensal', compact('fretes', 'total', 'idPagamento'));
+        return view('pages.cliente.financeiro.detalhes-mensal', compact('fretes', 'user', 'idMercadoPago'));
     }
 }
