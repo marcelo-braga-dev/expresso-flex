@@ -4,7 +4,7 @@
 
     <div class="header bg-principal bg-height-top"></div>
 
-    <div class="container-fluid mt--8">
+    <div class="container-fluid mt--8 mb-6">
         <div class="row">
             <div class="col-md-6 mb-5">
                 <div class="card mb-3 p-4 pb-1">
@@ -83,10 +83,8 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row">
-            {{-- Coletas --}}
+            {{-- QRCode Pontos de Coletas --}}
             <div class="col-md-6 mb-3">
                 <div class="card card-stats shadow">
                     <div class="card-body">
@@ -107,6 +105,34 @@
                         </div>
                         <a class="btn btn-dark" href="{{ route('cliente.perfil.qrcode-usuario') }}">
                             QrCode do Pondo de Coleta
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            {{-- Faturamento --}}
+            <div class="col-md-6 mb-3">
+                <div class="card card-stats shadow">
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col">
+                                <h5 class="card-title text-uppercase text-muted mb-0">
+                                    Financeiro
+                                </h5>
+                                <span class="h2 font-weight-bold mb-0">
+                                    Ver Faturamento do Mês
+                                </span>
+                            </div>
+                            <div class="col-auto">
+                                <div class="icon icon-shape bg-success text-white rounded-circle shadow">
+                                    <i class="fas fa-dollar-sign"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="btn btn-success" href="{{ route('cliente.financeiro.pagamentos') }}">
+                            Ver Faturamento
                         </a>
                     </div>
                 </div>

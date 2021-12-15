@@ -29,6 +29,10 @@ Route::get('coleta/historico', 'Coletas\HistoricoController@historicoMeses')
 Route::get('coleta/historico/dias', 'Coletas\HistoricoController@historicoDias')
     ->name('cliente.coleta.historico.dias');
 
+// Historico de Pacotes da coleta
+Route::get('coleta/historico/pacotes-coletados', 'Coletas\HistoricoController@historicoPacotesColetadosDia')
+    ->name('cliente.coleta.historico.pacotes-coletados');
+
     
 // Pontos de Coleta
 Route::get('pontos-de-coleta', 'LojasController@index')

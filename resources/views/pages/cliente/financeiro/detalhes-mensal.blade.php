@@ -61,7 +61,7 @@
                         <div class="row">
                             <div class="col">
                                 @if (empty($idMercadoPago))
-                                <p>Todos os pagamentos desta quinzena estão quitados.</p>
+                                    <p>Todos os pagamentos desta quinzena estão quitados.</p>
                                 @else
                                     <p>
                                         Clique no botão abaixo para realizar o pagamento da
@@ -114,7 +114,15 @@
                                                     R$ {{ number_format($frete, 2, ',', '.') }}
                                                 </td>
                                                 <td class="text-right">
-                                                    <a href="/">Detalhes</a>
+                                                    <a
+                                                        href="
+                                                            {{ route('cliente.coleta.historico.pacotes-coletados', [
+                                                                'dia' => $dia,
+                                                                'mes' => $fretes['mes'],
+                                                                'ano' => $fretes['ano'],
+                                                            ]) }} ">
+                                                        Detalhes
+                                                    </a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -139,6 +147,7 @@
         @include('layouts.footers.auth')
     </div>
     <script src="https://sdk.mercadopago.com/js/v2"></script>
+
     @if (!empty($idMercadoPago))
         <script>
             // Adicione as credenciais do SDK
