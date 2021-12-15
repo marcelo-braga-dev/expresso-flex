@@ -10,7 +10,7 @@
             <div class="col">
                 <div class="card">
                     <!-- Card header -->
-                    <div class="card-header border-0">
+                    <div class="card-header border-bottom">
                         <div class="row justify-content-between align-items-center px-3">
                             <div>
                                 <h3 class="mb-0">Clientes Cadastrados</h3>
@@ -37,34 +37,30 @@
                         </div>
                     </div>
 
-                    <div class="row justify-content-center">
-                        <div class="col-11">@include('layouts.componentes.alerts')</div>
-                    </div>                   
-
                     <div class="table-responsive">
                         <table class="table align-items-center table-flush">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th scope="col" class="sort" data-sort="name">ID</th>
-                                    <th scope="col" class="sort" data-sort="budget">Nome</th>
-                                    <th scope="col" class="sort" data-sort="status">Status</th>
-                                    <th scope="col"></th>
-                                </tr>
-                            </thead>
                             <tbody class="list">
                                 @foreach ($clientes as $usuario)
                                     <tr>
                                         <td>
-                                            #{{ $usuario->id }}
-                                        </td>
-                                        <td>
                                             <b>{{ $usuario->nome }}</b><br>
-                                            {{ $usuario->email }}<br>
+                                            Id: #{{ $usuario->id }} <br>
+                                            Email: {{ $usuario->email }}<br>
                                             @if (!empty($novaConta[$usuario->email]))
-                                                <a href="{{ route('admin.usuarios.clientes.info-clientes', ['id' => "$usuario->id"]) }}"><small>O usuário ainda não ativou a conta.</small></a>
+                                                <a href="{{ route('admin.usuarios.clientes.info-clientes', ['id' => "$usuario->id"]) }}">
+                                                    <small>
+                                                        O usuário ainda não ativou sua conta.
+                                                    </small>
+                                                </a>
                                             @endif
                                         </td>
                                         <td>
+                                            <b>Preços dos Fretes</b><br>
+                                            São Paulo: @if (!empty($fretes[$usuario->id]['sao_paulo']))R$ {{ $fretes[$usuario->id]['sao_paulo'] }}@else <span class="text-danger">Não Inserido</span>@endif<br>
+                                            Grande SP: @if (!empty($fretes[$usuario->id]['grande_sao_paulo']))R$ {{ $fretes[$usuario->id]['grande_sao_paulo'] }}@else <span class="text-danger">Não Inserido</span>@endif
+                                        </td>
+                                        <td>
+                                            <b>Status</b><br>
                                             <label class="custom-toggle">
                                                 <input type="checkbox" class="status-usuario" value="{{ $usuario->id }}"
                                                     @if ($usuario->status) checked @endif>
@@ -81,7 +77,11 @@
                                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                                     <a class="dropdown-item"
                                                         href="{{ route('admin.usuarios.clientes.edit', ['id' => "$usuario->id"]) }}">
-                                                        Editar
+                                                        Editar Cliente
+                                                    </a>
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('admin.fretes.atualiza-preco-clientes', ['id' => $usuario->id]) }}">
+                                                        Editar Preço Frete
                                                     </a>
                                                     <a class="dropdown-item"
                                                         href="{{ route('admin.usuarios.clientes.info-clientes', ['id' => "$usuario->id"]) }}">

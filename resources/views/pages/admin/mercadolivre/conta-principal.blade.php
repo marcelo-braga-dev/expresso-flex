@@ -12,8 +12,6 @@
                 </div>
             </div>
             <div class="card-body">
-                @include('layouts.componentes.alerts')
-
                 <form method="post" action="{{ route('admin.mercadolivre.conta-sincronizada.update') }}"
                     autocomplete="off">
                     @csrf

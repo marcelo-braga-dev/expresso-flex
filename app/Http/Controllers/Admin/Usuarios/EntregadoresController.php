@@ -6,16 +6,17 @@ namespace App\Http\Controllers\Admin\Usuarios;
 use App\Models\RegioesEntregadores;
 use App\Models\User;
 use App\Service\Entregadores\EntregadoresService;
+use App\Service\FretesService;
 use App\Service\Usuarios\UsuariosService;
 use App\src\Usuarios\Entregadores;
 use Illuminate\Http\Request;
-
 
 class EntregadoresController
 {
     public function index(RegioesEntregadores $regioesEntregador, UsuariosService $clsUsuarioService, User $users)
     {
         $regioes = [];
+        $clsFretesService = new FretesService;
 
         $novaConta = $clsUsuarioService->getNovosUsuarios();
 
@@ -33,9 +34,11 @@ class EntregadoresController
             }
         }
 
+        $fretes = $clsFretesService->getPrecosFretes('entregador');
+
         return view(
             'pages.admin.usuarios.entregadores.tabela-entregadores',
-            compact('entregadores', 'regioes', 'novaConta')
+            compact('entregadores', 'regioes', 'novaConta', 'fretes')
         );
     }
 

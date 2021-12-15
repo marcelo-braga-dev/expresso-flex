@@ -1,4 +1,4 @@
-@extends('layouts.admin', ['title' => 'Histórico de Pacotes', 'menu_suspenso' => 'financeiro'])
+@extends('layouts.admin', ['title' => 'Faturamento na Quinzena do Cliente', 'menu_suspenso' => 'financeiro'])
 
 @section('content')
     <div class="header bg-principal bg-height-top"></div>
@@ -8,7 +8,7 @@
             <div class="card-header bg-white mb-0">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h4 class="card-title text-uppercase mb-1">Histórico de Pagamentos</h4>
+                        <h4 class="card-title text-uppercase mb-1">Faturamento na Quinzena do Cliente</h4>
                         <p class="mb-1">{{ get_nome_usuario($user) }}</p>
                     </div>
                     <div class="col-auto">
@@ -19,38 +19,39 @@
                 </div>
             </div>
             <div class="card-body p-0">
-                <ul class="list-group list-group-flush">
-                    @foreach ($fretes as $frete)
-                        <li
-                            class="list-group-item d-flex justify-content-between align-items-center px-4 info-list">
+                <ul class="list-group list-group-flush"><?php $i = 1; ?>
+                    @foreach ($fretes['periodos'] as $frete)
+                        <li class="list-group-item d-flex justify-content-between align-items-center px-4 info-list">
                             <div class="row">
                                 <div class="col-auto pt-2">
-                                    <span>{{ $frete['mes'] . '/' . $frete['ano'] }}</span>
+                                    <span>{{ $fretes['mes'] . '/' . $fretes['ano'] }}</span>
+                                </div>
+                                <div class="col-auto pt-2">
+                                    <h4>{{ $i }}º Quinzena</h4>
                                 </div>
                                 <div class="col-auto">
                                     <small>
                                         <table>
                                             <tr>
-                                                <td>Em aberto: </td>
+                                                <td>Faturamento Total: &nbsp; </td>
                                                 <td>
-                                                    R$ @if (!empty($frete['aberto']))
-                                                        {{ number_format($frete['aberto']['valor'], 2, ',', '.') }}
-                                                    @else 0,00 @endif
+                                                    <?php $total = $frete['aberto'] + $frete['pago']; ?>
+                                                    R$ {{ number_format($total, 2, ',', '.') }}
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>Valor Pago:</td>
                                                 <td>
                                                     R$ @if (!empty($frete['pago']))
-                                                        {{ number_format($frete['pago']['valor'], 2, ',', '.') }}
+                                                    {{ number_format($frete['pago'], 2, ',', '.') }}
                                                     @else 0,00 @endif
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>Total a pagar: &nbsp; </td>
-                                                <td>
-                                                    R$ @if (!empty($frete['total']) && $frete['total'] > 0)
-                                                        {{ number_format($frete['total'], 2, ',', '.') }}
+                                                <td>Em aberto: </td>
+                                                <td class="text-danger">
+                                                    R$ @if (!empty($frete['aberto']))
+                                                        {{ number_format($frete['aberto'], 2, ',', '.') }}
                                                     @else 0,00 @endif
                                                 </td>
                                             </tr>
@@ -58,10 +59,13 @@
                                     </small>
                                 </div>
                             </div>
-                            <?php $mes = $frete['mes'];
-                            $ano = $frete['ano']; ?>
                             <a class="btn btn-link p-0 btn-sm"
-                                href="{{ route('admin.financeiro.cliente.quinzena', ['mes' => $frete['mes'], 'ano' => $frete['ano'], 'id' => $user]) }}">
+                                href="{{ route('admin.financeiro.cliente.detalhes-mensal', [
+                                    'mes' => $fretes['mes'],
+                                    'ano' => $fretes['ano'],
+                                    'quinzena' => $i++,
+                                    'id' => $user,
+                                ]) }}">
                                 Detalhes
                             </a>
                         </li>

@@ -7,7 +7,7 @@ class FinanceiroService
     public function getHistoricoFinanceiro($arg)
     {
         $fretes = [];
-        
+
         foreach ($arg as $var) {
             $mes = date('m/Y', strtotime($var['created_at']));
 
@@ -30,70 +30,58 @@ class FinanceiroService
         return $fretes;
     }
 
-    public function getHistoricoMensal($request, $todosFretes)
+    public function getHistoricoQuinzena($cls, $request)
     {
+        $args = $this->getDadosHistoricoQuinzenal($cls, $request);
+        
         $fretes = [];
-        $fretes['pacotes'] = [];
+        $fretes['periodos'][1]['aberto'] = 0;
+        $fretes['periodos'][2]['aberto'] = 0;
+        $fretes['periodos'][1]['pago'] = 0;
+        $fretes['periodos'][2]['pago'] = 0;
 
-        $totalSP = 0;
-        $totalGSP = 0;
-        $totalValor = 0;
-        $totalPacotes = 0;
-        $pacotes_sp = 0;
-        $pacotes_g_sp = 0;
-        $valores_pagos = 0;
-        $valores_receber = 0;        
+        foreach ($args as $arg) {
+            $dia = date('d', strtotime($arg['created_at']));
 
-        $fretes['mes'] = $request->mes;
-        $fretes['ano'] = $request->ano;
+            $quinzena = 1;
+            if ($dia > 15) $quinzena = 2;
 
-        foreach ($todosFretes as $var) {
-            $data = date('d/m/y', strtotime($var['created_at']));
-
-            $fretes['pacotes'][$data]['dia'] = date('d', strtotime($var['created_at']));
-
-            $fretes['pacotes'][$data][$var['regiao']][] = $var['regiao'];
-
-            if (empty($fretes['pacotes'][$data]['valor_total'])) {
-                $fretes['pacotes'][$data]['valor_total'] = 0;
-            }
-            $fretes['pacotes'][$data]['valor_total'] += $var['value'];
-
-            if ($var['regiao'] == 'sao_paulo') {
-                $totalSP += $var['value'];
-                $pacotes_sp++;
-            }
-            if ($var['regiao'] == 'grande_sao_paulo') {
-                $totalGSP += $var['value'];
-                $pacotes_g_sp++;
-            }
-
-            if ($var['status'] == 'pago') {
-                $valores_pagos += $var['value'];
-            }
-
-            if ($var['status'] == 'aberto') {
-                $valores_receber += $var['value'];
-            }
-
-            $totalValor += $var['value'];
-            $totalPacotes++;
+            if ($arg['status'] == 'aberto') $fretes['periodos'][$quinzena]['aberto'] += $arg['value'];
+            if ($arg['status'] == 'pago') $fretes['periodos'][$quinzena]['pago'] += $arg['value'];
         }
 
-        // Totais
-        $total = [
-            'valor_sp' => number_format($totalSP, 2, ',', '.'),
-            'valor_g_sp' => number_format($totalGSP, 2, ',', '.'),
-            'valor_total' => number_format($totalValor, 2, ',', '.'),
-            'valor_pago' => number_format($valores_pagos, 2, ',', '.'),
-            'valor_receber' => number_format($valores_receber, 2, ',', '.'),
-            'valor_pagar' => $valores_receber,
-            'total_pacotes' => $totalPacotes,
-            'pacotes_sp' => $pacotes_sp,
-            'pacotes_g_sp' => $pacotes_g_sp
-        ];
+        $fretes = array_merge($fretes, ['mes' => $request->mes, 'ano' => $request->ano]);
+        
+        return $fretes;
+    }
 
-        return ['fretes' => $fretes, 'total' => $total];
+    // Pagina Detalhes da quinzena
+    public function getInfoQuinzena($cls, $request)
+    {
+        $args = $this->getDadosInfoQuinzena($cls, $request);
+
+        $fretes = [];
+        $fretes['faturamento']['aberto'] = 0;
+        $fretes['faturamento']['pago'] = 0;
+
+        foreach ($args as $arg) {
+            $dia = date('d', strtotime($arg['created_at']));
+
+            if (empty($fretes['dias'][$dia])) $fretes['dias'][$dia] = 0;
+            $fretes['dias'][$dia] += $arg['value'];
+
+            if ($arg['status'] == 'aberto') $fretes['faturamento']['aberto'] += $arg['value'];
+            if ($arg['status'] == 'pago') $fretes['faturamento']['pago'] += $arg['value'];
+        }
+
+        $fretes['faturamento']['total'] = $fretes['faturamento']['aberto'] + $fretes['faturamento']['pago'];
+
+        $fretes = array_merge(
+            $fretes,
+            ['quinzena' => $request->quinzena, 'mes' => $request->mes, 'ano' => $request->ano]
+        );
+
+        return $fretes;
     }
 
     public function getUsuarios($fretesRealizados)
@@ -102,16 +90,60 @@ class FinanceiroService
 
         foreach ($fretesRealizados as $fretes) {
             $entregadores[$fretes->user_id]['user_id'] = $fretes->user_id;
-            
+
             $entregadores[$fretes->user_id]['pacotes'][] = $fretes->user_id;
 
             if (empty($entregadores[$fretes->user_id]['em_aberto'])) $entregadores[$fretes->user_id]['em_aberto'] = 0;
-            
+
             if ($fretes->status == 'aberto') {
                 $entregadores[$fretes->user_id]['em_aberto'] += $fretes->value;
-            }             
+            }
         }
 
         return $entregadores;
+    }
+
+    public function setPagamentoDinheiro($cls, $request) {      
+        $operador = '<=';
+        if ($request->quinzena == 2) $operador = '>';
+
+        $todosFretes = $cls->query()
+            ->where('user_id', '=', $request->id)
+            ->whereMonth('created_at', $request->mes)
+            ->whereYear('created_at', $request->ano)
+            ->whereDay('created_at', $operador, 15)
+            ->update(['status' => 'pago']);        
+
+        session()->flash('sucesso', 'Confirmação de pagamento realizada com sucesso.');
+    }
+
+    private function getDadosInfoQuinzena($cls, $request)
+    {
+        $user = $request->id;
+
+        $operador = '<=';
+        if ($request->quinzena == 2) $operador = '>';
+
+        $todosFretes = $cls->query()
+            ->where('user_id', '=', $user)
+            ->whereMonth('created_at', $request->mes)
+            ->whereYear('created_at', $request->ano)
+            ->whereDay('created_at', $operador, 15)
+            ->orderBy('created_at', 'ASC')
+            ->get(['status', 'value', 'created_at']);
+
+            return $todosFretes;
+    }
+
+    private function getDadosHistoricoQuinzenal($cls, $request)
+    {
+        $todosFretes = $cls->query()
+            ->where('user_id', '=', $request->id)
+            ->whereMonth('created_at', $request->mes)
+            ->whereYear('created_at', $request->ano)
+            ->orderBy('created_at', 'ASC')
+            ->get(['status', 'value', 'created_at']);
+
+            return $todosFretes;
     }
 }

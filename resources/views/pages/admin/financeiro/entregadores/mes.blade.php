@@ -1,4 +1,4 @@
-@extends('layouts.admin', ['title' => 'Histórico de Pacotes', 'menu_suspenso' => 'financeiro'])
+@extends('layouts.admin', ['title' => 'Faturamento Mensal', 'menu_suspenso' => 'financeiro'])
 
 @section('content')
     <div class="header bg-principal bg-height-top"></div>
@@ -8,7 +8,7 @@
             <div class="card-header bg-white mb-0">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h4 class="card-title text-uppercase mb-1">Histórico de Pagamentos</h4>
+                        <h4 class="card-title text-uppercase mb-1">Faturamento Mensal</h4>
                         <p class="mb-1">{{ get_nome_usuario($user) }}</p>
                     </div>
                     <div class="col-auto">
@@ -61,7 +61,7 @@
                             <?php $mes = $frete['mes'];
                             $ano = $frete['ano']; ?>
                             <a class="btn btn-link p-0 btn-sm"
-                                href="{{ route('admin.financeiro.entregador.detalhes-mensal', ['mes' => $frete['mes'], 'ano' => $frete['ano'], 'id' => $user]) }}">
+                                href="{{ route('admin.financeiro.entregador.quinzena', ['mes' => $frete['mes'], 'ano' => $frete['ano'], 'id' => $user]) }}">
                                 Detalhes
                             </a>
                         </li>

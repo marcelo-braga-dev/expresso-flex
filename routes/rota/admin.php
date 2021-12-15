@@ -311,28 +311,56 @@ Route::get(
     'financeiro/cliente',
     'App\Http\Controllers\Admin\Financeiro\ClientesController@historicoMes'
 )->name('admin.financeiro.cliente-mes');
+
+// historico quinzena
+Route::get(
+    'financeiro/cliente/quinzena',
+    'App\Http\Controllers\Admin\Financeiro\ClientesController@historicoQuinzena'
+)->name('admin.financeiro.cliente.quinzena');
+
+
 // historico mes
 Route::get(
     'financeiro/cliente/detalhes-mensal',
     'App\Http\Controllers\Admin\Financeiro\ClientesController@historicoDetalhesMes'
 )->name('admin.financeiro.cliente.detalhes-mensal');
 
+// Realizar pagamento direto
+Route::put(
+    'financeiro/cliente/pagamento-direto',
+    'App\Http\Controllers\Admin\Financeiro\ClientesController@pagamentoDinheiro'
+)->name('admin.financeiro.cliente.pagamento-dinheiro');
+
 /* Entregadores Financeiro */
-// todos entregadores
+// Historico Todos entregadores
 Route::get(
     'financeiro/entregadores',
     'App\Http\Controllers\Admin\Financeiro\EntregadoresController@index'
 )->name('admin.financeiro.entregadores');
+
 // historico mes
 Route::get(
     'financeiro/entregador',
     'App\Http\Controllers\Admin\Financeiro\EntregadoresController@historicoMes'
 )->name('admin.financeiro.entregador-mes');
-// historico mes
+
+// historico quinzena
+Route::get(
+    'financeiro/entregador/quinzena',
+    'App\Http\Controllers\Admin\Financeiro\EntregadoresController@historicoQuinzena'
+)->name('admin.financeiro.entregador.quinzena');
+
+// detalhes-mensal
 Route::get(
     'financeiro/entregador/detalhes-mensal',
     'App\Http\Controllers\Admin\Financeiro\EntregadoresController@historicoDetalhesMes'
 )->name('admin.financeiro.entregador.detalhes-mensal');
+
+// Realizar pagamento direto
+Route::put(
+    'financeiro/entregador/pagamento-direto',
+    'App\Http\Controllers\Admin\Financeiro\EntregadoresController@pagamentoDinheiro'
+)->name('admin.financeiro.entregador.pagamento-dinheiro');
 
 /* AJAX */
 

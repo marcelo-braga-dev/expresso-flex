@@ -1,6 +1,5 @@
-<!-- Modal -->
-<!-- Erro -->
 @if (!empty(session('erro')))
+<!-- Erro -->
 <div class="modal fade" id="modalSession" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
 aria-hidden="true">
 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -32,8 +31,8 @@ aria-hidden="true">
         </script>
 @endif
 
-<!-- Sucesso -->
 @if (!empty(session('sucesso')))
+<!-- Sucesso -->
     <div class="modal fade" id="modalSession" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">

@@ -59,7 +59,7 @@
                                 </form>
                             </div>
                             <div class="d-md-none text-center col-md-2">
-                                Só é póssível imprimir etiquetas pelo computador.
+                                <small>Só é póssível imprimir etiquetas pelo computador.<small>
                             </div>
                         </div>
                     </div>

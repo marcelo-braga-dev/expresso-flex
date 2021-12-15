@@ -8,7 +8,7 @@
             <div class="card-header bg-white mb-0">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h4 class="card-title text-uppercase mb-0">Cadastro de Conferente</h4>
+                        <h4 class="card-title text-uppercase mb-0">Cadastro de Entregadores</h4>
                     </div>
                     <div class="col-auto">
                         <a class="btn btn-primary btn-sm" href="{{ url()->previous() }}">Voltar</a>
@@ -69,11 +69,41 @@
                             </div>
                         </div>
 
+                        <hr>
+                        <h6 class="heading-small text-muted mb-4">Valores das Comissões</h6>
+
+                        <div class="row">
+                            <div class="col-6 col-md-3">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="sao_paulo">São Paulo</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">R$</span>
+                                        </div>
+                                        <input type="number" name="sao_paulo" value="@if (!empty($fretes['sao_paulo'])){{ $fretes['sao_paulo'] }}@endif" step="0.01"
+                                            min="0.01" class="form-control" placeholder="0,00" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="grande_sao_paulo">Grande São Paulo</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">R$</span>
+                                        </div>
+                                        <input type="number" name="grande_sao_paulo" value="@if (!empty($fretes['grande_sao_paulo'])){{ $fretes['grande_sao_paulo'] }}@endif"
+                                            step="0.01" min="0.01" class="form-control" placeholder="0,00" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         {{-- Area Coleta --}}
                         <hr>
                         <div class="row mb-4">
                             <div class="col-12">
-                                <label class="form-control-label" for="input-name">Regões de Coleta</label>
+                                <label class="form-control-label" for="input-name">Regiões de Coleta</label>
                             </div>
                             @if (empty($regioes['regiao_coleta']))
                                 <div class="col-6 col-lg-2">

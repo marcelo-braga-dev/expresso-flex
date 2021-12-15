@@ -3,6 +3,7 @@
 namespace App\src\Usuarios;
 
 use App\Models\UserMeta;
+use App\Service\FretesService;
 
 class Entregadores extends Usuarios
 {
@@ -16,6 +17,8 @@ class Entregadores extends Usuarios
         // MataValues do Cliente
         $this->metaValues($request, $user->id);
 
+        $this->precosFretes($request, $user->id);
+
         $this->setAreaAtendimento($request, $user);
 
         session()->flash('sucesso', 'Entregador ' . $request['nome'] . ' cadastrado com sucesso.');
@@ -24,6 +27,8 @@ class Entregadores extends Usuarios
     private function metaValues($request, $userId)
     {
         $metaValues = new UserMeta();
+
+        $this->precosFretes($request, $userId);
 
         $metaValues->updateOrInsert(['meta_key' => 'cpf', 'user_id' => $userId], ['value' => $request->cpf]);
         $metaValues->updateOrInsert(['meta_key' => 'celular', 'user_id' => $userId], ['value' => $request->celular]);
@@ -66,5 +71,12 @@ class Entregadores extends Usuarios
         $this->setAreaAtendimento($request, $user);
 
         session()->flash('sucesso', 'Entregador ' . $request['nome'] . ' editado com sucesso.');
+    }
+
+    private function precosFretes($request, $userId)
+    {
+        $fretesService = new FretesService();
+
+        $fretesService->setPrecosFretes($request, $userId);
     }
 }

@@ -7,6 +7,24 @@ use App\Models\User;
 
 class FretesService
 {
+    public function getPrecosFretes($tipo)
+    {
+        $fretes = [];
+        $precosFretes = PrecosFretes::where('tipo', '=', $tipo)->get();
+
+        foreach ($precosFretes as $dados) {
+            if ($dados->meta_key == 'sao_paulo') {
+                $fretes[$dados->user_id]['sao_paulo'] = number_format($dados->value, 2, ',', '.');
+            }
+
+            if ($dados->meta_key == 'grande_sao_paulo') {
+                $fretes[$dados->user_id]['grande_sao_paulo'] = number_format($dados->value, 2, ',', '.');
+            }
+        }
+
+        return $fretes;
+    }
+
     public function setPrecosFretes($request, $userId)
     {
         $precoFrete = new PrecosFretes();

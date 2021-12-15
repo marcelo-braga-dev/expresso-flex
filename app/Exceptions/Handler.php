@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -26,6 +27,20 @@ class Handler extends ExceptionHandler
         'password',
         'password_confirmation',
     ];
+
+    // Redireciona no erro 500
+    protected function prepareResponse($request, Throwable $e){
+        
+        if (! $this->isHttpException($e) && config('app.debug')) {
+            return $this->toIlluminateResponse($this->convertExceptionToResponse($e), $e);
+        }
+
+        if (! $this->isHttpException($e)) {
+            session()->flash('erro', 'Ocorreu um erro interno no sistema.');
+            return redirect()->route('login');
+            // return redirect()-> route('admin.usuarios.clientes.tabela');
+        }        
+    }
 
     /**
      * Register the exception handling callbacks for the application.

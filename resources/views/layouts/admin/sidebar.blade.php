@@ -83,39 +83,12 @@
                             <li class="nav-item">
                                 <a class="nav-link ml-1 pl-4"
                                     href="{{ route('admin.mercadolivre.contas-sincronizadas') }}">
-                                    Contas Sincronizadas
+                                    Contas Mercado Livre
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link ml-1 pl-4" href="{{ route('admin.mercadolivre.conta-sincronizada') }}">
-                                    Conta Principal
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-
-                <div class="dropdown-divider"></div>
-
-                <!-- Fretes -->
-                <li class="nav-item">
-                    <a class="nav-link p-0 ml-3 m-2" href="#navbar-fretes" data-toggle="collapse" role="button"
-                        aria-expanded="true" aria-controls="navbar-fretes">
-                        <i class="ni ni-fat-add text-principal"></i>
-                        <span class="nav-link-text text-principal">Fretes</span>
-                    </a>
-                    <div class="collapse fretes" id="navbar-fretes">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link ml-1 pl-4" href="{{ route('admin.fretes.tabela', ['cliente']) }}">
-                                    Preços para Clientes
-                                </a>
-                            </li>
-                        </ul>
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link ml-1 pl-4" href="{{ route('admin.fretes.tabela', ['entregador']) }}">
-                                    Comissão dos Entregadores
+                                    Conta Expresso Flex
                                 </a>
                             </li>
                         </ul>

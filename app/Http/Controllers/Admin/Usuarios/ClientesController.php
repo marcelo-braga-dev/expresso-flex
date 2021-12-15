@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin\Usuarios;
 
+use App\Http\Controllers\Admin\FretesController;
 use App\Http\Controllers\Controller;
 use App\Models\PasswordNew;
 use App\Models\PrecosFretes;
 use App\Models\User;
+use App\Service\FretesService;
 use App\Service\Usuarios\UsuariosService;
 use App\src\Usuarios\Clientes;
 use Illuminate\Http\Request;
@@ -18,7 +20,11 @@ class ClientesController extends Controller
         
         $clientes = User::where('tipo', '=', 'cliente')->orderBy('id', 'desc')->get();
 
-        return view('pages.admin.usuarios.clientes.tabela-clientes', compact('clientes', 'novaConta'));
+        $clsFretesService = new FretesService;
+
+        $fretes = $clsFretesService->getPrecosFretes('cliente');
+
+        return view('pages.admin.usuarios.clientes.tabela-clientes', compact('clientes', 'novaConta', 'fretes'));
     }
 
     public function info(Request $request)
