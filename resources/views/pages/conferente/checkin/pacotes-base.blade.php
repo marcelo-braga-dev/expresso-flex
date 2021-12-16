@@ -38,6 +38,12 @@
                         @include('layouts.componentes.list-pacotes',
                         ['link' => 'conferente.pacotes.info', 'simples' => false, 'data' => true])
                     @endforeach
+
+                    @if ($pacotes->isEmpty())
+                        <div class="col-auto text-center p-3">
+                            <small>Não há histórico de pacotes.</small>
+                        </div>
+                    @endif
                 </ul>
             </div>
         </div>

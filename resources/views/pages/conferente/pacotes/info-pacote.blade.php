@@ -169,24 +169,24 @@
                                 <table class="table align-items-center table-flush">
                                     <thead class="thead-light">
                                         <tr>
-                                            <th scope="col">Status</th>
                                             <th scope="col"></th>
+                                            <th scope="col">Status</th>
                                             <th scope="col">Data</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($historicos as $historico)
                                             <tr>
-                                                <th scope="row">
-                                                    {{ get_status_pacote($historico['status']) }}
-                                                </th>
-                                                <td>
+                                                <td class="text-center">
                                                     @if (empty($historico['obs']))
                                                         <i class="fas fa-check text-success"></i>
                                                     @else
                                                         {{ $historico['obs'] }}
                                                     @endif
                                                 </td>
+                                                <th scope="row">
+                                                    {{ get_status_pacote($historico['status']) }}
+                                                </th>
                                                 <td>
                                                     {{ date('d/m/y H:i', strtotime($historico['data'])) }}
                                                 </td>

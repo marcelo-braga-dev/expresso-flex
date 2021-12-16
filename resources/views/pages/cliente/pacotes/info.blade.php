@@ -5,7 +5,7 @@
 
     <!-- Page content -->
     <div class="container-fluid mt--9">
-        <div class="card mb-4">
+        <div class="card mb-6">
             <!-- Card header -->
             <div class="card-header border">
                 <div class="d-flex justify-content-between align-items-center">
@@ -14,8 +14,8 @@
                 </div>
             </div>
 
-            <div class="card-body">
-                <div class="card p-3 mb-4">
+            <div class="card-body p-1">
+                <div class="card p-3 mb-2">
                     <div class="row mb-2">
                         <div class="col-md-6">
                             <p class="text-sm mb-0">
@@ -58,7 +58,7 @@
                     @endif
                 </div>
 
-                <div class="card p-3 mb-4">
+                <div class="card p-3 mb-2">
                     <h3>Destinatário</h3>
                     <div class="row mb-3">
                         <div class="col-md-6">
@@ -90,7 +90,7 @@
                 </div>
 
 
-                <div class="card p-3 mb-4">
+                <div class="card p-3 mb-2">
                     <h3>Informações da Entrega</h3>
                     <div class="row mb-2">
                         <div class="col-md-6">
@@ -136,7 +136,7 @@
 
                 <!-- Historico -->
                 @if (!empty($historicos))
-                    <div class="card p-3 mb-4">
+                    <div class="card p-3 mb-2">
                         <h3 class="mb-3">Histórico</h3>
                         <div class="row mb-2">
                             <div class="col-12">
@@ -144,24 +144,24 @@
                                     <table class="table align-items-center table-flush">
                                         <thead class="thead-light">
                                             <tr>
-                                                <th scope="col">Status</th>
                                                 <th scope="col"></th>
+                                                <th scope="col">Status</th>
                                                 <th scope="col">Data</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach ($historicos as $historico)
                                                 <tr>
-                                                    <th scope="row">
-                                                        {{ get_status_pacote($historico['status']) }}
-                                                    </th>
-                                                    <td>
+                                                    <td class="text-center">
                                                         @if (empty($historico['obs']))
                                                             <i class="fas fa-check text-success"></i>
                                                         @else
                                                             {{ $historico['obs'] }}
                                                         @endif
                                                     </td>
+                                                    <th scope="row">
+                                                        {{ get_status_pacote($historico['status']) }}
+                                                    </th>
                                                     <td>
                                                         {{ date('d/m/y H:i', strtotime($historico['data'])) }}
                                                     </td>

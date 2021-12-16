@@ -15,7 +15,7 @@
                             Clique no ícone da câmera para abrir o scanner.
                         </h4>
                     </div>
-                    
+
                     <div class="col-auto">
                         <div class="icon icon-shape bg-primary text-white rounded-circle shadow">
                             <i class="fas fa-boxes"></i>
@@ -24,14 +24,17 @@
                 </div>
             </div>
             <div class="card-body p-0"><?php $data = ''; ?>
-
                 <ul class="list-group list-group-flush">
                     @foreach ($pacotes as $pacote)
-
                         @include('layouts.componentes.list-pacotes',
                         ['link' => 'conferente.pacotes.info', 'simples' => true, 'data' => true])
-
                     @endforeach
+
+                    {{-- @if (empty($pacotes))
+                        <div class="col-auto text-center p-3">
+                            <small>Não há histórico de pacotes.</small>
+                        </div>
+                    @endif --}}
                 </ul>
             </div>
         </div>

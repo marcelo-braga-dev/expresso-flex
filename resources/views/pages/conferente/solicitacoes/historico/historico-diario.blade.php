@@ -30,11 +30,9 @@
                 <ul class="list-group list-group-flush">
 
                     @foreach ($solicitacoes as $pacote)
-
                         <li class="list-group-item info-list info-list">
                             <div class="row d-flex justify-content-between align-items-center">
                                 <div class="col-12 col-md-10">
-
                                     <p class="mb-0">
                                         <i class="fas fa-user mr-2 text-primary"></i>
                                         <b>
@@ -80,19 +78,9 @@
                                             @endif
                                         </div>
                                     </div>
-
-
                                 </div>
-                                {{-- <div class="col-12 col-md-2 text-righ t">
-                                    <a class="small pl-5" href="{{ route($link, ['id' => $pacote->id]) }}">
-                                        Detalhes
-                                    </a>
-                                </div> --}}
                             </div>
                         </li>
-
-
-                        {{-- @include('layouts.componentes.list-pacotes', ['link' => 'conferente.pacotes.info']) --}}
                     @endforeach
                 </ul>
             </div>

@@ -22,6 +22,12 @@
                     @foreach ($pacotes as $pacote)
                         @include('layouts.componentes.list-pacotes', ['link' => 'entregadores.pacotes.info'])
                     @endforeach
+
+                    @if ($pacotes->isEmpty())
+                        <div class="col-auto text-center p-3">
+                            <small>Não há histórico de pacotes.</small>
+                        </div>
+                    @endif
                 </ul>
             </div>
         </div>

@@ -9,7 +9,6 @@
                 <div class="row align-items-center">
                     <div class="col">
                         <h4 class="card-title text-uppercase mb-2">Histórico de Pacotes Coletados no Dia</h4>
-                        {{-- {{ date('d/m/Y', strtotime($dia)) }} --}}
                     </div>
                     <div class="col-auto">
                         <a class="btn btn-primary btn-sm" href="{{ url()->previous() }}">Voltar</a>
@@ -21,6 +20,12 @@
                     @foreach ($pacotes as $pacote)
                         @include('layouts.componentes.list-pacotes', ['link' => 'cliente.pacotes.info-pacote'])
                     @endforeach
+
+                    @if ($pacotes->isEmpty())
+                        <div class="col-auto text-center p-3">
+                            <small>Não há histórico de pacotes.</small>
+                        </div>
+                    @endif
                 </ul>
             </div>
         </div>

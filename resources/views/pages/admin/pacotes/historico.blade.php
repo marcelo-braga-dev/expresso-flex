@@ -37,6 +37,12 @@
                             </a>
                         </li>
                     @endforeach
+
+                    @if (empty($pacotes))
+                        <div class="col-auto text-center p-3">
+                            <small>Não há histórico de pacotes.</small>
+                        </div>
+                    @endif
                 </ul>
             </div>
         </div>
