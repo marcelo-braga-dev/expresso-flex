@@ -9,7 +9,7 @@
             <div class="card-header bg-white">
                 <div class="row justify-content-between align-items-center px-3">
                     <div>
-                        <h3 class="mb-0">Contas Sincronizadas</h3>
+                        <h3 class="mb-0">Contas Mercado Livre Sincronizadas</h3>
                     </div>
                     <div>
                         <div class="form-group m-0">
@@ -32,17 +32,17 @@
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col" class="sort">CLiente</th>
-                                <th scope="col" class="sort">ID da Contas</th>
+                                <th scope="col" class="sort">Contas Mercado Livre</th>
                                 <th scope="col" class="sort">Data da Sincronia</th>
                             </tr>
                         </thead>
-                        <tbody class="list">
+                        <tbody class="list bg-white">
                             @foreach ($contas as $conta)
                                 <tr>
-                                    <th scope="row">
-                                        <span>{{ get_dados_usuario($conta['user_id'])->nome }}</span>
-                                        <small class="d-block">ID: #{{ $conta['user_id'] }}</small>
-                                    </th>
+                                    <td>
+                                        <b>{{ get_dados_usuario($conta['user_id'])->nome }}</b><br>
+                                        Id: #{{ $conta['user_id'] }}
+                                    </td>
                                     <td>
                                         @foreach ($conta['contas'] as $info)
                                             {{ $info['nickname'] }}

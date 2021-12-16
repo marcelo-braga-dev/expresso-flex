@@ -14,11 +14,13 @@ class ContasMercadoLivreController extends Controller
 
         $contas = [];
 
-        $todasContas = $integracaoMercadoLivre->query()->orderBy('user_id', 'DESC')->get();
+        $todasContas = $integracaoMercadoLivre->query()
+            ->orderBy('user_id', 'DESC')
+            ->get();
 
         foreach ($todasContas as $conta) {
             $contas[$conta->user_id]['user_id'] = $conta->user_id;
-            // $contas[$conta->user_id][][] = ;
+            
             $contas[$conta->user_id]['contas'][] =
                 [
                     'seller_id' => $conta->seller_id, 
