@@ -272,6 +272,11 @@ Route::get(
     'App\Http\Controllers\Admin\Coletas\ColetasController@info'
 )->name('admin.coletas.detalhes');
 
+Route::get(
+    'coletas/historico-pacotes-coletados-dia',
+    'App\Http\Controllers\Admin\Coletas\ColetasController@historicoPacotesColetadosDia'
+)->name('admin.coletas.historico-pacotes-coletados-dia');
+
 //Config Coletas
 Route::get(
     'coletas/config',

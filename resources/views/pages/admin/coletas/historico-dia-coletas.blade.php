@@ -16,33 +16,37 @@
                     </div>
                 </div>
             </div>
-            <div class="card-body p-0">
-                <ul class="list-group list-group-flush">
-                    @foreach ($solicitacoes as $solicitacao)
-                        <li class="list-group-item d-flex justify-content-between align-items-center px-4">
-                            <span>
-                                <p class="mb-0">
-                                    <b>Cliente: {{ get_dados_usuario($solicitacao->user_id)->nome }}</b>
-                                </p>
-                                <p class="text-mb mb-0">
-                                    {{ get_endereco_loja($solicitacao->loja) }}
-                                </p>
-                                <small class="d-block">
-                                    Entregador: 
-                                    @if (!empty($solicitacao->entregador))
+            <div class="card-body bg-white py-0">
+                @foreach ($solicitacoes as $solicitacao)
+                    <div class="row justify-content-between border-bottom py-3 info-list">
+                        <div class="col-md-auto">
+                            <p class="mb-0">
+                                <b>Cliente: {{ get_dados_usuario($solicitacao->user_id)->nome }}</b>
+                            </p>
+                            <p class="text-mb mb-0">
+                                {{ get_endereco_loja($solicitacao->loja) }}
+                            </p>
+                            <small class="d-block">
+                                Entregador:
+                                @if (!empty($solicitacao->entregador))
                                     {{ get_dados_usuario($solicitacao->entregador)->nome }}
-                                    @endif
-                                </small>
-                                <small class="d-block text-success">
-                                        {{ get_status_coleta($solicitacao->status) }}
-                                </small>
-                            </span>
-                        </li>
-                    @endforeach
-                </ul>
+                                @endif
+                            </small>
+                            <small class="d-block text-warning">
+                                {{ get_status_coleta($solicitacao->status) }}
+                            </small>
+                        </div>
+                        <div class="col-md-auto">
+                            <a class="small" href="{{ route('admin.coletas.historico-pacotes-coletados-dia', ['id' => $solicitacao->id]) }}">
+                                Ver Pacotes Coletados
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
             </div>
         </div>
-
-        @include('layouts.footers.auth')
     </div>
+
+    @include('layouts.footers.auth')
+
 @endsection

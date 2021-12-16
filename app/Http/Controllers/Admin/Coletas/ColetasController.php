@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Coletas;
 
 use App\Http\Controllers\Controller;
 use App\Models\MetaValues;
+use App\Models\Pacotes;
 use App\Models\SolicitacaoRetiradas;
 use Illuminate\Http\Request;
 
@@ -28,6 +29,18 @@ class ColetasController extends Controller
         }
 
         return view('pages.admin.coletas.historico-coletas', compact('solicitacoes'));
+    }
+
+    public function historicoPacotesColetadosDia(Request $request)
+    {
+        $clsPacotes = new Pacotes();
+
+        $pacotes = $clsPacotes->query()
+        ->where('coleta', '=', $request->id)
+        ->orderBy('updated_at', 'DESC')
+        ->get();
+        
+        return view('pages.admin.coletas.historico-pacotes-coletados-dia', compact('pacotes'));
     }
 
     // Historico de coletas

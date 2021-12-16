@@ -35,11 +35,6 @@
                                 href="{{ route('admin.coletas.historico-diario', ['data' => "$solicitacao[0]"]) }}">
                                 Ver detalhes
                             </a>
-                            {{-- <form method="POST" action="{{ route('admin.coletas.historico-diario') }}">
-                                @csrf
-                                <input type="hidden" name="data" value="{{ $solicitacao[0] }}">
-                                <button class="btn btn-link p-0 btn-sm">Ver coletas</button>
-                            </form> --}}
                         </li>
                     @endforeach
                 </ul>

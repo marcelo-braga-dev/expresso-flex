@@ -3,20 +3,18 @@
 @section('content')
 
     <div class="header bg-principal bg-height-top"></div>
-
-    <!-- Page content -->
+    
     <div class="container-fluid mt--9 mb-6">
         <div class="card">
-            <!-- Card header -->
             <div class="card-header border-0 justify-content-between">
                 <div class="row justify-content-between align-items-center px-3">
                     <div>
-                        <h3 class="mb-0">Entregadores Cadastrados</h3>
-                        <a class="btn btn-primary" href="{{ route('admin.usuarios.entregador.new') }}">
+                        <h3>Entregadores Cadastrados</h3>                        
+                        <a class="btn btn-primary mb-2 mb-md-0" href="{{ route('admin.usuarios.entregador.new') }}">
                             Cadastrar Entregador
                         </a>
                     </div>
-                    <div>
+                    <div class="text-center">
                         <div class="form-group m-0">
                             <div class="input-group">
                                 <div class="input-group-prepend">

@@ -3,21 +3,19 @@
 @section('content')
     <div class="header bg-principal bg-height-top"></div>
 
-    <!-- Page content -->
     <div class="container-fluid mt--9">
         <div class="card mb-4">
-            <!-- Card header -->
             <div class="card-header border">
                 <div class="d-flex justify-content-between align-items-center">
                     <h3 class="mb-0">Irformações do Pacote</h3>
-                    {{-- <a class="btn btn-primary btn-sm text-white" href="{{ url()->previous() }}">
+                    <a class="btn btn-primary btn-sm text-white" href="{{ url()->previous() }}">
                         Voltar
-                    </a> --}}
+                    </a>
                 </div>
             </div>
 
-            <div class="card-body">
-                <div class="card p-3 mb-4">
+            <div class="card-body p-1">
+                <div class="card p-3 mb-2">
                     <div class="row mb-2">
                         <div class="col-md-6">
                             <p class="text-sm mb-0">
@@ -58,7 +56,7 @@
                 </div>
 
                 {{-- Destinatario --}}
-                <div class="card p-3 mb-4">
+                <div class="card p-3 mb-2">
                     <h3>Destinatário</h3>
                     <div class="row mb-3">
                         <div class="col-md-6">
@@ -90,7 +88,7 @@
                 </div>
 
                 {{-- Remetente --}}
-                <div class="card p-3 mb-4">
+                <div class="card p-3 mb-2">
                     <h3>Remetente</h3>
                     <div class="row mb-3">
                         <div class="col-md-6">
@@ -118,7 +116,7 @@
                     </div>
                 </div>
 
-                <div class="card p-3 mb-4">
+                <div class="card p-3 mb-2">
                     <h3>Informações da Entrega</h3>
                     <div class="row mb-2">
                         <div class="col-md-6">
@@ -162,7 +160,7 @@
                     @endif
                 </div>
 
-                <div class="card p-3 mb-4">
+                <div class="card p-3 mb-2">
                     <h3 class="mb-3">Histórico</h3>
                     <div class="row mb-2">
                         <div class="col-12">
@@ -202,6 +200,7 @@
             </div>
         </div>
     </div>
+
     @include('layouts.footers.auth')
-    </div>
+    
 @endsection
