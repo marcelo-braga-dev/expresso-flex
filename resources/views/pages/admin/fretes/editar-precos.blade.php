@@ -11,12 +11,13 @@
                         <h4 class="card-title text-uppercase mb-0">Editar valores do frete</h4>
                     </div>
                     <div class="col-auto">
-                        <a class="btn btn-primary btn-sm" href="{{url()->previous()}}">Voltar</a>
+                        <a class="btn btn-primary btn-sm" href="{{ url()->previous() }}">Voltar</a>
                     </div>
                 </div>
             </div>
             <div class="card-body">
-                <p>{{ get_dados_usuario($cliente['user_id'])->nome }}</p>
+                <h4 class="mb-4">{{ get_dados_usuario($cliente['user_id'])->nome }}</h4>
+
                 <form method="post" action="{{ route('admin.fretes.atualiza-preco-clientes.put') }}">
                     @csrf @method('put')
                     <div class="row align-items-center">
@@ -27,7 +28,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">R$</div>
                                     </div>
-                                    <input type="text" class="form-control money pl-2 sp" name="sao_paulo"
+                                    <input type="number" step="0.01" class="form-control pl-2" name="sao_paulo"
                                         style="width: 20px" value="{{ $cliente['sao_paulo'] }}">
                                 </div>
                             </small>
@@ -39,7 +40,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">R$</div>
                                     </div>
-                                    <input type="text" class="form-control money pl-2 gsp" name="grande_sao_paulo"
+                                    <input type="number" step="0.01" class="form-control pl-2" name="grande_sao_paulo"
                                         value="{{ $cliente['grande_sao_paulo'] }}">
                                 </div>
                             </small>
@@ -52,8 +53,5 @@
                 </form>
             </div>
         </div>
-    </div>
-
-    @include('layouts.footers.auth')
     </div>
 @endsection
