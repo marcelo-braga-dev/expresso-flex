@@ -1,23 +1,23 @@
-@extends('layouts.admin', ['title' => 'Histórico de Pacotes', 'menu_suspenso' => 'financeiro'])
+@extends('layouts.admin', ['title' => 'Faturamento do Entregador', 'menu_suspenso' => 'financeiro'])
 
 @section('content')
     <div class="header bg-principal bg-height-top"></div>
 
-    <div class="container-fluid mt--9">
+    <div class="container-fluid mt--9 mb-4">
         <div class="row">
             <div class="col-md-5">
                 {{-- Faturamento --}}
                 <div class="card card-stats mb-3">
-                    <div class="card-body">
+                    <div class="card-body bg-white">
                         <div class="row">
                             <div class="col">
                                 <h5 class="card-title text-uppercase text-muted mb-0">
                                     Valor a pagar
                                 </h5>
-                                <small class="text-warning d-block"><b>
-                                    {{ $fretes['quinzena'] }}° Quinzena de
-                                    {{ $fretes['mes'] . '/' . $fretes['ano'] }}</b>
-                                </small>
+                                <span class="text-warning d-block"><b>
+                                        {{ $fretes['quinzena'] }}° Quinzena de
+                                        {{ $fretes['mes'] . '/' . $fretes['ano'] }}</b>
+                                </span>
                                 <span class="h2 font-weight-bold mb-0">
                                     R$ {{ number_format($fretes['faturamento']['aberto'], 2, ',', '.') }}
                                 </span>
@@ -42,7 +42,7 @@
 
                 {{-- Pagamento --}}
                 <div class="card card-stats mb-3">
-                    <div class="card-body">
+                    <div class="card-body bg-white">
                         <div class="row mb-3">
                             <div class="col">
                                 <h5 class="card-title text-uppercase text-muted mb-0">
@@ -60,18 +60,14 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <p>Clique no botão abaixo para confirmar o pagamento da
+                                <p>
+                                    Clique no botão abaixo para confirmar o pagamento da
                                     {{ $fretes['quinzena'] }}° Quinzena de {{ $fretes['mes'] . '/' . $fretes['ano'] }}.
                                 </p>
-                                <form method="POST"
-                                    action="{{ route('admin.financeiro.entregador.pagamento-dinheiro') }}">
-                                    @csrf @method('put')
-                                    <input type="hidden" name="id" value="{{ $user }}">
-                                    <input type="hidden" name="quinzena" value="{{ $fretes['quinzena'] }}">
-                                    <input type="hidden" name="mes" value="{{ $fretes['mes'] }}">
-                                    <input type="hidden" name="ano" value="{{ $fretes['ano'] }}">
-                                    <button class="btn btn-success">Confirmar Pagamento</button>
-                                </form>
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#modalExemplo">
+                                    Confirmar Pagamento
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -105,7 +101,7 @@
                                         <th></th>
                                     </tr>
                                 </thead>
-                                <tbody class="list">
+                                <tbody class="list bg-white">
                                     @if (!empty($fretes['dias']))
                                         @foreach ($fretes['dias'] as $dia => $frete)
                                             <tr>
@@ -137,55 +133,36 @@
                     </div>
                 </div>
             </div>
-            {{-- <div class="col-md-4">
-                <div class="card card-stats mb-3">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col">
-                                <h5 class="card-title text-uppercase text-muted mb-0">Faturamento Mensal</h5>
-                                <span class="h2 font-weight-bold mb-0">
-                                    R$ {{ $total['valor_total'] }}
-                                </span>
-                            </div>
-                            <div class="col-auto">
-                                <div class="icon icon-shape bg-success text-white rounded-circle shadow">
-                                    <i class="fas fa-dollar-sign"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="mt-1 mb-0 text-sm">
-                            <span class="text-nowrap d-block"><b>São Paulo:</b> R$ {{ $total['valor_sp'] }}</span>
-                            <span class="text-nowrap"><b>Grande São Paulo:</b> R$ {{ $total['valor_g_sp'] }}</span>
-                        </p>
-                    </div>
-                </div>
-            </div> --}}
-            {{-- <div class="col-md-4">
-                <div class="card card-stats mb-3">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col">
-                                <h5 class="card-title text-uppercase text-muted mb-0">Total de Pacotes</h5>
-                                <span class="h2 font-weight-bold mb-0">
-                                    {{ $total['total_pacotes'] }} <span class="small font-weight-normal">pacotes</span>
-                                </span>
-                            </div>
-                            <div class="col-auto">
-                                <div class="icon icon-shape bg-orange text-white rounded-circle shadow">
-                                    <i class="fas fa-boxes"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="mt-1 mb-0 text-sm">
-                            <span class="text-nowrap d-block"><b>São Paulo:</b> {{ $total['pacotes_sp'] }} pacotes</span>
-                            <span class="text-nowrap"><b>Grande São Paulo:</b> {{ $total['pacotes_g_sp'] }}
-                                pacotes</span>
-                        </p>
-                    </div>
-                </div>
-            </div> --}}
         </div>
-        @include('layouts.footers.auth')
+    </div>
+
+    {{-- Modal --}}
+    <div class="modal fade" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Confirmar Pagamento</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Confirmar o pagamento do pagamento da quinzena.
+                </div>
+                <div class="modal-footer">
+                    <form method="POST" action="{{ route('admin.financeiro.entregador.pagamento-dinheiro') }}">
+                        @csrf @method('put')
+                        <input type="hidden" name="id" value="{{ $user }}">
+                        <input type="hidden" name="quinzena" value="{{ $fretes['quinzena'] }}">
+                        <input type="hidden" name="mes" value="{{ $fretes['mes'] }}">
+                        <input type="hidden" name="ano" value="{{ $fretes['ano'] }}">
+                        <button type="submit" class="btn btn-success">Confirmar Pagamento</button>
+                    </form>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
     </div>
 
 @endsection

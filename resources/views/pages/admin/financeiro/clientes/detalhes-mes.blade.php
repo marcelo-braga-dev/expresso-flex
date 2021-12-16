@@ -3,20 +3,22 @@
 @section('content')
     <div class="header bg-principal bg-height-top"></div>
 
-    <div class="container-fluid mt--9">
+    <div class="container-fluid mt--9 mb-5">
         <div class="row">
             <div class="col-md-5">
                 {{-- Faturamento --}}
                 <div class="card card-stats mb-3">
-                    <div class="card-body">
+                    <div class="card-body bg-white">
                         <div class="row">
                             <div class="col">
                                 <h5 class="card-title text-uppercase text-muted mb-0">
                                     Valor a pagar
                                 </h5>
-                                <span class="text-warning d-block"><b>
+                                <span class="text-warning d-block">
+                                    <b>
                                         {{ $fretes['quinzena'] }}° Quinzena de
-                                        {{ $fretes['mes'] . '/' . $fretes['ano'] }}</b>
+                                        {{ $fretes['mes'] . '/' . $fretes['ano'] }}
+                                    </b>
                                 </span>
                                 <span class="h2 font-weight-bold mb-0">
                                     R$ {{ number_format($fretes['faturamento']['aberto'], 2, ',', '.') }}
@@ -28,7 +30,7 @@
                                 </div>
                             </div>
                         </div>
-                        <p class="mt-1 mb-0 text-sm">
+                        <div class="mt-1 mb-0 text-sm">
                             <span class="text-nowrap d-block">
                                 <b>Valores Pagos:</b> R$ {{ number_format($fretes['faturamento']['pago'], 2, ',', '.') }}
                             </span>
@@ -36,13 +38,13 @@
                                 <b>Faturamento Total:</b> R$
                                 {{ number_format($fretes['faturamento']['total'], 2, ',', '.') }}
                             </span>
-                        </p>
+                        </div>
                     </div>
                 </div>
 
                 {{-- Pagamento --}}
                 <div class="card card-stats mb-3">
-                    <div class="card-body">
+                    <div class="card-body bg-white">
                         <div class="row mb-3">
                             <div class="col">
                                 <h5 class="card-title text-uppercase text-muted mb-0">
@@ -60,18 +62,14 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <p>Clique no botão abaixo para confirmar o pagamento da
+                                <p>
+                                    Clique no botão abaixo para confirmar o pagamento da
                                     {{ $fretes['quinzena'] }}° Quinzena de {{ $fretes['mes'] . '/' . $fretes['ano'] }}.
                                 </p>
-                                <form method="POST"
-                                    action="{{ route('admin.financeiro.cliente.pagamento-dinheiro') }}">
-                                    @csrf @method('put')
-                                    <input type="hidden" name="id" value="{{ $user }}">
-                                    <input type="hidden" name="quinzena" value="{{ $fretes['quinzena'] }}">
-                                    <input type="hidden" name="mes" value="{{ $fretes['mes'] }}">
-                                    <input type="hidden" name="ano" value="{{ $fretes['ano'] }}">
-                                    <button class="btn btn-success">Confirmar Pagamento</button>
-                                </form>
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#modalExemplo">
+                                    Confirmar Pagamento
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -105,7 +103,7 @@
                                         <th></th>
                                     </tr>
                                 </thead>
-                                <tbody class="list">
+                                <tbody class="list bg-white">
                                     @if (!empty($fretes['dias']))
                                         @foreach ($fretes['dias'] as $dia => $frete)
                                             <tr>
@@ -138,7 +136,35 @@
                 </div>
             </div>
         </div>
-        @include('layouts.footers.auth')
+    </div>
+
+    {{-- Modal --}}
+    <div class="modal fade" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Confirmar Pagamento</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Confirmar o recebimento do pagamento da quinzena.
+                </div>
+                <div class="modal-footer">
+                    <form method="POST" action="{{ route('admin.financeiro.cliente.pagamento-dinheiro') }}">
+                        @csrf @method('put')
+                        <input type="hidden" name="id" value="{{ $user }}">
+                        <input type="hidden" name="quinzena" value="{{ $fretes['quinzena'] }}">
+                        <input type="hidden" name="mes" value="{{ $fretes['mes'] }}">
+                        <input type="hidden" name="ano" value="{{ $fretes['ano'] }}">
+                        <button type="submit" class="btn btn-success">Confirmar Pagamento</button>
+                    </form>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
     </div>
 
 @endsection
