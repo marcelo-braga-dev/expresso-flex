@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Home'])
-
-@section('content')
+<x-layout>
 
     <div class="header bg-principal bg-height-top"></div>
 
@@ -62,7 +60,5 @@
                 </div>
             </div>
         </div>
-
-        <hr>
-
-    @endsection
+    </div>
+</x-layout>

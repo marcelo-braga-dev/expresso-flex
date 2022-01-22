@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Etiquetas'])
-
-@section('content')
+<x-layout>
     <div class="header bg-principal bg-height-top"></div>
 
     <div class="container-fluid mt--9">
@@ -85,4 +83,4 @@
             </div>
         </div>
     </div>
-@endsection
+    </x-layout>

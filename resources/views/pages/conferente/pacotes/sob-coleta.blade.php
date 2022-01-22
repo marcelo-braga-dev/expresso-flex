@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Pacotes sendo Coletados'])
-
-@section('content')
+<x-layout>
 
     <div class="header bg-principal bg-height-top"></div>
 
@@ -52,7 +50,7 @@
                                         id="tabs-entregador-{{ $entregador['id_entregador'] }}" role="tabpanel"
                                         aria-labelledby="tabs-entregador--tab">
                                         <ul class="list-group list-group-flush">
-                                            @foreach ($entregador['pacotes'] as $pacote)                                                
+                                            @foreach ($entregador['pacotes'] as $pacote)
 
                                                 @include('layouts.componentes.list-pacotes', [
                                                 'link' => 'conferente.pacotes.info',
@@ -74,6 +72,6 @@
 
             </div>
         </div>
-        @include('layouts.footers.auth')
+
     </div>
-@endsection
+    </x-layout>

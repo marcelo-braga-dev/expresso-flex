@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Check-in'])
-
-@section('content')
+<x-layout>
     <div class="header bg-principal bg-height-top">
         <div class="container-fluid">
             <div class="header-body">
@@ -27,25 +25,25 @@
                                 <div class="row justify-content-between align-items-center p-3 ">
                                     <div class="col-lg-auto mb-3">
                                         <small class="d-block mb-2">
-                                            <b>Destinatário:</b> 
+                                            <b>Destinatário:</b>
                                             {{ get_destinatario_pacote($pacote->destinatario)->nome }}
                                         </small>
                                         <small class="d-block mb-2">
-                                            <b>Código de Rastreio:</b> 
+                                            <b>Código de Rastreio:</b>
                                             {{ $pacote->rastreio }}
                                         </small>
                                         <small class="d-block mb-2">
-                                            <b>Origem:</b> 
+                                            <b>Origem:</b>
                                             {{ get_origem_pacote($pacote->origem) }}
                                         </small>
                                         @isset($pacote->codigo)
                                         <small class="d-block mb-2">
-                                            <b>Código de envio:</b> 
+                                            <b>Código de envio:</b>
                                             #{{ $pacote->codigo }}
                                         </small>
                                         @endisset
                                         <small class="d-block mb-2">
-                                            <b>Endereço de entrega:</b> 
+                                            <b>Endereço de entrega:</b>
                                             {{ get_endereco_destinatario($pacote->destinatario) }}
                                         </small>
                                         <small class="d-block">
@@ -59,7 +57,7 @@
                                             Por favor, escolha um entregador abaixo.
                                         </div>
                                     @endempty
-                                    
+
                                     <div class="col-lg-4 mb-3">
                                         <small class="text-muted">Motoboy que irá fazer a entrega</small>
                                         <select class="form-control" name="id_entregador" form="form-confirmar" required>
@@ -93,6 +91,6 @@
             </div>
         </div>
 
-        @include('layouts.footers.auth')
+
     </div>
-@endsection
+    </x-layout>

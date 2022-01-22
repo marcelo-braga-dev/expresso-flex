@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Histórico de Pacotes', 'menu_suspenso' => 'pacotes'])
-
-@section('content')
+<x-layout>
     <div class="header bg-principal bg-height-top"></div>
 
     <div class="container-fluid mt--9">
@@ -28,11 +26,11 @@
                                 @endif
                                 {{ date('d/m/Y', strtotime($pacote[0])) }}<br>
                                 <small class="d-block">
-                                    {{ count($pacote) }} entragas                                    
+                                    {{ count($pacote) }} entragas
                                 </small>
                             </span>
                             <a class="btn btn-link p-0 btn-sm"
-                                href="{{ route('admin.pacotes.historico-diario', ['data' => "$pacote[0]"]) }}">
+                               href="{{ route('admin.pacotes.historico-diario', ['data' => "$pacote[0]"]) }}">
                                 Ver pacotes
                             </a>
                         </li>
@@ -47,6 +45,6 @@
             </div>
         </div>
 
-        @include('layouts.footers.auth')
+
     </div>
-@endsection
+</x-layout>

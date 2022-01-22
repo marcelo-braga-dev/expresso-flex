@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Pacotes'])
-
-@section('content')
+<x-layout>
 
     <div class="header bg-principal bg-height-top"></div>
 
@@ -26,7 +24,8 @@
                                         <div class="col-12 col-md-auto">
                                             <small class="d-block mb-2">
                                                 <b>Código de Rastreio:</b> {{ $pacote->rastreio }}
-                                                @if ($pacote->codigo) <b class="ml-4">Código do Pacote:</b> #{{ $pacote->codigo }} @endif
+                                                @if ($pacote->codigo) <b class="ml-4">Código do Pacote:</b>
+                                                #{{ $pacote->codigo }} @endif
                                             </small>
                                             <small class="d-block mb-2">
                                                 <b>Entregador:</b>
@@ -41,12 +40,15 @@
                                             </small>
                                             <div class="alterar-entregador" style="display: none">
                                                 <hr>
-                                                <form method="POST" action="{{ route('conferente.pacotes.alterar-entregador') }}"> 
+                                                <form method="POST"
+                                                      action="{{ route('conferente.pacotes.alterar-entregador') }}">
                                                     @csrf @method('put')
                                                     <div class="row mb-3">
                                                         <div class="col-md-auto mb-2">
-                                                            <label>Escolha o entregador para transferir a entrega</label>
-                                                            <select class="form-control" name="id_novo_entregador" required>
+                                                            <label>Escolha o entregador para transferir a
+                                                                entrega</label>
+                                                            <select class="form-control" name="id_novo_entregador"
+                                                                    required>
                                                                 <option value="">Escolha o Entregador</option>
                                                                 @foreach ($entregadores as $entregador)
                                                                     <option value="{{ $entregador->id }}">
@@ -56,7 +58,8 @@
                                                             </select>
                                                         </div>
                                                         <div class="col-md-auto align-self-end mb-3">
-                                                            <input type="hidden" name="id_pacote" value="{{ $pacote->id }}">
+                                                            <input type="hidden" name="id_pacote"
+                                                                   value="{{ $pacote->id }}">
                                                             <button class="btn btn-success">Enviar</button>
                                                         </div>
                                                     </div>
@@ -66,7 +69,9 @@
                                         </div>
                                         <div class="col-12 col-md-auto">
                                             <div>
-                                                <button class="btn btn-primary btn-alterar-entregador">Alterar Entregador</button>
+                                                <button class="btn btn-primary btn-alterar-entregador">Alterar
+                                                    Entregador
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -90,13 +95,13 @@
     </div>
 
     <script>
-        $(function(){
-            $('.btn-alterar-entregador').click(function(){                
+        $(function () {
+            $('.btn-alterar-entregador').click(function () {
                 $(this).parent().parent().parent().find('.alterar-entregador').toggle(700);
             });
         })
     </script>
 
-    @include('layouts.footers.auth')
+
     </div>
-@endsection
+</x-layout>

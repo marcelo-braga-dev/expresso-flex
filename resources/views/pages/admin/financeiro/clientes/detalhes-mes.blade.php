@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Faturamenmto do Cliente', 'menu_suspenso' => 'financeiro'])
-
-@section('content')
+<x-layout>
     <div class="header bg-principal bg-height-top"></div>
 
     <div class="container-fluid mt--9 mb-5">
@@ -67,7 +65,7 @@
                                     {{ $fretes['quinzena'] }}° Quinzena de {{ $fretes['mes'] . '/' . $fretes['ano'] }}.
                                 </p>
                                 <button type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target="#modalExemplo">
+                                        data-target="#modalExemplo">
                                     Confirmar Pagamento
                                 </button>
                             </div>
@@ -97,28 +95,28 @@
                         <div class="table-responsive">
                             <table class="table align-items-center table-flush text-center">
                                 <thead class="thead-light">
-                                    <tr>
-                                        <th>Data</th>
-                                        <th>Total do Dia</th>
-                                        <th></th>
-                                    </tr>
+                                <tr>
+                                    <th>Data</th>
+                                    <th>Total do Dia</th>
+                                    <th></th>
+                                </tr>
                                 </thead>
                                 <tbody class="list bg-white">
-                                    @if (!empty($fretes['dias']))
-                                        @foreach ($fretes['dias'] as $dia => $frete)
-                                            <tr>
-                                                <th scope="row">
-                                                    {{ $dia . '/' . $fretes['mes'] . '/' . $fretes['ano'] }}
-                                                </th>
-                                                <td>
-                                                    R$ {{ number_format($frete, 2, ',', '.') }}
-                                                </td>
-                                                <td class="text-right">
-                                                    <a href="/">Detalhes</a>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    @endif
+                                @if (!empty($fretes['dias']))
+                                    @foreach ($fretes['dias'] as $dia => $frete)
+                                        <tr>
+                                            <th scope="row">
+                                                {{ $dia . '/' . $fretes['mes'] . '/' . $fretes['ano'] }}
+                                            </th>
+                                            <td>
+                                                R$ {{ number_format($frete, 2, ',', '.') }}
+                                            </td>
+                                            <td class="text-right">
+                                                <a href="/">Detalhes</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
                                 </tbody>
                             </table>
                         </div>
@@ -140,7 +138,7 @@
 
     {{-- Modal --}}
     <div class="modal fade" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -167,4 +165,4 @@
         </div>
     </div>
 
-@endsection
+</x-layout>

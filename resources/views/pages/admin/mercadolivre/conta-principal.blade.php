@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Mercado Livre'])
-
-@section('content')
+<x-layout>
 
     <div class="header bg-principal bg-height-top"></div>
 
@@ -13,7 +11,7 @@
             </div>
             <div class="card-body">
                 <form method="post" action="{{ route('admin.mercadolivre.conta-sincronizada.update') }}"
-                    autocomplete="off">
+                      autocomplete="off">
                     @csrf
                     @method('put')
                     <div class="px-lg-4">
@@ -22,16 +20,16 @@
                                 <div class="form-group">
                                     <label class="form-control-label" for="input-name">App ID</label>
                                     <input type="text" name="app_id" id="app_id"
-                                        class="form-control form-control-alternative" value="{{ $dados['app_id'] }}"
-                                        required autofocus>
+                                           class="form-control form-control-alternative" value="{{ $dados['app_id'] }}"
+                                           required autofocus>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label class="form-control-label" for="input-name">Client Secret</label>
                                     <input type="text" name="client_secret" id="input-name"
-                                        class="form-control form-control-alternative"
-                                        value="{{ $dados['client_secret'] }}" required autofocus>
+                                           class="form-control form-control-alternative"
+                                           value="{{ $dados['client_secret'] }}" required autofocus>
                                 </div>
                             </div>
                         </div>
@@ -39,11 +37,13 @@
                         <div class="form-row">
                             <div class="col-12">
                                 <div class="form-group">
-                                    <label class="form-control-label" for="input-name">Url de Retorno da Autenticação (URI
+                                    <label class="form-control-label" for="input-name">Url de Retorno da Autenticação
+                                        (URI
                                         redirect)</label>
                                     <input type="text" name="url_retorno" id="url_retorno"
-                                        class="form-control form-control-alternative" value="{{ $dados['url_retorno'] }}"
-                                        required autofocus>
+                                           class="form-control form-control-alternative"
+                                           value="{{ $dados['url_retorno'] }}"
+                                           required autofocus>
                                 </div>
                             </div>
                         </div>
@@ -54,8 +54,8 @@
                                     <label class="form-control-label" for="input-name">URL de retornos de chamada de
                                         notificação</label>
                                     <input type="text" name="url_notificacao" id="url_notificacao"
-                                        class="form-control form-control-alternative"
-                                        value="{{ $dados['url_notificacao'] }}" required autofocus>
+                                           class="form-control form-control-alternative"
+                                           value="{{ $dados['url_notificacao'] }}" required autofocus>
                                 </div>
                             </div>
                         </div>
@@ -72,6 +72,6 @@
             </div>
         </div>
 
-        @include('layouts.footers.auth')
+
     </div>
-@endsection
+</x-layout>

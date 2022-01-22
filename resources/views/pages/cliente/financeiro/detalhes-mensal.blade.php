@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Faturamenmto do Cliente', 'menu_suspenso' => 'financeiro'])
-
-@section('content')
+<x-layout>
     <div class="header bg-principal bg-height-top"></div>
 
     <div class="container-fluid mt--9">
@@ -144,7 +142,7 @@
                 </div>
             </div>
         </div>
-        @include('layouts.footers.auth')
+
     </div>
     <script src="https://sdk.mercadopago.com/js/v2"></script>
 
@@ -168,4 +166,4 @@
         </script>
     @endif
 
-@endsection
+    </x-layout>

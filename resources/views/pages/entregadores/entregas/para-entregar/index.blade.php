@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Entregas'])
-
-@section('content')
+<x-layout>
 
     <div class="header bg-principal bg-height-top"></div>
 
@@ -47,7 +45,7 @@
                                             {{ get_endereco_destinatario($pacote->destinatario) }}
                                             - Cep: {{ formatar_cep($pacote->regiao) }}
                                         </p>
-                                        
+
                                         <p class="text-sm mb-0">
                                             <i class="fas fa-qrcode mr-2"></i>
                                             {{ get_origem_pacote($pacote->origem) }}
@@ -79,7 +77,7 @@
                         </div>
                     </div>
                 @endif
-                
+
             </div>
         </div>
     </div>
@@ -94,4 +92,4 @@
         }
     </script>
 
-@endsection
+    </x-layout>

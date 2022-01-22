@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Etiquetas'])
-
-@section('content')
+<x-layout>
 
     <div class="header bg-principal bg-height-top"></div>
 
@@ -137,7 +135,7 @@
             </div>
         </div>
     </div>
-    @include('layouts.footers.auth')
+
 
     <script src="/assets/js/components/busca-cep.js"></script>
-@endsection
+    </x-layout>

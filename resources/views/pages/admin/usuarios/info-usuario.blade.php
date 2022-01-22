@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Cadastro de Clientes', 'menu_suspenso' => 'usuarios'])
-
-@section('content')
+<x-layout>
     <div class="header bg-principal bg-height-top"></div>
 
     <div class="container-fluid mt--9">
@@ -50,7 +48,8 @@
                     <h5>Informações Comerciais</h5>
                     <div class="row">
                         <div class="col-md-6">
-                            <p>Nome Fantasia: @if (isset($dados['nome_fantasia'])) {{ $dados['nome_fantasia'] }} @endif</p>
+                            <p>Nome
+                                Fantasia: @if (isset($dados['nome_fantasia'])) {{ $dados['nome_fantasia'] }} @endif</p>
                         </div>
                         <div class="col-md-6">
                             <p>CNPJ: @if (isset($dados['cnpj'])) {{ $dados['cnpj'] }} @endif</p>
@@ -63,10 +62,12 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <p>Rep. Comercial: @if (isset($dados['nome_comercial'])) {{ $dados['nome_comercial'] }} @endif</p>
+                            <p>Rep.
+                                Comercial: @if (isset($dados['nome_comercial'])) {{ $dados['nome_comercial'] }} @endif</p>
                         </div>
                         <div class="col-md-6">
-                            <p>Email Comercial: @if (isset($dados['email_comercial'])) {{ $dados['email_comercial'] }} @endif</p>
+                            <p>Email
+                                Comercial: @if (isset($dados['email_comercial'])) {{ $dados['email_comercial'] }} @endif</p>
                         </div>
                     </div>
                 </div>
@@ -80,25 +81,13 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <p>Data do Cadastro: @if (isset($usuario->created_at)) {{ date('d/m/Y H:i:s', strtotime($usuario->created_at)) }} @endif</p>
+                            <p>Data do
+                                Cadastro: @if (isset($usuario->created_at)) {{ date('d/m/Y H:i:s', strtotime($usuario->created_at)) }} @endif</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        {{-- <div class="card">
-            <!-- Card header -->
-            <div class="card-header border">
-                <div class="d-flex justify-content-between align-items-center">
-                    <h3 class="mb-0">Redefinir Senha</h3>
-                </div>
-            </div>
-            <div class="container-fluid my-3">
-                <div class="table-responsive">
-                </div>
-            </div>
-        </div> --}}
-
     </div>
-@endsection
+</x-layout>

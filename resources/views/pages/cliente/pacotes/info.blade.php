@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Informações do Pacote'])
-
-@section('content')
+<x-layout>
     <div class="header bg-principal bg-height-top"></div>
 
     <!-- Page content -->
@@ -177,4 +175,4 @@
             </div>
         </div>
     </div>
-@endsection
+    </x-layout>

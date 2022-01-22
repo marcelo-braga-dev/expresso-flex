@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Entregas'])
-
-@section('content')
+<x-layout>
 
     <div class="header bg-principal bg-height-top"></div>
 
@@ -117,6 +115,6 @@
                 </form>
             </div>
         </div>
-        @include('layouts.footers.auth')
+
     </div>
-@endsection
+    </x-layout>

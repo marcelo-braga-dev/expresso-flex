@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Cadastro de Clientes', 'menu_suspenso' => 'pacotes'])
-
-@section('content')
+<x-layout>
     <div class="header bg-principal bg-height-top"></div>
 
     <div class="container-fluid mt--9 mb-4">
@@ -167,30 +165,30 @@
                             <div class="table-responsive">
                                 <table class="table align-items-center table-flush">
                                     <thead class="thead-light">
-                                        <tr>
-                                            <th scope="col"></th>
-                                            <th scope="col">Status</th>
-                                            <th scope="col">Data</th>
-                                        </tr>
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Data</th>
+                                    </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($historicos as $historico)
-                                            <tr>
-                                                <td class="text-center">
-                                                    @if (empty($historico['obs']))
-                                                        <i class="fas fa-check text-success"></i>
-                                                    @else
-                                                        {{ $historico['obs'] }}
-                                                    @endif
-                                                </td>
-                                                <th scope="row">
-                                                    {{ get_status_pacote($historico['status']) }}
-                                                </th>
-                                                <td>
-                                                    {{ date('d/m/y H:i', strtotime($historico['data'])) }}
-                                                </td>
-                                            </tr>
-                                        @endforeach
+                                    @foreach ($historicos as $historico)
+                                        <tr>
+                                            <td class="text-center">
+                                                @if (empty($historico['obs']))
+                                                    <i class="fas fa-check text-success"></i>
+                                                @else
+                                                    {{ $historico['obs'] }}
+                                                @endif
+                                            </td>
+                                            <th scope="row">
+                                                {{ get_status_pacote($historico['status']) }}
+                                            </th>
+                                            <td>
+                                                {{ date('d/m/y H:i', strtotime($historico['data'])) }}
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -200,5 +198,4 @@
             </div>
         </div>
     </div>
-    
-@endsection
+</x-layout>

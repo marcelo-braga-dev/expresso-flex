@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Cadastro de Conferentes', 'menu_suspenso' => 'usuarios'])
-
-@section('content')
+<x-layout>
     <div class="header bg-principal bg-height-top"></div>
 
     <div class="container-fluid mt--9">
@@ -21,7 +19,9 @@
                         {{ $mensagem }}
                     </div>
                 @endif
-                <form method="post" action="@if (isset($usuario->id)){{ route('admin.usuarios.conferente.update') }}@else{{ route('admin.usuarios.conferente.create') }}@endif" autocomplete="off">
+                <form method="post"
+                      action="@if (isset($usuario->id)){{ route('admin.usuarios.conferente.update') }}@else{{ route('admin.usuarios.conferente.create') }}@endif"
+                      autocomplete="off">
                     @csrf
                     @method('put')
 
@@ -42,7 +42,7 @@
                         <div class="form-group">
                             <label class="form-control-label" for="nome">Nome</label>
                             <input type="text" name="nome" id="nome" class="form-control form-control-alternative"
-                                value="@if (isset($usuario->nome)){{ $usuario->nome }}@endif" required autofocus>
+                                   value="@if (isset($usuario->nome)){{ $usuario->nome }}@endif" required autofocus>
                         </div>
 
                         <div class="row">
@@ -50,16 +50,18 @@
                                 <div class="form-group">
                                     <label class="form-control-label" for="email">E-mail</label>
                                     <input type="email" name="email" id="email"
-                                        class="form-control form-control-alternative" value="@if (isset($usuario->email)){{ $usuario->email }}@endif"
-                                        required autofocus>
+                                           class="form-control form-control-alternative"
+                                           value="@if (isset($usuario->email)){{ $usuario->email }}@endif"
+                                           required autofocus>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="form-group">
                                     <label class="form-control-label" for="celular">Celular</label>
                                     <input type="text" name="celular" id="celular"
-                                        class="form-control form-control-alternative" value="@if (isset($dados['celular'])){{ $dados['celular'] }}@endif"
-                                        required autofocus>
+                                           class="form-control form-control-alternative"
+                                           value="@if (isset($dados['celular'])){{ $dados['celular'] }}@endif"
+                                           required autofocus>
                                 </div>
                             </div>
                         </div>
@@ -69,15 +71,16 @@
                                 <div class="form-group">
                                     <label class="form-control-label" for="perfil">Perfil</label>
                                     <textarea type="text" name="perfil" id="perfil" rows="5"
-                                        class="form-control form-control-alternative" required
-                                        autofocus>@if (isset($dados['perfil'])){{ $dados['perfil'] }}@endif</textarea>
+                                              class="form-control form-control-alternative" required
+                                              autofocus>@if (isset($dados['perfil'])){{ $dados['perfil'] }}@endif</textarea>
                                 </div>
                             </div>
                         </div>
 
                         <div class="text-center">
                             <input type="hidden" name="tipo" value="cliente">
-                            <input type="hidden" name="editar" value="@if (isset($usuario->id)){{ $usuario->id }}@endif">
+                            <input type="hidden" name="editar"
+                                   value="@if (isset($usuario->id)){{ $usuario->id }}@endif">
                             <input type="hidden" name="id" value="@if (isset($usuario->id)){{ $usuario->id }}@endif">
                             <button type="submit" class="btn btn-success mt-4">Salvar</button>
                         </div>
@@ -86,6 +89,6 @@
             </div>
         </div>
 
-        @include('layouts.footers.auth')
+
     </div>
-@endsection
+</x-layout>

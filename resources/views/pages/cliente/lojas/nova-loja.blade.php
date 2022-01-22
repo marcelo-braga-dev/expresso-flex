@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Todos Clientes'])
-
-@section('content')
+<x-layout>
 
     <div class="header bg-principal bg-height-top"></div>
 
@@ -93,4 +91,4 @@
         </div>
     </div>
     <script src="/assets/js/components/busca-cep.js"></script>
-@endsection
+    </x-layout>

@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Cadastro de Clientes', 'menu_suspenso' => 'usuarios'])
-
-@section('content')
+<x-layout>
 
     <div class="header bg-principal bg-height-top"></div>
 
@@ -116,6 +114,6 @@
             </div>
         </div>
 
-        @include('layouts.footers.auth')
+
     </div>
-@endsection
+    </x-layout>

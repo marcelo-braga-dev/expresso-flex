@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Histórico de Pacotes'])
-
-@section('content')
+<x-layout>
     <div class="header bg-principal bg-height-top"></div>
 
     <div class="container-fluid mt--9">
@@ -17,19 +15,11 @@
                 </div>
             </div>
             <div class="card-body p-0">
-                <ul class="list-group list-group-flush">
-                    @foreach ($pacotes as $pacote)
-                        @include('layouts.componentes.list-pacotes', ['link' => 'cliente.pacotes.info-pacote'])
-                    @endforeach
-
-                    @if ($pacotes->isEmpty())
-                        <div class="col-auto text-center p-3">
-                            <small>Não há histórico de pacotes.</small>
-                        </div>
-                    @endif
-                </ul>
+                <x-elements.pacotes.items :pacotes="$pacotes"
+                                          link="cliente.pacotes.info-pacote">
+                </x-elements.pacotes.items>
             </div>
         </div>
-        @include('layouts.footers.auth')
+
     </div>
-@endsection
+</x-layout>

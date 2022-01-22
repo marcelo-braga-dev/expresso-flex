@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Pacotes'])
-
-@section('content')
+<x-layout>
     <div class="header bg-principal bg-height-top"></div>
 
     <div class="container-fluid mt--9">
@@ -92,7 +90,7 @@
                                     <div class="col-auto text-right">
                                         <form method="POST" action="{{ route('conferente.pacotes.alterar-entregador') }}"
                                             class="form-inline"> @csrf @method('put')
-                                            
+
                                             <select class="form-control mr-2" name="id_entregador" required>
                                                 <option value="">Escolha o Entregador</option>
                                                 @foreach ($entregadores as $entregador)
@@ -123,7 +121,7 @@
             </div>
         </div>
 
-        @include('layouts.footers.auth')
+
     </div>
     <script>
         $(function() {
@@ -132,4 +130,4 @@
             })
         })
     </script>
-@endsection
+    </x-layout>

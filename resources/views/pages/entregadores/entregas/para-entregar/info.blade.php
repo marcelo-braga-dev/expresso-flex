@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Entregas'])
-
-@section('content')
+<x-layout>
 
     <div class="header bg-principal bg-height-top"></div>
 
@@ -125,5 +123,5 @@
     </div>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDi-BQBa6v16dcttIhXi-lTq9PGFoCH3cI"></script>
-    
-@endsection
+
+    </x-layout>

@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Entregas'])
-
-@section('content')
+<x-layout>
 
     <div class="header bg-principal bg-height-top"></div>
 
@@ -75,4 +73,4 @@
             </div>
         </div>
     </div>
-@endsection
+    </x-layout>

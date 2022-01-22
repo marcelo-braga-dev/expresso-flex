@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Histórico de Pacotes'])
-
-@section('content')
+<x-layout>
     <div class="header bg-principal bg-height-top"></div>
 
     <div class="container-fluid mt--9">
@@ -30,7 +28,7 @@
                                     <small>
                                         <table>
                                             <tr>
-                                                <td>Em aberto: </td>
+                                                <td>Em aberto:</td>
                                                 <td>
                                                     R$ @if (!empty($frete['aberto']))
                                                         {{ number_format($frete['aberto']['valor'], 2, ',', '.') }}
@@ -46,7 +44,7 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>Total a receber: &nbsp; </td>
+                                                <td>Total a receber: &nbsp;</td>
                                                 <td>
                                                     R$ @if (!empty($frete['total']) && $frete['total'] > 0)
                                                         {{ number_format($frete['total'], 2, ',', '.') }}
@@ -60,7 +58,7 @@
                             <?php $mes = $frete['mes'];
                             $ano = $frete['ano']; ?>
                             <a class="btn btn-link p-0 btn-sm"
-                                href="{{ route('entregadores.financeiro.receber.detalhes', ['mes' => $frete['mes'], 'ano' => $frete['ano']]) }}">
+                               href="{{ route('entregadores.financeiro.receber.detalhes', ['mes' => $frete['mes'], 'ano' => $frete['ano']]) }}">
                                 Detalhes
                             </a>
                         </li>
@@ -78,7 +76,5 @@
                 @endif
             </div>
         </div>
-
-        @include('layouts.footers.auth')
     </div>
-@endsection
+</x-layout>

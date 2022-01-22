@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Todos Conferentes', 'menu_suspenso' => 'usuarios'])
-
-@section('content')
+<x-layout>
 
     <div class="header bg-principal bg-height-top"></div>
 
@@ -31,60 +29,60 @@
             <div class="table-responsive">
                 <table class="table align-items-center table-flush">
                     <thead class="thead-light">
-                        <tr>
-                            <th scope="col" class="sort" data-sort="budget">Nome</th>
-                            <th scope="col" class="sort" data-sort="status">Status</th>
-                            <th scope="col"></th>
-                        </tr>
+                    <tr>
+                        <th scope="col" class="sort" data-sort="budget">Nome</th>
+                        <th scope="col" class="sort" data-sort="status">Status</th>
+                        <th scope="col"></th>
+                    </tr>
                     </thead>
                     <tbody class="list">
-                        @foreach ($conferentes as $usuario)
-                            <tr>
-                                <td class="budget">
-                                    <b>{{ $usuario->nome }}</b><br>
-                                    Id: #{{ $usuario->id }}<br>
-                                    Email: {{ $usuario->email }}<br>
-                                    @if (!empty($novaConta[$usuario->email]))
-                                        <a
-                                            href="{{ route('admin.usuarios.clientes.info-clientes', ['id' => "$usuario->id"]) }}">
-                                            <small>
-                                                O usuário ainda não ativou a conta.
-                                            </small>
+                    @foreach ($conferentes as $usuario)
+                        <tr>
+                            <td class="budget">
+                                <b>{{ $usuario->nome }}</b><br>
+                                Id: #{{ $usuario->id }}<br>
+                                Email: {{ $usuario->email }}<br>
+                                @if (!empty($novaConta[$usuario->email]))
+                                    <a
+                                        href="{{ route('admin.usuarios.clientes.info-clientes', ['id' => "$usuario->id"]) }}">
+                                        <small>
+                                            O usuário ainda não ativou a conta.
+                                        </small>
+                                    </a>
+                                @endif
+                            </td>
+                            <td>
+                                <label class="custom-toggle">
+                                    <input type="checkbox" class="status-usuario" value="{{ $usuario->id }}"
+                                           @if ($usuario->status) checked @endif>
+                                    <span class="custom-toggle-slider rounded-circle" data-label-off="Não"
+                                          data-label-on="Sim"></span>
+                                </label>
+                            </td>
+                            <td class="text-right">
+                                <div class="dropdown">
+                                    <a class="btn border btn-sm btn-icon-only text-dark" href="#" role="button"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                        <a class="dropdown-item"
+                                           href="{{ route('admin.usuarios.conferente.edit', ['id' => "$usuario->id"]) }}">
+                                            Editar
                                         </a>
-                                    @endif
-                                </td>
-                                <td>
-                                    <label class="custom-toggle">
-                                        <input type="checkbox" class="status-usuario" value="{{ $usuario->id }}"
-                                            @if ($usuario->status) checked @endif>
-                                        <span class="custom-toggle-slider rounded-circle" data-label-off="Não"
-                                            data-label-on="Sim"></span>
-                                    </label>
-                                </td>
-                                <td class="text-right">
-                                    <div class="dropdown">
-                                        <a class="btn border btn-sm btn-icon-only text-dark" href="#" role="button"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v"></i>
+                                        <a class="dropdown-item"
+                                           href="{{ route('admin.usuarios.conferente.info', ['id' => "$usuario->id"]) }}">
+                                            Detalhes
                                         </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item"
-                                                href="{{ route('admin.usuarios.conferente.edit', ['id' => "$usuario->id"]) }}">
-                                                Editar
-                                            </a>
-                                            <a class="dropdown-item"
-                                                href="{{ route('admin.usuarios.conferente.info', ['id' => "$usuario->id"]) }}">
-                                                Detalhes
-                                            </a>
-                                        </div>
                                     </div>
-                                </td>
-                            </tr>
-                        @endforeach
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
     @include('pages.admin.usuarios.partials.modalAlteraStatus')
-@endsection
+</x-layout>

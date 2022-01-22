@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Todos Clientes'])
-
-@section('content')
+<x-layout>
 
     <div class="header bg-principal bg-height-top"></div>
 
@@ -116,4 +114,4 @@
             });
         });
     </script>
-@endsection
+    </x-layout>

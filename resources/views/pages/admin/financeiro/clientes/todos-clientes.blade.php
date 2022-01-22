@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Faturamento dos Clientes', 'menu_suspenso' => 'financeiro'])
-
-@section('content')
+<x-layout>
     <div class="header bg-principal bg-height-top"></div>
 
     <div class="container-fluid mt--9">
@@ -35,7 +33,7 @@
                                 </small>
                             </div>
                             <a class="btn btn-link p-0 btn-sm"
-                                href="{{ route('admin.financeiro.cliente-mes', ['id' => $arg['user_id']]) }}">
+                               href="{{ route('admin.financeiro.cliente-mes', ['id' => $arg['user_id']]) }}">
                                 Ver detalhes
                             </a>
                         </li>
@@ -44,6 +42,6 @@
             </div>
         </div>
 
-        @include('layouts.footers.auth')
+
     </div>
-@endsection
+</x-layout>

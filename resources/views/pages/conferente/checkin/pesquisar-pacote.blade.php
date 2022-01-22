@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Check-in de Pacotes'])
-
-@section('content')
+<x-layout>
 
     <div class="header bg-principal bg-height-top"></div>
 
@@ -59,6 +57,6 @@
                 $('.btn-camera').show();
             }
         </script>
-        @include('layouts.footers.auth')
+
     </div>
-@endsection
+    </x-layout>

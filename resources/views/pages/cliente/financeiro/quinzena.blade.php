@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Faturamento na Quinzena do Cliente', 'menu_suspenso' => 'financeiro'])
-
-@section('content')
+<x-layout>
     <div class="header bg-principal bg-height-top"></div>
 
     <div class="container-fluid mt--9">
@@ -84,6 +82,6 @@
             </div>
         </div>
 
-        @include('layouts.footers.auth')
+
     </div>
-@endsection
+    </x-layout>

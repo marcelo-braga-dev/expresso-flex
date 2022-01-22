@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Configurações'])
-
-@section('content')
+<x-layout>
 
     <div class="header bg-principal bg-height-top"></div>
 
@@ -20,10 +18,10 @@
                                 </div>
                                 <div>
                                     <form class="form-inline" method="POST"
-                                        action="{{ route('admin.coletas.config-update') }}">
+                                          action="{{ route('admin.coletas.config-update') }}">
                                         @csrf @method('put')
                                         <input type="time" name="horario_limite_coleta" class="form-control"
-                                            value="{{ $data['horario_limite'] }}" required>
+                                               value="{{ $data['horario_limite'] }}" required>
                                         <button class="btn btn-success ml-2">Salvar</button>
                                     </form>
                                 </div>
@@ -33,6 +31,6 @@
                 </div>
             </div>
         </div>
-        @include('layouts.footers.auth')
+
     </div>
-@endsection
+</x-layout>

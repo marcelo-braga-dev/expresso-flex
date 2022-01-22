@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Cadastro de Entregadores', 'menu_suspenso' => 'usuarios'])
-
-@section('content')
+<x-layout>
     <div class="bg-principal bg-height-top"></div>
 
     <div class="container-fluid mt--9">
@@ -16,7 +14,9 @@
                 </div>
             </div>
             <div class="card-body">
-                <form method="post" action="@if (isset($usuario->id)){{ route('admin.usuarios.entregador.update') }}@else{{ route('admin.usuarios.entregador.create') }}@endif" autocomplete="off">
+                <form method="post"
+                      action="@if (isset($usuario->id)){{ route('admin.usuarios.entregador.update') }}@else{{ route('admin.usuarios.entregador.create') }}@endif"
+                      autocomplete="off">
                     @csrf
                     @method('put')
 
@@ -37,7 +37,7 @@
                         <div class="form-group">
                             <label class="form-control-label" for="nome">Nome</label>
                             <input type="text" name="nome" id="nome" class="form-control form-control-alternative"
-                                value="@if (isset($usuario->nome)){{ $usuario->nome }}@endif" required autofocus>
+                                   value="@if (isset($usuario->nome)){{ $usuario->nome }}@endif" required autofocus>
                         </div>
 
                         <div class="row">
@@ -45,15 +45,17 @@
                                 <div class="form-group">
                                     <label class="form-control-label" for="cpf">CPF</label>
                                     <input type="text" name="cpf" id="cpf" class="form-control form-control-alternative"
-                                        value="@if (isset($dados['cpf'])){{ $dados['cpf'] }}@endif" required autofocus>
+                                           value="@if (isset($dados['cpf'])){{ $dados['cpf'] }}@endif" required
+                                           autofocus>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="form-group">
                                     <label class="form-control-label" for="celular">Celular</label>
                                     <input type="text" name="celular" id="celular"
-                                        class="form-control form-control-alternative" value="@if (isset($dados['celular'])){{ $dados['celular'] }}@endif"
-                                        required autofocus>
+                                           class="form-control form-control-alternative"
+                                           value="@if (isset($dados['celular'])){{ $dados['celular'] }}@endif"
+                                           required autofocus>
                                 </div>
                             </div>
                         </div>
@@ -63,8 +65,9 @@
                                 <div class="form-group">
                                     <label class="form-control-label" for="email">E-mail</label>
                                     <input type="email" name="email" id="email"
-                                        class="form-control form-control-alternative" value="@if (isset($usuario->email)){{ $usuario->email }}@endif"
-                                        required autofocus>
+                                           class="form-control form-control-alternative"
+                                           value="@if (isset($usuario->email)){{ $usuario->email }}@endif"
+                                           required autofocus>
                                 </div>
                             </div>
                         </div>
@@ -80,8 +83,10 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">R$</span>
                                         </div>
-                                        <input type="number" name="sao_paulo" value="@if (!empty($fretes['sao_paulo'])){{ $fretes['sao_paulo'] }}@endif" step="0.01"
-                                            min="0.01" class="form-control" placeholder="0,00" required>
+                                        <input type="number" name="sao_paulo"
+                                               value="@if (!empty($fretes['sao_paulo'])){{ $fretes['sao_paulo'] }}@endif"
+                                               step="0.01"
+                                               min="0.01" class="form-control" placeholder="0,00" required>
                                     </div>
                                 </div>
                             </div>
@@ -92,8 +97,9 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">R$</span>
                                         </div>
-                                        <input type="number" name="grande_sao_paulo" value="@if (!empty($fretes['grande_sao_paulo'])){{ $fretes['grande_sao_paulo'] }}@endif"
-                                            step="0.01" min="0.01" class="form-control" placeholder="0,00" required>
+                                        <input type="number" name="grande_sao_paulo"
+                                               value="@if (!empty($fretes['grande_sao_paulo'])){{ $fretes['grande_sao_paulo'] }}@endif"
+                                               step="0.01" min="0.01" class="form-control" placeholder="0,00" required>
                                     </div>
                                 </div>
                             </div>
@@ -109,8 +115,9 @@
                                 <div class="col-6 col-lg-2">
                                     <div class="form-group">
                                         <input type="number" name="regiao_coleta[]"
-                                            class="form-control form-control-alternative" value="@if (isset($usuario->email)){{ $usuario->email }}@endif"
-                                            autofocus>
+                                               class="form-control form-control-alternative"
+                                               value="@if (isset($usuario->email)){{ $usuario->email }}@endif"
+                                               autofocus>
                                     </div>
                                 </div>
                             @else
@@ -118,7 +125,7 @@
                                     <div class="col-6 col-lg-2">
                                         <div class="form-group">
                                             <input type="number" name="regiao_coleta[]"
-                                                class="form-control form-control-alternative" value="{{ $regiao }}">
+                                                   class="form-control form-control-alternative" value="{{ $regiao }}">
                                         </div>
                                     </div>
                                 @endforeach
@@ -126,9 +133,9 @@
 
                             <div class="col-auto pt-2">
                                 <button class="btn btn-icon btn-success btn-sm rounded-circle" id="btn-add-regiao"
-                                    type="button">
+                                        type="button">
                                     <span class="btn-inner--icon"><i class="ni ni-fat-add"
-                                            style="font-size: 16px"></i></span>
+                                                                     style="font-size: 16px"></i></span>
                                 </button>
                             </div>
                         </div>
@@ -142,7 +149,7 @@
                                 <div class="col-6 col-lg-2">
                                     <div class="form-group">
                                         <input type="number" name="regiao_entrega[]"
-                                            class="form-control form-control-alternative" autofocus>
+                                               class="form-control form-control-alternative" autofocus>
                                     </div>
                                 </div>
                             @else
@@ -150,18 +157,19 @@
                                     <div class="col-6 col-lg-2">
                                         <div class="form-group">
                                             <input type="number" name="regiao_entrega[]"
-                                                class="form-control form-control-alternative" value="{{ $regiao }}"
-                                                autofocus>
+                                                   class="form-control form-control-alternative" value="{{ $regiao }}"
+                                                   autofocus>
                                         </div>
                                     </div>
                                 @endforeach
                             @endif
 
                             <div class="col-auto pt-2">
-                                <button class="btn btn-icon btn-success btn-sm rounded-circle" id="btn-add-regiao-entrega"
-                                    type="button">
+                                <button class="btn btn-icon btn-success btn-sm rounded-circle"
+                                        id="btn-add-regiao-entrega"
+                                        type="button">
                                     <span class="btn-inner--icon"><i class="ni ni-fat-add"
-                                            style="font-size: 16px"></i></span>
+                                                                     style="font-size: 16px"></i></span>
                                 </button>
                             </div>
 
@@ -171,8 +179,8 @@
                         <div class="form-group">
                             <label class="form-control-label" for="perfil">Perfil</label>
                             <textarea type="text" name="perfil" id="perfil" rows="5"
-                                class="form-control form-control-alternative" required
-                                autofocus>@if (isset($dados['perfil'])){{ $dados['perfil'] }}@endif</textarea>
+                                      class="form-control form-control-alternative" required
+                                      autofocus>@if (isset($dados['perfil'])){{ $dados['perfil'] }}@endif</textarea>
                         </div>
 
                         <div class="text-center">
@@ -187,8 +195,8 @@
         </div>
 
         <script>
-            $(function() {
-                $('#btn-add-regiao').click(function() {
+            $(function () {
+                $('#btn-add-regiao').click(function () {
                     var input =
                         `<div class="col-6 col-lg-2">
                             <div class="form-group">
@@ -199,7 +207,7 @@
                     $(this).parent().before(input);
                 });
 
-                $('#btn-add-regiao-entrega').click(function() {
+                $('#btn-add-regiao-entrega').click(function () {
                     var input =
                         `<div class="col-6 col-lg-2">
                             <div class="form-group">
@@ -212,6 +220,6 @@
             })
         </script>
 
-        @include('layouts.footers.auth')
+
     </div>
-@endsection
+</x-layout>

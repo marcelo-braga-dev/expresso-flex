@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Histórico de Solicitações'])
-
-@section('content')
+<x-layout>
     <div class="header bg-principal bg-height-top"></div>
 
     <div class="container-fluid mt--9">
@@ -30,7 +28,7 @@
                                 <small class="d-block">{{ count($pacote) }} solicitações de coletas</small>
 
                                 <a class="btn btn-link p-0 btn-sm"
-                                    href="{{ route('conferente.solicitacoes.historico-diario', ['data' => "$pacote[0]"]) }}">
+                                   href="{{ route('conferente.solicitacoes.historico-diario', ['data' => "$pacote[0]"]) }}">
                                     Ver coletas
                                 </a>
                             </span>
@@ -40,6 +38,6 @@
             </div>
         </div>
 
-        @include('layouts.footers.auth')
+
     </div>
-@endsection
+</x-layout>

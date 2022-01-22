@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Home'])
-
-@section('content')
+<x-layout>
 
     <div class="header bg-principal bg-height-top"></div>
     <div class="container-fluid mt--8">
@@ -106,7 +104,8 @@
                                 </div>
                             </div>
                         </div>
-                        <a class="btn bg-yellow text-dark" href="{{ route('admin.mercadolivre.contas-sincronizadas') }}">
+                        <a class="btn bg-yellow text-dark"
+                           href="{{ route('admin.mercadolivre.contas-sincronizadas') }}">
                             Ver Contas
                         </a>
                     </div>
@@ -221,4 +220,4 @@
             </div>
         </div>
     </div>
-@endsection
+</x-layout>

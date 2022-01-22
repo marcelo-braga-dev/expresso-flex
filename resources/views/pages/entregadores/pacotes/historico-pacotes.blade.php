@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Histórico de Pacotes'])
-
-@section('content')
+<x-layout>
     <div class="header bg-principal bg-height-top"></div>
 
     <div class="container-fluid mt--9">
@@ -35,7 +33,7 @@
                         </li>
                     @endforeach
                 </ul>
-                
+
                 @empty($pacotes)
                     <div class="row justify-content-center">
                         <div class="col-auto p-3">
@@ -48,6 +46,6 @@
             </div>
         </div>
 
-        @include('layouts.footers.auth')
+
     </div>
-@endsection
+    </x-layout>

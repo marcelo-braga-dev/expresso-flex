@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Check-in de Pacotes'])
-
-@section('content')
+<x-layout>
     <div class="header bg-principal bg-height-top"></div>
 
     <div class="container-fluid mt--9">
@@ -48,7 +46,7 @@
             </div>
         </div>
 
-        @include('layouts.footers.auth')
+
 
         <a href="{{ route('conferente.pacotes.qrcode.checkin.start') }}" class="btn-flutuante btn-danger btn-camera"
             target="_blank" style="display: none">
@@ -60,4 +58,4 @@
             }
         </script>
     </div>
-@endsection
+    </x-layout>

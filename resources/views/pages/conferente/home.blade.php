@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Home'])
-
-@section('content')
+<x-layout>
 
     <div class="header bg-principal bg-height-top"></div>
 
@@ -34,7 +32,7 @@
 
         <hr>
 
-        <div class="row">          
+        <div class="row">
             {{-- Sendo Coletados --}}
             <div class="col-md-6 mb-3">
                 <div class="card card-stats shadow">
@@ -85,5 +83,6 @@
                 </div>
             </div>
         </div>
+    </div>
 
-    @endsection
+</x-layout>

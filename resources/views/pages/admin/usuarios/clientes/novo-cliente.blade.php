@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Cadastro de Clientes', 'menu_suspenso' => 'usuarios'])
-
-@section('content')
+<x-layout>
 
     <div class="header bg-principal bg-height-top"></div>
 
@@ -22,7 +20,9 @@
                         {{ $mensagem }}
                     </div>
                 @endif
-                <form method="post" action="@if (isset($usuario->id)){{ route('admin.usuarios.clientes.update') }}@else{{ route('admin.usuarios.clientes.create') }}@endif" autocomplete="off">
+                <form method="post"
+                      action="@if (isset($usuario->id)){{ route('admin.usuarios.clientes.update') }}@else{{ route('admin.usuarios.clientes.create') }}@endif"
+                      autocomplete="off">
                     @csrf
                     @method('put')
 
@@ -43,7 +43,7 @@
                         <div class="form-group">
                             <label class="form-control-label" for="nome">Nome</label>
                             <input type="text" name="nome" id="nome" class="form-control form-control-alternative"
-                                value="@if (isset($usuario->nome)){{ $usuario->nome }}@endif" required autofocus>
+                                   value="@if (isset($usuario->nome)){{ $usuario->nome }}@endif" required autofocus>
                         </div>
 
                         <div class="row">
@@ -51,16 +51,18 @@
                                 <div class="form-group">
                                     <label class="form-control-label" for="email">E-mail</label>
                                     <input type="email" name="email" id="email"
-                                        class="form-control form-control-alternative" value="@if (isset($usuario->email)){{ $usuario->email }}@endif"
-                                        required autofocus>
+                                           class="form-control form-control-alternative"
+                                           value="@if (isset($usuario->email)){{ $usuario->email }}@endif"
+                                           required autofocus>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="form-group">
                                     <label class="form-control-label" for="celular">Celular</label>
                                     <input type="text" name="celular" id="celular"
-                                        class="form-control form-control-alternative" value="@if (isset($dados['celular'])){{ $dados['celular'] }}@endif"
-                                        required autofocus>
+                                           class="form-control form-control-alternative"
+                                           value="@if (isset($dados['celular'])){{ $dados['celular'] }}@endif"
+                                           required autofocus>
                                 </div>
                             </div>
                         </div>
@@ -76,8 +78,10 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">R$</span>
                                         </div>
-                                        <input type="number" name="sao_paulo" value="@if (!empty($fretes['sao_paulo'])){{ $fretes['sao_paulo'] }}@endif" step="0.01"
-                                            min="0.01" class="form-control" placeholder="0,00" required>
+                                        <input type="number" name="sao_paulo"
+                                               value="@if (!empty($fretes['sao_paulo'])){{ $fretes['sao_paulo'] }}@endif"
+                                               step="0.01"
+                                               min="0.01" class="form-control" placeholder="0,00" required>
                                     </div>
                                 </div>
                             </div>
@@ -88,8 +92,9 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">R$</span>
                                         </div>
-                                        <input type="number" name="grande_sao_paulo" value="@if (!empty($fretes['grande_sao_paulo'])){{ $fretes['grande_sao_paulo'] }}@endif"
-                                            step="0.01" min="0.01" class="form-control" placeholder="0,00" required>
+                                        <input type="number" name="grande_sao_paulo"
+                                               value="@if (!empty($fretes['grande_sao_paulo'])){{ $fretes['grande_sao_paulo'] }}@endif"
+                                               step="0.01" min="0.01" class="form-control" placeholder="0,00" required>
                                     </div>
                                 </div>
                             </div>
@@ -103,16 +108,18 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label class="form-control-label" for="cnpj">CNPJ</label>
-                                    <input type="text" name="cnpj" id="cnpj" class="form-control form-control-alternative"
-                                        value="@if (isset($dados['cnpj'])){{ $dados['cnpj'] }}@endif" autofocus>
+                                    <input type="text" name="cnpj" id="cnpj"
+                                           class="form-control form-control-alternative"
+                                           value="@if (isset($dados['cnpj'])){{ $dados['cnpj'] }}@endif" autofocus>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label class="form-control-label" for="razao_social">Razão Social</label>
                                     <input type="text" name="razao_social" id="razao_social"
-                                        class="form-control form-control-alternative" value="@if (isset($dados['razao_social'])){{ $dados['razao_social'] }}@endif"
-                                        autofocus>
+                                           class="form-control form-control-alternative"
+                                           value="@if (isset($dados['razao_social'])){{ $dados['razao_social'] }}@endif"
+                                           autofocus>
                                 </div>
                             </div>
                         </div>
@@ -120,7 +127,9 @@
                         <div class="form-group">
                             <label class="form-control-label" for="nome_fantasia">Nome Fantasia</label>
                             <input type="text" name="nome_fantasia" id="nome_fantasia"
-                                class="form-control form-control-alternative" value="@if (isset($dados['nome_fantasia'])){{ $dados['nome_fantasia'] }}@endif" autofocus>
+                                   class="form-control form-control-alternative"
+                                   value="@if (isset($dados['nome_fantasia'])){{ $dados['nome_fantasia'] }}@endif"
+                                   autofocus>
                         </div>
 
                         <div class="row">
@@ -129,8 +138,9 @@
                                     <label class="form-control-label" for="nome_comercial">Nome do Representante
                                         Comercial</label>
                                     <input type="text" name="nome_comercial" id="nome_comercial"
-                                        class="form-control form-control-alternative" value="@if (isset($dados['nome_comercial'])){{ $dados['nome_comercial'] }}@endif"
-                                        autofocus>
+                                           class="form-control form-control-alternative"
+                                           value="@if (isset($dados['nome_comercial'])){{ $dados['nome_comercial'] }}@endif"
+                                           autofocus>
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -140,8 +150,9 @@
                                         E-mail do Representante Comercial
                                     </label>
                                     <input type="email" name="email_comercial" id="email_comercial"
-                                        class="form-control form-control-alternative" value="@if (isset($dados['email_comercial'])){{ $dados['email_comercial'] }}@endif"
-                                        autofocus>
+                                           class="form-control form-control-alternative"
+                                           value="@if (isset($dados['email_comercial'])){{ $dados['email_comercial'] }}@endif"
+                                           autofocus>
                                 </div>
                             </div>
                         </div>
@@ -151,8 +162,8 @@
                                 <div class="form-group">
                                     <label class="form-control-label" for="perfil">Perfil</label>
                                     <textarea type="text" name="perfil" id="perfil" rows="5"
-                                        class="form-control form-control-alternative"
-                                        autofocus>@if (isset($dados['perfil'])){{ $dados['perfil'] }}@endif</textarea>
+                                              class="form-control form-control-alternative"
+                                              autofocus>@if (isset($dados['perfil'])){{ $dados['perfil'] }}@endif</textarea>
                                 </div>
                             </div>
                         </div>
@@ -160,7 +171,8 @@
 
                         <div class="text-center">
                             <input type="hidden" name="tipo" value="cliente">
-                            <input type="hidden" name="editar" value="@if (isset($usuario->id)){{ $usuario->id }}@endif">
+                            <input type="hidden" name="editar"
+                                   value="@if (isset($usuario->id)){{ $usuario->id }}@endif">
                             <input type="hidden" name="id" value="@if (isset($usuario->id)){{ $usuario->id }}@endif">
                             <button type="submit" class="btn btn-success mt-4">Salvar</button>
                         </div>
@@ -169,6 +181,6 @@
             </div>
         </div>
 
-        @include('layouts.footers.auth')
+
     </div>
-@endsection
+</x-layout>

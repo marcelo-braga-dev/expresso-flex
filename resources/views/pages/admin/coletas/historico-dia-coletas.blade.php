@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Histórico de Coletas', 'menu_suspenso' => 'coletas'])
-
-@section('content')
+<x-layout>
     <div class="header bg-principal bg-height-top"></div>
 
     <div class="container-fluid mt--9">
@@ -37,7 +35,8 @@
                             </small>
                         </div>
                         <div class="col-md-auto">
-                            <a class="small" href="{{ route('admin.coletas.historico-pacotes-coletados-dia', ['id' => $solicitacao->id]) }}">
+                            <a class="small"
+                               href="{{ route('admin.coletas.historico-pacotes-coletados-dia', ['id' => $solicitacao->id]) }}">
                                 Ver Pacotes Coletados
                             </a>
                         </div>
@@ -47,6 +46,6 @@
         </div>
     </div>
 
-    @include('layouts.footers.auth')
 
-@endsection
+
+</x-layout>

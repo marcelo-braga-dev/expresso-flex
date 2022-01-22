@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Editar Valores do Frete', 'menu_suspenso' => 'fretes'])
-
-@section('content')
+<x-layout>
     <div class="header bg-principal bg-height-top"></div>
 
     <div class="container-fluid mt--9">
@@ -29,7 +27,7 @@
                                         <div class="input-group-text">R$</div>
                                     </div>
                                     <input type="number" step="0.01" class="form-control pl-2" name="sao_paulo"
-                                        style="width: 20px" value="{{ $cliente['sao_paulo'] }}">
+                                           style="width: 20px" value="{{ $cliente['sao_paulo'] }}">
                                 </div>
                             </small>
                         </div>
@@ -41,7 +39,7 @@
                                         <div class="input-group-text">R$</div>
                                     </div>
                                     <input type="number" step="0.01" class="form-control pl-2" name="grande_sao_paulo"
-                                        value="{{ $cliente['grande_sao_paulo'] }}">
+                                           value="{{ $cliente['grande_sao_paulo'] }}">
                                 </div>
                             </small>
                         </div>
@@ -54,4 +52,4 @@
             </div>
         </div>
     </div>
-@endsection
+</x-layout>

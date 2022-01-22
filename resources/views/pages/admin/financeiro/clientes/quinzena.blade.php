@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Faturamento na Quinzena do Cliente', 'menu_suspenso' => 'financeiro'])
-
-@section('content')
+<x-layout>
     <div class="header bg-principal bg-height-top"></div>
 
     <div class="container-fluid mt--9">
@@ -33,7 +31,7 @@
                                     <small>
                                         <table>
                                             <tr>
-                                                <td>Faturamento Total: &nbsp; </td>
+                                                <td>Faturamento Total: &nbsp;</td>
                                                 <td>
                                                     <?php $total = $frete['aberto'] + $frete['pago']; ?>
                                                     R$ {{ number_format($total, 2, ',', '.') }}
@@ -43,12 +41,12 @@
                                                 <td>Valor Pago:</td>
                                                 <td>
                                                     R$ @if (!empty($frete['pago']))
-                                                    {{ number_format($frete['pago'], 2, ',', '.') }}
+                                                        {{ number_format($frete['pago'], 2, ',', '.') }}
                                                     @else 0,00 @endif
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>Em aberto: </td>
+                                                <td>Em aberto:</td>
                                                 <td class="text-danger">
                                                     R$ @if (!empty($frete['aberto']))
                                                         {{ number_format($frete['aberto'], 2, ',', '.') }}
@@ -60,7 +58,7 @@
                                 </div>
                             </div>
                             <a class="btn btn-link p-0 btn-sm"
-                                href="{{ route('admin.financeiro.cliente.detalhes-mensal', [
+                               href="{{ route('admin.financeiro.cliente.detalhes-mensal', [
                                     'mes' => $fretes['mes'],
                                     'ano' => $fretes['ano'],
                                     'quinzena' => $i++,
@@ -84,6 +82,6 @@
             </div>
         </div>
 
-        @include('layouts.footers.auth')
+
     </div>
-@endsection
+</x-layout>

@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Mercado Livre'])
-
-@section('content')
+<x-layout>
 
     <div class="header bg-principal bg-height-top"></div>
 
@@ -13,7 +11,7 @@
             </div>
             <div class="card-body">
                 <form method="post" action="{{ route('admin.financeiro.conta-mercadopago.put') }}"
-                    autocomplete="off">
+                      autocomplete="off">
                     @csrf
                     @method('put')
                     <div class="px-lg-4">
@@ -22,8 +20,9 @@
                                 <div class="form-group">
                                     <label class="form-control-label" for="public_key">Public Key</label>
                                     <input type="text" name="public_key" id="public_key"
-                                        class="form-control form-control-alternative" value="{{ $dados['public_key'] }}"
-                                        required autofocus>
+                                           class="form-control form-control-alternative"
+                                           value="{{ $dados['public_key'] }}"
+                                           required autofocus>
                                 </div>
                             </div>
                         </div>
@@ -32,8 +31,9 @@
                                 <div class="form-group">
                                     <label class="form-control-label" for="private_key">Private Key</label>
                                     <input type="text" name="private_key" id="private_key"
-                                        class="form-control form-control-alternative" value="{{ $dados['private_key'] }}"
-                                        required autofocus>
+                                           class="form-control form-control-alternative"
+                                           value="{{ $dados['private_key'] }}"
+                                           required autofocus>
                                 </div>
                             </div>
                         </div>
@@ -50,6 +50,6 @@
             </div>
         </div>
 
-        @include('layouts.footers.auth')
+
     </div>
-@endsection
+</x-layout>

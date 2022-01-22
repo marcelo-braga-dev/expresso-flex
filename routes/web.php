@@ -5,9 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    if (Auth::check()) return redirect()->route('home');
-
-    return view('auth.login');
+    return redirect()->route('login');
 });
 
 Auth::routes();
@@ -48,7 +46,7 @@ Route::group(['middleware' => 'auth'], function () {
     include 'rota/padrao.php';
 });
 
-// Formulario Externo Criar Criar Conta Cliente 
+// Formulario Externo Criar Criar Conta Cliente
 Route::get(
     'cliente/criar-conta',
     function () {

@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Histórico de Pacotes'])
-
-@section('content')
+<x-layout>
     <div class="header bg-principal bg-height-top"></div>
 
     <div class="container-fluid mt--9">
@@ -95,6 +93,6 @@
             });
         </script>
 
-        @include('layouts.footers.auth')
+
     </div>
-@endsection
+    </x-layout>

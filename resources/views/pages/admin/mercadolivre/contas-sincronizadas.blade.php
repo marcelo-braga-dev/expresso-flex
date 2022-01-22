@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Todos Contas Mercado Livre'])
-
-@section('content')
+<x-layout>
 
     <div class="header bg-principal bg-height-top"></div>
 
@@ -30,39 +28,39 @@
                 <div class="table-responsive">
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
-                            <tr>
-                                <th scope="col" class="sort">CLiente</th>
-                                <th scope="col" class="sort">Contas Mercado Livre</th>
-                                <th scope="col" class="sort">Data da Sincronia</th>
-                            </tr>
+                        <tr>
+                            <th scope="col" class="sort">CLiente</th>
+                            <th scope="col" class="sort">Contas Mercado Livre</th>
+                            <th scope="col" class="sort">Data da Sincronia</th>
+                        </tr>
                         </thead>
                         <tbody class="list bg-white">
-                            @foreach ($contas as $conta)
-                                <tr>
-                                    <td>
-                                        <b>{{ get_dados_usuario($conta['user_id'])->nome }}</b><br>
-                                        Id: #{{ $conta['user_id'] }}
-                                    </td>
-                                    <td>
-                                        @foreach ($conta['contas'] as $info)
-                                            {{ $info['nickname'] }}
-                                            [#{{ $info['seller_id'] }}]<br>
-                                        @endforeach
-                                    </td>
-                                    <td>
-                                        @foreach ($conta['contas'] as $created_at)
-                                            {{ $created_at['created_at'] }} <br>
-                                            {{-- <a href="/">
-                                                <small class="text-danger">Deletar</small>
-                                            </a> --}}
-                                        @endforeach
-                                    </td>
-                                </tr>
-                            @endforeach
+                        @foreach ($contas as $conta)
+                            <tr>
+                                <td>
+                                    <b>{{ get_dados_usuario($conta['user_id'])->nome }}</b><br>
+                                    Id: #{{ $conta['user_id'] }}
+                                </td>
+                                <td>
+                                    @foreach ($conta['contas'] as $info)
+                                        {{ $info['nickname'] }}
+                                        [#{{ $info['seller_id'] }}]<br>
+                                    @endforeach
+                                </td>
+                                <td>
+                                    @foreach ($conta['contas'] as $created_at)
+                                        {{ $created_at['created_at'] }} <br>
+                                        {{-- <a href="/">
+                                            <small class="text-danger">Deletar</small>
+                                        </a> --}}
+                                    @endforeach
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
-@endsection
+</x-layout>

@@ -1,6 +1,4 @@
-@extends('layouts.admin', ['title' => 'Criar Solicitações de Coleta'])
-
-@section('content')
+<x-layout>
 
     <div class="header bg-principal bg-height-top"></div>
 
@@ -22,15 +20,15 @@
 
             <div class="card-body">
                 <form method="POST" action="{{ route('entregadores.coletas.criar-coleta.put') }}"> @csrf @method('put')
-                    <div class="row mb-3"> 
+                    <div class="row mb-3">
                         <div class="col-12">
                             <p>
-                                Selecione o cliente ou abra a câmera para ler o QrCode de identifição 
+                                Selecione o cliente ou abra a câmera para ler o QrCode de identifição
                                 do Ponto de Coleta do cliente.
                             </p>
                         </div>
                     </div>
-                    <div class="row mb-3">                    
+                    <div class="row mb-3">
                         <div class="col-md-6 mb-3">
                             <select class="form-control select2" name="id">
                                 <option>Selecione o Cliente</option>
@@ -62,4 +60,4 @@
             $('.btn-camera').show();
         }
     </script>
-@endsection
+    </x-layout>

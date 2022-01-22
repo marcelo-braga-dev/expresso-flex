@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin\Usuarios;
 
-use App\Http\Controllers\Admin\FretesController;
 use App\Http\Controllers\Controller;
 use App\Models\PasswordNew;
 use App\Models\PrecosFretes;
@@ -15,16 +14,16 @@ use Illuminate\Http\Request;
 class ClientesController extends Controller
 {
     public function index(UsuariosService $clsUsuarioService)
-    {        
+    {
         $novaConta = $clsUsuarioService->getNovosUsuarios();
-        
+
         $clientes = User::where('tipo', '=', 'cliente')->orderBy('id', 'desc')->get();
 
         $clsFretesService = new FretesService;
 
         $fretes = $clsFretesService->getPrecosFretes('cliente');
 
-        return view('pages.admin.usuarios.clientes.tabela-clientes', compact('clientes', 'novaConta', 'fretes'));
+        return view('pages.admin.usuarios.clientes.index', compact('clientes', 'novaConta', 'fretes'));
     }
 
     public function info(Request $request)
@@ -34,12 +33,24 @@ class ClientesController extends Controller
         $usuario = User::find($request->id);
 
         $hash = $clsPasswordNew->query()->
-            where('email', '=', $usuario->email)
+        where('email', '=', $usuario->email)
             ->first('token');
 
         $dados = $this->getDados($usuario);
 
         return view('pages.admin.usuarios.info-usuario', compact('usuario', 'dados', 'hash'));
+    }
+
+    private function getDados($usuario): array
+    {
+        $dados = [];
+
+        $userMeta = $usuario->meta;
+
+        foreach ($userMeta as $meta) {
+            $dados[$meta->meta_key] = $meta->value;
+        }
+        return $dados;
     }
 
     public function create(Request $request)
@@ -64,8 +75,7 @@ class ClientesController extends Controller
         $todosFretes = $precosFretes->query()
             ->where('user_id', '=', $usuario->id)->get();
 
-        foreach ($todosFretes as $frete)
-        {
+        foreach ($todosFretes as $frete) {
             $fretes[$frete->meta_key] = $frete->value;
         }
 
@@ -79,18 +89,6 @@ class ClientesController extends Controller
         $clientes->update($request);
 
         return redirect()->route('admin.usuarios.clientes.tabela');
-    }
-
-    private function getDados($usuario): array
-    {
-        $dados = [];
-
-        $userMeta = $usuario->meta;
-
-        foreach ($userMeta as $meta) {
-            $dados[$meta->meta_key] = $meta->value;
-        }
-        return $dados;
     }
 
     public function newExterno(Request $request)
