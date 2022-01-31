@@ -4,23 +4,48 @@ namespace App\src\Pacotes;
 
 use App\Models\Pacotes;
 use App\Service\Pacotes\PacotesService;
+use App\src\Pacotes\Status\Status;
 
 class Pacote
 {
+    private Status $status;
+
+    public function __construct(Status $status)
+    {
+        $this->status = $status;
+    }
+
+    public function coletar($dados)
+    {
+        $this->status->coletar($dados);
+    }
+
+    public function alterarStatus($dados)
+    {
+        $this->status->alterarStatus($dados);
+    }
+
+    public function finalizar(int $id)
+    {
+        $this->status->finalizar($id);
+    }
+    /*
+
     public function criarPacote(
         $request,
         string $id_seller,
         string $origem,
-        array  $endereco,
+        array $endereco,
         string $status,
         ?int $loja,
         ?string $idEntregador = '',
         ?string $codigo = '',
         ?int $idColeta = null,
         ?string $descricao = ''
-    ) {
+    )
+    {
         $pacotes = new Pacotes();
-        $pacotesService = new PacotesService(); 
+        $pacotesService = new PacotesService();
 
         $codigoRastreio = $this->gerarCodigoRastreio();
 
@@ -47,14 +72,6 @@ class Pacote
         if (empty($endereco['latitude'])) $endereco['latitude'] = '';
         if (empty($endereco['longitude'])) $endereco['longitude'] = '';
 
-        /*
-        if (empty($endereco['cep'])) $endereco['cep'] = '';
-        if (empty($endereco['rua'])) $endereco['rua'] = '';
-        if (empty($endereco['numero'])) $endereco['numero'] = '';
-        if (empty($endereco['bairro'])) $endereco['bairro'] = '';
-        if (empty($endereco['cidade'])) $endereco['cidade'] = '';
-        */
-
         $idEndereco = $pacote->endereco()->create(
             [
                 'cep' => $cep,
@@ -68,13 +85,13 @@ class Pacote
                 'longitude' => $endereco['longitude'],
 
             ]
-        );        
+        );
 
         $destinatario = $pacote->destinatario()->create(
             [
-                'nome' => $request->nome?:$endereco['destinatario'],
+                'nome' => $request->nome ?: $endereco['destinatario'],
                 'cep' => $cep,
-                'telefone' => $request->celular?:$endereco['telefone'],
+                'telefone' => $request->celular ?: $endereco['telefone'],
                 'cpf' => $request->cpf,
                 'endereco' => $idEndereco->id
             ]
@@ -97,4 +114,15 @@ class Pacote
 
         return $codigo;
     }
+
+    protected function setCliente($user_id): void
+    {
+        $this->user_id = $user_id;
+    }
+
+    protected function setEntregador($entregadores): void
+    {
+        $this->entregadores = $entregadores;
+    }
+    */
 }

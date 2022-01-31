@@ -101,7 +101,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a class="btn btn-dark" href="{{ route('cliente.perfil.qrcode-usuario') }}">
+                        <a class="btn btn-dark" href="{{ route('clientes.lojas.qrcode') }}">
                             QrCode do Pondo de Coleta
                         </a>
                     </div>

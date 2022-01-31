@@ -12,10 +12,42 @@ class LojasClientes extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'id',
         'user_id',
+        'status',
         'nome',
-        'cep',
-        'numero'
+        'celular',
+        'endereco'
     ];
+
+    public function cadastrar(int $user_id, string $nome, string $celular, int $endereco)
+    {
+        $this->newQuery()
+            ->create([
+                'user_id' => $user_id,
+                'nome' => $nome,
+                'celular' => $celular,
+                'endereco' => $endereco
+            ]);
+    }
+
+    public function loja(int $id)
+    {
+        return print_pre($this->newQuery()
+            ->find($id));
+    }
+
+    public function desativar(int $id)
+    {
+        $this->newQuery()
+            ->where('id', '=', $id)
+            ->where('user_id', '=', id_usuario_atual())
+            ->update(['status' => false]);
+    }
+
+    public function getLojas(int $id)
+    {
+        return $this->newQuery()
+            ->where('user_id', '=', $id)
+            ->get();
+    }
 }

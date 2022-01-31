@@ -79,7 +79,7 @@
                     <div class="row">
                         <div class="col-12">
                             <p class="text-sm mb-0">
-                                <b>Endereço:</b> {{ get_endereco_destinatario($pacote->destinatario) }}
+                                <b>Endereço:</b> {{ get_endereco($pacote->endereco) }}
                             </p>
                         </div>
                     </div>

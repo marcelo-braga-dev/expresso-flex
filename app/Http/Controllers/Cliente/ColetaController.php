@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Meta;
 use App\Models\SolicitacaoRetiradas;
 use App\Service\Lojas\LojasService;
+use App\src\Coletas\Status\Aceito;
 use Illuminate\Http\Request;
 
 class ColetaController extends Controller
@@ -29,10 +30,11 @@ class ColetaController extends Controller
         $data = date('d-m-y', strtotime($solicitacoes[0]['updated_at']));
         $hoje = date('d-m-y');
 
+        $status = new Aceito();
         if (
             $solicitacoes->isEmpty() ||
             $solicitacoes[0]['status'] != 'coleta_solicitada' &&
-            $solicitacoes[0]['status'] != 'coleta_aceita' ||
+            $solicitacoes[0]['status'] != $status->getStatus() ||
             $hoje != $data
         ) {
             return view(

@@ -16,9 +16,8 @@ class CreateLojasClientesTable extends Migration
         Schema::create('lojas_clientes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->boolean('status');
+            $table->boolean('status')->default(true);
             $table->string('nome');
-            $table->string('cep', 20);
             $table->string('celular', 20);
             $table->bigInteger('endereco');
         });

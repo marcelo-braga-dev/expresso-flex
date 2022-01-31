@@ -37,7 +37,7 @@
                             @if (empty($pontosColeta))
                                 <small class="text-danger">Por favor, cadastre um ponto de coleta.</small>
                                 <a class="btn btn-primary btn-sm text-white m-2"
-                                    href="{{ route('cliente.coleta.pontos-de-coleta') }}">
+                                    href="{{ route('clientes.lojas.create') }}">
                                     Cadastrar Ponto de Coleta
                                 </a>
                             @endif

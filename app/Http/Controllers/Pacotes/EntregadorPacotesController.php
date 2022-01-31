@@ -77,7 +77,7 @@ class EntregadorPacotesController extends Controller
                 ]
             );
 
-            $pacotesService = new PacotesService(); 
+            $pacotesService = new PacotesService();
             $pacotesService->alteraStatusPacote($pacote->id, 'pacote_coletado');
 
             $codigoRastreio = $pacote->rastreio;
@@ -134,10 +134,10 @@ class EntregadorPacotesController extends Controller
 
         foreach ($_pacotes as $arg){
             $data = date('d/m/y', strtotime($arg->updated_at));
-            
+
             $pacotes[$data][] = $arg->updated_at;
         }
-        
+
         return view('pages.entregadores.pacotes.historico-pacotes', compact('pacotes'));
     }
 
@@ -155,7 +155,7 @@ class EntregadorPacotesController extends Controller
             ->where('entregador', '=', id_usuario_atual())
             ->whereDate('updated_at', $data)
             ->get();
-        
+
         return view('pages.entregadores.pacotes.historico-dia-pacotes', compact('pacotes', 'dia'));
     }
 

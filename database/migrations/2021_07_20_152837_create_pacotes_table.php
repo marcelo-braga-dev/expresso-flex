@@ -16,17 +16,16 @@ class CreatePacotesTable extends Migration
         Schema::create('pacotes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->string('rastreio');
-            $table->string('codigo');
+            $table->string('rastreio')->unique();
+            $table->string('codigo')->nullable();
             $table->bigInteger('coleta');
-            $table->bigInteger('loja');
-            $table->string('entregadores');
-            $table->string('destinatario');
+            $table->bigInteger('endereco');
+            $table->bigInteger('entregador');
+            $table->bigInteger('destinatario');
             $table->string('status');
-            $table->string('texto');
-            $table->string('regiao');
+            $table->integer('cep');
             $table->string('origem');
-            $table->string('descricao');
+            $table->string('descricao')->nullable();
             $table->timestamps();
         });
     }

@@ -18,7 +18,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card-body p-1">
+            <div class="card-body p-1">{{ route('clientes.etiquetas.expressoflex.index') }}
                 @foreach ($pacotes as $pacote)
                     <div class="card shadow-sm p-3 mb-2">
                         <div class="row justify-content-between align-items-center">
@@ -46,7 +46,7 @@
 
                                 <p class="mb-0">
                                     <i class="fas fa-map-marker-alt mr-2 text-danger"></i>
-                                    {{ get_endereco_destinatario($pacote->destinatario) }}
+                                    {{ get_endereco($pacote->endereco) }}
                                 </p>
                             </div>
                             <div class="d-none d-md-block text-center col-md-2">

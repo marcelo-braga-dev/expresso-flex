@@ -30,29 +30,56 @@
                 {{-- <i class="fas fa-box"></i> --}}
                 <span class="nav-link-text text-principal">Coletas</span>
             </a>
-            <div class="collapse show" id="navbar-coletas">
+            <div class="collapse @if (MENU === 'coletas') show @endif" id="navbar-coletas">
                 <ul class="nav nav-sm flex-column">
-                    {{-- <li class="nav-item">
+                    <li class="nav-item @if (SUBMENU === 'historico') active @endif ">
                         <a class="nav-link ml-1 pl-4 p-1"
-                            href="{{ route('cliente.coleta.solicitar-coleta') }}">
-                            Solicitar Coleta
-                        </a>
-                    </li> --}}
-                    <li class="nav-item">
-                        <a class="nav-link ml-1 pl-4 p-1"
-                           href="{{ route('cliente.coleta.historico-coleta') }}">
+                           href="{{ route('clientes.coletas.historicos.index') }}">
                             Histórico de Coletas
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link ml-1 pl-4 p-1"
-                           href="{{ route('cliente.coleta.pontos-de-coleta') }}">
+                           href="{{ route('clientes.lojas.index') }}">
                             Seus Pontos de Coleta
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-1 pl-4 p-1" href="{{ route('cliente.perfil.qrcode-usuario') }}">
+                        <a class="nav-link ml-1 pl-4 p-1" href="{{ route('clientes.lojas.qrcode') }}">
                             QrCode Pontos de Coleta
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+        <div class="dropdown-divider"></div>
+
+        <!-- Etiquetas -->
+        <li class="nav-item">
+            <a class="nav-link p-0 ml-3 m-2" href="#navbar-etiquetas" data-toggle="collapse" role="button"
+               aria-expanded="true" aria-controls="navbar-etiquetas">
+                <i class="fas fa-file-pdf text-principal"></i>
+                <span class="nav-link-text text-principal">Etiquetas</span>
+            </a>
+            <div class="collapse" id="navbar-etiquetas">
+                <ul class="nav nav-sm flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link ml-1 pl-4 p-1"
+                           href="{{ route('clientes.etiquetas.expressoflex.index') }}">
+                            Etiquetas para Imprimir
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link ml-1 pl-4 p-1"
+                           href="{{ route('clientes.etiquetas.expressoflex.create') }}">
+                            Gerar Etiqueta
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link ml-1 pl-4 p-1"
+                           href="{{ route('clientes.etiquetas.historico') }}">
+                            Histórico
                         </a>
                     </li>
                 </ul>
@@ -68,14 +95,8 @@
                 <i class="fas fa-box text-principal"></i>
                 <span class="nav-link-text text-principal">Pacotes</span>
             </a>
-            <div class="collapse show" id="navbar-pacotes">
+            <div class="collapse" id="navbar-pacotes">
                 <ul class="nav nav-sm flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link ml-1 pl-4 p-1"
-                           href="{{ route('cliente.etiqueta.todas-etiquetas') }}">
-                            Etiquetas Expresso Flex
-                        </a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link ml-1 pl-4 p-1" href="{{ route('cliente.pacotes.pesquisar') }}">
                             Pesquisar Pacote
@@ -99,7 +120,7 @@
                 <i class="fas fa-link text-principal"></i>
                 <span class="nav-link-text text-principal">Integrações</span>
             </a>
-            <div class="collapse show" id="navbar-integracoes">
+            <div class="collapse" id="navbar-integracoes">
                 <ul class="nav nav-sm flex-column">
                     {{-- <li class="nav-item">
                         <a class="nav-link ml-1 pl-4 p-1" href="{{ route('mercadolivre.nova-conta') }}">
@@ -124,7 +145,7 @@
                         <i class="fas fa-dollar-sign text-principal"></i>
                         <span class="nav-link-text text-principal">Financeiro</span>
                     </span>
-            <div class="collapse show" id="navbar-entregas">
+            <div class="collapse" id="navbar-entregas">
                 <ul class="nav nav-sm flex-column">
                     <li class="nav-item">
                         <a class="nav-link ml-1 pl-4 p-1"
@@ -140,12 +161,12 @@
 
         <!-- Sua conta -->
         <li class="nav-item">
-                    <span class="nav-link p-0 ml-3 m-2" href="#navbar-entregas" data-toggle="collapse" role="button"
-                          aria-expanded="true" aria-controls="navbar-entregas">
+                    <span class="nav-link p-0 ml-3 m-2" href="#navbar-perfil" data-toggle="collapse" role="button"
+                          aria-expanded="true" aria-controls="navbar-perfil">
                         <i class="fas fa-user text-principal"></i>
                         <span class="nav-link-text text-principal">Perfil</span>
                     </span>
-            <div class="collapse show" id="navbar-entregas">
+            <div class="collapse" id="navbar-perfil">
                 <ul class="nav nav-sm flex-column">
                     <li class="nav-item">
                         <a class="nav-link ml-1 pl-4 p-1"

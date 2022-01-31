@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\QrCode;
 
 use App\Http\Controllers\Controller;
+use App\src\QrCode\DecodeJson\DecodificarJson;
 use Illuminate\Http\Request;
 
 class ConferenteController extends Controller
@@ -21,7 +22,7 @@ class ConferenteController extends Controller
             $resposta = array_merge($resposta, ['origem' => 'mercado_livre']);
         }
 
-        return redirect()->route('conferente.checkin.info-checkin', $resposta);
+        return redirect()->route('conferentes.checkin.create', $resposta);
     }
 
     public function qrCodeCorrompido($resposta)

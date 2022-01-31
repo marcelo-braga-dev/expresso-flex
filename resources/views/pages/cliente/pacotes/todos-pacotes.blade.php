@@ -45,7 +45,7 @@
                                             </td>
                                             <td class="white-text-normal">
                                                 Nome: {{ get_destinatario_pacote($pacote->destinatario)->nome }}<br>
-                                                Endereço: {{ get_endereco_destinatario($pacote->destinatario) }}
+                                                Endereço: {{ get_endereco($pacote->endereco) }}
                                             </td>
                                             <td>
                                                 {{ date('d/m/y', strtotime($pacote->updated_at)) }}<br>

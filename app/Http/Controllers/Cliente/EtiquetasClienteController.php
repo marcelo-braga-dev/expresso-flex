@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Cliente;
 use App\Http\Controllers\Controller;
 use App\Models\Pacotes;
 use App\Service\Lojas\LojasService;
-use App\src\Etiquetas\NovaEtiquetaExpressoFlex;
 use App\src\Pacotes\Pacote;
 use Illuminate\Http\Request;
 
@@ -50,7 +49,7 @@ class EtiquetasClienteController extends Controller
 
     public function imprimir(Request $request)
     {
-        $novaEtiqueta = new NovaEtiquetaExpressoFlex();
+        $novaEtiqueta = new XNovaEtiquetaExpressoFlex();
 
         return $novaEtiqueta->novaEtiqueta($request);
 

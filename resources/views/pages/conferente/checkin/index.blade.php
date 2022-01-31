@@ -21,7 +21,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card-body p-0"><?php $data = ''; ?>
+            <div class="card-body p-0">
                 <ul class="list-group list-group-flush">
                     @foreach ($pacotes as $pacote)
                         @include('layouts.componentes.list-pacotes',

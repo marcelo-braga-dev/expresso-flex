@@ -41,6 +41,24 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function metaValue($id, $key)
+    {
+        $meta = UserMeta::query()
+            ->where([
+                ['user_id', '=', $id],
+                ['meta_key', '=', $key]])
+            ->first();
+
+        return $meta->value ?? '';
+    }
+
+
+    public function dados($id)
+    {
+        return $this->newQuery()
+            ->find($id);
+    }
+
     public function meta()
     {
         return $this->hasMany(UserMeta::class);

@@ -29,7 +29,7 @@
                             Você não possui pontos de coletas cadastrados.<br>
                             Cadastre um ponto de coleta dos seus produtos antes de solicitar coletas.<br>
                             <a class="btn btn-white text-principal my-2"
-                                href="{{ route('cliente.coleta.pontos-de-coleta') }}">
+                                href="{{ route('clientes.lojas.create') }}">
                                 Cadastrar Ponto de Coleta
                             </a>
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">

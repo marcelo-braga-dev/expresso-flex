@@ -31,6 +31,6 @@ class IniciadoEntregaController extends Controller
 
         session()->flash('sucesso', 'Entrega Iniciada.');
 
-        return redirect()->route('entregadores.entrega.em-andamento');        
+        return redirect()->route('entregadores.entrega.em-andamento');
     }
 }

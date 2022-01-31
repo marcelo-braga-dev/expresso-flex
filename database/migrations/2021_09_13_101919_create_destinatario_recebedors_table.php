@@ -16,8 +16,11 @@ class CreateDestinatarioRecebedorsTable extends Migration
         Schema::create('destinatario_recebedors', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pacotes_id')->constrained('pacotes');
-            $table->string('meta_key');
-            $table->string('value')->nullable();
+            $table->string('recebedor');
+            $table->string('nome');
+            $table->string('documento');
+            $table->string('obsevacoes')->nullable();
+            $table->string('img_pacote')->nullable();
         });
     }
 

@@ -14,12 +14,7 @@
                                 <h5 class="card-title text-uppercase text-muted mb-0">Coletas</h5>
                                 <span class="h2 font-weight-bold mb-0 d-block">
                                     Coletas em Aberto.
-                                    {{-- @if ($coletasEmAberto['count']) --}}
-                                    {{-- @else
-                                        Não há coletas em aberto.
-                                    @endif --}}
                                 </span>
-                                {{-- <small>Quantidade:</small> {{ $coletasEmAberto['count'] }} --}}
                             </div>
                             <div class="col-auto">
                                 <div class="icon icon-shape bg-info text-white rounded-circle shadow">
@@ -27,7 +22,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a class="btn btn-info" href="{{ route('entregadores.coletas.todas-coletas') }}">
+                        <a class="btn btn-info" href="{{ route('entregadores.coletas-abertas.index') }}">
                             Ver Coletas em Aberto
                         </a>
                     </div>

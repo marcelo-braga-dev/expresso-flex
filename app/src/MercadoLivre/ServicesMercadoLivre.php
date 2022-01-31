@@ -6,12 +6,9 @@ use App\Models\Pacotes;
 
 class ServicesMercadoLivre extends RecursosApiMercadoLivre
 {
-    public function getEndereco(?int $idShipping, int  $senderId)
+    public function getEndereco(?int $idShipping, int  $senderId): array
     {
         $recursos = new RecursosApiMercadoLivre();
-
-        //        $hashCode = $request->hash_code;
-        //        $securityDigit = $request->security_digit;
 
         $verificaDuplicidade = $this->verificaDuplicidade($idShipping);
 

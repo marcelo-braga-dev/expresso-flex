@@ -8,21 +8,19 @@ use App\Models\MetaValues;
 use GuzzleHttp\Client;
 use PHPUnit\Exception;
 
-class AutenticacaoAutorizacaoMercadoLivre
+class AutenticacaoAutorizacaoMercadoLivre extends ChavesAPI
 {
+    private string $clientId;
+    private string $clientSecret;
+    private string $redirectUri;
+
     public function __construct()
     {
-        $this->getChavesApi();
-    }
+        parent::__construct();
 
-    // Pega as chaves no banco de dados
-    private function getChavesApi()
-    {
-        $meta = Meta::find(4);
-
-        $this->client_id =  $meta->findMetaValue('app_id', $meta);
-        $this->client_secret =  $meta->findMetaValue('client_secret', $meta);
-        $this->redirect_uri =  $meta->findMetaValue('url_retorno', $meta);
+        $this->clientId = $this->getAppId();
+        $this->clientSecret = $this->getClientSecret();
+        $this->redirectUri = $this->getUrlRetorno();
     }
 
     // Retorna o link de integracao com o Mercado Livre
@@ -30,7 +28,7 @@ class AutenticacaoAutorizacaoMercadoLivre
     {
         $metas = new MetaValues();
 
-        $idCliente = $this->client_id;
+        $idCliente = $this->clientId;
         $urlRetorno = route('mercadolivre.integracao.autenticacao');
 
         $url =
@@ -55,10 +53,10 @@ class AutenticacaoAutorizacaoMercadoLivre
                 ],
                 'form_params' => [
                     'grant_type' => 'authorization_code',
-                    'client_id' => $this->client_id,
-                    'client_secret' => $this->client_secret,
+                    'client_id' => $this->clientId,
+                    'client_secret' => $this->clientSecret,
                     'code' => $code,
-                    'redirect_uri' => $this->redirect_uri,
+                    'redirect_uri' => $this->redirectUri,
                 ]
             ]);
 
@@ -105,7 +103,7 @@ class AutenticacaoAutorizacaoMercadoLivre
             return;
         }
 
-        session()->flash('erro', 'Conta Mercado Livre ' . $exist['brand_name'] . '(' . $exist['nickname'] . ') 
+        session()->flash('erro', 'Conta Mercado Livre ' . $exist['brand_name'] . '(' . $exist['nickname'] . ')
         já está cadastrada em nosso sistema.');
     }
 
@@ -122,10 +120,10 @@ class AutenticacaoAutorizacaoMercadoLivre
         $res = $client->request(
             'POST',
             'https://api.mercadolibre.com/oauth/token?' .
-                'grant_type=refresh_token' .
-                '&client_id=' . $this->client_id .
-                '&client_secret=' . $this->client_secret .
-                '&refresh_token=' . $chaves->refresh_token
+            'grant_type=refresh_token' .
+            '&client_id=' . $this->clientId .
+            '&client_secret=' . $this->clientSecret .
+            '&refresh_token=' . $chaves->refresh_token
         );
 
         $json = $res->getBody();

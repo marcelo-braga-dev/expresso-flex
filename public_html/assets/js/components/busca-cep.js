@@ -5,6 +5,7 @@ $(document).ready(function() {
         $("#rua").val("");
         $("#bairro").val("");
         $("#cidade").val("");
+        $("#estado").val("");
     }
 
     //Quando o campo cep perde o foco.
@@ -14,7 +15,7 @@ $(document).ready(function() {
         var cep = $(this).val().replace(/\D/g, '');
 
         //Verifica se campo cep possui valor informado.
-        if (cep != "") {
+        if (cep !== "") {
 
             //Expressão regular para validar o CEP.
             var validacep = /^[0-9]{8}$/;
@@ -26,6 +27,7 @@ $(document).ready(function() {
                 $("#rua").val("...");
                 $("#bairro").val("...");
                 $("#cidade").val("...");
+                $("#estado").val("...");
 
                 //Consulta o webservice viacep.com.br/
                 $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
@@ -35,6 +37,7 @@ $(document).ready(function() {
                         $("#rua").val(dados.logradouro);
                         $("#bairro").val(dados.bairro);
                         $("#cidade").val(dados.localidade);
+                        $("#estado").val(dados.uf);
                     } //end if.
                     else {
                         //CEP pesquisado não foi encontrado.

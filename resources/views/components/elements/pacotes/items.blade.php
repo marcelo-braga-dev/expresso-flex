@@ -19,7 +19,7 @@
                     @empty($simples)
                         <p class="mb-0">
                             <i class="fas fa-map-marker-alt mr-2 text-danger"></i>
-                            {{ get_endereco_destinatario($pacote->destinatario) }}
+                            {{ get_endereco($pacote->endereco) }}
                         </p>
                     @endempty
                     <p class="text-sm mb-0">

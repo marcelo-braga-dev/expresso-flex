@@ -32,7 +32,7 @@
             <div class="collapse show" id="navbar-status">
                 <ul class="nav nav-sm flex-column">
                     <li class="nav-item">
-                        <a class="nav-link ml-1 pl-4" href="{{ route('conferente.checkin.pacotes') }}">
+                        <a class="nav-link ml-1 pl-4" href="{{ route('conferentes.checkin.index') }}">
                             Check-in de Pacotes
                         </a>
                     </li>

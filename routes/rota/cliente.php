@@ -22,32 +22,6 @@ Route::put('coleta/solicitar-coleta', 'ColetaController@store')
 Route::put('coleta/cancelar-coleta', 'ColetaController@cancelarColeta')
     ->name('cliente.coleta.cancelar-coleta');
 
-// Historico de Coleta (meses)
-Route::get('coleta/historico', 'Coletas\HistoricoController@historicoMeses')
-    ->name('cliente.coleta.historico-coleta');
-// Historico de Coleta (dias)
-Route::get('coleta/historico/dias', 'Coletas\HistoricoController@historicoDias')
-    ->name('cliente.coleta.historico.dias');
-
-// Historico de Pacotes da coleta
-Route::get('coleta/historico/pacotes-coletados', 'Coletas\HistoricoController@historicoPacotesColetadosDia')
-    ->name('cliente.coleta.historico.pacotes-coletados');
-
-    
-// Pontos de Coleta
-Route::get('pontos-de-coleta', 'LojasController@index')
-    ->name('cliente.coleta.pontos-de-coleta');
-
-//Form Nova Loja
-Route::get('novo-ponto-de-coleta', 'LojasController@new')
-    ->name('cliente.coleta.novo-pontos-de-coleta');
-
-Route::put('pontos-de-coleta', 'LojasController@novaLoja')
-    ->name('cliente.coleta.pontos-de-coleta.put');
-
-//Desativar Loja    
-Route::put('pontos-de-coleta/desativar', 'LojasController@desativar')
-    ->name('cliente.coleta.pontos-de-coleta.desativar');
 
 /*
  * Pacotes
@@ -128,11 +102,7 @@ Route::put(
     'PerfilController@update'
 )->name('cliente.perfil.update');
 
-// Mostra Qrcode Ponto de Coleta
-Route::get(
-    'perfil/qrcode-usuario',
-    'PerfilController@getQrcodeUsuario'
-)->name('cliente.perfil.qrcode-usuario');
+
 
 /*
  * Mercado Livre

@@ -62,7 +62,7 @@ class RecursosApiMercadoLivre
 
             $token = $autenticacao->renovarAutenticacao($sellerId);
         }
-        
+
         try {
             $res = $client->request('GET', $link, [
                 'headers' => [
@@ -86,8 +86,8 @@ class RecursosApiMercadoLivre
         $link = 'https://api.mercadolibre.com/users/' . $sellerId;
 
         $res = $this->comunicacaoGetAPI($link, $sellerId);
-        
-        $dados['nickname'] = $res['nickname'];      
+
+        $dados['nickname'] = $res['nickname'];
         $dados['thumbnail'] = !empty($res['thumbnail']) ? $res['thumbnail']['picture_url'] : '';
         $dados['brand_name'] = !empty($res['company']['brand_name']) ? $res['company']['brand_name'] : '';
 

@@ -1,12 +1,9 @@
-@extends('layouts.app', ['class' => 'bg-default'])
-
-@section('content')
-
+<x-layout class="bg-secundario">
     <div class="container mt-5 pb-5">
         <div class="row justify-content-center">
             <div class="col-lg-5 col-md-7">
                 <div class="card bg-secondary shadow border-0">
-                    <div class="card-body pb-1">
+                    <div class="card-body pb-1 rounded">
                         <div class="row justify-content-center mx-auto mb-3">
                             <img src="/assets/img/brand/logo-x256.png" width="50%" />
                         </div>
@@ -74,4 +71,4 @@
             </div>
         </div>
     </div>
-@endsection
+</x-layout>

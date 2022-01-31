@@ -29,7 +29,7 @@ class HomeController extends Controller
         }
 
         Auth::logout();
-        session()->flash('erro', 'Não foi posível identificar sua conta.');
+        session()->flash('erro', 'Não foi posível identificar o tipo da sua conta.');
         return redirect()->route('login');
     }
 }

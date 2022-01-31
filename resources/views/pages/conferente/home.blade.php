@@ -22,7 +22,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a class="btn btn-warning" href="{{ route('conferente.checkin.pacotes') }}">
+                        <a class="btn btn-warning" href="{{ route('conferentes.checkin.index') }}">
                             Realizar Check-in
                         </a>
                     </div>

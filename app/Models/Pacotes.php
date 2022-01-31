@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
+use App\src\Pacotes\Info\Cadastrar;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\DB;
 
 class Pacotes extends Model
 {
@@ -14,15 +17,42 @@ class Pacotes extends Model
         'rastreio',
         'codigo',
         'coleta',
+        'endereco',
         'entregador',
         'destinatario',
         'status',
-        'texto',
-        'regiao',
+        'cep',
         'origem',
         'descricao',
-        'loja'
     ];
+
+    public function cadastrar(Cadastrar $pacote)
+    {
+        DB::beginTransaction();
+        try {
+            $this->newQuery()
+                ->create([
+                    'user_id' => $pacote->cliente(),
+                    'rastreio' => $pacote->rastreio(),
+                    'codigo' => $pacote->codigo(),
+                    'coleta' => $pacote->coleta(),
+                    'endereco' => $pacote->endereco(),
+                    'entregador' => $pacote->entregador(),
+                    'destinatario' => $pacote->destinatario(),
+                    'status' => $pacote->status(),
+                    'cep' => $pacote->cep(),
+                    'origem' => $pacote->origem(),
+                    'descricao' => $pacote->descricao(),
+                ]);
+            DB::commit();
+            session()->flash('sucesso', 'Pacote Cadastrado com sucesso. Código de Rastreio: ' . $pacote->rastreio());
+        } catch (QueryException $e) {
+            DB::rollback();
+            if ($e->getCode() == 23000) session()->flash('erro', 'Pacote já cadastrado');
+        }
+
+        return true;
+    }
 
     public function entregador(int $id)
     {

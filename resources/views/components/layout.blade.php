@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-{{--    <title>{{ $title }}</title>--}}
+    <title>Expresso Flex</title>
 <!-- Favicon -->
     {{-- <link href="/assets/img/brand/logo-x256.png" rel="icon"> --}}
 
@@ -23,7 +23,7 @@
     <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>
 </head>
 
-<body>
+<body {{ $attributes }}>
 
 @auth()
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -31,9 +31,15 @@
     </form>
 @endauth
 
+@auth()
 <x-layouts.users>
     {{ $slot }}
 </x-layouts.users>
+@endauth
+
+@guest()
+    {{ $slot }}
+@endguest
 
 @include('layouts.componentes.modal-sucesso')
 

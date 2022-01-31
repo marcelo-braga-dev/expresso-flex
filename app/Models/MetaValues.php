@@ -13,6 +13,16 @@ class MetaValues extends Model
 
     public $fillable = ['meta_key', 'value', 'meta_id'];
 
+
+    public function value($key)
+    {
+        $meta = $this->newQuery()
+            ->where('meta_key', '=', $key)
+            ->first('value');
+
+        return $meta->value ?? '';
+    }
+
     public function meta()
     {
         return $this->belongsTo(Meta::class);

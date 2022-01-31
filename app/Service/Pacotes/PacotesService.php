@@ -15,14 +15,12 @@ class PacotesService
 
         $date = date('Y-m-d');
 
-        $pacotes = $classPacotes->query()
+        return $classPacotes->query()
             ->where('entregador', '=', id_usuario_atual())
             ->where('status', '=', $status)
             ->whereDate('updated_at', '>=', $date)
-            ->orderBy('regiao', 'ASC')
+            ->orderBy('cep', 'ASC')
             ->get();
-
-        return $pacotes;
     }
 
     public function alteraStatusPacote(int $id, string $status)

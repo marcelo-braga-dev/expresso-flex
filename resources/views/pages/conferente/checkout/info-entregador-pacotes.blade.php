@@ -36,7 +36,7 @@
                                             </small>
                                             <small class="d-block mb-2">
                                                 <b>Endereço de Entrega:</b>
-                                                {{ get_endereco_destinatario($pacote->destinatario) }}
+                                                {{ get_endereco($pacote->endereco) }}
                                             </small>
                                             <div class="alterar-entregador" style="display: none">
                                                 <hr>

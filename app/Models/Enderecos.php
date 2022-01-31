@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\src\Enderecos\Endereco;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -22,6 +23,23 @@ class Enderecos extends Model
             'estado',
             'latitude',
             'longitude'
-
         ];
+
+    public function cadastrar(Endereco $dados)
+    {
+        $endereco = $this->newQuery()
+            ->create([
+                'cep' => $dados->getCep(),
+                'rua' => $dados->getRua(),
+                'numero' => $dados->getNumero(),
+                'complemento' => $dados->getComplemento(),
+                'bairro' => $dados->getBairro(),
+                'cidade' => $dados->getCidade(),
+                'estado' => $dados->getEstado(),
+                'latitude' => $dados->getLatitude(),
+                'longitude' => $dados->getLongitude(),
+            ]);
+
+        return $endereco->id;
+    }
 }

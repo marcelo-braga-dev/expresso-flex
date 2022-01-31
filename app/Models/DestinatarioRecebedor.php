@@ -11,10 +11,13 @@ class DestinatarioRecebedor extends Model
 
     public $timestamps = false;
 
-    protected $fillable = 
+    protected $fillable =
     [
         'pacotes_id',
-        'meta_key',
-        'value'
+        'recebedor',
+        'nome',
+        'documento',
+        'obsevacoes',
+        'img_pacote',
     ];
 }

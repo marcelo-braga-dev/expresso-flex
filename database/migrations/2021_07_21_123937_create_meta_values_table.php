@@ -16,7 +16,7 @@ class CreateMetaValuesTable extends Migration
         Schema::create('meta_values', function (Blueprint $table) {
             $table->id();
             $table->foreignId('meta_id')->constrained('metas');
-            $table->string('key');
+            $table->string('meta_key')->unique();
             $table->string('value');
         });
     }

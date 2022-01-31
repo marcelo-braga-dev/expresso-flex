@@ -11,7 +11,7 @@
                             Seus Pontos de Coleta
                         </h4>
                         @if (!count($lojas))
-                            <a class="btn btn-primary" href="{{ route('cliente.coleta.novo-pontos-de-coleta') }}">
+                            <a class="btn btn-primary" href="{{ route('clientes.lojas.create') }}">
                                 Novo Ponto de Coleta
                             </a>
                         @endif

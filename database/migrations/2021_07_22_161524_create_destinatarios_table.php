@@ -15,7 +15,6 @@ class CreateDestinatariosTable extends Migration
     {
         Schema::create('destinatarios', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pacotes_id')->constrained('pacotes');
             $table->string('nome')->nullable();
             $table->string('cep', 20)->nullable();
             $table->string('telefone')->nullable();

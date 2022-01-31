@@ -32,8 +32,14 @@
                 <ul class="nav nav-sm flex-column">
                     <li class="nav-item">
                         <a class="nav-link ml-1 pl-4 py-1"
-                           href="{{ route('entregadores.coletas.todas-coletas') }}">
+                           href="{{ route('entregadores.coletas-abertas.index') }}">
                             Coletas em Aberto
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link ml-1 pl-4 py-1"
+                           href="{{ route('entregadores.coletas.create') }}">
+                            Abrir Solicitação
                         </a>
                     </li>
                     <li class="nav-item">
@@ -59,7 +65,7 @@
                 <ul class="nav nav-sm flex-column">
                     <li class="nav-item">
                         <a class="nav-link ml-1 pl-4 py-1"
-                           href="{{ route('entregadores.entrega.entrega-iniciadas') }}">
+                           href="{{ route('entregadores.entregas.index') }}">
                             Entregas para Realizar
                         </a>
                     </li>

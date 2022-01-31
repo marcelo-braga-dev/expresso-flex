@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\BloqueioAcessoApp;
 use App\Http\Middleware\TiposUsuario\Admin;
 use App\Http\Middleware\TiposUsuario\Cliente;
 use App\Http\Middleware\TiposUsuario\Conferente;
@@ -42,6 +43,7 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            BloqueioAcessoApp::class
         ],
 
         'api' => [

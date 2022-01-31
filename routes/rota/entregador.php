@@ -1,4 +1,7 @@
 <?php
+
+include_once 'entregador/pacotes.php';
+
 // Home
 Route::get('home', 'App\Http\Controllers\Entregadores\HomeEntregadoresController@index')
     ->name('entregador.home.index');
@@ -33,16 +36,7 @@ Route::put('coleta/cancelar-coleta', 'App\Http\Controllers\Entregadores\Coleta\C
 Route::put('coleta/alterar-status', 'App\Http\Controllers\Entregadores\Coleta\ColetasController@alterarStatus')
     ->name('entregadores.coleta.alterar-status');
 
-// Página de Cadastro de Pacote
-Route::get('coleta/{idColeta}/cadastrar-pacotes', 'App\Http\Controllers\Pacotes\EntregadorPacotesController@cadastrarPacotes')
-    ->name('entregadores.pacotes.cadastrar-pacotes');
 
-// Rota para cadastrar novo pacote
-Route::put('coleta/salvar-pacote', 'App\Http\Controllers\Pacotes\EntregadorPacotesController@create')
-    ->name('entregadores.pacotes.salvar-pacote.put');
-//QR Code
-Route::get('coleta/salvar-pacote', 'App\Http\Controllers\Pacotes\EntregadorPacotesController@create')
-    ->name('entregadores.pacotes.salvar-pacote');
 
 
 
@@ -61,14 +55,14 @@ Route::get(
     'App\Http\Controllers\Entregadores\Coleta\HistoricoController@historicoDia'
 )->name('entregadores.coletas.historico-coleta-dia');
 
-// Historico Info 
+// Historico Info
 Route::get(
     'coletas/detalhes',
     'App\Http\Controllers\Entregadores\Coleta\HistoricoController@info'
 )->name('entregadores.coletas.info');
 
-/* 
- * ENTREGAS 
+/*
+ * ENTREGAS
  */
 
 // Pagina Cadastrar Pacotes
@@ -133,7 +127,7 @@ Route::put(
     'App\Http\Controllers\Entregadores\Entregas\AndamentoEntregasController@update'
 )->name('entregadores.entrega.finaliza');
 
-// Entregas Finalizadas 
+// Entregas Finalizadas
 Route::get(
     'entrega/entregas-finalizadas',
     'App\Http\Controllers\Entregadores\Entregas\FinalizadaEntregasController@index'
@@ -143,23 +137,7 @@ Route::get(
  * PACOTES
  */
 
-//historiico completo
-Route::get(
-    'pacotes/historico',
-    'App\Http\Controllers\Pacotes\EntregadorPacotesController@historico'
-)->name('entregadores.pacotes.historico');
 
-//historiico diario
-Route::get(
-    'pacotes/historico-diario',
-    'App\Http\Controllers\Pacotes\EntregadorPacotesController@historicoDia'
-)->name('entregadores.pacotes.historico-dia');
-
-
-Route::get(
-    'pacotes/detalhes',
-    'App\Http\Controllers\Pacotes\EntregadorPacotesController@info'
-)->name('entregadores.pacotes.info');
 
 
 

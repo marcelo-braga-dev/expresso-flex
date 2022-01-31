@@ -1,15 +1,19 @@
 <?php
+
+use Illuminate\Support\Facades\Route;
+
 /*
 * Entregadores
 */
 // Abre camera cadastro pacote - em uso
+
 Route::get('entreagadores/pacotes/qrcode/cadastro-mercadolivre/start?idColeta={idColeta}&idSeller={idSeller}', function () {
     echo "Use o App Expresso Fles";
     exit();
 })->name('entregadores.pacotes.qrcode.cadastro.meli.start');
 
 // Recebe dados para cadastro do pacote
-Route::get('entreagadores/pacotes/qrcode/cadastro-mercadolivre/back', 'App\Http\Controllers\QrCode\EntregadoresController@novoPacote')
+Route::get('entreagadores/pacotes/qrcode/cadastro-mercadolivre/back', 'App\Http\Controllers\QrCode\CadastrarPacoteController@index')
     ->name('entregadores.pacotes.qrcode.cadastro.meli.end');
 
 
@@ -35,11 +39,11 @@ Route::get('entregadores/pacotes/qrcode/saida-entrega/start', function () {
     exit();
 })->name('entregadores.pacotes.qrcode.saida-entrega.start');
 // Route Volta
-Route::get('entregadores/pacotes/qrcode/saida-entrega/back', 'App\Http\Controllers\QrCode\EntregadoresController@cadastrarEntrega')
+Route::get('entregadores/pacotes/qrcode/saida-entrega/back', 'App\Http\Controllers\QrCode\SairParaEntregaPacoteController@index')
     ->name('entregadores.pacotes.qrcode.saida-entrega.back');
 
 
-// Entrega Pacote Cliente 
+// Entrega Pacote Cliente
 Route::get('entregadores/pacotes/qrcode/entrega-cliente/start', function () {
     echo "ABRIR CAMERA";
     exit();

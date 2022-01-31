@@ -7,7 +7,6 @@ use App\Models\Pacotes;
 use App\Models\RegioesEntregadores;
 use App\Service\Entregadores\EntregadoresService;
 use App\Service\Pacotes\PacotesService;
-use App\src\Pacotes\StatusPacote;
 use Illuminate\Http\Request;
 
 class ConferenteController extends Controller
@@ -17,8 +16,8 @@ class ConferenteController extends Controller
     {
         $pacotes = [];
         // $pacotes = $this->getPacotesBase();
-        
-        return view('pages.conferente.checkin.index', compact('pacotes'));
+
+        //return view('pages.conferente.checkin.index', compact('pacotes'));
     }
 
     public function pacotesBase()
@@ -31,6 +30,20 @@ class ConferenteController extends Controller
     }
 
     // Mostra informacoes para confirmar o checkin
+
+    public function getPacotesBase()
+    {
+        $pacotes = new Pacotes();
+
+        $pacotes = $pacotes->query()
+            ->where('status', '=', 'pacote_base')
+            ->orderBy('updated_at', 'DESC')
+            ->get();
+        return $pacotes;
+    }
+
+    // Rota para confirmar checkin
+
     public function infoCheckin(Request $request)
     {
         $pacotes = new Pacotes();
@@ -92,7 +105,6 @@ class ConferenteController extends Controller
         );
     }
 
-    // Rota para confirmar checkin
     public function confimarCheckin(Request $request, PacotesService $pacotesService)
     {
         $pacote = Pacotes::find($request->id);
@@ -104,16 +116,5 @@ class ConferenteController extends Controller
         session()->flash('sucesso', 'Check-in do pacote realizado com sucesso.');
 
         return redirect()->route('conferente.checkin.pacotes');
-    }
-
-    public function getPacotesBase()
-    {
-        $pacotes = new Pacotes();
-
-        $pacotes = $pacotes->query()
-            ->where('status', '=', 'pacote_base')
-            ->orderBy('updated_at', 'DESC')
-            ->get();
-        return $pacotes;
     }
 }

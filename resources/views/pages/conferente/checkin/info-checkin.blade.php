@@ -44,7 +44,7 @@
                                         @endisset
                                         <small class="d-block mb-2">
                                             <b>Endereço de entrega:</b>
-                                            {{ get_endereco_destinatario($pacote->destinatario) }}
+                                            {{ get_endereco($pacote->endereco) }}
                                         </small>
                                         <small class="d-block">
                                             <b>Cep do Destinatário: </b>{{ substr_replace($pacote->regiao, '-', 5, 0) }}

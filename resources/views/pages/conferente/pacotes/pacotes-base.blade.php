@@ -66,7 +66,7 @@
                                                     </div>
                                                     <div class="mb-2 d-block">
                                                         <b>Endereço de Entrega:</b>
-                                                        {{ get_endereco_destinatario($pacote->destinatario) }}
+                                                        {{ get_endereco($pacote->endereco) }}
                                                     </div>
                                                 </div>
                                             </div>

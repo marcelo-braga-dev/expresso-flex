@@ -22,7 +22,7 @@
                             <p>
                                 É necessário ter um ponto de coleta ativo para emitir o QrCode de identificação.
                             </p>
-                            <a class="btn btn-primary" href="{{ route('cliente.coleta.pontos-de-coleta') }}">Cadastrar
+                            <a class="btn btn-primary" href="{{ route('clientes.lojas.create') }}">Cadastrar
                                 Ponto de Coleta</a>
                         </div>
                     </div>
