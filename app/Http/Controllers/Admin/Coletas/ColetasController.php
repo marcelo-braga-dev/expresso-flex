@@ -39,7 +39,7 @@ class ColetasController extends Controller
         ->where('coleta', '=', $request->id)
         ->orderBy('updated_at', 'DESC')
         ->get();
-        
+
         return view('pages.admin.coletas.historico-pacotes-coletados-dia', compact('pacotes'));
     }
 
@@ -58,21 +58,15 @@ class ColetasController extends Controller
             ->whereDate('updated_at', $data)
             ->orderBy('updated_at', 'DESC')
             ->get();
-            
+
         return view('pages.admin.coletas.historico-dia-coletas', compact('solicitacoes', 'dia'));
     }
 
     public function config(MetaValues $metaValues)
     {
-        $data = [];
+        $horarioLimite = '';
 
-        $metas = $metaValues->query()->where('meta_id', '=', 7)->get();
-
-        foreach ($metas as $meta) {
-            $data[$meta->meta_key] = $meta->value;
-        }
-
-        return view('pages.admin.coletas.config-coletas', compact('data'));
+        return view('pages.admin.coletas.config-coletas', compact('horarioLimite'));
     }
 
     public function update(Request $request, MetaValues $metaValues)

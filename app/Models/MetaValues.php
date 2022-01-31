@@ -23,6 +23,15 @@ class MetaValues extends Model
         return $meta->value ?? '';
     }
 
+    public function updateValue(string $key, string $value)
+    {
+        $this->newQuery()
+            ->where('meta_key', '=', $key)
+            ->update(['value' => $value]);
+    }
+
+
+
     public function meta()
     {
         return $this->belongsTo(Meta::class);

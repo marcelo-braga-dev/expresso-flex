@@ -61,6 +61,11 @@ class RouteServiceProvider extends ServiceProvider
                 ->namespace($this->namespace)
                 ->prefix('conferentes')
                 ->group(base_path('routes/auth/conferentes/index.php'));
+
+            Route::middleware('web')
+                ->namespace($this->namespace)
+                ->prefix('admins')
+                ->group(base_path('routes/auth/admins/index.php'));
         });
     }
 

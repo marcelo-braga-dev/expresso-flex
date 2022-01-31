@@ -72,7 +72,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-1 pl-4" href="{{ route('admin.mercadolivre.conta-sincronizada') }}">
+                        <a class="nav-link ml-1 pl-4" href="{{ route('admins.integracoes.mercadolivre.index') }}">
                             Conta Expresso Flex
                         </a>
                     </li>

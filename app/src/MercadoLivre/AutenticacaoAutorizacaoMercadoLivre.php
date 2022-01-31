@@ -3,7 +3,6 @@
 namespace App\src\MercadoLivre;
 
 use App\Models\IntegracaoMercadoLivre;
-use App\Models\Meta;
 use App\Models\MetaValues;
 use GuzzleHttp\Client;
 use PHPUnit\Exception;
@@ -31,13 +30,10 @@ class AutenticacaoAutorizacaoMercadoLivre extends ChavesAPI
         $idCliente = $this->clientId;
         $urlRetorno = route('mercadolivre.integracao.autenticacao');
 
-        $url =
-            'https://auth.mercadolivre.com.br/authorization?response_type=code&client_id=' .
+        return 'https://auth.mercadolivre.com.br/authorization?response_type=code&client_id=' .
             $idCliente .
             '&redirect_uri=' .
             $urlRetorno;
-
-        return $url;
     }
 
     // Autentica a conta no Mercado Livre

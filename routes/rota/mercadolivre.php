@@ -10,9 +10,4 @@ Route::get(
 // Recebimento de notificacao do Mercado Livre
 Route::get(
     'mercadolivre/notificacao', 'App\Http\Controllers\Integracao\MercadoLivreController@getNotificacaoMeli')
-    ->name('mercadolivre.notificacao');
-
-// TESTE
-Route::get(
-    'mercadolivre/teste', 'App\Http\Controllers\Integracao\MercadoLivreController@teste')
-    ->name('mercadolivre.teste');
+    ->name('mercadolivre.integracao.notificacao');

@@ -40,7 +40,7 @@
                             @foreach ($clientes as $usuario)
                                 <tr>
                                     <td>
-                                        <b>{{ $usuario->nome }}</b><br>
+                                        <b>{{ $usuario->name }}</b><br>
                                         Id: #{{ $usuario->id }} <br>
                                         Email: {{ $usuario->email }}<br>
                                         @if (!empty($novaConta[$usuario->email]))

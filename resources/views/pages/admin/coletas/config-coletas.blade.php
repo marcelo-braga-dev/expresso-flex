@@ -10,7 +10,6 @@
                         <h3 class="mb-0">Principais configurções</h3>
                     </div>
                     <div class="card-body">
-                        @include('layouts.componentes.alerts')
                         <ul class="list-group">
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 <div>
@@ -21,7 +20,7 @@
                                           action="{{ route('admin.coletas.config-update') }}">
                                         @csrf @method('put')
                                         <input type="time" name="horario_limite_coleta" class="form-control"
-                                               value="{{ $data['horario_limite'] }}" required>
+                                               value="{{ $horarioLimite }}" required>
                                         <button class="btn btn-success ml-2">Salvar</button>
                                     </form>
                                 </div>

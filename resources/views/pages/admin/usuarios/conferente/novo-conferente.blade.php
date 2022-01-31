@@ -42,7 +42,7 @@
                         <div class="form-group">
                             <label class="form-control-label" for="nome">Nome</label>
                             <input type="text" name="nome" id="nome" class="form-control form-control-alternative"
-                                   value="@if (isset($usuario->nome)){{ $usuario->nome }}@endif" required autofocus>
+                                   value="@if (isset($usuario->name)){{ $usuario->name }}@endif" required autofocus>
                         </div>
 
                         <div class="row">

@@ -30,10 +30,10 @@ class MercadoLivreController extends Controller
 
         if ($conta->user_id == id_usuario_atual()) {
             $conta->delete();
-            
+
             session()->flash('sucesso', 'Conta removida com sucesso.');
         }
-        
+
         return redirect()->back();
     }
 }

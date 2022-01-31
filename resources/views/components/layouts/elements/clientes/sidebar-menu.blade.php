@@ -122,13 +122,8 @@
             </a>
             <div class="collapse" id="navbar-integracoes">
                 <ul class="nav nav-sm flex-column">
-                    {{-- <li class="nav-item">
-                        <a class="nav-link ml-1 pl-4 p-1" href="{{ route('mercadolivre.nova-conta') }}">
-                            Vincular Mercado Livre
-                        </a>
-                    </li> --}}
                     <li class="nav-item">
-                        <a class="nav-link ml-1 pl-4 p-1" href="{{ route('mercadolivre.todas-contas') }}">
+                        <a class="nav-link ml-1 pl-4 p-1" href="{{ route('clientes.integracoes.mercadolivre.index') }}">
                             Contas Mercado Livre
                         </a>
                     </li>

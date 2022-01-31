@@ -24,7 +24,7 @@ class EntregadoresController
             ->where('tipo', '=', 'entregador')
             ->where('status', '=', '1')
             ->orderBy('id', 'desc')
-            ->get(['id', 'nome', 'status', 'email']);
+            ->get(['id', 'name', 'status', 'email']);
 
         $regioesEntregadores = $regioesEntregador->query()->get();
 

@@ -19,7 +19,7 @@ class CreateDestinatariosTable extends Migration
             $table->string('cep', 20)->nullable();
             $table->string('telefone')->nullable();
             $table->string('cpf')->nullable();
-            $table->string('endereco')->nullable();
+            $table->bigInteger('endereco')->nullable();
         });
     }
 

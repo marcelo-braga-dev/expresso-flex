@@ -39,7 +39,7 @@
                     @foreach ($conferentes as $usuario)
                         <tr>
                             <td class="budget">
-                                <b>{{ $usuario->nome }}</b><br>
+                                <b>{{ $usuario->name }}</b><br>
                                 Id: #{{ $usuario->id }}<br>
                                 Email: {{ $usuario->email }}<br>
                                 @if (!empty($novaConta[$usuario->email]))

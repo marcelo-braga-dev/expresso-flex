@@ -33,7 +33,7 @@
                         @foreach ($entregadores as $usuario)
                             <tr class="borde">
                                 <td class="pb-1" style="white-space: normal">
-                                    <b>{{ $usuario->nome }}</b><br>
+                                    <b>{{ $usuario->name }}</b><br>
                                     Id: #{{ $usuario->id }}<br>
                                     Email: {{ $usuario->email }}<br>
                                     @if (!empty($novaConta[$usuario->email]))

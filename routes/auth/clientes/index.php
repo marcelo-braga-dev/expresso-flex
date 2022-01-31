@@ -9,4 +9,5 @@ Route::group([
     include_once 'etiquetas.php';
     include_once 'coletas.php';
     include_once 'lojas.php';
+    include_once 'integracoes.php';
 });
