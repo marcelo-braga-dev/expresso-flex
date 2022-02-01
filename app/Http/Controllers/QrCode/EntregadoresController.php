@@ -31,27 +31,4 @@ class EntregadoresController extends Controller
 
         return redirect()->route('entregadores.entrega.em-andamento.info.qr-code', $resposta);
     }
-
-    public function identificaUsuario()
-    {
-        $resposta = json_decode($_GET['json'], true);
-
-        if (empty($resposta['id']) || empty($resposta['origem'] || empty($resposta['id_loja']))) {
-            session()->flash('erro', 'Ocorreu um erro na leitura do QrCode.');
-
-            return redirect()->route('entregadores.coletas.criar-coleta');
-        }
-
-        if ($resposta['origem'] != 'identifica_usuario') {
-            session()->flash('erro', 'Esse QrCode não é de identificação de pontos de coleta.');
-
-            return redirect()->route('entregadores.coletas.criar-coleta');
-        }
-
-        $coletaService = new ColetaService();
-
-        $coletaService->criarColetaComEntregador($resposta['id_loja']);
-
-        return redirect()->route('entregadores.coletas.todas-coletas');
-    }
 }

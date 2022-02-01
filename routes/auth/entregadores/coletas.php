@@ -2,8 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('coletas')
-    ->name('entregadores.')
+Route::name('entregadores.')
     ->namespace('Coletas')
     ->group(function () {
         Route::resource('coletas', 'ColetasController');

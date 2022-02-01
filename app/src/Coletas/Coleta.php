@@ -18,7 +18,7 @@ class Coleta
         $this->status = $status;
     }
 
-    public function executar(int $idLoja)
+    public function aceitar(int $idLoja)
     {
         $this->status->aceitar($this, $idLoja);
     }

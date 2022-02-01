@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Entregadores\Coletas;
 use App\Http\Controllers\Controller;
 use App\Models\LojasClientes;
 use App\Models\SolicitacaoRetiradas;
-use App\Service\ColetaService;
 use App\src\Coletas\Coleta;
 use App\src\Coletas\Status\Aceito;
 use App\src\Coletas\Status\Finalizado;
@@ -13,9 +12,12 @@ use Illuminate\Http\Request;
 
 class ColetasController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $coleta = new Coleta(new Aceito());
+        $coleta->aceitar($request->id_loja);
+
+        return redirect()->route('entregadores.coletas-abertas.index');
     }
 
     public function create()
@@ -43,7 +45,7 @@ class ColetasController extends Controller
     public function store(Request $request)
     {
         $coleta = new Coleta(new Aceito());
-        $coleta->executar($request->id);
+        $coleta->aceitar($request->id);
 
         return redirect()->route('entregadores.coletas-abertas.index');
     }

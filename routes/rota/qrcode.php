@@ -60,7 +60,7 @@ Route::get('conferente/pacotes/qrcode/checkout/start', function () {
 })->name('entregador.qrcode.usuario.cliente.start');
 
 // Recebe dados checkin do pacote
-Route::get('conferente/pacotes/qrcode/checkout/back', 'App\Http\Controllers\QrCode\EntregadoresController@identificaUsuario')
+Route::get('conferente/pacotes/qrcode/checkout/back', 'App\Http\Controllers\QrCode\AbrirSolicitacaoColetaController@index')
     ->name('entregador.qrcode.usuario.cliente.end');
 
 
