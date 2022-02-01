@@ -20,4 +20,11 @@ class IntegracaoMercadoLivre extends Model
             'scope',
             'token_type',
         ];
+
+    public function token($sellerId)
+    {
+        return $this->newQuery()
+            ->where('seller_id', '=', $sellerId)
+            ->first();
+    }
 }

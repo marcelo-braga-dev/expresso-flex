@@ -1,6 +1,6 @@
 <?php
 
-namespace App\src\Pacotes\Origens\Pacotes;
+namespace App\src\Pacotes\Origens\ExpressoFlex;
 
 use App\Models\Etiquetas;
 use App\src\Pacotes\CadastrarPacote;

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\src\Pacotes\Origens;
+namespace App\src\Pacotes\Origens\ExpressoFlex;
 
 use App\Models\Etiquetas;
 use App\Models\Pacotes;
-use App\src\Pacotes\Origens\Pacotes\CadastrarPacotesExrpessoFlex;
+use App\src\Pacotes\Origens\OrigemPacote;
 use Illuminate\Database\Eloquent\Model;
 
 class ExpressoFlex implements OrigemPacote

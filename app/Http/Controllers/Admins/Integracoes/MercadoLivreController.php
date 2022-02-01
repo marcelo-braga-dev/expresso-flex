@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admins\Integracoes;
 
 use App\Http\Controllers\Controller;
-use App\src\Integracoes\MercadoLivre\DadosIntegracao;
+use App\src\Integracoes\MercadoLivre\AutenticarAutorizar\DadosIntegracao;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 

@@ -1,8 +1,6 @@
 <?php
 
-namespace App\src\Integracoes\MercadoLivre;
-
-use App\Models\MetaValues;
+namespace App\src\Integracoes\MercadoLivre\AutenticarAutorizar;
 
 class Autenticar extends DadosIntegracao
 {

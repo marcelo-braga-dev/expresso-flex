@@ -2,8 +2,6 @@
 
 namespace App\src\Pacotes;
 
-use App\Models\Pacotes;
-use App\Service\Pacotes\PacotesService;
 use App\src\Pacotes\Status\Status;
 
 class Pacote

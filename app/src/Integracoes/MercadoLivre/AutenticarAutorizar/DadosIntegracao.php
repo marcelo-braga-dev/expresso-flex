@@ -1,6 +1,6 @@
 <?php
 
-namespace App\src\Integracoes\MercadoLivre;
+namespace App\src\Integracoes\MercadoLivre\AutenticarAutorizar;
 
 use App\Models\MetaValues;
 

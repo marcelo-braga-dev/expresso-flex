@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Entregadores\Entregas;
 use App\Http\Controllers\Controller;
 use App\Models\DestinatarioRecebedor;
 use App\Models\Pacotes;
-use App\Service\Pacotes\PacotesService;
 use App\src\Pacotes\Pacote;
 use App\src\Pacotes\Status\EntregaFinalizado;
 use App\src\Pacotes\Status\EntregaIniciado;
@@ -17,9 +16,12 @@ class EntregasController extends Controller
     {
         $status = new EntregaIniciado();
 
-        $pacotesService = new PacotesService();
-
-        $pacotes = $pacotesService->getPacotesEntrega($status->getStatus());
+        $pacotes = new Pacotes();
+        $pacotes = $pacotes->newQuery()
+            ->where([
+                ['status', '=', $status->getStatus()],
+                ['entregador', '=', id_usuario_atual()]
+            ])->get();
 
         return view('pages.entregadores.entregas.index', compact('pacotes'));
     }

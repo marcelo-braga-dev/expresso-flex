@@ -17,7 +17,7 @@ class CadastrarDestinatario implements Destinatario
         $this->documento = $documento;
     }
 
-    public function salvar(): int
+    public function cadastrar(): int
     {
         $destinarario = new Destinatarios();
         return $destinarario->cadastrar($this);

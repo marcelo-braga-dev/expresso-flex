@@ -13,7 +13,7 @@ class GerarEtiqueta
         $idEndereco = $this->getEndereco($dados['endereco']);
 
         $destinatario = new CadastrarDestinatario($dados['nome'], $dados['celular'], $dados['cpf']);
-        $idDestinatario = $destinatario->salvar();
+        $idDestinatario = $destinatario->cadastrar();
 
         $codigoRastreio = new CodigoRastreio();
         $rastreio = $codigoRastreio->gerar();
