@@ -44,6 +44,10 @@ class EntregasController extends Controller
 
     public function update(Request $request, $id)
     {
+        $imagem = null;
+
+        if (!empty($request->imagem)) $imagem = $request->imagem->store('images');
+
         $recebedor = new DestinatarioRecebedor();
         $recebedor->newQuery()
             ->create([
@@ -52,6 +56,7 @@ class EntregasController extends Controller
                 'nome' => $request->nome_recebedor,
                 'documento' => $request->documento_recebedor,
                 'obsevacoes' => $request->observacoes,
+                'img_pacote' => $imagem
             ]);
 
         $pacote = new Pacote(new EntregaFinalizado());

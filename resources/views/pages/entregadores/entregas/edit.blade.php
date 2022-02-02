@@ -68,7 +68,9 @@
                 </div>
                 <hr class="my-2">
                 <form method="POST"
-                      action="{{ route('entregadores.entregas.update', $pacote->id) }}"> @csrf @method('put')
+                      action="{{ route('entregadores.entregas.update', $pacote->id) }}"
+                enctype="multipart/form-data">
+                    @csrf @method('put')
                     <div class="row mb-3">
                         <div class="col-12">
                             <h3>Quem Recebe?</h3>
@@ -105,6 +107,12 @@
                             <div class="form-group">
                                 <label class="form-control-label" for="observacoes">Observações</label>
                                 <textarea class="form-control" name="observacoes"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-control-label" for="observacoes">Fotos</label>
+                                <input type="file" name="imagem" class="form-control">
                             </div>
                         </div>
                     </div>
