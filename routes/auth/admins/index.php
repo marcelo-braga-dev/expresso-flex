@@ -8,4 +8,5 @@ Route::group([
 ], function () {
     include_once 'integracoes.php';
     include_once  'usuarios.php';
+    include_once  'pacotes.php';
 });

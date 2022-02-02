@@ -6,8 +6,7 @@
             <div class="card-header bg-white mb-0">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h4 class="card-title text-uppercase mb-2">Histórico de Pacotes</h4>
-                        {{ date('d/m/Y', strtotime($dia)) }}
+                        <h4 class="card-title text-uppercase mb-2">Pacotes Sendo Entregues</h4>
                     </div>
                     <div class="col-auto">
                         <a class="btn btn-primary btn-sm" href="{{ url()->previous() }}">Voltar</a>

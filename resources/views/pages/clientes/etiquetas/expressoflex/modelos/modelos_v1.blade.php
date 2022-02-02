@@ -37,9 +37,6 @@
             <b>Telefone:</b> {{ $destinatario->telefone }}
         </span>
         <br>
-        <span>
-            <b>Cep:</b>
-        </span>
         <br>
         <span>
             <b>Endereço:</b> {{ $destinatario->endereco }}

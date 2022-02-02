@@ -32,7 +32,7 @@ class Etiquetas extends Model
                 'enderecos_id' => $idEndereco,
                 'lojas_id' => $loja
             ]);
-
+            session()->flash('sucesso', 'Etiqueta gerada com sucesso.');
         return $etiqueta->id;
     }
 

@@ -92,6 +92,21 @@
             <div class="collapse pacotes" id="navbar-pacotes">
                 <ul class="nav nav-sm flex-column">
                     <li class="nav-item">
+                        <a class="nav-link ml-1 pl-4" href="{{ route('admins.pacotes.sob_coleta') }}">
+                            Sendo Coletados
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link ml-1 pl-4" href="{{ route('admins.pacotes.base') }}">
+                            Na Base
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link ml-1 pl-4" href="{{ route('admins.pacotes.sob_entrega') }}">
+                            Sendo Entregues
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link ml-1 pl-4" href="{{ route('admin.pacotes.historico') }}">
                             Histórico de Pacotes
                         </a>

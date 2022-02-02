@@ -22,7 +22,7 @@ class VisualizarEtiqueta
         $etiquetas = new Etiquetas();
         $etiqueta = $etiquetas->newQuery()->findOrFail($id);
 
-        if ($etiqueta->user_id !== id_usuario_atual()) return redirect()->back();
+        if ($etiqueta->user_id != id_usuario_atual()) return redirect()->back();
 
         // Remetente
         $remetente = new Remetente($etiqueta->user_id);
