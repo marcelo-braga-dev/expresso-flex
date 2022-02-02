@@ -31,7 +31,7 @@
             <div class="collapse usuarios" id="navbar-usuarios">
                 <ul class="nav nav-sm flex-column">
                     <li class="nav-item">
-                        <a class="nav-link ml-1 pl-4" href="{{ route('admin.usuarios.clientes.tabela') }}">
+                        <a class="nav-link ml-1 pl-4" href="{{ route('admins.usuarios.clientes.index') }}">
                             Clientes
                         </a>
                     </li>

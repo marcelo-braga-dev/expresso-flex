@@ -21,13 +21,7 @@ Route::get(
     'App\Http\Controllers\Admin\Usuarios\ClientesController@info'
 )->name('admin.usuarios.clientes.info-clientes');
 
-// Novo Cliente
-Route::get(
-    'usuarios/cliente/novo',
-    function () {
-        return view('pages.admin.usuarios.clientes.novo-cliente');
-    }
-)->name('admin.usuarios.clientes.new');
+
 
 // Salvar Cliente
 Route::put(
@@ -229,7 +223,7 @@ Route::get(
     'config/config-geral',
     'App\Http\Controllers\Admin\ConfigController@geral'
 )->name('admin.config.config-geral');
-// rota 
+// rota
 Route::put(
     'config/config-geral',
     'App\Http\Controllers\Admin\ConfigController@update'
@@ -369,7 +363,7 @@ Route::put(
 
 /* AJAX */
 
-//atualiza status usuario 
+//atualiza status usuario
 Route::get(
     'ajax/usuario/atualiza-status-usuario/',
     'App\Http\Controllers\Admin\Usuarios\UsuariosController@modificaStatusUsuario'

@@ -7,7 +7,7 @@ use App\Models\User;
 
 class FretesService
 {
-    public function getPrecosFretes($tipo)
+    public function getPrecosFretes($tipo): array
     {
         $fretes = [];
         $precosFretes = PrecosFretes::where('tipo', '=', $tipo)->get();
@@ -31,7 +31,7 @@ class FretesService
 
         $user = User::where('id', '=', $userId)->first('tipo');
 
-        $precoFrete->updateOrInsert(
+        $precoFrete->newQuery()->updateOrInsert(
             ['meta_key' => 'sao_paulo', 'user_id' => $userId],
             [
                 'value' =>  converterMoney($request->sao_paulo),
@@ -40,7 +40,7 @@ class FretesService
             ]
         );
 
-        $precoFrete->updateOrInsert(
+        $precoFrete->newQuery()->updateOrInsert(
             ['meta_key' => 'grande_sao_paulo', 'user_id' => $userId],
             [
                 'value' => converterMoney($request->grande_sao_paulo),

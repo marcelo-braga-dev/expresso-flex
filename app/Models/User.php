@@ -18,7 +18,7 @@ class User extends Authenticatable
 
     protected $fillable = [
         'tipo',
-        'nome',
+        'name',
         'email',
         'password',
         'status',
@@ -52,6 +52,12 @@ class User extends Authenticatable
         return $meta->value ?? '';
     }
 
+    public function usuarios($tipo)
+    {
+        return $this->newQuery()
+            ->where('tipo', '=', $tipo)
+            ->orderBy('id', 'desc')->get();
+    }
 
     public function dados($id)
     {

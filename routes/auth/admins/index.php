@@ -7,4 +7,5 @@ Route::group([
     'namespace' => 'App\Http\Controllers\Admins',
 ], function () {
     include_once 'integracoes.php';
+    include_once  'usuarios.php';
 });

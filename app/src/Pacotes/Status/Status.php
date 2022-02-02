@@ -25,6 +25,8 @@ abstract class Status
         ]);
 
         new HistoricoStatusPacote($pacote->id, $this->getStatus());
+
+        session()->flash('sucesso', 'Pacote registrado com sucesso!');
     }
 
     public function finalizar(int $id)

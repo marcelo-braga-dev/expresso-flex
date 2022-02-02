@@ -6,22 +6,40 @@ use App\Models\MetaValues;
 use App\Models\PrecosFretes;
 use App\Models\UserMeta;
 use App\Service\FretesService;
+use App\src\Emails\NovoUsuario;
 
 class Clientes extends Usuarios
 {
+    public function cadastrar($request)
+    {
+        try {
+            $user = $this->cadastraUsuario($request, 'cliente');
+            $this->metaValues($request, $user->id);
+            $this->precosFretes($request, $user->id);
+
+            $email = new NovoUsuario();
+            $email->enviar($request->nome, $request->email);
+
+            session()->flash('sucesso', 'Cliente cadastrado com sucesso.');
+        } catch (\ErrorException $e) {
+
+        }
+
+    }
+
     public function create($request, $setFrete = true, $status = '1')
-    {        
+    {
         // Cria Usuario
-        $user = $this->criaUsuario($request, 'cliente', $status);
+        $user = $this->cadastraUsuario($request, 'cliente', $status);
 
         if (session('erro')) return;
 
         // MataValues do Cliente
         $this->metaValues($request, $user->id);
 
-        if ($setFrete) $this->precosFretes($request, $user->id);        
+        if ($setFrete)
 
-        session()->flash('sucesso', 'Cliente ' . $request['nome'] . ' cadastrado com sucesso. 
+        session()->flash('sucesso', 'Cliente ' . $request['nome'] . ' cadastrado com sucesso.
         Foi enviado um email ao usuário para criação da senha.');
     }
 

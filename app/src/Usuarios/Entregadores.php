@@ -10,7 +10,7 @@ class Entregadores extends Usuarios
     public function create($request)
     {
         // Cria Usuario
-        $user = $this->criaUsuario($request, 'entregador');
+        $user = $this->cadastraUsuario($request, 'entregador');
 
         if (session('erro')) return;
 
@@ -38,7 +38,7 @@ class Entregadores extends Usuarios
     private function setAreaAtendimento($request, $user)
     {
         $user->entregador()->delete();
-        
+
         foreach ($request->regiao_coleta as $regiao) {
             if (!empty($regiao)) {
                 $user->entregador()->create(
@@ -66,7 +66,7 @@ class Entregadores extends Usuarios
     {
         $user = $this->editaUsuario($request, $request->id);
 
-        $this->metaValues($request, $user->id);        
+        $this->metaValues($request, $user->id);
 
         $this->setAreaAtendimento($request, $user);
 

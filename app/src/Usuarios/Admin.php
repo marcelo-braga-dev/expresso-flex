@@ -9,7 +9,7 @@ class Admin extends Usuarios
     public function create($request)
     {
         // Cria Usuario
-        $user = $this->criaUsuario($request, 'admin');
+        $user = $this->cadastraUsuario($request, 'admin');
 
         if (session('erro')) return;
 

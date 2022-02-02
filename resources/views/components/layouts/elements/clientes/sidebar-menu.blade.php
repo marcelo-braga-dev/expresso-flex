@@ -38,6 +38,23 @@
                             Histórico de Coletas
                         </a>
                     </li>
+
+
+                </ul>
+            </div>
+        </li>
+
+        <div class="dropdown-divider"></div>
+
+        <!-- Lojas -->
+        <li class="nav-item">
+            <a class="nav-link p-0 ml-3 m-2" href="#navbar-lojas" data-toggle="collapse" role="button"
+               aria-expanded="true" aria-controls="navbar-lojas">
+                <i class="fas fa-store text-principal"></i>
+                <span class="nav-link-text text-principal">Pontos de Coleta</span>
+            </a>
+            <div class="collapse" id="navbar-lojas">
+                <ul class="nav nav-sm flex-column">
                     <li class="nav-item">
                         <a class="nav-link ml-1 pl-4 p-1"
                            href="{{ route('clientes.lojas.index') }}">

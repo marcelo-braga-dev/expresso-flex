@@ -32,6 +32,13 @@
                         </li>
                     @endforeach
                 </ul>
+                @if (empty($solicitacoes))
+                    <div class="row justify-content-center">
+                        <div class="col-auto p-3">
+                            <small>Não há histórico de coletas</small>
+                        </div>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

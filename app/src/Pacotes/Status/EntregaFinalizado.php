@@ -3,6 +3,7 @@
 namespace App\src\Pacotes\Status;
 
 use App\Models\Pacotes;
+use App\src\Pacotes\Pagamentos\Entregador\Comissoes;
 
 class EntregaFinalizado extends Status
 {
@@ -21,6 +22,12 @@ class EntregaFinalizado extends Status
             ->update(['status' => $this->status]);
 
         new HistoricoStatusPacote($id, $this->getStatus());
+
+        $comissao = new Comissoes($id);
+        $comissao->entregador();
+        $comissao->cliente();
+
+
 
         session()->flash('sucesso', 'Entrega realizada com sucesso.');
     }

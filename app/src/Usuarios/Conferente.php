@@ -9,7 +9,7 @@ class Conferente extends Usuarios
     public function create($request)
     {
         // Cria Usuario
-        $user = $this->criaUsuario($request, 'conferente');
+        $user = $this->cadastraUsuario($request, 'conferente');
 
         if (session('erro')) return;
 

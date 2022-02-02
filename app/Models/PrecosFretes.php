@@ -16,4 +16,13 @@ class PrecosFretes extends Model
         'title',
         'value'
     ];
+
+    public function preco(int $user, string $regiao)
+    {
+        return $this->newQuery()
+            ->where([
+                ['user_id', '=', $user],
+                ['meta_key', '=', $regiao]
+            ])->first('value');
+    }
 }

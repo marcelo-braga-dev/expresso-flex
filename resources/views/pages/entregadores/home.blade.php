@@ -48,7 +48,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a class="btn btn-success" href="{{ route('entregadores.entrega.entrega-iniciadas') }}">
+                        <a class="btn btn-success" href="{{ route('entregadores.entregas.index') }}">
                             Ver Entregas
                         </a>
                     </div>

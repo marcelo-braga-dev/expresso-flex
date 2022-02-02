@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Clientes\Integracoes;
 
 use App\Http\Controllers\Controller;
-use App\src\Integracoes\MercadoLivre\Autenticar;
+use App\src\Integracoes\MercadoLivre\AutenticarAutorizar\Autenticar;
 
 class MercadoLivreController extends Controller
 {

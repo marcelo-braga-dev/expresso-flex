@@ -15,8 +15,6 @@
                 </div>
             </div>
             <div class="card-body">
-                @include('layouts.componentes.alerts')
-
                 <form method="POST" action="{{ route('clientes.etiquetas.expressoflex.store') }}" autocomplete="off">
                 @csrf
 
@@ -24,17 +22,17 @@
                     <h5>Pontos de Coleta</h5>
                     <div class="form-row">
                         <div class="col-lg-6">
-                            <label class="form-control-label @if (empty($lojas))text-danger @endif" for="loja">Local de
-                                Coleta do
-                                Pacote</label>
-                            <select class="form-control @if (empty($lojas))border-danger @endif" name="loja" required>
+                            <label class="form-control-label" for="loja">
+                                Local de Coleta do Pacote
+                            </label>
+                            <select class="form-control" name="loja" required>
                                 @foreach ($lojas as $pontos)
                                     <option class="form-control" value="{{ $pontos['id'] }}">
                                         {{ $pontos['nome'] }}
                                     </option>
                                 @endforeach
                             </select>
-                            @if (empty($lojas))
+                            @if ($lojas->isEmpty())
                                 <small class="text-danger">Por favor, cadastre um ponto de coleta.</small>
                                 <a class="btn btn-primary btn-sm text-white m-2"
                                    href="{{ route('clientes.lojas.create') }}">
