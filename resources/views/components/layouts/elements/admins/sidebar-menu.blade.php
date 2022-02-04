@@ -103,7 +103,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link ml-1 pl-4" href="{{ route('admins.pacotes.sob_entrega') }}">
-                            Sendo Entregues
+                            Sendo Entregue
                         </a>
                     </li>
                     <li class="nav-item">

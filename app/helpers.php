@@ -108,6 +108,8 @@ function get_endereco(int $id)
 
 function formatar_cep(string $cep)
 {
+    if (strlen($cep) < 8) $cep = '0'.$cep;
+
     $cep = preg_replace('/\D/', '', $cep);
 
     return substr_replace($cep, '-', 5, 0);

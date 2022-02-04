@@ -146,7 +146,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    Confirmar o pagamento do pagamento da quinzena.
+                    Confirmar o pagamento da quinzena?
                 </div>
                 <div class="modal-footer">
                     <form method="POST" action="{{ route('admin.financeiro.entregador.pagamento-dinheiro') }}">
