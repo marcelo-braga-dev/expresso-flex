@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Clientes\Etiquetas;
 
 use App\Http\Controllers\Controller;
-use App\Models\Enderecos;
 use App\Models\Etiquetas;
 use App\Models\LojasClientes;
 use App\src\Etiquetas\ExpressoFlex\GerarEtiqueta;
 use App\src\Etiquetas\ExpressoFlex\PDF\VisualizarEtiqueta;
 use App\src\Etiquetas\Status\Impressa;
 use App\src\Etiquetas\Status\Novo;
+use App\src\Pacotes\Origens\ExpressoFlex\ExpressoFlex;
 use Illuminate\Http\Request;
 
 class ExpressoFlexController extends Controller
@@ -17,10 +17,13 @@ class ExpressoFlexController extends Controller
     public function index()
     {
         $novo = new Novo();
+        $origem = new ExpressoFlex();
 
         $etiquetas = Etiquetas::query()
-            ->where('user_id', '=', id_usuario_atual())
-            ->where('status', '=', $novo->getStatus())
+            ->where([
+                ['user_id', '=', id_usuario_atual()],
+                ['status', '=', $novo->getStatus()],
+                ['origem', '=', $origem->getOrigem()]])
             ->orderBy('id', 'DESC')
             ->get();
 

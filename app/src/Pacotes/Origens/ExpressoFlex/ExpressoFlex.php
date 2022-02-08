@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class ExpressoFlex implements OrigemPacote
 {
+    private string $origem = 'expressoflex';
+
     public function cadastrarPacote($dados)
     {
         $pacote = new CadastrarPacotesExrpessoFlex($dados['id'], $dados['coleta']);
@@ -29,5 +31,10 @@ class ExpressoFlex implements OrigemPacote
         return $pacotes->newQuery()
             ->where('rastreio', '=', $etiqueta->rastreio)
             ->first();
+    }
+
+    public function getOrigem(): string
+    {
+        return $this->origem;
     }
 }
