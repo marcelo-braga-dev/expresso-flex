@@ -19,7 +19,7 @@ class PacoteImportado
 
         return $etiqueta->newQuery()
             ->where([
-                ['codigo', '=', $codigo],
+                ['rastreio', '=', $codigo],
                 ['origem', '=', $origem]
             ])->exists();
     }
