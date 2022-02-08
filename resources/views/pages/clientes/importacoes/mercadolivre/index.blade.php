@@ -14,33 +14,41 @@
                 <div class="row mb-4">
                     <div class="col">
                         <p>Importe suas vendas realizadas no Mercado Livre automaticamento por meio do arquivo Excel.
-                            <a href="/">Veja como.</a></p>
+                            <a href="/">Veja como.</a>
+                        </p>
                     </div>
                 </div>
-                <form method="post" action="{{ route('clientes.importacoes.mercadolivre.store') }}"
-                      enctype="multipart/form-data"> @csrf
-                    <div class="row mb-4">
-                        <div class="col-6">
-                            <label>Arquivo de Importação</label>
-                            <input type="file" name="arquivo" class="form-control" required>
+                <div class="d-none d-md-block">
+                    <form method="post" action="{{ route('clientes.importacoes.mercadolivre.store') }}"
+                          enctype="multipart/form-data"> @csrf
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <label>Arquivo de Importação</label>
+                                <input type="file" name="arquivo" class="form-control" required>
+                            </div>
+                            <div class="col-md-3">
+                                <label>Ponto de Coleta</label>
+                                <select class="form-control" name="loja" required>
+                                    <option value=""></option>
+                                    @foreach($lojas as $loja)
+                                        <option value="{{ $loja->id }}">{{ $loja->nome }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
-                        <div class="col-md-3">
-                            <label>Ponto de Coleta</label>
-                            <select class="form-control" name="loja" required>
-                                <option value=""></option>
-                                @foreach($lojas as $loja)
-                                    <option value="{{ $loja->id }}">{{ $loja->nome }}</option>
-                                @endforeach
-                            </select>
+                        <div class="row justify-content-center">
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-primary">Importar Pacotes</button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row justify-content-center">
-                        <div class="col-auto">
-                            <button type="submit" class="btn btn-primary">Importar Pacotes</button>
-                        </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
+                <div class="row mb-4 d-md-none">
+                    <div class="alert alert-info">Não é possível realizar a importação do arquivo pelo aplicativo.
+                        Acesse pelo navegador do computador.</div>
+                </div>
             </div>
         </div>
+    </div>
     </div>
 </x-layout>
