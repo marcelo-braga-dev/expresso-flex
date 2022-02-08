@@ -105,6 +105,33 @@
 
         <div class="dropdown-divider"></div>
 
+        <!-- Etiquetas -->
+        <li class="nav-item">
+            <a class="nav-link p-0 ml-3 m-2" href="#navbar-importacao" data-toggle="collapse" role="button"
+               aria-expanded="true" aria-controls="navbar-importacao">
+                <i class="fas fa-file-upload text-principal"></i>
+                <span class="nav-link-text text-principal">Importação de Pacotes</span>
+            </a>
+            <div class="collapse" id="navbar-importacao">
+                <ul class="nav nav-sm flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link ml-1 pl-4 p-1"
+                           href="{{ route('clientes.importacoes.pacotes.index') }}">
+                            Pacotes Importados
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link ml-1 pl-4 p-1"
+                           href="{{ route('clientes.importacoes.mercadolivre.index') }}">
+                            Importacão Mercado Livre
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+        <div class="dropdown-divider"></div>
+
         <!-- Pacotes -->
         <li class="nav-item">
             <a class="nav-link p-0 ml-3 m-2" href="#navbar-pacotes" data-toggle="collapse" role="button"

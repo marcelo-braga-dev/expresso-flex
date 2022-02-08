@@ -98,6 +98,8 @@ function get_endereco(int $id)
 
     $cep = formatar_cep($dados->cep);
 
+    if ($dados->endereco_completo) return $dados->endereco_completo;
+
     $complemento = '';
 
     if (!empty($dados->complemento)) $complemento = ', Complemento: ' . $dados->complemento;

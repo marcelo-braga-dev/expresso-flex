@@ -8,6 +8,8 @@ use App\src\Pacotes\Destinatarios\CadastrarDestinatario;
 
 class GerarEtiqueta
 {
+    private string $origem = 'expressoflex';
+
     public function gerar($dados)
     {
         $idEndereco = $this->getEndereco($dados['endereco']);
@@ -19,7 +21,7 @@ class GerarEtiqueta
         $rastreio = $codigoRastreio->gerar();
 
         $etiqueta = new Etiquetas();
-        $etiqueta->salvar($idEndereco, $idDestinatario, $rastreio, id_usuario_atual(), $dados['loja']);
+        $etiqueta->salvar($idEndereco, $idDestinatario, $rastreio, id_usuario_atual(), $dados['loja'], $this->origem);
     }
 
     private function getEndereco($dados)

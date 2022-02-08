@@ -7,6 +7,7 @@ use App\Models\Enderecos;
 abstract class Endereco extends DadosEndereco
 {
     private int $cep;
+    private ?string $enderecoCompleto;
     private ?string $rua;
     private ?string $numero;
     private ?string $complemento;
@@ -19,6 +20,7 @@ abstract class Endereco extends DadosEndereco
     public function __construct()
     {
         $this->cep = 0;
+        $this->enderecoCompleto = null;
         $this->rua = null;
         $this->numero = null;
         $this->complemento = null;
@@ -27,6 +29,16 @@ abstract class Endereco extends DadosEndereco
         $this->estado = null;
         $this->latitude = null;
         $this->longitude = null;
+    }
+
+    public function getEnderecoCompleto(): ?string
+    {
+        return $this->enderecoCompleto;
+    }
+
+    public function setEnderecoCompleto(?string $enderecoCompleto): void
+    {
+        $this->enderecoCompleto = $enderecoCompleto;
     }
 
     public function salvar()

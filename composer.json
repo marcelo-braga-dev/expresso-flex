@@ -18,7 +18,9 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.3",
         "mercadopago/dx-php": "^2.4",
-        "mpdf/mpdf": "^8.0"
+        "mpdf/mpdf": "^8.0",
+        "phpoffice/phpspreadsheet": "^1.21",
+        "shuchkin/simplexlsx": "^0.9.11"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

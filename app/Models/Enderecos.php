@@ -22,7 +22,8 @@ class Enderecos extends Model
             'cidade',
             'estado',
             'latitude',
-            'longitude'
+            'longitude',
+            'endereco_completo'
         ];
 
     public function cadastrar(Endereco $dados)
@@ -30,6 +31,7 @@ class Enderecos extends Model
         $endereco = $this->newQuery()
             ->create([
                 'cep' => $dados->getCep(),
+                'endereco_completo' => $dados->getEnderecoCompleto(),
                 'rua' => $dados->getRua(),
                 'numero' => $dados->getNumero(),
                 'complemento' => $dados->getComplemento(),

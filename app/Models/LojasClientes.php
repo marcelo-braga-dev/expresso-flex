@@ -32,8 +32,8 @@ class LojasClientes extends Model
 
     public function loja(int $id)
     {
-        return print_pre($this->newQuery()
-            ->find($id));
+        return $this->newQuery()
+            ->find($id);
     }
 
     public function desativar(int $id)
@@ -44,7 +44,7 @@ class LojasClientes extends Model
             ->update(['status' => false]);
     }
 
-    public function getLojas(int $id)
+    public function lojas(int $id)
     {
         return $this->newQuery()
             ->where('user_id', '=', $id)

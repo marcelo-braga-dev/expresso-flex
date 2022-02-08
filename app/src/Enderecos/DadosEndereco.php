@@ -5,6 +5,7 @@ namespace App\src\Enderecos;
 abstract class DadosEndereco
 {
     abstract public function cep(string $cep);
+    abstract public function enderecoCompleto(string $dado);
     abstract public function rua(string $dado);
     abstract public function numero(string $dado);
     abstract public function complemento(?string $dado);

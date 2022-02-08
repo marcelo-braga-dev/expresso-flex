@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\src\Pacote;
 
-use App\src\Pacotes\CadastrarPacote;
+use App\src\Pacotes\NovoPacote;
 use App\src\Pacotes\Info\Coleta;
 use App\src\Pacotes\Info\Destinatario;
 use App\src\Pacotes\Info\Endereco;
@@ -33,7 +33,7 @@ class CadastrarPacotTest extends TestCase
         $destinatario = new Destinatario($destinatario, $cliente, $codigo, $status, $origem);
         $endereco = new Endereco($endereco, $cep);
 
-        $cadastrarPacote = new CadastrarPacote(
+        $cadastrarPacote = new NovoPacote(
             $coleta, $destinatario, $endereco
         );
 

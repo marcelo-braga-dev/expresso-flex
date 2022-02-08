@@ -33,13 +33,13 @@
                     <li class="nav-item">
                         <a class="nav-link ml-1 pl-4 py-1"
                            href="{{ route('entregadores.coletas-abertas.index') }}">
-                            Coletas em Aberto
+                            Solicitações de Coletas em Aberto
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link ml-1 pl-4 py-1"
                            href="{{ route('entregadores.coletas.create') }}">
-                            Abrir Solicitação
+                            Abrir Coleta
                         </a>
                     </li>
                     <li class="nav-item">

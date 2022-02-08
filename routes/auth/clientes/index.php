@@ -10,4 +10,5 @@ Route::group([
     include_once 'coletas.php';
     include_once 'lojas.php';
     include_once 'integracoes.php';
+    include_once 'importacao.php';
 });

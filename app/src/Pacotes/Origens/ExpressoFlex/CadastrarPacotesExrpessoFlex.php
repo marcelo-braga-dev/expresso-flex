@@ -3,7 +3,7 @@
 namespace App\src\Pacotes\Origens\ExpressoFlex;
 
 use App\Models\Etiquetas;
-use App\src\Pacotes\CadastrarPacote;
+use App\src\Pacotes\NovoPacote;
 use App\src\Pacotes\Info\Coleta;
 use App\src\Pacotes\Info\Destinatario;
 use App\src\Pacotes\Info\Endereco;
@@ -34,7 +34,7 @@ class CadastrarPacotesExrpessoFlex
 
         $endereco = $this->getEndereco();
 
-        $pacote = new CadastrarPacote($coleta, $destinatario, $endereco, $this->etiqueta->rastreio);
+        $pacote = new NovoPacote($coleta, $destinatario, $endereco, $this->etiqueta->rastreio);
         $pacote->cadastrar();
     }
 

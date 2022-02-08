@@ -30,7 +30,7 @@ class ExpressoFlexController extends Controller
     public function create()
     {
         $lojasClientes = new LojasClientes();
-        $lojas = $lojasClientes->getLojas(id_usuario_atual());
+        $lojas = $lojasClientes->lojas(id_usuario_atual());
 
         return view('pages.clientes.etiquetas.expressoflex.create', compact('lojas'));
     }

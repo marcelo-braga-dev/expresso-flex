@@ -21,6 +21,7 @@ class CreateEtiquetasTable extends Migration
             $table->foreignId('destinatarios_id')->constrained('destinatarios');
             $table->foreignId('enderecos_id')->constrained('enderecos');
             $table->foreignId('lojas_id')->constrained('lojas_clientes');
+            $table->string('origem', 32);
             $table->timestamps();
         });
     }
