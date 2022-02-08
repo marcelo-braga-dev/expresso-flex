@@ -58,4 +58,9 @@ class CadastrarEndereco extends Endereco
     {
         $this->setLongitude($dado);
     }
+
+    public function enderecoCompleto(string $dado)
+    {
+        $this->setEnderecoCompleto($dado);
+    }
 }
