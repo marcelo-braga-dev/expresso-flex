@@ -23,7 +23,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a class="btn btn-primary" href="{{ route('admin.usuarios.clientes.tabela') }}">
+                        <a class="btn btn-primary" href="{{ route('admins.usuarios.clientes.index') }}">
                             Ver Clientes
                         </a>
                     </div>
@@ -112,57 +112,6 @@
                 </div>
             </div>
 
-            {{-- Fretes Clientes --}}
-            <div class="col-md-4 mb-3">
-                <div class="card card-stats shadow">
-                    <div class="card-body">
-                        <div class="row mb-3">
-                            <div class="col">
-                                <h5 class="card-title text-uppercase text-muted mb-0">
-                                    Fretes
-                                </h5>
-                                <span class="h2 font-weight-bold mb-0">
-                                    Preços Clientes
-                                </span>
-                            </div>
-                            <div class="col-auto">
-                                <div class="icon icon-shape bg-success text-white rounded-circle shadow">
-                                    <i class="fas fa-shipping-fast"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <a class="btn btn-success" href="{{ route('admin.fretes.tabela', ['cliente']) }}">
-                            Ver Preços
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            {{--Fretes Entregadores --}}
-            <div class="col-md-4 mb-3">
-                <div class="card card-stats shadow">
-                    <div class="card-body">
-                        <div class="row mb-3">
-                            <div class="col">
-                                <h5 class="card-title text-uppercase text-muted mb-0">
-                                    Fretes
-                                </h5>
-                                <span class="h2 font-weight-bold mb-0">
-                                    Comissão Entregadores
-                                </span>
-                            </div>
-                            <div class="col-auto">
-                                <div class="icon icon-shape bg-success text-white rounded-circle shadow">
-                                    <i class="fas fa-search"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <a class="btn btn-success" href="{{ route('admin.fretes.tabela', ['entregador']) }}">
-                            Ver Valores
-                        </a>
-                    </div>
-                </div>
-            </div>
         </div>
 
         {{-- Financeiro --}}
