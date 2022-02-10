@@ -2,6 +2,7 @@
 
 namespace App\src\Pacotes\Status;
 
+use App\Exceptions\QrCodeException;
 use App\src\Pacotes\Origens\VerificadorOrigens\VerificarOrigemPacote;
 
 class Coletado extends Status
@@ -17,6 +18,9 @@ class Coletado extends Status
     {
         $verificarOrigem = new VerificarOrigemPacote();
         $origem = $verificarOrigem->verificarOrigem($dados);
+
+        if (empty($origem)) throw new QrCodeException();
+
         $origem->cadastrarPacote($dados);
     }
 }
