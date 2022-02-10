@@ -1,6 +1,4 @@
-<x-layout>
-
-
+<x-layout class="bg-secundario">
     <div class="container mt-5 pb-5">
         <div class="row justify-content-center">
             <div class="col-lg-6 col-md-8">
@@ -14,7 +12,7 @@
 
                             @if (session('invalido'))
                                 <div class="alert alert-danger">
-                                 {{ session('invalido') }}
+                                    {{ session('invalido') }}
                                 </div>
                             @endif
 
@@ -23,7 +21,9 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                     </div>
-                                    <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" type="email" name="email" value="{{ $email }}" required>
+                                    <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                                           placeholder="{{ __('Email') }}" type="email" name="email"
+                                           value="{{ $email }}" required>
                                 </div>
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -36,7 +36,9 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                     </div>
-                                    <input class="form-control{{ session('password') ? ' is-invalid' : '' }}" placeholder="Nova Senha" type="password" name="password" minlength="6" required>
+                                    <input class="form-control{{ session('password') ? ' is-invalid' : '' }}"
+                                           placeholder="Nova Senha" type="password" name="password" minlength="6"
+                                           required>
                                 </div>
                                 @if (session('password'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -49,7 +51,8 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                     </div>
-                                    <input class="form-control" placeholder="Confirmar Nova Senha" type="password" name="password_confirmation" minlength="6" required>
+                                    <input class="form-control" placeholder="Confirmar Nova Senha" type="password"
+                                           name="password_confirmation" minlength="6" required>
                                 </div>
                             </div>
                             <div class="text-center">
@@ -62,4 +65,4 @@
             </div>
         </div>
     </div>
-    </x-layout>
+</x-layout>

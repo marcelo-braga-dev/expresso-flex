@@ -5,7 +5,7 @@
                 <div class="card bg-secondary shadow border-0">
                     <div class="card-body pb-1 rounded">
                         <div class="row justify-content-center mx-auto mb-3">
-                            <img src="/assets/img/brand/logo-x256.png" width="50%" />
+                            <img src="/assets/img/brand/logo-x256.png" width="50%"/>
                         </div>
                         <form role="form" method="POST" action="{{ route('login') }}">
                             @csrf
@@ -16,8 +16,9 @@
                                         <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                     </div>
                                     <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
-                                        placeholder="E-mail" type="email" name="email" value="@if (!empty($_COOKIE['ef_e'])){{ base64_decode($_COOKIE['ef_e']) }}@endif"
-                                        required autofocus>
+                                           placeholder="E-mail" type="email" name="email"
+                                           value="@if (!empty($_COOKIE['ef_e'])){{ base64_decode($_COOKIE['ef_e']) }}@endif"
+                                           required autofocus>
                                 </div>
 
                                 @if ($errors->has('email'))
@@ -32,8 +33,9 @@
                                         <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                     </div>
                                     <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
-                                        name="password" placeholder="Senha" type="password" value="@if (!empty($_COOKIE['ef_s'])){{ base64_decode($_COOKIE['ef_s']) }}@endif"
-                                        required autofocus>
+                                           name="password" placeholder="Senha" type="password"
+                                           value="@if (!empty($_COOKIE['ef_s'])){{ base64_decode($_COOKIE['ef_s']) }}@endif"
+                                           required autofocus>
                                 </div>
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -42,8 +44,9 @@
                                 @endif
                             </div>
                             <div class="custom-control custom-control-alternative custom-checkbox">
-                                <input class="custom-control-input" name="remember" id="customCheckLogin" type="checkbox"
-                                    checked>
+                                <input class="custom-control-input" name="remember" id="customCheckLogin"
+                                       type="checkbox"
+                                       checked>
                                 <label class="custom-control-label" for="customCheckLogin">
                                     <span class="text-muted">Lembrar dados de acesso.</span>
                                 </label>

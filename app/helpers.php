@@ -60,7 +60,7 @@ function get_dados_usuario(int $id)
 
 function get_nome_usuario(int $id)
 {
-    return User::find($id)->nome;
+    return User::find($id)->name;
 }
 
 function get_destinatario_pacote(int $id)

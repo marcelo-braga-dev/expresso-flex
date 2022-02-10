@@ -1,8 +1,4 @@
-@extends('layouts.app', ['class' => 'bg-default'])
-
-@section('content')
-
-
+<x-layout class="bg-secundario">
     <div class="container mt-5 pb-5">
         <!-- Table -->
         <div class="row justify-content-center">
@@ -97,4 +93,4 @@
             </div>
         </div>
     </div>
-@endsection
+</x-layout>

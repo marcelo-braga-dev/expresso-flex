@@ -107,6 +107,11 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link ml-1 pl-4" href="{{ route('admins.pacotes.historico.clientes.index') }}">
+                            Por Cliente
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link ml-1 pl-4" href="{{ route('admin.pacotes.historico') }}">
                             Histórico de Pacotes
                         </a>
