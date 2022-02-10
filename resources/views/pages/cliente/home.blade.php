@@ -75,7 +75,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a class="btn btn-danger" href="{{ route('cliente.etiqueta.emitir-etiqueta') }}">
+                        <a class="btn btn-danger" href="{{ route('clientes.etiquetas.expressoflex.create') }}">
                             Gerar Etiqueta
                         </a>
                     </div>
