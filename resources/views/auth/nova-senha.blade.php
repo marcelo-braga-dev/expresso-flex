@@ -1,6 +1,4 @@
-@extends('layouts.app', ['class' => 'bg-default'])
-
-@section('content')
+<x-layout>
 
 
     <div class="container mt-5 pb-5">
@@ -64,4 +62,4 @@
             </div>
         </div>
     </div>
-@endsection
+    </x-layout>
