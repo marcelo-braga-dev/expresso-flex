@@ -2,16 +2,17 @@
 
 namespace App\src\QrCode\DecodeJson;
 
+use App\Exceptions\QrCodeException;
+
 class DecodificarJson
 {
-    public function decodificar($dados)
+    /** @throws QrCodeException */
+
+    public function decodificar($dados): array
     {
         $dadosPacote = json_decode($dados->json, true);
 
-        // if ($this->qrCodeCorrompido($array)) {
-        //     session()->flash('erro', 'Ocorreu um erro na leitura do código de barras.');
-        //     throw new QrCodeException();
-        // }
+        if (!is_array($dadosPacote)) throw new QrCodeException();
 
         return array_merge(
             $dadosPacote, [

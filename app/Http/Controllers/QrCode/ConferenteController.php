@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers\QrCode;
 
+use App\Exceptions\QrCodeException;
 use App\Http\Controllers\Controller;
-use App\src\QrCode\DecodeJson\DecodificarJson;
-use Illuminate\Http\Request;
 
 class ConferenteController extends Controller
 {
@@ -13,24 +12,24 @@ class ConferenteController extends Controller
     {
         $resposta = json_decode($_GET['json'], true);
 
-        if ($this->qrCodeCorrompido($resposta)) {
-            session()->flash('erro', 'Ocorreu um erro na leitura no código de barras.');
-            return redirect()->route('conferente.checkin.pacotes');
-        }
+        try {
+            if (!is_array($resposta)) throw new QrCodeException();
 
-        if (empty($resposta['origem'])) {
-            $resposta = array_merge($resposta, ['origem' => 'mercado_livre']);
+            if ($this->qrCodeCorrompido($resposta)) throw new QrCodeException();
+
+            if (empty($resposta['origem'])) {
+                $resposta = array_merge($resposta, ['origem' => 'mercado_livre']);
+            }
+        } catch (QrCodeException $e) {
+            session()->flash('erro', 'Não foi possível ler o QrCode.');
+            return redirect()->route('conferente.checkin.pacotes');
         }
 
         return redirect()->route('conferentes.checkin.create', $resposta);
     }
 
-    public function qrCodeCorrompido($resposta)
+    public function qrCodeCorrompido($resposta): bool
     {
-        if (empty($resposta['id']) || empty($resposta['sender_id']) || !is_array($resposta)) {
-            return true;
-        }
-
-        return false;
+        return empty($resposta['id']) || empty($resposta['sender_id']) || !is_array($resposta);
     }
 }
