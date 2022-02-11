@@ -7,8 +7,6 @@ use App\Http\Controllers\Controller;
 
 class AbrirSolicitacaoColetaController extends Controller
 {
-    /** @throws QrCodeException */
-
     public function index()
     {
         $resposta = json_decode($_GET['json'], true);

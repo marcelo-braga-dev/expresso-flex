@@ -47,25 +47,6 @@ Route::get('pacotes/pesquisar', 'PacotesControllers@pesquisar')
     ->name('cliente.pacotes.pesquisar');
 
 
-/*
- * Etiqueta
- */
-
-// Pagina Nova Etiqueta
-Route::get('etiqueta/emitir-etiqueta', 'EtiquetasClienteController@new')
-    ->name('cliente.etiqueta.emitir-etiqueta');
-
-// TotaCriar Etiqueta
-Route::put('etiqueta/criar-etiqueta', 'EtiquetasClienteController@store')
-    ->name('cliente.etiqueta.criar-etiqueta');
-
-// Todas Etiqueta
-Route::get('etiqueta/todas-etiquetas', 'EtiquetasClienteController@index')
-    ->name('cliente.etiqueta.todas-etiquetas');
-
-// Imprimir Etiqueta
-Route::post('etiqueta/imprimir-etiqueta', 'EtiquetasClienteController@imprimir')
-    ->name('cliente.etiqueta.imprimir-etiqueta');
 
 /*
  * Financeiro
