@@ -37,7 +37,7 @@
             @endempty
         </div>
         <div class="col-12 col-md-2 text-right">
-            <a class="small pl-5" href="{{ route($link, ['id' => $pacote->id]) }}">
+            <a class="small pl-5" href="{{ route($link, $pacote->id) }}">
                 Detalhes
             </a>
         </div>

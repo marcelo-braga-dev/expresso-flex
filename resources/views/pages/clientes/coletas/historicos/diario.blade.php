@@ -6,7 +6,9 @@
             <div class="card-header bg-white mb-0">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h4 class="card-title text-uppercase mb-2">Histórico de Pacotes Coletados no Dia</h4>
+                        <h4 class="card-title text-uppercase mb-2">
+                            Histórico de Pacotes Coletados no Dia
+                        </h4>
                     </div>
                     <div class="col-auto">
                         <a class="btn btn-primary btn-sm" href="{{ url()->previous() }}">Voltar</a>
@@ -16,7 +18,7 @@
             <div class="card-body p-0">
                 <ul class="list-group list-group-flush">
                     @foreach ($pacotes as $pacote)
-                        @include('layouts.componentes.list-pacotes', ['link' => 'cliente.pacotes.info-pacote'])
+                        @include('layouts.componentes.list-pacotes', ['link' => 'clientes.pacotes.show'])
                     @endforeach
 
                     @if ($pacotes->isEmpty())
