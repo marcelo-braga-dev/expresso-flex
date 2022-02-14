@@ -11,4 +11,5 @@ Route::group([
     include_once 'lojas.php';
     include_once 'integracoes.php';
     include_once 'importacao.php';
+    include_once 'pacotes.php';
 });

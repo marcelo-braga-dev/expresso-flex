@@ -16,7 +16,7 @@
             </div>
             <div class="card-body p-0">
                 <x-elements.pacotes.items :pacotes="$pacotes"
-                                          link="cliente.pacotes.info-pacote">
+                                          link="clientes.pacotes.show">
                 </x-elements.pacotes.items>
             </div>
         </div>

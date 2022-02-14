@@ -142,12 +142,12 @@
             <div class="collapse" id="navbar-pacotes">
                 <ul class="nav nav-sm flex-column">
                     <li class="nav-item">
-                        <a class="nav-link ml-1 pl-4 p-1" href="{{ route('cliente.pacotes.pesquisar') }}">
+                        <a class="nav-link ml-1 pl-4 p-1" href="{{ route('clientes.pacotes.pesquisar.index') }}">
                             Pesquisar Pacote
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-1 pl-4 p-1" href="{{ route('cliente.pacotes.historico') }}">
+                        <a class="nav-link ml-1 pl-4 p-1" href="{{ route('clientes.pacotes.historico.index') }}">
                             Histórico de Pacotes
                         </a>
                     </li>

@@ -7,47 +7,6 @@
 Route::get('home', 'HomeClienteController@index')
     ->name('cliente.home.index');
 
-/**
- * Coletas
- */
-
-// Solicitar Coleta
-Route::get('coleta/solicitar-coleta', 'ColetaController@solicitarColeta')
-    ->name('cliente.coleta.solicitar-coleta');
-
-Route::put('coleta/solicitar-coleta', 'ColetaController@store')
-    ->name('cliente.coleta.solicitar-coleta.put');
-
-// Cancelar Coleta
-Route::put('coleta/cancelar-coleta', 'ColetaController@cancelarColeta')
-    ->name('cliente.coleta.cancelar-coleta');
-
-
-/*
- * Pacotes
- */
-//      Historico Mes Pacotes
-Route::get('pacotes/historico', 'PacotesControllers@historicoMes')
-    ->name('cliente.pacotes.historico');
-
-//      Historico Pacotes
-Route::get('pacotes/historico-diario', 'PacotesControllers@historicoDia')
-    ->name('cliente.pacotes.historico-diario');
-
-//      Historico Pacotes
-Route::get('pacotes/historico-diario-detalhes', 'PacotesControllers@historicoDetalhesDia')
-    ->name('cliente.pacotes.historico-diario-detalhes');
-
-//      Info Pacote
-Route::get('pacotes/descricao', 'PacotesControllers@info')
-    ->name('cliente.pacotes.info-pacote');
-
-//      Pesquisar Pacote
-Route::get('pacotes/pesquisar', 'PacotesControllers@pesquisar')
-    ->name('cliente.pacotes.pesquisar');
-
-
-
 /*
  * Financeiro
  */

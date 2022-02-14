@@ -14,12 +14,12 @@ class EmAbertoController extends Controller
     {
         $solicitacaoRetiradas = new SolicitacaoRetiradas();
         $status = new Aceito();
+
         $solicitacoesAceitas = $solicitacaoRetiradas
             ->where('entregador', '=', id_usuario_atual())
             ->where('status', '=', $status->getStatus())
-            ->orderBy('cep', 'ASC')
-            ->get()
-            ->toArray();
+            ->orderBy('id', 'DESC')
+            ->get();
 
         $pesquisarSolicitacoes = new PesquisarSolicitacoes();
         $coletasParaAceitar = $pesquisarSolicitacoes->pesquisar();

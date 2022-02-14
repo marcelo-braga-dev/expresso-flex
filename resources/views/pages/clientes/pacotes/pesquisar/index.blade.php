@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-md-8 mb-5">
                         <div class="card mb-3 p-4 pb-1">
-                            <form action="{{ route('cliente.pacotes.pesquisar') }}">
+                            <form action="{{ route('clientes.pacotes.pesquisar.show') }}">
                                 @csrf
                                 <div class="row">
                                     <div class="col-12">
@@ -30,9 +30,9 @@
 
                                     <div class="col-md-8 mb-3">
                                         <div class="form-group m-0">
-                                            <input type="text" name="codigo_pacote_pesquisar"
-                                                class="form-control form-control-alternative" value=""
-                                                placeholder="EF0000SP" required autofocus>
+                                            <input type="text" name="id"
+                                                   class="form-control form-control-alternative" value="{{ old('id') }}"
+                                                   placeholder="EF0000SP" required autofocus>
                                         </div>
                                     </div>
                                     <div class="col-md-3 align-self-end text-right mb-3">
@@ -51,4 +51,4 @@
 
 
     </div>
-    </x-layout>
+</x-layout>
