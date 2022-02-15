@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout menu="pacotes" submenu="historico">
     <div class="header bg-principal bg-height-top"></div>
 
     <div class="container-fluid mt--9">
@@ -20,6 +20,5 @@
                 </x-elements.pacotes.items>
             </div>
         </div>
-
     </div>
 </x-layout>

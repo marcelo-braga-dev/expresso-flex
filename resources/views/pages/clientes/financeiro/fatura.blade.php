@@ -95,36 +95,35 @@
                         <div class="table-responsive">
                             <table class="table align-items-center table-flush text-center">
                                 <thead class="thead-light">
-                                    <tr>
-                                        <th>Data</th>
-                                        <th>Total do Dia</th>
-                                        <th></th>
-                                    </tr>
+                                <tr>
+                                    <th>Data</th>
+                                    <th>Total do Dia</th>
+                                    <th></th>
+                                </tr>
                                 </thead>
                                 <tbody class="list">
-                                    @if (!empty($fretes['dias']))
-                                        @foreach ($fretes['dias'] as $dia => $frete)
-                                            <tr>
-                                                <th scope="row">
-                                                    {{ $dia . '/' . $fretes['mes'] . '/' . $fretes['ano'] }}
-                                                </th>
-                                                <td>
-                                                    R$ {{ number_format($frete, 2, ',', '.') }}
-                                                </td>
-                                                <td class="text-right">
-                                                    <a
-                                                        href="
-                                                            {{ route('cliente.coleta.historico.pacotes-coletados', [
+                                @if (!empty($fretes['dias']))
+                                    @foreach ($fretes['dias'] as $dia => $frete)
+                                        <tr>
+                                            <th scope="row">
+                                                {{ $dia . '/' . $fretes['mes'] . '/' . $fretes['ano'] }}
+                                            </th>
+                                            <td>
+                                                R$ {{ number_format($frete, 2, ',', '.') }}
+                                            </td>
+                                            <td class="text-right">
+                                                <a href="{{
+                                                            route('cliente.coleta.historico.pacotes-coletados', [
                                                                 'dia' => $dia,
                                                                 'mes' => $fretes['mes'],
                                                                 'ano' => $fretes['ano'],
-                                                            ]) }} ">
-                                                        Detalhes
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    @endif
+                                                            ]) }}">
+                                                    Detalhes
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
                                 </tbody>
                             </table>
                         </div>
@@ -166,4 +165,4 @@
         </script>
     @endif
 
-    </x-layout>
+</x-layout>

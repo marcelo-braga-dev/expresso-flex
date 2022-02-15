@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout menu="etiquetas" submenu="gerar">
 
     <div class="header bg-principal bg-height-top"></div>
 
@@ -7,17 +7,12 @@
             <div class="card-header bg-white">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h4 class="card-title text-uppercase mb-1">Criar Etiqueta</h4>
-                    </div>
-                    <div class="col-auto">
-                        <a class="btn btn-primary btn-sm" href="{{ url()->previous() }}">Voltar</a>
+                        <h4 class="card-title text-uppercase mb-1">Gerar Etiqueta</h4>
                     </div>
                 </div>
             </div>
             <div class="card-body">
-                <form method="POST" action="{{ route('clientes.etiquetas.expressoflex.store') }}" autocomplete="off">
-                @csrf
-
+                <form method="POST" action="{{ route('clientes.etiquetas.expressoflex.store') }}" autocomplete="off"> @csrf
                 <!-- Endereco -->
                     <h5>Pontos de Coleta</h5>
                     <div class="form-row">

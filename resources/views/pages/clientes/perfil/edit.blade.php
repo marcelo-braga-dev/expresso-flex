@@ -12,7 +12,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <form method="post" action="{{ route('cliente.perfil.update') }}" autocomplete="off">
+                <form method="post" action="{{ route('clientes.perfil.update', id_usuario_atual()) }}" autocomplete="off">
                     @csrf @method('put')
 
                     <div class="px-lg-4">
@@ -121,7 +121,5 @@
                 </form>
             </div>
         </div>
-
-
     </div>
 </x-layout>

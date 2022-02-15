@@ -1,52 +1,19 @@
 <?php
 
-/**
- * Home
- */
-// Index
+/* Home */
 Route::get('home', 'HomeClienteController@index')
     ->name('cliente.home.index');
 
-/*
- * Financeiro
- */
-Route::get(
-    'financeiro/pagamentos',
-    'FinanceiroController@pagamentos'
-)->name('cliente.financeiro.pagamentos');
-
-// historico quinzena
-Route::get(
-    'financeiro/quinzena',
-    'FinanceiroController@historicoQuinzena'
-)->name('cliente.financeiro.quinzena');
-
-Route::get(
-    'financeiro/pagamentos/detalhes-mensal',
-    'FinanceiroController@detalhesMensal'
-)->name('cliente.financeiro.pagamentos.detalhes-mensal');
-
-
-/*
- * Perfil
- */
+/* Perfil */
 // Edita Perfil
-Route::get(
-    'perfil/editar',
-    'PerfilController@edit'
-)->name('cliente.perfil.editar');
+Route::get('perfil/editar', 'PerfilController@edit')->name('cliente.perfil.editar');
 
 // Update Perfil
-Route::put(
-    'perfil/update',
-    'PerfilController@update'
-)->name('cliente.perfil.update');
+Route::put('perfil/update', 'PerfilController@update')->name('cliente.perfil.update');
 
 
 
-/*
- * Mercado Livre
- */
+/* Mercado Livre */
 // Todas as contas do usuario
 Route::get(
     'mercadolivre/todas-contas',

@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout menu="pacotes">
     <div class="header bg-principal bg-height-top"></div>
 
     <!-- Page content -->

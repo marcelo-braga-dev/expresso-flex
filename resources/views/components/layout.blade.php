@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Expresso Flex</title>
-<!-- Favicon -->
+    <!-- Favicon -->
     {{-- <link href="/assets/img/brand/logo-x256.png" rel="icon"> --}}
 
     <link type="text/css" href="/assets/css/font-google.css" rel="stylesheet">
@@ -20,7 +20,6 @@
     <!-- Argon CSS -->
     <link type="text/css" href="{{ asset('argon') }}/css/argon.css?v=2.0.1" rel="stylesheet">
     <link type="text/css" href="/assets/css/style.css?ver=1.0" rel="stylesheet">
-    <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>
 </head>
 
 <body {{ $attributes }}>
@@ -32,9 +31,9 @@
 @endauth
 
 @auth()
-<x-layouts.users>
-    {{ $slot }}
-</x-layouts.users>
+    <x-layouts.users>
+        {{ $slot }}
+    </x-layouts.users>
 @endauth
 
 @guest()
@@ -44,41 +43,33 @@
 @include('layouts.componentes.modal-sucesso')
 
 @stack('js')
-<script>
-    $(document).ready(function () {
-        $('.select2').select2({
-            theme: "bootstrap4"
-        });
-    });
+{{--<script>--}}
+{{--    $(document).ready(function () {--}}
+{{--        $('.select2').select2({--}}
+{{--            theme: "bootstrap4"--}}
+{{--        });--}}
+{{--    });--}}
 
-    $(function () {
-        const href = location.origin + location.pathname;
-        const aba_menu = $('.nav-link[href="' + href + '"]');
+{{--    $(function () {--}}
+{{--        const href = location.origin + location.pathname;--}}
+{{--        const aba_menu = $('.nav-link[href="' + href + '"]');--}}
 
-        aba_menu.addClass('active');
-        aba_menu.parent().parent().parent().addClass('show');
+{{--        aba_menu.addClass('active');--}}
+{{--        aba_menu.parent().parent().parent().addClass('show');--}}
 
-        aba = $('#menu_suspenso').val();
-        $('.collapse .' + aba).addClass('show');
-    })
-</script>
+{{--        aba = $('#menu_suspenso').val();--}}
+{{--        $('.collapse .' + aba).addClass('show');--}}
+{{--    })--}}
+{{--</script>--}}
 
+
+<script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>
 <script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
-{{-- <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script> --}}
 
 {{-- <script src="/assets/js/jquery.mask.min.js"></script> --}}
 <script src="/assets/js/config.js"></script>
-{{-- <script src="/assets/js/table/search.js"></script> --}}
 
 <script src="{{ asset('argon') }}/js/argon.min.js?v=2.0.0"></script>
-
-{{-- <script src="/assets/vendor/js-cookie/js.cookie.js"></script> --}}
-{{-- <script src="/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script> --}}
-{{-- <script src="/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script> --}}
-
-
-{{-- <script src="/assets/js/argon.js?v=1.2.0"></script> --}}
 <script src="/assets/vendor/select2/dist/js/select2.min.js"></script>
 
 <input type="hidden" id="menu_suspenso"

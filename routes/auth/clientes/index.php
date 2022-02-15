@@ -12,4 +12,6 @@ Route::group([
     include_once 'integracoes.php';
     include_once 'importacao.php';
     include_once 'pacotes.php';
+    include_once 'financeiro.php';
+    include_once 'perfil.php';
 });

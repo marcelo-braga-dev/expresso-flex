@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout menu="lojas" submenu="pontos">
 
     <div class="header bg-principal bg-height-top"></div>
 
