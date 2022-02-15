@@ -1,8 +1,8 @@
-<x-layout>
+<x-layout class="bg-secundario">
 
     @if (empty($errors->first('sucesso')))
 
-        <div class="container mt--8 pb-5">
+        <div class="container pb-5 pt-6">
             <div class="row justify-content-center">
                 <div class="col-lg-8 col-md-8">
                     <div class="card bg-secondary shadow border-0">

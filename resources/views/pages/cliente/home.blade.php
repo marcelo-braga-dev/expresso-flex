@@ -129,7 +129,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a class="btn btn-success" href="{{ route('cliente.financeiro.pagamentos') }}">
+                        <a class="btn btn-success" href="{{ route('clientes.financeiro.index') }}">
                             Ver Faturamento
                         </a>
                     </div>

@@ -54,9 +54,7 @@
                                 <div class="form-group">
                                     <label class="form-control-label" for="celular">Celular</label>
                                     <input type="text" name="celular" id="celular"
-                                           class="form-control form-control-alternative"
-                                           value=""
-                                           required autofocus>
+                                           class="form-control form-control-alternative" autofocus>
                                 </div>
                             </div>
                         </div>

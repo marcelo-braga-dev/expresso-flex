@@ -16,10 +16,6 @@
                                 </a>
                             </div>
                             <div>
-                                <small>Link para cadastro de clientes</small>
-                                <span class="text-sm d-block">{{ route('cliente.criar-conta') }}</span>
-                            </div>
-                            <div>
                                 <div class="form-group m-0">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
