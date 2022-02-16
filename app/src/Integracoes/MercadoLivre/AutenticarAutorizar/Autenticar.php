@@ -80,10 +80,7 @@ class Autenticar extends DadosIntegracao
             session()->flash('sucesso', "Conta {$info['nickname']} vinculada com sucesso.");
             return;
         }
-print_pre($exist);
-        session()->flash('erro', 'Conta Mercado Livre ' .
-            $exist['brand_name'] .
-            '(' . $exist['nickname'] . ')' .
-            'já está cadastrada em nosso sistema.');
+
+        session()->flash('erro', 'Essa Conta Mercado Livre já está cadastrada em nosso sistema.');
     }
 }
