@@ -23,7 +23,7 @@ class MercadoLivreController extends Controller
         $autenticacao->autenticar($code);
 
         return redirect()->route('mercadolivre.todas-contas');
-    }    
+    }
 
     // Recebe notificacoes do Mercado Livre
     public function getNotificacaoMeli()

@@ -45,27 +45,3 @@ Route::group(['middleware' => 'auth'], function () {
 
     include 'rota/padrao.php';
 });
-
-// Formulario Externo Criar Criar Conta Cliente
-Route::get(
-    'cliente/criar-conta',
-    function () {
-        return view('pages.cliente.perfil.criar-conta');
-    }
-)->name('cliente.criar-conta');
-
-Route::put(
-    'cliente/criar-conta',
-    'App\Http\Controllers\Admin\Usuarios\ClientesController@newExterno'
-)->name('cliente.new');
-//
-
-Route::get(
-    'teste/comunicacao-mercado-livre',
-    function () {
-        $cls = new RecursosApiMercadoLivre();
-        //$res = $cls->teste();
-        $cls->atualizarInfoContas();
-        //print_pre($res);
-    }
-)->name('teste.comunicacao-mercado-livre');

@@ -6,5 +6,5 @@ Route::prefix('integracoes')
     ->name('clientes.integracoes.')
     ->namespace('Integracoes')
     ->group(function () {
-        Route::resource('mercadolivre', 'MercadoLivreController');
+        Route::get('mercadolivre', 'MercadoLivreController@index')->name('mercadolivre.index');
     });

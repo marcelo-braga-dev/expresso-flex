@@ -41,10 +41,11 @@ class Usuarios
 
             $user->update(
                 [
-                    'nome' => $data['nome'],
+                    'name' => $data['nome'],
                     'email' => strtolower($data['email'])
                 ]
             );
+            session()->flash('sucesso', 'Dados atualizados com sucesso!');
         } catch (QueryException $e) {
             session()->flash('erro', 'Já existe um usuário com esse email.');
         }

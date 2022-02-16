@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Clientes\Integracoes;
 
 use App\Http\Controllers\Controller;
 use App\src\Integracoes\MercadoLivre\AutenticarAutorizar\Autenticar;
+use App\src\MercadoLivre\AutenticacaoAutorizacaoMercadoLivre;
+use Illuminate\Http\Request;
 
 class MercadoLivreController extends Controller
 {
@@ -15,5 +17,19 @@ class MercadoLivreController extends Controller
         $contas = [];
 
         return view('pages.clientes.integracoes.mercadolivre.index', compact('contas', 'urlIntegracao'));
+    }
+
+    public function autenticar(Request $request)
+    {
+        // $autenticacao = new AutenticacaoAutorizacaoMercadoLivre();
+
+        // $arg = $request->code;
+
+        // $code = $arg['code'];
+
+        $autenticacao = new Autenticar();
+        $autenticacao->autenticar($request->code);
+
+        return redirect()->route('mercadolivre.todas-contas');
     }
 }

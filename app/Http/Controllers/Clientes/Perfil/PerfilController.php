@@ -37,7 +37,7 @@ class PerfilController extends Controller
     {
         $cls = new Clientes();
 
-        $user = $cls->editaUsuario($request, $request->id);
+        $user = $cls->editaUsuario($request, $id);
 
         $cls->metaValues($request, $user->id);
 
