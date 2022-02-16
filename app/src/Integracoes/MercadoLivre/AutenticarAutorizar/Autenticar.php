@@ -40,7 +40,7 @@ class Autenticar extends DadosIntegracao
 
             $json = $res->getBody();
             $resposta = json_decode($json, true);
-print_pre($resposta);
+
             $this->salvarDadosIntegracao($resposta);
         } catch (Exception $exception) {
             session()->flash('erro', 'Ocorreu um erro no cadastro da conta Mercado Livre.');
@@ -80,8 +80,10 @@ print_pre($resposta);
             session()->flash('sucesso', "Conta {$info['nickname']} vinculada com sucesso.");
             return;
         }
-
-        session()->flash('erro', 'Conta Mercado Livre ' . $exist['brand_name'] . '(' . $exist['nickname'] . ')
-        já está cadastrada em nosso sistema.');
+print_pre($exist);
+        session()->flash('erro', 'Conta Mercado Livre ' .
+            $exist['brand_name'] .
+            '(' . $exist['nickname'] . ')' .
+            'já está cadastrada em nosso sistema.');
     }
 }
