@@ -40,7 +40,7 @@ class Autenticar extends DadosIntegracao
 
             $json = $res->getBody();
             $resposta = json_decode($json, true);
-
+print_pre($resposta);
             $this->salvarDadosIntegracao($resposta);
         } catch (Exception $exception) {
             session()->flash('erro', 'Ocorreu um erro no cadastro da conta Mercado Livre.');
