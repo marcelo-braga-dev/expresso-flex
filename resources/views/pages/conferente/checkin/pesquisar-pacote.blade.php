@@ -48,15 +48,15 @@
         </div>
 
         <a href="{{ route('conferente.pacotes.qrcode.checkin.start') }}"
-            class="btn-flutuante btn-danger btn-camera" target="_blank" style="display: none">
+           class="btn-flutuante btn-danger btn-camera" target="_blank" style="display: none">
             <i style="margin-top:12px" class="fas fa-camera"></i>
         </a>
-
-        <script>
-            if (Android.isAndroid()) {
-                $('.btn-camera').show();
-            }
-        </script>
-
+        @push('js')
+            <script>
+                if (Android.isAndroid()) {
+                    $('.btn-camera').show();
+                }
+            </script>
+        @endpush
     </div>
-    </x-layout>
+</x-layout>

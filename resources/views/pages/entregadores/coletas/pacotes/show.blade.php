@@ -116,11 +116,12 @@
                 })
             </script>
         @endif --}}
-
-        <script>
-            if (Android.isAndroid()) {
-                $('.btn-camera').show();
-            }
-        </script>
+        @push('js')
+            <script>
+                if (Android.isAndroid()) {
+                    $('.btn-camera').show();
+                }
+            </script>
+        @endpush
     </div>
 </x-layout>

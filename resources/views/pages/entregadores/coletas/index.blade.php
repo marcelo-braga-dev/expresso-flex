@@ -175,7 +175,7 @@
         </div>
 
     </div>
-
+    @push('js')
     <script>
         $(function () {
             $('.btn-cancelar').click(function () {
@@ -183,4 +183,5 @@
             });
         });
     </script>
+    @endpush
 </x-layout>

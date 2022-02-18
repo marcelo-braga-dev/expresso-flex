@@ -99,6 +99,7 @@
             </div>
         </div>
     </div>
+    @push('js')
     <script>
         $(function() {
             $('.btn-excluir').click(function(e) {
@@ -114,4 +115,5 @@
             });
         });
     </script>
+    @endpush
     </x-layout>

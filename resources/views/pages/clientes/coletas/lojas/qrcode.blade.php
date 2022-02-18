@@ -68,6 +68,7 @@
             </div>
         </div>
     </div>
+    @push('js')
     <script>
         function printDiv() {
             var divToPrint = document.getElementById('qrcode');
@@ -83,4 +84,5 @@
             });
         });
     </script>
+    @endpush
 </x-layout>

@@ -99,19 +99,21 @@
             </div>
         </div>
     </div>
-    <script>
-        $(function() {
-            $('.btn-excluir').click(function(e) {
-                e.preventDefault();
+    @push('js')
+        <script>
+            $(function () {
+                $('.btn-excluir').click(function (e) {
+                    e.preventDefault();
 
-                $('#id_no_modal').val($(this).val());
-                $('#modalConfirDelete').modal('show');
-            });
+                    $('#id_no_modal').val($(this).val());
+                    $('#modalConfirDelete').modal('show');
+                });
 
-            $('.btn-modal-excluir').click(function(e) {
-                var id_excluir = $('#id_no_modal').val();
-                $('#' + id_excluir).submit();
+                $('.btn-modal-excluir').click(function (e) {
+                    var id_excluir = $('#id_no_modal').val();
+                    $('#' + id_excluir).submit();
+                });
             });
-        });
-    </script>
+        </script>
+    @endpush
 </x-layout>

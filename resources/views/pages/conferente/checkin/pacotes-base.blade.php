@@ -52,10 +52,12 @@
             target="_blank" style="display: none">
             <i style="margin-top:12px" class="fas fa-camera"></i>
         </a>
+        @push('js')
         <script>
             if (Android.isAndroid()) {
                 $('.btn-camera').show();
             }
         </script>
+        @endpush
     </div>
     </x-layout>

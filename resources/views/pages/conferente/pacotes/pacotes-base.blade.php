@@ -123,6 +123,7 @@
 
 
     </div>
+    @push('js')
     <script>
         $(function() {
             $('.btn-alterar-entregador').click(function() {
@@ -130,4 +131,5 @@
             })
         })
     </script>
+    @endpush
     </x-layout>

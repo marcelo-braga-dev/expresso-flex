@@ -1,9 +1,9 @@
 @if (!empty(session('erro')))
-<!-- Erro -->
-<div class="modal fade" id="modalSession" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-aria-hidden="true">
-<div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
+    <!-- Erro -->
+    <div class="modal fade" id="modalSession" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
                 <div class="modal-body pb-0">
                     <div class="row justify-content-center">
                         <div class="col-auto mb-3">
@@ -24,17 +24,19 @@ aria-hidden="true">
             </div>
         </div>
     </div>
-    <script>
-        $(function() {
-            $('#modalSession').modal('show');
-        })
+    @push('js')
+        <script>
+            $(function () {
+                $('#modalSession').modal('show');
+            })
         </script>
+    @endpush
 @endif
 
 @if (!empty(session('sucesso')))
-<!-- Sucesso -->
+    <!-- Sucesso -->
     <div class="modal fade" id="modalSession" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-body pb-0">
@@ -57,9 +59,11 @@ aria-hidden="true">
             </div>
         </div>
     </div>
-    <script>
-        $(function() {
-            $('#modalSession').modal('show');
-        })
-    </script>
+    @push('js')
+        <script>
+            $(function () {
+                $('#modalSession').modal('show');
+            })
+        </script>
+    @endpush
 @endif

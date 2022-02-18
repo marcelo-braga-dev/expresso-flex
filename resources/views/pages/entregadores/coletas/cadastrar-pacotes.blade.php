@@ -7,7 +7,8 @@
             <div class="card-header bg-white mb-0">
                 <div class="row align-items-center">
                     <div class="col-9">
-                        <small class="badge badge-info"><i class="fas fa-dolly mr-1"></i>Cadastro de Pacotes da Coleta</small>
+                        <small class="badge badge-info"><i class="fas fa-dolly mr-1"></i>Cadastro de Pacotes da
+                            Coleta</small>
                         <h3 class="mb-0 text-principal">Cadastrar Pacotes da Coleta</h3>
                     </div>
                     <div class="col-3 text-right">
@@ -32,7 +33,7 @@
                         <form method="post" action="{{ route('entregadores.coleta.alterar-status') }}">
                             @csrf @method('put')
                             <button type="submit" class="btn btn-primary" name="id_coleta"
-                                value="{{ $solicitacao['id'] }}">
+                                    value="{{ $solicitacao['id'] }}">
                                 Finalizar Coleta
                             </button>
                         </form>
@@ -75,14 +76,14 @@
 
         <!-- Botao Flutuante -->
         <a href="{{ route('entregadores.pacotes.qrcode.cadastro.meli.start', [$idColeta, $solicitacao['user_id']]) }}"
-            class="btn-flutuante btn-danger btn-camera" target="_blank" style="display: none">
+           class="btn-flutuante btn-danger btn-camera" target="_blank" style="display: none">
             <i style="margin-top:12px" class="fas fa-camera"></i>
         </a>
 
         <!-- Modal -->
         @if (!empty($_GET['codigoRastreio']))
             <div class="modal fade" id="modalCodigoRastreio" tabindex="-1" role="dialog"
-                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header border-bottom">
@@ -107,21 +108,23 @@
                     </div>
                 </div>
             </div>
-            <script>
-                $(function() {
-                    $('#modalCodigoRastreio').modal('show');
-                })
-            </script>
+            @push('js')
+                <script>
+                    $(function () {
+                        $('#modalCodigoRastreio').modal('show');
+                    })
+                </script>
+            @endpush
         @endif
+        @push('js')
+            <script>
+                if (Android.isAndroid()) {
+                    $('.btn-camera').show();
+                }
+            </script>
 
-        <script>
-            if (Android.isAndroid()) {
-                $('.btn-camera').show();
-            }
-        </script>
-
-        <script src="/assets/js/components/busca-cep.js"></script>
-
+            <script src="/assets/js/components/busca-cep.js"></script>
+        @endpush
 
     </div>
-    </x-layout>
+</x-layout>

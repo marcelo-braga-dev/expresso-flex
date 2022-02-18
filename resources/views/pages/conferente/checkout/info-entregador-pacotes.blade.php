@@ -93,15 +93,13 @@
             </div>
         </div>
     </div>
-
-    <script>
-        $(function () {
-            $('.btn-alterar-entregador').click(function () {
-                $(this).parent().parent().parent().find('.alterar-entregador').toggle(700);
-            });
-        })
-    </script>
-
-
-    </div>
+    @push('js')
+        <script>
+            $(function () {
+                $('.btn-alterar-entregador').click(function () {
+                    $(this).parent().parent().parent().find('.alterar-entregador').toggle(700);
+                });
+            })
+        </script>
+    @endpush
 </x-layout>

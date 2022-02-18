@@ -193,7 +193,7 @@
                 </form>
             </div>
         </div>
-
+        @push('js')
         <script>
             $(function () {
                 $('#btn-add-regiao').click(function () {
@@ -219,7 +219,7 @@
                 });
             })
         </script>
-
+        @endpush
 
     </div>
 </x-layout>

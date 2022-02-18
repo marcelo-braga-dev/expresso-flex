@@ -19,7 +19,7 @@
         </div>
     </div>
 </div>
-
+@push('js')
 <script>
     $(function() {
         $('.status-usuario').change(function() {
@@ -41,3 +41,4 @@
         });
     });
 </script>
+@endpush
