@@ -42,7 +42,7 @@
 
 @include('layouts.componentes.modal-sucesso')
 
-@stack('js')
+
 {{--<script>--}}
 {{--    $(document).ready(function () {--}}
 {{--        $('.select2').select2({--}}
@@ -74,7 +74,7 @@
 
 <input type="hidden" id="menu_suspenso"
        value="@if (!empty($menu_suspenso)){{ $menu_suspenso }}@else{{ 'empty' }}@endif">
-
+@stack('js')
 </body>
 
 </html>
