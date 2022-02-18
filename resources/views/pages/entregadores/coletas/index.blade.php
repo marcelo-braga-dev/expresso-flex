@@ -6,14 +6,18 @@
             <div class="card-header bg-white mb-0">
                 <div class="row align-items-center">
                     <div class="col">
-                        <small class="badge badge-info">Coleta de Pacotes <i class="fas fa-dolly"></i></small>
+                        <small class="">Coleta de Pacotes <i class="fas fa-dolly"></i></small>
                         <h4 class="card-title text-uppercase mb-0">
                             Solicitações de Coleta
                         </h4>
                         <span class="h3 font-weight-bold mb-0"></span>
-                        {{--                        <small class="text-success">Para Aceitar: {{ $coletasParaAceitar['count'] }}</small>--}}
-                        <small class="text-muted"> | </small>
-                        {{--                        <small class="text-primary">Em Andamento: {{ count($solicitacoesAceitas) }}</small>--}}
+                        <div class="row">
+                            <div class="col">
+                                <a class="btn btn-sm btn-primary" href="{{ route('entregadores.coletas.create') }}">
+                                    Abrir Nova Coleta
+                                </a>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group m-0 pt-2">
                         <div class="input-group input-group-alternative input-group-merge bg-white">
@@ -31,6 +35,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
 
             <div class="card-body p-1">
@@ -176,12 +181,12 @@
 
     </div>
     @push('js')
-    <script>
-        $(function () {
-            $('.btn-cancelar').click(function () {
-                $(this).parent().parent().parent().find('.cancelar-coleta').toggleClass('d-none');
+        <script>
+            $(function () {
+                $('.btn-cancelar').click(function () {
+                    $(this).parent().parent().parent().find('.cancelar-coleta').toggleClass('d-none');
+                });
             });
-        });
-    </script>
+        </script>
     @endpush
 </x-layout>
