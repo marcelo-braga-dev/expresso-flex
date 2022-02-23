@@ -12,7 +12,8 @@
                 </div>
             </div>
             <div class="card-body">
-                <form method="POST" action="{{ route('clientes.etiquetas.expressoflex.store') }}" autocomplete="off"> @csrf
+                <form method="POST" action="{{ route('clientes.etiquetas.expressoflex.store') }}"
+                      autocomplete="off"> @csrf
                 <!-- Endereco -->
                     <h5>Pontos de Coleta</h5>
                     <div class="form-row">
@@ -136,6 +137,7 @@
         </div>
     </div>
 
-
-    <script src="/assets/js/components/busca-cep.js"></script>
+    @push('js')
+        <script src="/assets/js/components/busca-cep.js"></script>
+    @endpush
 </x-layout>
