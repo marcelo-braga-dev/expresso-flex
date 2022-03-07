@@ -51,12 +51,18 @@ class ClientesController extends Controller
             ->where('id', '=', $id)
             ->first();
 
-        return view('pages.admins.usuarios.clientes.edit', compact('cliente'));
+        $dados = $user->metaValues($id);
+
+        return view('pages.admins.usuarios.clientes.edit', compact('cliente', 'dados'));
     }
 
     public function update(Request $request, $id)
     {
-        print_pre($request->all());
+        $clientes = new Clientes();
+
+        $clientes->update($request, $id);
+
+        return redirect()->back();
     }
 
     public function destroy($id)

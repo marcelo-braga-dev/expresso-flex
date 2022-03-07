@@ -52,6 +52,23 @@ class User extends Authenticatable
         return $meta->value ?? '';
     }
 
+    public function metaValues($id): array
+    {
+        $dados = [];
+
+        $userMeta = new UserMeta();
+        $metas = $userMeta->newQuery()
+            ->where(
+                'user_id', '=', $id)
+            ->get();
+
+        foreach ($metas as $meta) {
+            $dados[$meta->meta_key] = $meta->value ?? '';
+        }
+
+        return $dados;
+    }
+
     public function usuarios($tipo)
     {
         return $this->newQuery()

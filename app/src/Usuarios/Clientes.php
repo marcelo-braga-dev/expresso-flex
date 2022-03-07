@@ -43,13 +43,11 @@ class Clientes extends Usuarios
         Foi enviado um email ao usuário para criação da senha.');
     }
 
-    public function update($request)
+    public function update($request, $id)
     {
-        $user = $this->editaUsuario($request, $request->id);
+        $user = $this->editaUsuario($request, $id);
 
         $this->metaValues($request, $user->id);
-
-        $this->precosFretes($request, $user->id);
 
         session()->flash('sucesso', 'Cliente ' . $request['nome'] . ' editado com sucesso.');
     }

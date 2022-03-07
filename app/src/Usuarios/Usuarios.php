@@ -2,11 +2,9 @@
 
 namespace App\src\Usuarios;
 
-use App\Mail\NovoUsuarioMail;
 use App\Models\PasswordNew;
 use App\Models\User;
 use Illuminate\Database\QueryException;
-use Illuminate\Support\Facades\Mail;
 
 class Usuarios
 {
