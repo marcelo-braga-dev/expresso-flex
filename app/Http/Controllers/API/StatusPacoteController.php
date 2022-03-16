@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\Meta;
 use App\Models\MetaValues;
 use App\Models\Pacotes;
 use App\Models\PacotesHistoricos;
@@ -13,6 +12,7 @@ class StatusPacoteController extends Controller
 {
     public function index(Request $request)
     {
+        $res = [];
         $pacote = Pacotes::where('rastreio', '=', $request->cod)->first('id');
 
         if (empty($pacote)) {
@@ -27,24 +27,16 @@ class StatusPacoteController extends Controller
             return ['error' => '1', 'msg_error' => 'Não foi encontrado pacote nesse código de rastreio'];
         }
 
-        $metasValues = MetaValues::where('meta_id', '=', 5)->get(['meta_key', 'value']);
-
-        foreach ($metasValues as $arg) {
-            $mgsStatus[$arg->meta_key] = $arg->value;
-        }
+        $metasValues = new MetaValues();
 
         foreach ($historico as $arg) {
-            if ($arg->status != 'pacote_nova_etiqueta') {
-                $res[] =
-                    [
-                        'status' => $mgsStatus[$arg->status],
-                        'msg' => $arg->value,
-                        'data' => date('d/m/y', strtotime($arg['updated_at'])),
-                        'hora' => date('H:i', strtotime($arg['updated_at']))
-                    ];
-            }
+            $res[] = [
+                'msg' => $metasValues->newQuery()->where('meta_key', '=', $arg->status)->first('value')->value,
+                'status' => $arg->status,
+                'data' => date('d/m/y', strtotime($arg['updated_at'])),
+                'hora' => date('H:i', strtotime($arg['updated_at']))
+            ];
         }
-
         return $res;
     }
 }

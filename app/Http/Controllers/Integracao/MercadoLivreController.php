@@ -30,15 +30,4 @@ class MercadoLivreController extends Controller
     {
         // Pagina para receber notificacoes do MeLi
     }
-
-
-    /* * */
-    public function teste()
-    {
-        $recursos = new RecursosApiMercadoLivre();
-
-        $res = $recursos->teste();
-
-        print_pre($res);
-    }
 }
