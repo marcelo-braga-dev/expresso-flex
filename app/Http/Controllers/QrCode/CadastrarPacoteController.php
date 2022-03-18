@@ -19,12 +19,12 @@ class CadastrarPacoteController extends Controller
 
             $pacote = new Pacote(new Coletado());
             $pacote->coletar($dados);
-        } catch (QrCodeException $e) {
 
+            return redirect()->route('entregadores.coletas.pacotes.show', $dados['coleta']);
+        } catch (QrCodeException $e) {
             session()->flash('erro', 'Não foi possível ler o QrCode.');
+
             return redirect()->route('entregadores.coletas-abertas.index');
         }
-
-        return redirect()->route('entregadores.coletas.pacotes.show', $dados['coleta']);
     }
 }
