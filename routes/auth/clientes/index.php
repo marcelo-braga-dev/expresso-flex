@@ -6,6 +6,9 @@ Route::group([
     'middleware' => ['auth', 'auth.cliente'],
     'namespace' => 'App\Http\Controllers\Clientes',
 ], function () {
+    Route::get('', [\App\Http\Controllers\Clientes\HomeController::class, 'index'])
+        ->name('cliente.home.index');
+
     include_once 'etiquetas.php';
     include_once 'coletas.php';
     include_once 'lojas.php';

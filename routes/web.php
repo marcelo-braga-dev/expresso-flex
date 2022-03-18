@@ -1,6 +1,5 @@
 <?php
 
-use App\src\MercadoLivre\RecursosApiMercadoLivre;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -24,17 +23,6 @@ Route::group(['middleware' => 'auth'], function () {
         include 'rota/admin.php';
     });
 
-    Route::group(
-        [
-            'namespace' => 'App\Http\Controllers\Cliente',
-            'middleware' => 'auth.cliente',
-            'prefix' => 'cliente'
-        ],
-        function () {
-            include 'rota/cliente.php';
-        }
-    );
-
     Route::group(['middleware' => 'auth.entregador', 'prefix' => 'entregadores'], function () {
         include 'rota/entregador.php';
     });
@@ -42,6 +30,4 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'auth.conferente', 'prefix' => 'conferente'], function () {
         include 'rota/conferente.php';
     });
-
-    include 'rota/padrao.php';
 });
