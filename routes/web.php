@@ -22,8 +22,4 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'auth.admin', 'prefix' => 'admin'], function () {
         include 'rota/admin.php';
     });
-
-    Route::group(['middleware' => 'auth.conferente', 'prefix' => 'conferente'], function () {
-        include 'rota/conferente.php';
-    });
 });

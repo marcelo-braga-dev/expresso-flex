@@ -1,61 +1,54 @@
 <?php
 
-namespace App\Http\Controllers\Conferente\Historico;
+namespace App\Http\Controllers\Conferentes\Pacotes;
 
-use App\Http\Controllers\Controller;
+use App\Models\DestinatarioRecebedor;
+use App\Models\FretesRealizados;
 use App\Models\Pacotes;
-use App\Models\SolicitacaoRetiradas;
+use App\Models\PacotesHistoricos;
 use Illuminate\Http\Request;
 
-class ColetasController extends Controller
+class HistoricoController
 {
     public function index()
     {
-        $solicitacaoRetiradas = new SolicitacaoRetiradas();
+        $Pacotes = new Pacotes();
 
-        $solicitacoes = [];
+        $pacotes = [];
 
-        $_solicitacoes = $solicitacaoRetiradas->query()
+        $_pacotes = $Pacotes->query()
+            ->where('status', '!=', 'pacote_nova_etiqueta')
             ->orderBy('updated_at', 'DESC')
             ->get();
 
-        foreach ($_solicitacoes as $arg) {
+        foreach ($_pacotes as $arg) {
             $data = date('d/m/y', strtotime($arg->updated_at));
 
-            $solicitacoes[$data][] = $arg->updated_at;
+            $pacotes[$data][] = $arg->updated_at;
         }
 
-        return view('pages.conferente.solicitacoes.historico.historico-geral', compact('solicitacoes'));
+        return view('pages.conferente.pacotes.historico.historico-pacotes', compact('pacotes'));
     }
 
     public function historicoDiario(Request $request)
     {
-        $solicitacaoRetiradas = new SolicitacaoRetiradas();
-        $clsPacotes = new Pacotes();
+        $Pacotes = new Pacotes();
 
-        $solicitacoes = [];
         $pacotes = [];
         $dia = $request->data;
 
         $data = $request->data;
         $data = date('Y-m-d', strtotime($request->data));
 
-        $solicitacoes = $solicitacaoRetiradas->query()
+        $pacotes = $Pacotes->query()
+            ->where('status', '!=', 'pacote_nova_etiqueta')
             ->whereDate('updated_at', $data)
             ->get();
-        
-        $todosPacotes = $clsPacotes->query()
-            ->get();
 
-        foreach ($todosPacotes as $arg)
-        {
-            $pacotes[$arg->coleta][] = 'x'; 
-        }
-        
-        return view('pages.conferente.solicitacoes.historico.historico-diario', compact('solicitacoes', 'pacotes', 'dia'));
+        return view('pages.conferente.pacotes.historico.historico-diario', compact('pacotes', 'dia'));
     }
 
-    public function info(Request $request, DestinatarioRecebedor $destinatarioRecebedor, PacotesHistoricos $pacotesHistoricos)
+    public function show(Request $request, DestinatarioRecebedor $destinatarioRecebedor, PacotesHistoricos $pacotesHistoricos)
     {
         $pacote = Pacotes::find($request->id);
 

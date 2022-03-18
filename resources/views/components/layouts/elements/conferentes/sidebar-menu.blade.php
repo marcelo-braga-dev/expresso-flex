@@ -37,7 +37,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-1 pl-4" href="{{ route('conferente.checkin.pacotes-base') }}">
+                        <a class="nav-link ml-1 pl-4" href="{{ route('conferentes.checkin.pacotes-base') }}">
                             Pacotes na Base
                         </a>
                     </li>
@@ -56,13 +56,13 @@
                 <ul class="nav nav-sm flex-column">
                     <li class="nav-item">
                         <a class="nav-link ml-1 pl-4"
-                           href="{{ route('conferente.pacotes.pacotes-sob-coleta') }}">
+                           href="{{ route('conferentes.pacotes.pacotes-sob-coleta') }}">
                             Pacotes sendo Coletados
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link ml-1 pl-4"
-                           href="{{ route('conferente.pacotes.pacotes-sob-entrega') }}">
+                           href="{{ route('conferentes.pacotes.pacotes-sob-entrega') }}">
                             Pacotes sendo Entregue
                         </a>
                     </li>
@@ -81,7 +81,7 @@
                 <ul class="nav nav-sm flex-column">
                     <li class="nav-item">
                         <a class="nav-link ml-1 pl-4"
-                           href="{{ route('conferente.pacotes.historico') }}">
+                           href="{{ route('conferentes.pacotes.historico') }}">
                             Histórico de Pacotes
                         </a>
                     </li>
@@ -89,7 +89,7 @@
                 <ul class="nav nav-sm flex-column">
                     <li class="nav-item">
                         <a class="nav-link ml-1 pl-4"
-                           href="{{ route('conferente.solicitacoes.historico') }}">
+                           href="{{ route('conferentes.solicitacoes.historico') }}">
                             Histórico de Solicitações
                         </a>
                     </li>

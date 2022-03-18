@@ -20,7 +20,7 @@
                         </div>
                     </div>
                     <div class="col-auto">
-                        <a class="btn btn-primary btn-sm" href="{{ route('conferente.pacotes.historico') }}">Voltar</a>
+                        <a class="btn btn-primary btn-sm" href="{{ route('conferentes.pacotes.historico') }}">Voltar</a>
                     </div>
                 </div>
             </div>

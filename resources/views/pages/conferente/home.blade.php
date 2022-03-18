@@ -50,7 +50,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a class="btn btn-primary" href="{{ route('conferente.pacotes.pacotes-sob-coleta') }}">
+                        <a class="btn btn-primary" href="{{ route('conferentes.pacotes.pacotes-sob-coleta') }}">
                             Ver Pacotes
                         </a>
                     </div>
@@ -76,7 +76,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a class="btn btn-success" href="{{ route('conferente.pacotes.pacotes-sob-entrega') }}">
+                        <a class="btn btn-success" href="{{ route('conferentes.pacotes.pacotes-sob-entrega') }}">
                             Ver Pacotes
                         </a>
                     </div>

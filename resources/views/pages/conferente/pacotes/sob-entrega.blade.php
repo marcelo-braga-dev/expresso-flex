@@ -52,7 +52,7 @@
                                             @foreach ($entregador['pacotes'] as $pacote)
 
                                                 @include('layouts.componentes.list-pacotes', [
-                                                'link' => 'conferente.pacotes.info',
+                                                'link' => 'conferentes.pacotes.info',
                                                 'data' => true ]
                                                 )
 

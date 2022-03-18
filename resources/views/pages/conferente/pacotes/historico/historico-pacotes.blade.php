@@ -27,7 +27,7 @@
                                 <small class="d-block">{{ count($pacote) }} pacotes</small>
 
                                 <a class="btn btn-link p-0 btn-sm"
-                                    href="{{ route('conferente.pacotes.historico-diario', ['data' => "$pacote[0]"]) }}">
+                                    href="{{ route('conferentes.pacotes.historico-diario', ['data' => "$pacote[0]"]) }}">
                                     Ver pacotes
                                 </a>
                             </span>

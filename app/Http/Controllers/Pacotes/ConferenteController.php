@@ -20,14 +20,7 @@ class ConferenteController extends Controller
         //return view('pages.conferente.checkin.index', compact('pacotes'));
     }
 
-    public function pacotesBase()
-    {
-        $pacotes = [];
 
-        $pacotes = $this->getPacotesBase();
-
-        return view('pages.conferente.checkin.pacotes-base', compact('pacotes'));
-    }
 
     // Mostra informacoes para confirmar o checkin
 

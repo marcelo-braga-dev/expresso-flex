@@ -20,14 +20,14 @@
                         </div>
                     </div>
                     <div class="col-auto">
-                        <a class="btn btn-primary btn-sm" href="{{ route('conferente.pacotes.historico') }}">Voltar</a>
+                        <a class="btn btn-primary btn-sm" href="{{ route('conferentes.pacotes.historico') }}">Voltar</a>
                     </div>
                 </div>
             </div>
             <div class="card-body p-0">
                 <ul class="list-group list-group-flush">
                     @foreach ($pacotes as $pacote)
-                        @include('layouts.componentes.list-pacotes', ['link' => 'conferente.pacotes.info'])
+                        @include('layouts.componentes.list-pacotes', ['link' => 'conferentes.pacotes.info'])
                     @endforeach
 
                     @if ($pacotes->isEmpty())
