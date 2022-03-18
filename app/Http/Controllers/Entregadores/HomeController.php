@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Entregadores;
 
 use App\Http\Controllers\Controller;
 
-class HomeEntregadoresController extends Controller
+class HomeController extends Controller
 {
     public function index()
     {

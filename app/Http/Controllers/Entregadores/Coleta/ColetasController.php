@@ -113,23 +113,7 @@ class ColetasController
         //view('pages.entregadores.coletas.coletas-aceita', compact('solicitacoesAceitas'));
     }
 
-    // Cancelar coleta
-    public function cancelarColeta(Request $request)
-    {
-        $solicitacaoRetiradas = new SolicitacaoRetiradas();
 
-        $solicitacao = $solicitacaoRetiradas->find($request->id_coleta);
-
-        $solicitacao->entregador = null;
-        $solicitacao->status = 'coleta_cancelada_entregador';
-        $solicitacao->texto = $request->motivo_cancelamento;
-
-        $solicitacao->push();
-
-        session()->flash('sucesso', 'Coleta cancelada com sucesso');
-
-        return redirect()->back();
-    }
 
     // Finalizar ordem de coleta
     public function alterarStatus(Request $request)

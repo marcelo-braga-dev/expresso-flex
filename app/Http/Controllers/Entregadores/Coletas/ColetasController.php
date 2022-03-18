@@ -74,4 +74,38 @@ class ColetasController extends Controller
     {
         //
     }
+
+    // Cancelar coleta
+    public function cancelarColeta(Request $request)
+    {
+        $solicitacaoRetiradas = new SolicitacaoRetiradas();
+
+        $solicitacao = $solicitacaoRetiradas->find($request->id_coleta);
+
+        $solicitacao->entregador = null;
+        $solicitacao->status = 'coleta_cancelada_entregador';
+        $solicitacao->texto = $request->motivo_cancelamento;
+
+        $solicitacao->push();
+
+        session()->flash('sucesso', 'Coleta cancelada com sucesso');
+
+        return redirect()->back();
+    }
+
+    public function alterarStatus(Request $request)
+    {
+        //$solicitacao = new SolicitacaoRetiradas();
+        //
+        //$coleta = $solicitacao->find($request->id_coleta);
+        //
+        //if ($request->reabrir) {
+        //    $coleta->update(['status' => 'coleta_aceita']);
+        //} else {
+        //    $coleta->update(['status' => 'coleta_realizada']);
+        //    session()->flash('sucesso', 'Coleta finalizada com sucesso');
+        //}
+        //
+        //return redirect()->route('entregadores.coletas.todas-coletas');
+    }
 }

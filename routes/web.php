@@ -23,10 +23,6 @@ Route::group(['middleware' => 'auth'], function () {
         include 'rota/admin.php';
     });
 
-    Route::group(['middleware' => 'auth.entregador', 'prefix' => 'entregadores'], function () {
-        include 'rota/entregador.php';
-    });
-
     Route::group(['middleware' => 'auth.conferente', 'prefix' => 'conferente'], function () {
         include 'rota/conferente.php';
     });

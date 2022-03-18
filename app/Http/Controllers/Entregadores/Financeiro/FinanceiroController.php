@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Entregadores;
+namespace App\Http\Controllers\Entregadores\Financeiro;
 
 use App\Http\Controllers\Controller;
 use App\Models\ComissoesEntregadores;
@@ -16,7 +16,7 @@ class FinanceiroController extends Controller
         $entregadoresService = new EntregadoresService();
 
         $fretes = $entregadoresService->getFaturamento();
-        
+
         return view('pages.entregadores.financeiro.mes', compact('fretes'));
     }
 
@@ -33,10 +33,10 @@ class FinanceiroController extends Controller
             ->get();
 
         $res = $financeiroService->getHistoricoMensal($request, $todosFretes);
-        
+
         $fretes = $res['fretes'];
         $total = $res['total'];
-        
+
         return view('pages.entregadores.financeiro.detalhes-mes-receber', compact('fretes', 'total'));
     }
 }
