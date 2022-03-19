@@ -36,7 +36,7 @@
                         </div>
                         <div class="col-md-auto">
                             <a class="small"
-                               href="{{ route('admin.coletas.historico-pacotes-coletados-dia', ['id' => $solicitacao->id]) }}">
+                               href="{{ route('admins.coletas.historico-pacotes-coletados-dia', ['id' => $solicitacao->id]) }}">
                                 Ver Pacotes Coletados
                             </a>
                         </div>

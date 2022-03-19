@@ -28,11 +28,11 @@ class Conferente extends Usuarios
 
     }
 
-    public function update($request)
+    public function update($request, $id)
     {
         $user = $this->editaUsuario($request, $request->id);
 
-        $this->metaValues($request, $user->id);
+        $this->metaValues($request, $id);
 
         session()->flash('sucesso', 'Cliente ' . $request['nome'] . ' editado com sucesso.');
     }

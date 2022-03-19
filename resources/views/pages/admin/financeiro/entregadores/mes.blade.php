@@ -59,7 +59,7 @@
                             <?php $mes = $frete['mes'];
                             $ano = $frete['ano']; ?>
                             <a class="btn btn-link p-0 btn-sm"
-                                href="{{ route('admin.financeiro.entregador.quinzena', ['mes' => $frete['mes'], 'ano' => $frete['ano'], 'id' => $user]) }}">
+                                href="{{ route('admins.financeiros.entregadores.quinzena', ['mes' => $frete['mes'], 'ano' => $frete['ano'], 'id' => $user]) }}">
                                 Detalhes
                             </a>
                         </li>

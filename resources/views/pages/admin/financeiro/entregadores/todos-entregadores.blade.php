@@ -32,7 +32,7 @@
                                 </small>
                             </div>
                             <a class="btn btn-link p-0 btn-sm"
-                               href="{{ route('admin.financeiro.entregador-mes', ['id' => $arg['user_id']]) }}">
+                               href="{{ route('admins.financeiros.entregadores.mes', ['id' => $arg['user_id']]) }}">
                                 Ver detalhes
                             </a>
                         </li>

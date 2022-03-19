@@ -151,7 +151,7 @@
                     Confirmar o recebimento do pagamento da quinzena.
                 </div>
                 <div class="modal-footer">
-                    <form method="POST" action="{{ route('admin.financeiro.cliente.pagamento-dinheiro') }}">
+                    <form method="POST" action="{{ route('admins.financeiros.pagamentoDinheiro') }}">
                         @csrf @method('put')
                         <input type="hidden" name="id" value="{{ $user }}">
                         <input type="hidden" name="quinzena" value="{{ $fretes['quinzena'] }}">

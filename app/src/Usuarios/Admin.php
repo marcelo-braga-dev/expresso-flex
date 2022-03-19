@@ -28,11 +28,11 @@ class Admin extends Usuarios
 
     }
 
-    public function update($request)
+    public function update($request, $id)
     {
-        $user = $this->editaUsuario($request, $request->id);
+        $user = $this->editaUsuario($request, $id);
 
-        $this->metaValues($request, $user->id);
+        $this->metaValues($request, $id);
 
         session()->flash('sucesso', 'Administrador ' . $request['nome'] . ' editado com sucesso.');
     }

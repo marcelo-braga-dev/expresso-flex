@@ -30,7 +30,7 @@
                                 </small>
                             </span>
                             <a class="btn btn-link p-0 btn-sm"
-                               href="{{ route('admin.pacotes.historico-diario', ['data' => "$pacote[0]"]) }}">
+                               href="{{ route('admins.pacotes.historico.diario', ['data' => "$pacote[0]"]) }}">
                                 Ver pacotes
                             </a>
                         </li>

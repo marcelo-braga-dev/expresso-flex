@@ -10,7 +10,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <form method="post" action="{{ route('admins.integracoes.mercadolivre.store') }}"
+                <form method="post" action="{{ route('admins.integracoes.admins.mercadolivre.store') }}"
                       autocomplete="off">
                     @csrf
                     <div class="px-lg-4">

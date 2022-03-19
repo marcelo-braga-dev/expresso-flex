@@ -18,8 +18,4 @@ Route::group(['middleware' => 'auth'], function () {
     include 'rota/mercadolivre.php';
 
     include 'rota/qrcode.php';
-
-    Route::group(['middleware' => 'auth.admin', 'prefix' => 'admin'], function () {
-        include 'rota/admin.php';
-    });
 });

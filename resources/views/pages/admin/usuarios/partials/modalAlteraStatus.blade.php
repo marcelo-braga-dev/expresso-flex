@@ -28,7 +28,7 @@
 
             $.ajax({
                 type: "GET",
-                url: '{{ route('ajax.admin.usuario.atualiza-status-usuario') }}',
+                url: '{{ route('admins.usuarios.atualiza-status-usuario') }}',
                 data: {
                     'id': id,
                     'value': status

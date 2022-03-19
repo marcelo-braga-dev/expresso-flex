@@ -58,7 +58,7 @@
                                 </div>
                             </div>
                             <a class="btn btn-link p-0 btn-sm"
-                               href="{{ route('admin.financeiro.cliente.detalhes-mensal', [
+                               href="{{ route(''admins.financeiros.historicoDetalhesMes'', [
                                     'mes' => $fretes['mes'],
                                     'ano' => $fretes['ano'],
                                     'quinzena' => $i++,

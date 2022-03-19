@@ -36,17 +36,17 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-1 pl-4" href="{{ route('admin.usuarios.entregadores.tabela') }}">
+                        <a class="nav-link ml-1 pl-4" href="{{ route('admins.usuarios.entregadores.index') }}">
                             Entregadores
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-1 pl-4" href="{{ route('admin.usuarios.conferentes.tabela') }}">
+                        <a class="nav-link ml-1 pl-4" href="{{ route('admins.usuarios.conferentes.index') }}">
                             Conferente
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-1 pl-4" href="{{ route('admin.usuarios.admin.tabela') }}">
+                        <a class="nav-link ml-1 pl-4" href="{{ route('admins.usuarios.admins.index') }}">
                             Administrador
                         </a>
                     </li>
@@ -67,12 +67,12 @@
                 <ul class="nav nav-sm flex-column">
                     <li class="nav-item">
                         <a class="nav-link ml-1 pl-4"
-                           href="{{ route('admin.mercadolivre.contas-sincronizadas') }}">
+                           href="{{ route('admins.integracoes.clientes.mercadolivre.index') }}">
                             Contas Mercado Livre
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-1 pl-4" href="{{ route('admins.integracoes.mercadolivre.index') }}">
+                        <a class="nav-link ml-1 pl-4" href="{{ route('admins.integracoes.admins.mercadolivre.index') }}">
                             Conta Expresso Flex
                         </a>
                     </li>
@@ -112,7 +112,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-1 pl-4" href="{{ route('admin.pacotes.historico') }}">
+                        <a class="nav-link ml-1 pl-4" href="{{ route('admins.pacotes.historico.index') }}">
                             Histórico de Pacotes
                         </a>
                     </li>
@@ -132,12 +132,12 @@
             <div class="collapse coletas" id="navbar-coletas">
                 <ul class="nav nav-sm flex-column">
                     <li class="nav-item">
-                        <a class="nav-link ml-1 pl-4" href="{{ route('admin.coletas.historico') }}">
+                        <a class="nav-link ml-1 pl-4" href="{{ route('admins.coletas.historico') }}">
                             Histórico de Coletas
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-1 pl-4" href="{{ route('admin.coletas.config') }}">
+                        <a class="nav-link ml-1 pl-4" href="{{ route('admins.coletas.config.index') }}">
                             Configurações
                         </a>
                     </li>
@@ -157,17 +157,17 @@
             <div class="collapse financeiro" aba="financeiro" id="navbar-financeiro">
                 <ul class="nav nav-sm flex-column">
                     <li class="nav-item">
-                        <a class="nav-link ml-1 pl-4" href="{{ route('admin.financeiro.cliente') }}">
+                        <a class="nav-link ml-1 pl-4" href="{{ route('admins.financeiros.index') }}">
                             Clientes
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-1 pl-4" href="{{ route('admin.financeiro.entregadores') }}">
+                        <a class="nav-link ml-1 pl-4" href="{{ route('admins.financeiros.entregadores.index') }}">
                             Entregadores
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-1 pl-4" href="{{ route('admin.financeiro.conta-mercadopago') }}">
+                        <a class="nav-link ml-1 pl-4" href="{{ route('admins.integracoes.admins.mercadopago.index') }}">
                             Conta Mercado Pago
                         </a>
                     </li>

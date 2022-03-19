@@ -2,46 +2,40 @@
 
 namespace App\Http\Controllers\Admins\Pacotes;
 
-use App\Http\Controllers\Controller;
+use App\Models\DestinatarioRecebedor;
+use App\Models\FretesRealizados;
 use App\Models\Pacotes;
-use App\src\Pacotes\Status\Base;
-use App\src\Pacotes\Status\Coletado;
-use App\src\Pacotes\Status\EntregaIniciado;
-use App\src\Pacotes\Status\Status;
-use Illuminate\Http\Request;
+use App\Models\PacotesHistoricos;
 
-class PacotesController extends Controller
+class PacotesController
 {
-    public function sobColeta()
+    public function show($id)
     {
-        $status = new Coletado();
+        $destinatarioRecebedor = new DestinatarioRecebedor;
+        $pacotesHistoricos = new PacotesHistoricos;
+        $pacote = Pacotes::find($id);
 
-        $pacotes = $this->getPacotes($status);
+        $recebedor = [];
+        $historicos = [];
 
-        return view('pages.admin.pacotes.status.sob-coleta', compact('pacotes'));
-    }
+        $dadosRecebedor = $destinatarioRecebedor->query()->where('pacotes_id', '=', $pacote->id)->get();
 
-    public function base()
-    {
-        $status = new Base();
-        $pacotes = $this->getPacotes($status);
+        foreach ($dadosRecebedor as $value) {
+            $recebedor[$value->meta_key] = $value->value;
+        }
 
-        return view('pages.admin.pacotes.status.base', compact('pacotes'));
-    }
+        $dadosHistoricos = $pacotesHistoricos->query()->where('pacotes_id', '=', $pacote->id)->get();
 
-    public function sobEntrega()
-    {
-        $status = new EntregaIniciado();
-        $pacotes = $this->getPacotes($status);
+        foreach ($dadosHistoricos as $value) {
+            $historicos[] = [
+                'status' => $value->status,
+                'obs' => $value->value,
+                'data' => $value->created_at
+            ];
+        }
 
-        return view('pages.admin.pacotes.status.sob-entrega', compact('pacotes'));
-    }
+        $frete = FretesRealizados::query()->where('pacotes_id', '=', $pacote->id)->first();
 
-    private function getPacotes(Status $status)
-    {
-        $pacotes = new Pacotes();
-        return $pacotes->newQuery()
-            ->where('status', '=', $status->getStatus())
-            ->get();
+        return view('pages.admin.pacotes.info-pacote', compact('pacote', 'recebedor', 'historicos', 'frete'));
     }
 }

@@ -40,7 +40,7 @@
                                         Id: #{{ $usuario->id }} <br>
                                         Email: {{ $usuario->email }}<br>
                                         @if (!empty($novaConta[$usuario->email]))
-                                            <a href="{{ route('admin.usuarios.clientes.info-clientes', ['id' => "$usuario->id"]) }}">
+                                            <a href="{{ route('admins.usuarios.clientes.show', $usuario->id) }}">
                                                 <small>
                                                     O usuário ainda não ativou sua conta.
                                                 </small>
@@ -77,11 +77,11 @@
                                                     Editar Cliente
                                                 </a>
                                                 <a class="dropdown-item"
-                                                   href="{{ route('admin.fretes.atualiza-preco-clientes', ['id' => $usuario->id]) }}">
+                                                   href="{{ route('admins.fretes.clientes.edit', $usuario->id) }}">
                                                     Editar Preço Frete
                                                 </a>
                                                 <a class="dropdown-item"
-                                                   href="{{ route('admin.usuarios.clientes.info-clientes', ['id' => "$usuario->id"]) }}">
+                                                   href="{{ route('admins.usuarios.clientes.show', $usuario->id) }}">
                                                     Detalhes
                                                 </a>
                                             </div>

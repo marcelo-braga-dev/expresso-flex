@@ -20,7 +20,7 @@
                                 </div>
                                 <div>
                                     <form class="form-inline" method="POST"
-                                          action="{{ route('admin.config.config-geral.put') }}">
+                                          action="{{ route('admins.coletas.config.update') }}">
                                         @csrf @method('put')
                                         <input type="time" name="horario_limite_coleta" class="form-control"
                                                value="{{ $data['horario_limite'] }}" required>

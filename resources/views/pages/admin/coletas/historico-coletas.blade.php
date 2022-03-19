@@ -30,7 +30,7 @@
                                     </small>
                             </span>
                             <a class="btn btn-link p-0 btn-sm"
-                               href="{{ route('admin.coletas.historico-diario', ['data' => "$solicitacao[0]"]) }}">
+                               href="{{ route('admins.coletas.historico-diario', ['data' => "$solicitacao[0]"]) }}">
                                 Ver detalhes
                             </a>
                         </li>

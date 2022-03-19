@@ -30,7 +30,7 @@ class Handler extends ExceptionHandler
 
     // Redireciona no erro 500
     protected function prepareResponse($request, Throwable $e){
-        
+
         if (! $this->isHttpException($e) && config('app.debug')) {
             return $this->toIlluminateResponse($this->convertExceptionToResponse($e), $e);
         }
@@ -38,8 +38,8 @@ class Handler extends ExceptionHandler
         if (! $this->isHttpException($e)) {
             session()->flash('erro', 'Ocorreu um erro interno no sistema.');
             return redirect()->route('login');
-            // return redirect()-> route('admin.usuarios.clientes.tabela');
-        }        
+            // return redirect()-> route('admins.usuarios.clientes.index');
+        }
     }
 
     /**

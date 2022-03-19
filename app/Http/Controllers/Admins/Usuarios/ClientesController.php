@@ -41,7 +41,7 @@ class ClientesController extends Controller
 
     public function show($id)
     {
-        //
+        echo 'SHOW CLIENTE';
     }
 
     public function edit($id)

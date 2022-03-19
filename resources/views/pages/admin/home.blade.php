@@ -49,7 +49,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a class="btn btn-primary" href="{{ route('admin.usuarios.entregadores.tabela') }}">
+                        <a class="btn btn-primary" href="{{ route('admins.usuarios.entregadores.index') }}">
                             Ver Entregadores
                         </a>
                     </div>
@@ -75,7 +75,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a class="btn btn-primary" href="{{ route('admin.usuarios.conferentes.tabela') }}">
+                        <a class="btn btn-primary" href="{{ route('admins.usuarios.conferentes.index') }}">
                             Ver Conferentes
                         </a>
                     </div>
@@ -135,7 +135,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a class="btn btn-warning text-white" href="{{ route('admin.financeiro.cliente') }}">
+                        <a class="btn btn-warning text-white" href="{{ route('admins.financeiros.index') }}">
                             Ver Faturamentos
                         </a>
                     </div>
@@ -161,7 +161,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a class="btn btn-warning text-white" href="{{ route('admin.financeiro.entregadores') }}">
+                        <a class="btn btn-warning text-white" href="{{ route('admins.financeiros.entregadores.index') }}">
                             Ver Faturamentos
                         </a>
                     </div>
