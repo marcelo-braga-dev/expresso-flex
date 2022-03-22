@@ -30,14 +30,14 @@
                             <ul class="list-group mb-3">
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     <div>
-                                        <span class="d-block">
-                                            {{ $loja['nome'] }}
-                                        </span>
-                                        <span class="d-block">
-                                            <small>Endereço:
-                                                {{ get_endereco($loja['endereco']) }}
-                                            </small>
-                                        </span>
+                                        <p class="mb-0">
+                                            <i class="fas fa-store mr-2 text-primary"></i>
+                                            <b>{{ $loja['nome'] }}</b>
+                                        </p>
+                                        <p class="mb-0">
+                                            <i class="fas fa-map-marked-alt mr-2 text-danger"></i>
+                                            <b>{{ get_endereco($loja['endereco']) }}</b>
+                                        </p>
                                     </div>
                                     <div>
                                         <div class="dropdown">

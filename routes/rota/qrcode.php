@@ -5,15 +5,16 @@ use Illuminate\Support\Facades\Route;
 /*
 * Entregadores
 */
-// Abre camera cadastro pacote - em uso
 
+// Abre camera cadastro pacote pelo entregador - em uso
 Route::get('entreagadores/pacotes/qrcode/cadastro-mercadolivre/start?idColeta={idColeta}&idSeller={idSeller}', function () {
-    echo "Use o App Expresso Fles";
-    exit();
+    echo "Use o App Expresso Fles"; exit();
 })->name('entregadores.pacotes.qrcode.cadastro.meli.start');
 
 // Recebe dados para cadastro do pacote
-Route::get('entreagadores/pacotes/qrcode/cadastro-mercadolivre/back', 'App\Http\Controllers\QrCode\CadastrarPacoteController@index')
+Route::get(
+    'entreagadores/pacotes/qrcode/cadastro-mercadolivre/back',
+    [\App\Http\Controllers\Entregadores\Coletas\QrCode\CadastrarPacoteController::class, 'execute'])
     ->name('entregadores.pacotes.qrcode.cadastro.meli.end');
 
 
@@ -23,44 +24,44 @@ Route::get('entreagadores/pacotes/qrcode/cadastro-mercadolivre/back', 'App\Http\
 //CHECKIN
 // Abre camera checkin
 Route::get('conferente/pacotes/qrcode/checkin/start', function () {
-    echo "ABRIR CAMERA";
-    exit();
+    echo "ABRIR CAMERA"; exit();
 })->name('conferente.pacotes.qrcode.checkin.start');
 
 // Recebe dados checkin do pacote
-Route::get('conferente/pacotes/qrcode/checkin/back', 'App\Http\Controllers\QrCode\ConferenteController@infoCheckin')
+Route::get('conferente/pacotes/qrcode/checkin/back',
+    [\App\Http\Controllers\QrCode\ConferenteController::class, 'infoCheckin'])
     ->name('conferente.pacotes.qrcode.checkin.end');
 
 /* Entregadores */
 
 // Cadastra produtos por qrcode - em uso
 Route::get('entregadores/pacotes/qrcode/saida-entrega/start', function () {
-    echo "ABRIR CAMERA";
-    exit();
+    echo "ABRIR CAMERA"; exit();
 })->name('entregadores.pacotes.qrcode.saida-entrega.start');
-// Route Volta
-Route::get('entregadores/pacotes/qrcode/saida-entrega/back', 'App\Http\Controllers\QrCode\SairParaEntregaPacoteController@index')
+
+Route::get('entregadores/pacotes/qrcode/saida-entrega/back',
+    [\App\Http\Controllers\QrCode\SairParaEntregaPacoteController::class, 'index'])
     ->name('entregadores.pacotes.qrcode.saida-entrega.back');
 
 
 // Entrega Pacote Cliente
 Route::get('entregadores/pacotes/qrcode/entrega-cliente/start', function () {
-    echo "ABRIR CAMERA";
-    exit();
+    echo "ABRIR CAMERA"; exit();
 })->name('entregadores.pacotes.qrcode.entrega-cliente.start');
-// Route Volta
-Route::get('entregadores/pacotes/qrcode/entrega-cliente/back', 'App\Http\Controllers\QrCode\EntregadoresController@entregarDestinatario')
+
+Route::get('entregadores/pacotes/qrcode/entrega-cliente/back',
+    [\App\Http\Controllers\QrCode\EntregadoresController::class, 'entregarDestinatario'])
     ->name('entregadores.pacotes.qrcode.entrega-cliente.back');
 
 
 //Ler QRCode do Usuario Cliente
 Route::get('conferente/pacotes/qrcode/checkout/start', function () {
-    echo "ABRIR CAMERA";
-    exit();
+    echo "ABRIR CAMERA"; exit();
 })->name('entregador.qrcode.usuario.cliente.start');
 
 // Recebe dados checkin do pacote
-Route::get('conferente/pacotes/qrcode/checkout/back', 'App\Http\Controllers\QrCode\AbrirSolicitacaoColetaController@index')
+Route::get('conferente/pacotes/qrcode/checkout/back',
+    [\App\Http\Controllers\QrCode\AbrirSolicitacaoColetaController::class, 'index'])
     ->name('entregador.qrcode.usuario.cliente.end');
 
 

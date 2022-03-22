@@ -1,7 +1,7 @@
 <x-layout menu="etiquetas" submenu="historico">
     <div class="header bg-principal bg-height-top"></div>
 
-    <div class="container-fluid mt--9">
+    <div class="container-fluid mt--9 mb-5">
         <div class="card bg-secondary shadow">
             <div class="card-header bg-white">
                 <div class="row align-items-center">
@@ -72,6 +72,9 @@
                         </div>
                     </div>
                 @endif
+                <div class="row justify-content-center py-3">
+                    <div class="col-auto">{{ $etiquetas }}</div>
+                </div>
             </div>
         </div>
     </div>

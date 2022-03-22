@@ -73,7 +73,7 @@
                                                 Editar Dados
                                             </a>
                                             <a class="dropdown-item"
-                                               href="{{ route('admins.fretes.clientes.edit', ['id' => $usuario->id]) }}">
+                                               href="{{ route('admins.fretes.clientes.edit', $usuario->id) }}">
                                                 Editar Comissão
                                             </a>
                                             <a class="dropdown-item"

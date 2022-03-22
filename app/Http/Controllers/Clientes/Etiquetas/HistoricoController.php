@@ -13,7 +13,7 @@ class HistoricoController extends Controller
         $etiquetas = Etiquetas::query()
             ->where('user_id', '=', id_usuario_atual())
             ->orderBy('id', 'DESC')
-            ->get();
+            ->paginate(10);
 
         return view('pages.clientes.etiquetas.historico.index', compact('etiquetas'));
     }

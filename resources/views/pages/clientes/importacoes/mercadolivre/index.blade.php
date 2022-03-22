@@ -13,8 +13,9 @@
             <div class="card-body">
                 <div class="row mb-4">
                     <div class="col">
-                        <p>Importe suas vendas realizadas no Mercado Livre automaticamento por meio do arquivo Excel.
-                            <a href="/">Veja como.</a>
+                        <p>
+                            Importe suas vendas realizadas no Mercado Livre automaticamento por meio do arquivo Excel.
+{{--                            <a href="/">Veja como.</a>--}}
                         </p>
                     </div>
                 </div>
@@ -45,10 +46,10 @@
                 </div>
                 <div class="row mb-4 d-md-none">
                     <div class="alert alert-info">Não é possível realizar a importação do arquivo pelo aplicativo.
-                        Acesse pelo navegador do computador.</div>
+                        Acesse pelo navegador do computador.
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 </x-layout>

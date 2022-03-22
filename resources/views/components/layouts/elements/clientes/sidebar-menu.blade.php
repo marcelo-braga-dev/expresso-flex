@@ -1,11 +1,10 @@
 <div class="collapse navbar-collapse" id="sidenav-collapse-main">
-
     <!-- Mobile -->
     <div class="navbar-collapse-header d-md-none">
         <div class="row">
             <div class="col-6 collapse-brand">
                 <a href="{{ route('home') }}">
-                    <img src="/assets/img/brand/logo-x256.png">
+                    <img src="{{ asset('assets') }}/img/brand/logo-x256.png" alt="logo">
                 </a>
             </div>
             <div class="col-6 collapse-close">
@@ -31,7 +30,7 @@
             <div class="collapse @if (MENU === 'coletas') show @endif" id="navbar-coletas">
                 <ul class="nav nav-sm flex-column">
                     <li class="nav-item @if (SUBMENU === 'historico') active @endif">
-                        <a class="nav-link ml-1 pl-4 p-1"
+                        <a class="nav-link pl-5"
                            href="{{ route('clientes.coletas.historicos.index') }}">
                             Histórico de Coletas
                         </a>
@@ -39,8 +38,6 @@
                 </ul>
             </div>
         </li>
-
-        <div class="dropdown-divider"></div>
 
         <!-- Lojas -->
         <li class="nav-item">
@@ -52,21 +49,19 @@
             <div class="collapse @if (MENU === 'lojas') show @endif" id="navbar-lojas">
                 <ul class="nav nav-sm flex-column">
                     <li class="nav-item @if (SUBMENU === 'pontos') active @endif">
-                        <a class="nav-link ml-1 pl-4 p-1"
+                        <a class="nav-link pl-5"
                            href="{{ route('clientes.lojas.index') }}">
                             Seus Pontos de Coleta
                         </a>
                     </li>
                     <li class="nav-item @if (SUBMENU === 'qr-code') active @endif">
-                        <a class="nav-link ml-1 pl-4 p-1" href="{{ route('clientes.lojas.qrcode') }}">
+                        <a class="nav-link pl-5" href="{{ route('clientes.lojas.qrcode') }}">
                             QrCode Pontos de Coleta
                         </a>
                     </li>
                 </ul>
             </div>
         </li>
-
-        <div class="dropdown-divider"></div>
 
         <!-- Etiquetas -->
         <li class="nav-item">
@@ -78,19 +73,19 @@
             <div class="collapse @if (MENU === 'etiquetas') show @endif" id="navbar-etiquetas">
                 <ul class="nav nav-sm flex-column">
                     <li class="nav-item @if (SUBMENU === 'para-imprimir') active @endif">
-                        <a class="nav-link ml-1 pl-4 p-1"
+                        <a class="nav-link pl-5"
                            href="{{ route('clientes.etiquetas.expressoflex.index') }}">
                             Etiquetas para Imprimir
                         </a>
                     </li>
                     <li class="nav-item @if (SUBMENU === 'gerar') active @endif">
-                        <a class="nav-link ml-1 pl-4 p-1"
+                        <a class="nav-link pl-5"
                            href="{{ route('clientes.etiquetas.expressoflex.create') }}">
                             Gerar Etiqueta
                         </a>
                     </li>
                     <li class="nav-item @if (SUBMENU === 'historico') active @endif">
-                        <a class="nav-link ml-1 pl-4 p-1"
+                        <a class="nav-link pl-5"
                            href="{{ route('clientes.etiquetas.historico') }}">
                             Histórico
                         </a>
@@ -98,8 +93,6 @@
                 </ul>
             </div>
         </li>
-
-        <div class="dropdown-divider"></div>
 
         <!-- Importacao -->
         <li class="nav-item">
@@ -111,13 +104,13 @@
             <div class="collapse @if (MENU === 'importacao') show @endif" id="navbar-importacao">
                 <ul class="nav nav-sm flex-column">
                     <li class="nav-item @if (SUBMENU === 'importados') active @endif">
-                        <a class="nav-link ml-1 pl-4 p-1"
+                        <a class="nav-link pl-5"
                            href="{{ route('clientes.importacoes.pacotes.index') }}">
                             Pacotes Importados
                         </a>
                     </li>
                     <li class="nav-item @if (SUBMENU === 'mercado-livre') active @endif">
-                        <a class="nav-link ml-1 pl-4 p-1"
+                        <a class="nav-link pl-5"
                            href="{{ route('clientes.importacoes.mercadolivre.index') }}">
                             Importacão Mercado Livre
                         </a>
@@ -125,8 +118,6 @@
                 </ul>
             </div>
         </li>
-
-        <div class="dropdown-divider"></div>
 
         <!-- Pacotes -->
         <li class="nav-item">
@@ -138,20 +129,18 @@
             <div class="collapse @if (MENU === 'pacotes') show @endif" id="navbar-pacotes">
                 <ul class="nav nav-sm flex-column">
                     <li class="nav-item @if (SUBMENU === 'pesquisar') active @endif">
-                        <a class="nav-link ml-1 pl-4 p-1" href="{{ route('clientes.pacotes.pesquisar.index') }}">
+                        <a class="nav-link pl-5" href="{{ route('clientes.pacotes.pesquisar.index') }}">
                             Pesquisar Pacote
                         </a>
                     </li>
                     <li class="nav-item @if (SUBMENU === 'historico') active @endif">
-                        <a class="nav-link ml-1 pl-4 p-1" href="{{ route('clientes.pacotes.historico.index') }}">
+                        <a class="nav-link pl-5" href="{{ route('clientes.pacotes.historico.index') }}">
                             Histórico de Pacotes
                         </a>
                     </li>
                 </ul>
             </div>
         </li>
-
-        <div class="dropdown-divider"></div>
 
         <!-- Integrações -->
         <li class="nav-item">
@@ -163,15 +152,13 @@
             <div class="collapse @if (MENU === 'integracoes') show @endif" id="navbar-integracoes">
                 <ul class="nav nav-sm flex-column">
                     <li class="nav-item @if (SUBMENU === 'mercado-livre') active @endif">
-                        <a class="nav-link ml-1 pl-4 p-1" href="{{ route('clientes.integracoes.mercadolivre.index') }}">
+                        <a class="nav-link pl-5" href="{{ route('clientes.integracoes.mercadolivre.index') }}">
                             Contas Mercado Livre
                         </a>
                     </li>
                 </ul>
             </div>
         </li>
-
-        <div class="dropdown-divider"></div>
 
         <!-- Financeiro -->
         <li class="nav-item">
@@ -183,7 +170,7 @@
             <div class="collapse @if (MENU === 'financeiro') show @endif" id="navbar-entregas">
                 <ul class="nav nav-sm flex-column">
                     <li class="nav-item @if (SUBMENU === 'pagamentos') active @endif">
-                        <a class="nav-link ml-1 pl-4 p-1"
+                        <a class="nav-link pl-5"
                            href="{{ route('clientes.financeiro.index') }}">
                             Pagamentos
                         </a>
@@ -191,8 +178,6 @@
                 </ul>
             </div>
         </li>
-
-        <div class="dropdown-divider"></div>
 
         <!-- Sua conta -->
         <li class="nav-item">
@@ -204,7 +189,7 @@
             <div class="collapse @if (MENU === 'perfil') show @endif" id="navbar-perfil">
                 <ul class="nav nav-sm flex-column">
                     <li class="nav-item @if (SUBMENU === 'index') active @endif">
-                        <a class="nav-link ml-1 pl-4 p-1"
+                        <a class="nav-link pl-5"
                            href="{{ route('clientes.perfil.index') }}">
                             Editar Perfil
                         </a>

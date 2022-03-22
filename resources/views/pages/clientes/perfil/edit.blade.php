@@ -1,7 +1,5 @@
 <x-layout>
-
     <div class="header bg-principal bg-height-top"></div>
-
     <div class="container-fluid mt--9">
         <div class="card bg-secondary shadow">
             <div class="card-header bg-white mb-0">

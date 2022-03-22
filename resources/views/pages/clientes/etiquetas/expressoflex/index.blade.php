@@ -81,6 +81,9 @@
                         </div>
                     </div>
                 @endif
+                <div class="row justify-content-center py-3">
+                    <div class="col-auto">{{ $etiquetas }}</div>
+                </div>
             </div>
         </div>
     </div>

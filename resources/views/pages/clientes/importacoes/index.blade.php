@@ -10,11 +10,11 @@
                     </div>
                 </div>
             </div>
-            <div class="card-body">
+            <div class="card-body p-2">
                 @foreach ($etiquetas as $etiqueta)
                     <div class="card shadow-sm p-3 mb-2">
                         <div class="row justify-content-between align-items-center">
-                            <div class="col-12 col-lg-10">
+                            <div class="col-12">
                                 <p class="mb-0">
                                     <i class="fas fa-user mr-2 text-primary"></i>
                                     <b>{{ get_destinatario_pacote($etiqueta->destinatarios_id)->nome }}</b>
@@ -51,6 +51,9 @@
                         </div>
                     </div>
                 @endif
+                <div class="row justify-content-center py-3">
+                    <div class="col-auto">{{ $etiquetas }}</div>
+                </div>
             </div>
         </div>
     </div>

@@ -25,7 +25,7 @@ class ExpressoFlexController extends Controller
                 ['status', '=', $novo->getStatus()],
                 ['origem', '=', $origem->getOrigem()]])
             ->orderBy('id', 'DESC')
-            ->get();
+            ->paginate();
 
         return view('pages.clientes.etiquetas.expressoflex.index', compact('etiquetas'));
     }

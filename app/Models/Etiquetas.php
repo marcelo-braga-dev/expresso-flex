@@ -61,6 +61,6 @@ class Etiquetas extends Model
     {
         return $this->newQuery()
             ->where('origem', '=', $origem)
-            ->get();
+            ->paginate(10);
     }
 }

@@ -1,7 +1,5 @@
 <x-layout>
     <div class="header bg-principal bg-height-top"></div>
-
-    <!-- Page content -->
     <div class="container-fluid mt--9">
         <div class="row">
             <div class="col">
@@ -29,7 +27,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="table-responsive pb-5">
                         <table class="table align-items-center table-flush">
                             <tbody class="list">

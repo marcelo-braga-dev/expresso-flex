@@ -3,7 +3,7 @@
         <table style="font-size:12px">
             <tr>
                 <td>
-                    <img src="/assets/img/brand/logo-x256.png" width="80px">
+                    <img src="{{ asset('assets') }}/img/brand/logo-x256.png" width="80px">
                 </td>
                 <td style="padding-left:5px">
                     <small><b>Remetente:</b></small><br>
