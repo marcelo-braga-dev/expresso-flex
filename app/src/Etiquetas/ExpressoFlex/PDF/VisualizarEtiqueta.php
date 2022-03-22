@@ -20,9 +20,11 @@ class VisualizarEtiqueta
     public function visualizar($id)
     {
         $etiquetas = new Etiquetas();
-        $etiqueta = $etiquetas->newQuery()->findOrFail($id);
+        $etiqueta = $etiquetas->newQuery()->find($id);
 
-        if ($etiqueta->user_id != id_usuario_atual()) return redirect()->back();
+        if (empty($etiqueta) || $etiqueta->user_id != id_usuario_atual()) {
+            echo 'Você não pode acessar essa etiqueta.'; exit();
+        }
 
         // Remetente
         $remetente = new Remetente($etiqueta->user_id);
