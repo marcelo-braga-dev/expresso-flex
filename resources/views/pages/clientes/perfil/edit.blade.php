@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout menu="perfil" submenu="perfil-editar">
     <div class="header bg-principal bg-height-top"></div>
     <div class="container-fluid mt--9">
         <div class="card bg-secondary shadow">

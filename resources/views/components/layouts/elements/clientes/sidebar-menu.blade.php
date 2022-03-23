@@ -169,7 +169,7 @@
             </span>
             <div class="collapse @if (MENU === 'financeiro') show @endif" id="navbar-entregas">
                 <ul class="nav nav-sm flex-column">
-                    <li class="nav-item @if (SUBMENU === 'pagamentos') active @endif">
+                    <li class="nav-item @if (SUBMENU === 'financeiro-pagamentos') active @endif">
                         <a class="nav-link pl-5"
                            href="{{ route('clientes.financeiro.index') }}">
                             Pagamentos
@@ -188,7 +188,7 @@
             </span>
             <div class="collapse @if (MENU === 'perfil') show @endif" id="navbar-perfil">
                 <ul class="nav nav-sm flex-column">
-                    <li class="nav-item @if (SUBMENU === 'index') active @endif">
+                    <li class="nav-item @if (SUBMENU === 'perfil-editar') active @endif">
                         <a class="nav-link pl-5"
                            href="{{ route('clientes.perfil.index') }}">
                             Editar Perfil

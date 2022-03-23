@@ -1,26 +1,21 @@
-<x-layout>
+<x-layout menu="financeiro" submenu="financeiro-pagamentos">
     <div class="header bg-principal bg-height-top"></div>
 
-    <div class="container-fluid mt--9">
+    <div class="container-fluid mt--9 mb-6">
         <div class="row">
-            <div class="col-md-5">
-                {{-- Faturamento --}}
-                <div class="card card-stats mb-3 shadow">
-                    <div class="card-body bg-white">
+            <div class="col-md-4">
+                <div class="card card-stats mb-3">
+                    <div class="card-body" style="background-color: white !important">
                         <div class="row">
                             <div class="col">
                                 <h5 class="card-title text-uppercase text-muted mb-0">
-                                    Valor a pagar
+                                    Valores a Pagar
                                 </h5>
-                                <span class="text-warning d-block"><b>
-                                        {{ $fretes['quinzena'] }}° Quinzena de
-                                        {{ $fretes['mes'] . '/' . $fretes['ano'] }}</b>
-                                </span>
                                 <span class="h2 font-weight-bold mb-0">
-                                    R$ {{ number_format($fretes['faturamento']['aberto'], 2, ',', '.') }}
+                                    R$ {{ convertFloatToMoney($valores['receber']) }}
                                 </span>
                             </div>
-                            <div class="col-auto">
+                            <div class="col-3">
                                 <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
                                     <i class="fas fa-hand-holding-usd"></i>
                                 </div>
@@ -28,107 +23,153 @@
                         </div>
                         <p class="mt-1 mb-0 text-sm">
                             <span class="text-nowrap d-block">
-                                <b>Valores Pagos:</b> R$ {{ number_format($fretes['faturamento']['pago'], 2, ',', '.') }}
-                            </span>
-                            <span class="text-nowrap">
-                                <b>Faturamento Total:</b> R$
-                                {{ number_format($fretes['faturamento']['total'], 2, ',', '.') }}
+                                <b>Valores Pagos:</b> R$ {{ convertFloatToMoney($valores['pago']) }}
                             </span>
                         </p>
                     </div>
                 </div>
-
-                {{-- Pagamento --}}
-                <div class="card card-stats mb-3 shadow">
-                    <div class="card-body bg-white">
-                        <div class="row mb-3">
+            </div>
+            <div class="col-md-4">
+                <div class="card card-stats mb-3">
+                    <div class="card-body" style="background-color: white !important">
+                        <div class="row">
                             <div class="col">
-                                <h5 class="card-title text-uppercase text-muted mb-0">
-                                    Efetuar Pagamento Quinzenal
-                                </h5>
+                                <h5 class="card-title text-uppercase text-muted mb-0">Faturamento Quinzenal</h5>
                                 <span class="h2 font-weight-bold mb-0">
-                                    R$ {{ number_format($fretes['faturamento']['aberto'], 2, ',', '.') }}
+                                    R$ {{ convertFloatToMoney($valores['pago'] + $valores['receber']) }}
                                 </span>
                             </div>
-                            <div class="col-auto">
+                            <div class="col-3">
                                 <div class="icon icon-shape bg-success text-white rounded-circle shadow">
                                     <i class="fas fa-dollar-sign"></i>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col">
-                                @if (empty($idMercadoPago))
-                                    <p>Todos os pagamentos desta quinzena estão quitados.</p>
-                                @else
-                                    <p>
-                                        Clique no botão abaixo para realizar o pagamento da
-                                        {{ $fretes['quinzena'] }}° Quinzena de
-                                        {{ $fretes['mes'] . '/' . $fretes['ano'] }}.
-                                    </p>
-                                    <div class="cho-container"></div>
-                                @endif
-                            </div>
-                        </div>
+                        <p class="mt-1 mb-0 text-sm">
+                            {{--                            <span class="text-nowrap d-block"><b>São Paulo:</b> R$ {{ $valores['valor_sp'] }}</span>--}}
+                            {{--                            <span class="text-nowrap"><b>Grande São Paulo:</b> R$ {{ $valores['valor_g_sp'] }}</span>--}}
+                        </p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <!-- Tabela -->
+            {{--            <div class="col-md-4">--}}
+            {{--                <div class="card card-stats mb-3">--}}
+            {{--                    <div class="card-body" style="background-color: white !important">--}}
+            {{--                        <div class="row">--}}
+            {{--                            <div class="col">--}}
+            {{--                                <h5 class="card-title text-uppercase text-muted mb-0">Total de Pacotes</h5>--}}
+            {{--                                <span class="h2 font-weight-bold mb-0">--}}
+            {{--                                    {{ $total['total_pacotes'] }} <span class="small font-weight-normal">pacotes</span>--}}
+            {{--                                </span>--}}
+            {{--                            </div>--}}
+            {{--                            <div class="col-auto">--}}
+            {{--                                <div class="icon icon-shape bg-orange text-white rounded-circle shadow">--}}
+            {{--                                    <i class="fas fa-boxes"></i>--}}
+            {{--                                </div>--}}
+            {{--                            </div>--}}
+            {{--                        </div>--}}
+            {{--                        <p class="mt-1 mb-0 text-sm">--}}
+            {{--                            <span class="text-nowrap d-block">--}}
+            {{--                                <b>São Paulo:</b> {{ $total['pacotes_sp'] }} pacotes--}}
+            {{--                            </span>--}}
+            {{--                            <span class="text-nowrap">--}}
+            {{--                                <b>Grande São Paulo:</b> {{ $total['pacotes_g_sp'] }} pacotes--}}
+            {{--                            </span>--}}
+            {{--                        </p>--}}
+            {{--                    </div>--}}
+            {{--                </div>--}}
+            {{--            </div>--}}
+        </div>
+
+        <!-- Tabela -->
+        <div class="row">
+            <div class="col-md-4 mb-4">
                 <div class="card bg-secondary shadow">
                     <div class="card-header bg-white mb-0">
                         <div class="row align-items-center">
-                            <div class="col">
-                                <h4 class="card-title text-uppercase mb-0">Faturamento Diário</h4>
-                                <p class="mb-0">{{ get_nome_usuario($user) }}</p>
-                                <small class="mb-0">
-                                    Data: {{ $fretes['mes'] . '/' . $fretes['ano'] }} -
-                                    {{ $fretes['quinzena'] }}° quinzena
-                                </small>
-                            </div>
                             <div class="col-auto">
-                                <a class="btn btn-primary btn-sm" href="{{ url()->previous() }}">Voltar</a>
+                                <h4 class="card-title text-uppercase mb-0">Faturamento</h4>
+                                <p class="mb-0">Período: {{$mes . '/' . $ano}}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="card-body bg-white p-0">
+                    <div class="card-body p-0">
                         <div class="table-responsive">
                             <table class="table align-items-center table-flush text-center">
                                 <thead class="thead-light">
                                 <tr>
                                     <th>Data</th>
-                                    <th>Total do Dia</th>
-                                    <th></th>
+                                    <th>Valor</th>
                                 </tr>
                                 </thead>
                                 <tbody class="list">
-                                @if (!empty($fretes['dias']))
-                                    @foreach ($fretes['dias'] as $dia => $frete)
-                                        <tr>
-                                            <th scope="row">
-                                                {{ $dia . '/' . $fretes['mes'] . '/' . $fretes['ano'] }}
-                                            </th>
-                                            <td>
-                                                R$ {{ number_format($frete, 2, ',', '.') }}
-                                            </td>
-                                            <td class="text-right">
-                                                <a href="{{
-                                                            route('cliente.coleta.historico.pacotes-coletados', [
-                                                                'dia' => $dia,
-                                                                'mes' => $fretes['mes'],
-                                                                'ano' => $fretes['ano'],
-                                                            ]) }}">
-                                                    Detalhes
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                @endif
+                                @foreach ($faturamentos as $data=>$faturamento)
+                                    <tr>
+                                        <th>{{ $data }}</th>
+                                        <td>R$ {{ $faturamento }}</td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
 
-                        @if (empty($fretes))
+                        @if (empty($faturamentos))
+                            <div class="row justify-content-center">
+                                <div class="col-auto p-3">
+                                    <small class="text-muted">
+                                        Não há histórico de pagamentos
+                                    </small>
+                                </div>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 mb-3">
+                <div class="card bg-secondary shadow">
+                    <div class="card-header bg-white mb-0">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h4 class="card-title text-uppercase mb-0">Pacotes</h4>
+                                <p class="mb-0">Período: {{$mes . '/' . $ano}}</p>
+                            </div>
+                            <div class="col-auto">
+                                <a class="btn btn-primary btn-sm" href="{{url()->previous()}}">Voltar</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table align-items-center table-flush text-center">
+                                <thead class="thead-light">
+                                <tr>
+                                    <th>Data</th>
+                                    <th>Código</th>
+                                    <th>Região</th>
+                                    <th>Pagamento</th>
+                                    <th>Valor</th>
+                                </tr>
+                                </thead>
+                                <tbody class="list">
+                                @foreach ($entregas as $entrega)
+                                    <tr>
+                                        <th scope="row">
+                                            {{ date('d/m/y', strtotime($entrega->created_at)) }}
+                                        </th>
+                                        <td>{{ getRastreioPeloId($entrega->pacotes_id)  }}</td>
+                                        <td>
+                                            @if ($entrega->regiao == 'sao_paulo') São Paulo @endif
+                                            @if ($entrega->regiao == 'grande_sao_paulo') Grande São Paulo @endif
+                                        </td>
+                                        <td>{{ ucfirst($entrega->status) }}</td>
+                                        <td>R$ {{ convertFloatToMoney($entrega->value) }}</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+
+                        @if ($entregas->isEmpty())
                             <div class="row justify-content-center">
                                 <div class="col-auto p-3">
                                     <small class="text-muted">
@@ -141,28 +182,5 @@
                 </div>
             </div>
         </div>
-
     </div>
-    <script src="https://sdk.mercadopago.com/js/v2"></script>
-
-    @if (!empty($idMercadoPago))
-        <script>
-            // Adicione as credenciais do SDK
-            const mp = new MercadoPago('APP_USR-ca3a1921-e228-4309-ade5-f3dd0f5cd57c', {
-                locale: 'pt-BR'
-            });
-
-            // Inicialize o checkout
-            mp.checkout({
-                preference: {
-                    id: '{{ $idMercadoPago }}'
-                },
-                render: {
-                    container: '.cho-container',
-                    label: 'Realizar Pagamento',
-                }
-            });
-        </script>
-    @endif
-
 </x-layout>

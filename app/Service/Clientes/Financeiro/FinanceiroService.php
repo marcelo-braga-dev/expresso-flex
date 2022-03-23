@@ -1,17 +1,18 @@
 <?php
 
-namespace App\Service\Entregadores;
+namespace App\Service\Clientes\Financeiro;
 
 use App\Models\ComissoesEntregadores;
+use App\Models\FretesRealizados;
 
 class FinanceiroService
 {
     public function historicoMensal()
     {
         $fretes = [];
-        $comissoesEntregadores = new ComissoesEntregadores();
+        $fretesRealizados = new FretesRealizados();
 
-        $todosFretes = $comissoesEntregadores->newQuery()
+        $todosFretes = $fretesRealizados->newQuery()
             ->where('user_id', '=', id_usuario_atual())
             ->orderBy('created_at', 'DESC')
             ->get();
@@ -38,15 +39,15 @@ class FinanceiroService
         return $fretes;
     }
 
-    public function historicoQuinzenal($mes, $ano)
+    public function quinzena($mes, $ano)
     {
         $abertoQuinzena2 = [];
         $abertoQuinzena1 = [];
         $pagoQuinzena2 = [];
         $pagoQuinzena1 = [];
-        $comissoesEntregadores = new ComissoesEntregadores();
+        $fretesRealizados = new FretesRealizados();
 
-        $todosFretes = $comissoesEntregadores->query()
+        $todosFretes = $fretesRealizados->query()
             ->where('user_id', '=', id_usuario_atual())
             ->whereMonth('created_at', $mes)
             ->whereYear('created_at', $ano)

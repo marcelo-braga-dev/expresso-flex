@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Clientes\Financeiros;
 
 use App\Http\Controllers\Controller;
+use App\Models\ComissoesEntregadores;
 use App\Models\FretesRealizados;
 use App\Service\FinanceiroService;
 use App\src\Financeiro\ClienteFinanceiro;
@@ -10,53 +11,60 @@ use Illuminate\Http\Request;
 
 class FinanceiroController extends Controller
 {
-    public function index()
+    public function historicoMensal()
     {
-        $fretesRealizados = new FretesRealizados();
-        $financeiroService = new FinanceiroService();
-
-        $todosFretes = $fretesRealizados->query()
-            ->where('user_id', '=', id_usuario_atual())
-            ->orderBy('created_at', 'DESC')
-            ->get();
-
-        $fretes = $financeiroService->getHistoricoFinanceiro($todosFretes);
+        $financeiroService = new \App\Service\Clientes\Financeiro\FinanceiroService();
+        $fretes = $financeiroService->historicoMensal();
 
         return view('pages.clientes.financeiro.index', compact('fretes'));
     }
 
-    public function quinzena(Request $request)
+    public function histricoQuinzenal($mes, $ano)
     {
-        $user = id_usuario_atual();
-        $fretesRealizados = new FretesRealizados();
-        $financeiroService = new FinanceiroService();
-        $request->id = $user;
+        $financeiroService = new \App\Service\Clientes\Financeiro\FinanceiroService();
+        $fretes = $financeiroService->quinzena($mes, $ano);
 
-        $fretes = $financeiroService->getHistoricoQuinzena($fretesRealizados, $request);
-
-        return view('pages.cliente.financeiro.quinzena', compact('fretes', 'user'));
+        return view('pages.clientes.financeiro.quinzena', compact('fretes', 'mes', 'ano'));
     }
 
-    public function fatura(Request $request)
+    public function fatura($mes, $ano, $quinzena)
     {
-        $financeiroService = new FinanceiroService();
-        $fretesRealizados = new FretesRealizados();
-        $clienteFinanceiro = new ClienteFinanceiro();
+        if ($quinzena < 1 || $quinzena > 2 ) return redirect('/');
 
-        $user = id_usuario_atual();
-        $request->id = $user;
+        $valores = [];
+        $financeiroService = new \App\Service\Clientes\Financeiro\FinanceiroService();
+        $fretes = $financeiroService->quinzena($mes, $ano);
 
-        $fretes = $financeiroService->getInfoQuinzena($fretesRealizados, $request);
-
-        // Modal Pagamento
-        $emAberto = $fretes['faturamento']['aberto'];
-        $idMercadoPago = 0;
-        if ($emAberto) {
-            $desc = 'Pag. Fatura ' . $request->quinzena . '° quinz. de ' . $fretes['mes'] . '-' . $fretes['ano'];
-
-            $idMercadoPago = $clienteFinanceiro->getModel($emAberto, $desc);
+        if ($quinzena == 1) {
+            $valores['receber'] = $fretes['aberto_quinzena1'];
+            $valores['pago'] = $fretes['pago_quinzena1'];
         }
 
-        return view('pages.cliente.financeiro.fatura', compact('fretes', 'user', 'idMercadoPago'));
+        if ($quinzena == 2) {
+            $valores['receber'] = $fretes['aberto_quinzena2'];
+            $valores['pago'] = $fretes['pago_quinzena2'];
+        }
+
+        $operadorDia = '<=';
+        if ($quinzena == 2) $operadorDia = '>';
+
+        $comissoesEntregadores = new FretesRealizados();
+        $entregas = $comissoesEntregadores->newQuery()
+            ->where('user_id', '=', id_usuario_atual())
+            ->whereMonth('created_at', '=', $mes)
+            ->whereYear('created_at', '=', $ano)
+            ->whereDay('created_at', $operadorDia, 15)
+            ->orderBy('created_at', 'ASC')
+            ->get();
+
+        $faturamentos = [];
+        foreach ($entregas as $faturado) {
+            $data = date('d/m/y', strtotime($faturado->created_at));
+            $faturamento[$data][] = $faturado->value;
+            $faturamentos[$data] = array_sum($faturamento[$data]);
+        }
+
+        return view('pages.clientes.financeiro.fatura',
+            compact('valores', 'entregas', 'faturamentos', 'mes', 'ano'));
     }
 }
