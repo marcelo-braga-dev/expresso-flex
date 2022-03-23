@@ -11,8 +11,8 @@ $(function() {
             return !reg.test(text);
         }).hide();
     });
-    
-    var $rows = $('.info-list, .info-search');
+
+    var $rows = $('.row-clickable, .info-search');
     $('#search-list').keyup(function() {
 
         var val = '^(?=.*\\b' + $.trim($(this).val()).split(/\s+/).join('\\b)(?=.*\\b') + ').*$',

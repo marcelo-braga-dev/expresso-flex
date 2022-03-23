@@ -47,9 +47,9 @@ $(document).ready(function () {
 
 $(function () {
     // redireciona no click
-    $('.info-list').css('cursor', 'pointer');
+    $('.row-clickable').css('cursor', 'pointer');
 
-    $('.info-list').click(function () {
+    $('.row-clickable').click(function () {
         window.location.href = $(this).find('a').attr('href');
     });
 })
@@ -67,8 +67,8 @@ $(function() {
             return !reg.test(text);
         }).hide();
     });
-    
-    var $rows = $('.info-list, .info-search');
+
+    var $rows = $('.row-clickable, .info-search');
     $('#search-list').keyup(function() {
 
         var val = '^(?=.*\\b' + $.trim($(this).val()).split(/\s+/).join('\\b)(?=.*\\b') + ').*$',

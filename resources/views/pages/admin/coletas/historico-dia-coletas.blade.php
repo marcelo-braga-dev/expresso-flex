@@ -16,10 +16,10 @@
             </div>
             <div class="card-body bg-white py-0">
                 @foreach ($solicitacoes as $solicitacao)
-                    <div class="row justify-content-between border-bottom py-3 info-list">
+                    <div class="row justify-content-between border-bottom py-3 row-clickable">
                         <div class="col-md-auto">
                             <p class="mb-0">
-                                <b>Cliente: {{ get_dados_usuario($solicitacao->user_id)->nome }}</b>
+                                <b>Cliente: {{ get_dados_usuario($solicitacao->user_id)->name }}</b>
                             </p>
                             <p class="text-mb mb-0">
                                 {{ get_endereco_loja($solicitacao->loja) }}
@@ -27,7 +27,7 @@
                             <small class="d-block">
                                 Entregador:
                                 @if (!empty($solicitacao->entregador))
-                                    {{ get_dados_usuario($solicitacao->entregador)->nome }}
+                                    {{ get_dados_usuario($solicitacao->entregador)->name }}
                                 @endif
                             </small>
                             <small class="d-block text-warning">

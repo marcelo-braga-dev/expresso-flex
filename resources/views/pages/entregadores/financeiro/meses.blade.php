@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout menu="financeiro" submenu="financeiro-pagamentos">
     <div class="header bg-principal bg-height-top"></div>
 
     <div class="container-fluid mt--9">
@@ -19,7 +19,7 @@
                 <ul class="list-group list-group-flush">
                     @foreach ($fretes as $frete)
                         <li
-                            class="list-group-item d-flex justify-content-between align-items-center px-4 info-list">
+                            class="list-group-item d-flex justify-content-between align-items-center px-4 row-clickable">
                             <div class="row">
                                 <div class="col-auto pt-2">
                                     <span>{{ $frete['mes'] . '/' . $frete['ano'] }}</span>
@@ -58,8 +58,8 @@
                             <?php $mes = $frete['mes'];
                             $ano = $frete['ano']; ?>
                             <a class="btn btn-link p-0 btn-sm"
-                               href="{{ route('entregadores.financeiro.receber.detalhes', ['mes' => $frete['mes'], 'ano' => $frete['ano']]) }}">
-                                Detalhes
+                               href="{{ route('entregadores.financeiro.historicos.quinzena', ['mes' => $frete['mes'], 'ano' => $frete['ano']]) }}">
+                                Ver
                             </a>
                         </li>
                     @endforeach

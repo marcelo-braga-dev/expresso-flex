@@ -38,7 +38,7 @@
                         @foreach ($contas as $conta)
                             <tr>
                                 <td>
-                                    <b>{{ get_dados_usuario($conta['user_id'])->nome }}</b><br>
+                                    <b>{{ get_dados_usuario($conta['user_id'])->name }}</b><br>
                                     Id: #{{ $conta['user_id'] }}
                                 </td>
                                 <td>

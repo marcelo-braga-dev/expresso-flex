@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout menu="historico" submenu="historico-coletas">
     <div class="header bg-principal bg-height-top"></div>
 
     <div class="container-fluid mt--9">
@@ -19,7 +19,7 @@
                 <ul class="list-group list-group-flush">
                     @foreach ($solicitacoes as $solicitacao)
                         <li
-                            class="list-group-item d-flex justify-content-between align-items-center info-list px-4">
+                            class="list-group-item d-flex justify-content-between align-items-center row-clickable px-4">
                             <span>
                                 {{ date('d/m/Y', strtotime($solicitacao[0])) }}<br>
                                 <small class="d-block">

@@ -1,14 +1,13 @@
-<x-layout>
-
+<x-layout menu="entregas" submenu="realizar">
     <div class="header bg-principal bg-height-top"></div>
-
     <div class="container-fluid mt--9 mb-5">
         <div class="card bg-secondary shadow">
             <div class="card-header">
                 <div class="row align-items-center justify-content-between">
                     <div class="col-auto">
-                        <small class="badge badge-success">Entrega de Pacotes
-                            <i class="fas fa-shipping-fast"></i></small>
+                        <small class="badge badge-success">
+                            Entrega de Pacotes <i class="fas fa-shipping-fast"></i>
+                        </small>
                     </div>
                     <div class="col-auto">
                         <a class="btn btn-primary btn-sm" href="{{ url()->previous() }}">
@@ -69,7 +68,7 @@
                 <hr class="my-2">
                 <form method="POST"
                       action="{{ route('entregadores.entregas.update', $pacote->id) }}"
-                enctype="multipart/form-data">
+                      enctype="multipart/form-data">
                     @csrf @method('put')
                     <div class="row mb-3">
                         <div class="col-12">

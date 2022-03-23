@@ -3,7 +3,6 @@
 use App\Models\Destinatarios;
 use App\Models\Enderecos;
 use App\Models\LojasClientes;
-use App\Models\Meta;
 use App\Models\MetaValues;
 use App\Models\PacotesHistoricos;
 use App\Models\User;
@@ -111,7 +110,7 @@ function get_endereco(int $id)
 
 function formatar_cep(string $cep)
 {
-    if (strlen($cep) < 8) $cep = '0'.$cep;
+    if (strlen($cep) < 8) $cep = '0' . $cep;
 
     $cep = preg_replace('/\D/', '', $cep);
 
@@ -131,7 +130,7 @@ function print_pre($arg)
     exit();
 }
 
-function converterMoney(string $valor)
+function convertMoneyToFloat(string $valor)
 {
     if (!is_numeric($valor)) {
         $valor = str_replace('.', '', $valor);
@@ -139,6 +138,11 @@ function converterMoney(string $valor)
     }
 
     return $valor;
+}
+
+function convertFloatToMoney($valor): string
+{
+    return number_format($valor, 2, ',', '.');
 }
 
 function modalSucesso($mensagem)
@@ -155,4 +159,43 @@ function alterarStatusPacote(int $idCliente, int $idPacote, string $status)
 {
     $historico = new PacotesHistoricos();
     $historico->novo($idCliente, $idPacote, $status);
+}
+
+function converterMes(int $mes)
+{
+    switch ($mes) {
+        case '01':
+            return 'Janeiro';
+        case '02':
+            return 'Fevereiro';
+        case '03':
+            return 'Março';
+        case '04':
+            return 'Abril';
+        case '05':
+            return 'Maio';
+        case '06':
+            return 'Junho';
+        case '07':
+            return 'Julho';
+        case '08':
+            return 'Agosto';
+        case '09':
+            return 'Setembro';
+        case '10':
+            return 'Outubro';
+        case '11':
+            return 'Novembro';
+        case '12':
+            return 'Dezembro';
+    }
+    return $mes;
+}
+
+function getRastreioPeloId(int $id)
+{
+    $pacotes = new \App\Models\Pacotes();
+    $rastreio = $pacotes->newQuery()->find($id, 'rastreio');
+
+    if (!empty($rastreio)) return $rastreio->rastreio;
 }

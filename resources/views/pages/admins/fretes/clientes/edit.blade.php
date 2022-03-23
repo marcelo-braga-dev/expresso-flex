@@ -14,7 +14,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <h4 class="mb-4">{{ get_dados_usuario($cliente['user_id'])->nome }}</h4>
+                <h4 class="mb-4">{{ get_dados_usuario($cliente['user_id'])->name }}</h4>
                 <form method="post" action="{{ route('admins.fretes.clientes.update', $id) }}">
                     @csrf @method('put')
                     <div class="row align-items-center">

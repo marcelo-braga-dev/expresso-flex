@@ -37,7 +37,7 @@
                                         <hr class="my-2">
                                         <small class="d-block mb-2 justify-content-between">
                                             <b>Entregador Responsável: </b>
-                                            {{ get_dados_usuario($pacote->entregador)->nome }}
+                                            {{ get_dados_usuario($pacote->entregador)->name }}
                                         </small>
 
                                         <hr class="my-2">
@@ -47,7 +47,7 @@
                                                     <h4 class="text-muted">Remetente</h4>
                                                     <div class="mb-2 d-block">
                                                         <b>Nome:</b>
-                                                        {{ get_dados_usuario($pacote->user_id)->nome }}
+                                                        {{ get_dados_usuario($pacote->user_id)->name }}
                                                     </div>
                                                     <div class="mb-2 d-block">
                                                         <b>Endereço de Entrega:</b>

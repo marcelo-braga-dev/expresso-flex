@@ -22,19 +22,4 @@ class EntregadoresService
 
         return $entregadores;
     }
-
-    public function getFaturamento()
-    {
-        $comissoesEntregadores = new ComissoesEntregadores();
-        $financeiroService = new FinanceiroService();
-
-        $todosFretes = $comissoesEntregadores->query()
-            ->where('user_id', '=', id_usuario_atual())
-            ->orderBy('created_at', 'DESC')
-            ->get();
-
-        $fretes = $financeiroService->getHistoricoFinanceiro($todosFretes);
-
-        return $fretes;
-    }
 }

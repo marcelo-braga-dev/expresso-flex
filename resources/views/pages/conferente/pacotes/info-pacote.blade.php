@@ -93,7 +93,7 @@
                         <div class="col-md-6">
                             <p class="text-sm mb-0">
                                 <b>Nome:</b>
-                                {{ get_dados_usuario($pacote->user_id)->nome }}
+                                {{ get_dados_usuario($pacote->user_id)->name }}
                             </p>
                         </div>
                         <div class="col-md-3">

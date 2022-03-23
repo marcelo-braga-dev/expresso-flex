@@ -32,7 +32,7 @@
                                         href="#tabs-entregador-{{ $entregador['id_entregador'] }}" role="tab"
                                         aria-controls="tabs-entregador-{{ $entregador['id_entregador'] }}"
                                         aria-selected="true">
-                                        {{ get_dados_usuario($entregador['id_entregador'])->nome }}
+                                        {{ get_dados_usuario($entregador['id_entregador'])->name }}
                                     </a>
                                 </li>
                                 <?php $aba = false; ?>

@@ -29,7 +29,7 @@
                                             </small>
                                             <small class="d-block mb-2">
                                                 <b>Entregador:</b>
-                                                {{ get_dados_usuario($pacote->entregador)->nome }}
+                                                {{ get_dados_usuario($pacote->entregador)->name }}
                                             </small>
                                             <small class="d-block mb-2">
                                                 <b>CEP:</b> {{ formatar_cep($pacote->regiao) }}

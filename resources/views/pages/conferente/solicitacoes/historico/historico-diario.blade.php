@@ -28,7 +28,7 @@
                 <ul class="list-group list-group-flush">
 
                     @foreach ($solicitacoes as $pacote)
-                        <li class="list-group-item info-list info-list">
+                        <li class="list-group-item row-clickable row-clickable">
                             <div class="row d-flex justify-content-between align-items-center">
                                 <div class="col-12 col-md-10">
                                     <p class="mb-0">

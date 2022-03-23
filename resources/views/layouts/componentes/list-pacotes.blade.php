@@ -1,4 +1,4 @@
-<li class="list-group-item info-list">
+<li class="list-group-item row-clickable">
     <div class="row d-flex justify-content-between align-items-center">
         <div class="col-12 col-md-10">
             @if (!empty($pacote->updated_at))

@@ -18,7 +18,7 @@
             <div class="card-body p-0">
                 <ul class="list-group list-group-flush">
                     @foreach ($clientes as $index => $pacote)
-                        <li class="list-group-item align-items-center info-list px-4">
+                        <li class="list-group-item align-items-center row-clickable px-4">
                             <p class="mb-0">
                                 <i class="fas fa-user mr-2 text-primary"></i>
                                 <b>{{ get_nome_usuario($index) }}</b> #ID: {{ $index }}

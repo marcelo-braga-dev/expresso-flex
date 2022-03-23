@@ -18,7 +18,7 @@
             <div class="card-body p-0">
                 <ul class="list-group list-group-flush">
                     @foreach ($fretes as $frete)
-                        <li class="list-group-item d-flex justify-content-between align-items-center px-4 info-list">
+                        <li class="list-group-item d-flex justify-content-between align-items-center px-4 row-clickable">
                             <div class="row">
                                 <div class="col-auto pt-2">
                                     <span>{{ $frete['mes'] . '/' . $frete['ano'] }}</span>

@@ -34,7 +34,7 @@ class FretesService
         $precoFrete->newQuery()->updateOrInsert(
             ['meta_key' => 'sao_paulo', 'user_id' => $userId],
             [
-                'value' =>  converterMoney($request->sao_paulo),
+                'value' =>  convertMoneyToFloat($request->sao_paulo),
                 'title' => 'São Paulo',
                 'tipo' => $user->tipo
             ]
@@ -43,7 +43,7 @@ class FretesService
         $precoFrete->newQuery()->updateOrInsert(
             ['meta_key' => 'grande_sao_paulo', 'user_id' => $userId],
             [
-                'value' => converterMoney($request->grande_sao_paulo),
+                'value' => convertMoneyToFloat($request->grande_sao_paulo),
                 'title' => 'Grande São Paulo',
                 'tipo' => $user->tipo
             ]

@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout menu="historico" submenu="historico-pacotes">
     <div class="header bg-principal bg-height-top"></div>
 
     <div class="container-fluid mt--9">
@@ -10,7 +10,8 @@
                         {{ date('d/m/Y', strtotime($dia)) }}
                     </div>
                     <div class="col-auto">
-                        <a class="btn btn-primary btn-sm" href="{{ route('entregadores.pacotes.historico') }}">Voltar</a>
+                        <a class="btn btn-primary btn-sm"
+                           href="{{ route('entregadores.pacotes.historico') }}">Voltar</a>
                     </div>
                 </div>
             </div>
@@ -29,6 +30,5 @@
                 </ul>
             </div>
         </div>
-
     </div>
-    </x-layout>
+</x-layout>

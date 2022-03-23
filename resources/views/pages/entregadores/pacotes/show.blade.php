@@ -1,7 +1,6 @@
-<x-layout>
+<x-layout menu="historico" submenu="historico-pacotes">
     <div class="header bg-principal bg-height-top"></div>
 
-    <!-- Page content -->
     <div class="container-fluid mt--9">
         <div class="card mb-4">
             <!-- Card header -->
@@ -94,7 +93,7 @@
                         <div class="col-md-6">
                             <p class="text-sm mb-0">
                                 <b>Nome:</b>
-                                {{ get_dados_usuario($pacote->user_id)->nome }}
+                                {{ get_dados_usuario($pacote->user_id)->name }}
                             </p>
                         </div>
                         <div class="col-md-3">

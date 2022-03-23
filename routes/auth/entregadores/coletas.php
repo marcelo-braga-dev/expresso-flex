@@ -7,24 +7,31 @@ Route::name('entregadores.')
     ->group(function () {
         Route::resource('coletas', 'ColetasController');
         Route::resource('coletas-abertas', 'EmAbertoController');
-
-        Route::put('coleta/alterar-status', 'ColetasController@cancelarColeta')
-            ->name('coletas.cancelar-coleta');
-
-        Route::put('coleta/cancelar-coleta', 'ColetasController@alterarStatus')
-            ->name('coleta.alterar-status');
-
-        Route::get('coleta/historico-coleta', 'HistoricoController@historico')
-            ->name('coletas.historico-coleta');
-
-        Route::get('coleta/historico-coleta-dia', 'HistoricoController@historicoDia')
-            ->name('coletas.historico-coleta-dia');
-
-        Route::get('coleta/detalhes', 'HistoricoController@info')
-            ->name('coletas.info');
-
-        Route::get('entrega/cancelar-entrega', 'EntregaController@cancel')
-            ->name('entrega.cancelar-entrega');
     });
 
+Route::name('entregadores.')
+    ->namespace('Coletas')
+    ->controller('ColetasController')
+    ->group(function () {
 
+        Route::put('coleta/alterar-status', 'cancelarColeta')
+            ->name('coletas.cancelar-coleta');
+
+        Route::put('coleta/cancelar-coleta', 'alterarStatus')
+            ->name('coleta.alterar-status');
+    });
+
+Route::name('entregadores.coletas.')
+    ->namespace('Coletas')
+    ->controller('HistoricoController')
+    ->group(function () {
+
+        Route::get('coleta/historico-coleta', 'historico')
+            ->name('historico-coleta');
+
+        Route::get('coleta/historico-coleta-dia', 'historicoDia')
+            ->name('historico-coleta-dia');
+
+        Route::get('coleta/detalhes', 'info')
+            ->name('info');
+    });

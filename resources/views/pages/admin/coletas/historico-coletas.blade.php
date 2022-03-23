@@ -19,7 +19,7 @@
                 <ul class="list-group list-group-flush">
                     @foreach ($solicitacoes as $solicitacao)
                         <li
-                            class="list-group-item d-flex justify-content-between align-items-center info-list px-4">
+                            class="list-group-item d-flex justify-content-between align-items-center row-clickable px-4">
                             <span>
                                 @if (date('d/m/Y', strtotime($solicitacao[0])) == date('d/m/Y'))
                                     Hoje -

@@ -65,4 +65,11 @@ class EntregasController extends Controller
         return redirect()->route('entregadores.entregas.index');
     }
 
+    public function cancel($id)
+    {
+        $pacotes = new Pacotes();
+        $pacote = $pacotes->newQuery()->find($id);
+
+        return view('pages.entregadores.entregas.cancelar-entrega', compact('pacote'));
+    }
 }

@@ -18,7 +18,7 @@
             <div class="card-body p-0">
                 <ul class="list-group list-group-flush">
                     @foreach ($datas as $data)
-                        <li class="list-group-item align-items-center info-list px-4">
+                        <li class="list-group-item align-items-center row-clickable px-4">
                             <p class="mb-0">
                                 <i class="fas fa-calendar-alt mr-2 text-primary"></i>
                                 <b>{{ $data['dia'] }}/{{ $data['mes'] }}/{{ $data['ano'] }}</b>

@@ -1,14 +1,13 @@
-<x-layout>
-
+<x-layout menu="entregas" submenu="realizar">
     <div class="header bg-principal bg-height-top"></div>
-
     <div class="container-fluid mt--9">
         <div class="card card-stats mb-5 border shadow-sm">
             <div class="card-header">
                 <div class="row align-items-center justify-content-between">
                     <div class="col-auto">
-                        <small class="badge badge-success">Entrega de Pacotes <i
-                                class="fas fa-shipping-fast"></i></small>
+                        <small class="badge badge-success">
+                            Entrega de Pacotes
+                            <i class="fas fa-shipping-fast"></i></small>
                     </div>
                     <div class="col-auto">
                         <a class="btn btn-primary btn-sm" href="{{ route('entregadores.entregas.index') }}">
@@ -67,7 +66,7 @@
                             <div class="row justify-content-center">
                                 <div class="col-8">
                                     <a class="btn btn-link btn-block text-danger btn-sm"
-                                       href="{{ route('entregadores.entrega.cancelar-entrega', ['id' => $pacote->id]) }}">
+                                       href="{{ route('entregadores.entrega.cancelar', ['id' => $pacote->id]) }}">
                                         Não consegui fazer a entrega
                                     </a>
                                 </div>

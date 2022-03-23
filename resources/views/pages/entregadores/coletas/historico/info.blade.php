@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout menu="historico" submenu="historico-coletas">
     <div class="header bg-principal bg-height-top"></div>
 
     <!-- Page content -->
@@ -22,7 +22,7 @@
                         <div class="col-md-6">
                             <p class="text-sm mb-0">
                                 <b>Cliente:</b>
-                                {{ get_dados_usuario($coleta->user_id)->nome }}
+                                {{ get_dados_usuario($coleta->user_id)->name }}
                             </p>
                         </div>
                         <div class="col-md-3">

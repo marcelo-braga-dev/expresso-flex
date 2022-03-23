@@ -1,7 +1,5 @@
-<x-layout>
-
+<x-layout menu="entregas" submenu="realizar">
     <div class="header bg-principal bg-height-top"></div>
-
     <div class="container-fluid mt--9 p-1">
         <div class="card bg-secondary shadow">
             <div class="card-header bg-white mb-0">
@@ -38,7 +36,7 @@
                     <div class="col-12 pt-2">
                         @foreach ($pacotes as $pacote)
                             <div class="card shadow mb-3 info-search">
-                                <div class="row justify-content-between align-items-center info-list p-3">
+                                <div class="row justify-content-between align-items-center row-clickable p-3">
                                     <div class="col-md-12">
                                         <p class="mb-0">
                                             <i class="fas fa-map-marker-alt mr-2 text-danger"></i>

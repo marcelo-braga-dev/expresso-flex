@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout menu="entregas" submenu="realizar">
 
     <div class="header bg-principal bg-height-top"></div>
 
@@ -20,7 +20,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card p-3">
-                            <form method="POST" action="{{ route('entregadores.entrega.atualizar-cancelar-entrega') }}">
+                            <form method="POST" action="">
                                 @csrf @method('put')
                                 <div class="row">
                                     <div class="col-12">

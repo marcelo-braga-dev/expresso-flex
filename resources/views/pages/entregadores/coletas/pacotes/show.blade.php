@@ -1,8 +1,8 @@
-<x-layout>
+<x-layout menu="coletas" submenu="solicitacoes">
 
     <div class="header bg-principal bg-height-top"></div>
 
-    <div class="container-fluid mt--9">
+    <div class="container-fluid mt--9 mb-5">
         <div class="card bg-secondary shadow mb-3">
             <div class="card-header bg-white mb-0">
                 <div class="row align-items-center">

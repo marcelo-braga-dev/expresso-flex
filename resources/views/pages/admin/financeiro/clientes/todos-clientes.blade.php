@@ -20,10 +20,10 @@
                 <ul class="list-group list-group-flush">
                     @foreach ($clientes as $arg)
                         <li
-                            class="list-group-item d-flex justify-content-between align-items-center info-list px-4">
+                            class="list-group-item d-flex justify-content-between align-items-center row-clickable px-4">
                             <div>
                                 <p class="mb-0">
-                                    {{ get_dados_usuario($arg['user_id'])->nome }}
+                                    {{ get_dados_usuario($arg['user_id'])->name }}
                                 </p>
                                 <small class="d-block">
                                     Em aberto: R$ {{ number_format($arg['em_aberto'], 2, ',', '.')  }}

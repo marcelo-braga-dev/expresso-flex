@@ -16,7 +16,7 @@
             <div class="card-body p-0">
                 <ul class="list-group list-group-flush">
                     @foreach ($solicitacoes as $solicitacao)
-                        <li class="list-group-item d-flex justify-content-between info-list align-items-center px-4">
+                        <li class="list-group-item d-flex justify-content-between row-clickable align-items-center px-4">
                             <div>
                                 <p class="mb-0 d-block">
                                     <b>Data: {{ date('d/m/Y', strtotime($solicitacao->updated_at)) }}</b>
