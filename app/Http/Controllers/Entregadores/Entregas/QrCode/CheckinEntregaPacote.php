@@ -1,14 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\QrCode;
+namespace App\Http\Controllers\Entregadores\Entregas\QrCode;
 
-use App\Http\Controllers\Controller;
 use App\src\Pacotes\Pacote;
-use App\src\Pacotes\Status\Base;
 use App\src\Pacotes\Status\EntregaIniciado;
-use Illuminate\Http\Request;
 
-class SairParaEntregaPacoteController extends Controller
+class CheckinEntregaPacote
 {
     public function index()
     {

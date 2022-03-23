@@ -20,7 +20,8 @@ class Pacote
 
     public function alterarStatus($dados)
     {
-        $this->status->alterarStatus($dados);
+
+        $this->status->update($dados);
     }
 
     public function finalizar(int $id)

@@ -21,13 +21,11 @@ class EntregaFinalizado extends Status
             ->find($id)
             ->update(['status' => $this->status]);
 
-        new HistoricoStatusPacote($id, $this->getStatus());
+        alterarStatusPacote(id_usuario_atual(), $id, $this->getStatus());
 
         $comissao = new Comissoes($id);
         $comissao->entregador();
         $comissao->cliente();
-
-
 
         session()->flash('sucesso', 'Entrega realizada com sucesso.');
     }

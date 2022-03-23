@@ -4,16 +4,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::name('entregadores.')
     ->namespace('Pacotes')
+    ->controller('HistoricoController')
     ->group(function () {
 
-        Route::get('pacotes/historico', 'HistoricoController@historico')
+        Route::get('pacotes/historico', 'historico')
             ->name('pacotes.historico');
 
-        Route::get('pacotes/historico-diario', 'HistoricoController@historicoDia')
+        Route::get('pacotes/historico-diario', 'historicoDia')
             ->name('pacotes.historico-dia');
     });
 
-Route::get(
-    'pacotes/detalhes',
-    'App\Http\Controllers\Pacotes\EntregadorPacotesController@info'
-)->name('entregadores.pacotes.info');
+Route::name('entregadores.')
+    ->namespace('Pacotes')
+    ->group(function () {
+        Route::resource('pacote', 'PacotesController');
+    });

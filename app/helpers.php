@@ -5,6 +5,7 @@ use App\Models\Enderecos;
 use App\Models\LojasClientes;
 use App\Models\Meta;
 use App\Models\MetaValues;
+use App\Models\PacotesHistoricos;
 use App\Models\User;
 
 function id_usuario_atual()
@@ -138,4 +139,20 @@ function converterMoney(string $valor)
     }
 
     return $valor;
+}
+
+function modalSucesso($mensagem)
+{
+    session()->flash('sucesso', $mensagem);
+}
+
+function modalErro($mensagem)
+{
+    session()->flash('erro', $mensagem);
+}
+
+function alterarStatusPacote(int $idCliente, int $idPacote, string $status)
+{
+    $historico = new PacotesHistoricos();
+    $historico->novo($idCliente, $idPacote, $status);
 }

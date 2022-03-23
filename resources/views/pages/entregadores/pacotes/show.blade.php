@@ -14,8 +14,8 @@
                 </div>
             </div>
 
-            <div class="card-body">
-                <div class="card p-3 mb-4">
+            <div class="card-body p-1">
+                <div class="card p-3 mb-2">
                     <div class="row mb-2">
                         <div class="col-md-6">
                             <p class="text-sm mb-0">
@@ -56,7 +56,7 @@
                 </div>
 
                 {{-- Destinatario --}}
-                <div class="card p-3 mb-4">
+                <div class="card p-3 mb-2">
                     <h3>Destinatário</h3>
                     <div class="row mb-3">
                         <div class="col-md-6">
@@ -88,7 +88,7 @@
                 </div>
 
                 {{-- Remetente --}}
-                <div class="card p-3 mb-4">
+                <div class="card p-3 mb-2">
                     <h3>Remetente</h3>
                     <div class="row mb-3">
                         <div class="col-md-6">
@@ -116,7 +116,7 @@
                     </div>
                 </div>
 
-                <div class="card p-3 mb-4">
+                <div class="card p-3 mb-2">
                     <h3>Informações da Entrega</h3>
                     <div class="row mb-2">
                         <div class="col-md-6">
@@ -160,37 +160,41 @@
                     @endif
                 </div>
 
-                <div class="card p-3 mb-4">
+                <div class="card p-3 mb-2">
                     <h3 class="mb-3">Histórico</h3>
                     <div class="row mb-2">
                         <div class="col-12">
                             <div class="table-responsive">
                                 <table class="table align-items-center table-flush">
                                     <thead class="thead-light">
-                                        <tr>
-                                            <th scope="col">Status</th>
-                                            <th scope="col"></th>
-                                            <th scope="col">Data</th>
-                                        </tr>
+                                    <tr>
+                                        <th scope="col" class="col-1"></th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Mensagem</th>
+                                        <th scope="col">Data</th>
+                                    </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($historicos as $historico)
-                                            <tr>
-                                                <th scope="row">
-                                                    {{ get_status_pacote($historico['status']) }}
-                                                </th>
-                                                <td>
-                                                    @if (empty($historico['obs']))
-                                                        <i class="fas fa-check text-success"></i>
-                                                    @else
-                                                        {{ $historico['obs'] }}
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    {{ date('d/m/y H:i', strtotime($historico['data'])) }}
-                                                </td>
-                                            </tr>
-                                        @endforeach
+                                    @foreach ($historicos as $historico)
+                                        <tr>
+                                            <td class="text-center">
+                                                @if (empty($historico['obs']))
+                                                    <i class="fas fa-check text-success"></i>
+                                                @else
+                                                    <i class="fas fa-times text-danger"></i>
+                                                @endif
+                                            </td>
+                                            <th scope="row">
+                                                {{ get_status_pacote($historico['status']) }}
+                                            </th>
+                                            <td>
+                                                -
+                                            </td>
+                                            <td>
+                                                {{ date('d/m/y H:i', strtotime($historico['data'])) }}
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -200,6 +204,4 @@
             </div>
         </div>
     </div>
-
-    </div>
-    </x-layout>
+</x-layout>

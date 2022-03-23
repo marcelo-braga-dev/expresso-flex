@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Conferentes\Checkin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Pacotes;
 use App\src\Pacotes\Pacote;
 use App\src\Pacotes\Status\Base;
 use Illuminate\Http\Request;
@@ -11,7 +12,12 @@ class CheckinController extends Controller
 {
     public function index()
     {
-        $pacotes = [];
+        $status = new Base();
+
+        $pacotes = new Pacotes();
+        $pacotes = $pacotes->newQuery()
+            ->where('status', '=', $status->getStatus())
+            ->paginate();
 
         return view('pages.conferente.checkin.index', compact('pacotes'));
     }

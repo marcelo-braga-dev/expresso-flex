@@ -33,14 +33,10 @@
                 </div>
                 <div class="row">
                     <div class="col-md-auto">
-                        <form method="post"
-                              action="{{ route('entregadores.coletas.update', $solicitacao['id']) }}">
-                            @csrf @method('put')
-                            <button type="submit" class="btn btn-danger" name="id_coleta"
-                                    value="{{ $solicitacao['id'] }}">
-                                Finalizar Coleta
-                            </button>
-                        </form>
+                        <button type="button" class="btn btn-danger" data-toggle="modal"
+                                data-target="#modalFinalizarColeta">
+                            Finalizar Coleta
+                        </button>
                     </div>
                 </div>
             </div>
@@ -64,7 +60,7 @@
             <div class="card-body p-0">
                 <ul class="list-group list-group-flush">
                     @foreach ($pacotesCadastrados as $pacote)
-                        @include('layouts.componentes.list-pacotes', ['link' => 'entregadores.pacotes.info'])
+                        @include('layouts.componentes.list-pacotes', ['link' => 'entregadores.pacote.show'])
                     @endforeach
 
                     @if ($pacotesCadastrados->isEmpty())
@@ -82,40 +78,69 @@
             <i style="margin-top:12px" class="fas fa-camera"></i>
         </a>
 
-        {{--<!-- Modal -->
-        @if (!empty($_GET['codigoRastreio']))
-            <div class="modal fade" id="modalCodigoRastreio" tabindex="-1" role="dialog"
-                 aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header border-bottom">
-                            <h5 class="modal-title" id="exampleModalLabel">Pacote Cadastrado</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <span class="d-block mb-3">
-                                Código de rastreio do pacote:
-                            </span>
-                            <h2>
-                                {{ $_GET['codigoRastreio'] }}
-                            </h2>
-                            <small>Anote esse código em algum lugar visível do pacote.</small>
+    {{--<!-- Modal -->
+    @if (!empty($_GET['codigoRastreio']))
+        <div class="modal fade" id="modalCodigoRastreio" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header border-bottom">
+                        <h5 class="modal-title" id="exampleModalLabel">Pacote Cadastrado</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <span class="d-block mb-3">
+                            Código de rastreio do pacote:
+                        </span>
+                        <h2>
+                            {{ $_GET['codigoRastreio'] }}
+                        </h2>
+                        <small>Anote esse código em algum lugar visível do pacote.</small>
 
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
-                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
                     </div>
                 </div>
             </div>
-            <script>
-                $(function () {
-                    $('#modalCodigoRastreio').modal('show');
-                })
-            </script>
-        @endif --}}
+        </div>
+        <script>
+            $(function () {
+                $('#modalCodigoRastreio').modal('show');
+            })
+        </script>
+    @endif --}}
+
+    <!-- Modal Finalizar Coleta-->
+        <div class="modal fade" id="modalFinalizarColeta" tabindex="-1" role="dialog"
+             aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="TituloModalCentralizado">Finalizar coleta</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form method="post"
+                          action="{{ route('entregadores.coletas.update', $solicitacao['id']) }}">
+                        <div class="modal-body">
+                            @csrf @method('put')
+                            Confimar finalização de coleta no cliente?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="submit" class="btn btn-danger" name="id_coleta"
+                                    value="{{ $solicitacao['id'] }}">
+                                Finalizar Coleta
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
         @push('js')
             <script>
                 if (Android.isAndroid()) {

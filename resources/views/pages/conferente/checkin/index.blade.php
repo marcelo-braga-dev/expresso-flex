@@ -28,11 +28,17 @@
                         ['link' => 'conferentes.pacotes.info', 'simples' => true, 'data' => true])
                     @endforeach
 
-                    {{-- @if (empty($pacotes))
+                    @if ($pacotes->isEmpty())
                         <div class="col-auto text-center p-3">
-                            <small>Não há histórico de pacotes.</small>
+                            <small>Não há registro de pacotes na base.</small>
                         </div>
-                    @endif --}}
+                    @endif
+                    <div class="row justify-content-center">
+                        <div class="col-auto py-2">
+                            {{ $pacotes }}
+                        </div>
+                    </div>
+
                 </ul>
             </div>
         </div>

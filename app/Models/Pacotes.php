@@ -30,7 +30,7 @@ class Pacotes extends Model
     {
         DB::beginTransaction();
         try {
-            $this->newQuery()
+            $pacoteCriado = $this->newQuery()
                 ->create([
                     'user_id' => $pacote->cliente(),
                     'rastreio' => $pacote->rastreio(),
@@ -44,14 +44,16 @@ class Pacotes extends Model
                     'origem' => $pacote->origem(),
                     'descricao' => $pacote->descricao(),
                 ]);
+
             DB::commit();
-            session()->flash('sucesso', 'Pacote Cadastrado com sucesso. Código de Rastreio: ' . $pacote->rastreio());
+
+            alterarStatusPacote($pacote->cliente(), $pacoteCriado->id, $pacote->status());
+
+            modalSucesso('Pacote Cadastrado com sucesso. Código de Rastreio: ' . $pacote->rastreio());
         } catch (QueryException $e) {
             DB::rollback();
             if ($e->getCode() == 23000) session()->flash('erro', 'Pacote já cadastrado');
         }
-
-        return true;
     }
 
     public function entregador(int $id)

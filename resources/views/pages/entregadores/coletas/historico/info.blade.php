@@ -99,7 +99,7 @@
                                                 </td>
                                                 <td>
                                                     <a class="btn btn-link p-0 btn-sm"
-                                                        href="{{ route('entregadores.pacotes.info', ['id' => $pacote->id]) }}">
+                                                        href="{{ route('entregadores.pacote.show', $pacote->id) }}">
                                                         Ver Pacote
                                                     </a>
                                                 </td>

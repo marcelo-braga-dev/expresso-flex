@@ -27,7 +27,7 @@ class NovoPacote extends Cadastrar
     {
         $pacotes = new Pacotes();
 
-        return $pacotes->cadastrar($this);
+        $pacotes->cadastrar($this);
     }
 
     public function cliente()

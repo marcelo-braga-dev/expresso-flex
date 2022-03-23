@@ -62,7 +62,7 @@
             <div class="card-body p-0">
                 <ul class="list-group list-group-flush">
                     @foreach ($pacotesCadastrados as $pacote)
-                        @include('layouts.componentes.list-pacotes', ['link' => 'entregadores.pacotes.info'])
+                        @include('layouts.componentes.list-pacotes', ['link' => 'entregadores.pacote.show'])
                     @endforeach
 
                     @if ($pacotesCadastrados->isEmpty())

@@ -13,7 +13,7 @@
                         <span class="h3 font-weight-bold mb-0"></span>
                         <div class="row">
                             <div class="col">
-                                <a class="btn btn-sm btn-primary" href="{{ route('entregadores.coletas.create') }}">
+                                <a class="btn btn-sm btn-primary my-2" href="{{ route('entregadores.coletas.create') }}">
                                     Abrir Nova Coleta
                                 </a>
                             </div>
@@ -35,7 +35,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <div class="card-body p-1">
