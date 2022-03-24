@@ -69,39 +69,6 @@
                             </div>
                         </div>
 
-                        <hr>
-                        <h6 class="heading-small text-muted mb-4">Valores das Comissões</h6>
-
-                        <div class="row">
-                            <div class="col-6 col-md-3">
-                                <div class="form-group">
-                                    <label class="form-control-label" for="sao_paulo">São Paulo</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">R$</span>
-                                        </div>
-                                        <input type="number" name="sao_paulo"
-                                               value="@if (!empty($fretes['sao_paulo'])){{ $fretes['sao_paulo'] }}@endif"
-                                               step="0.01"
-                                               min="0.01" class="form-control" placeholder="0,00" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-3">
-                                <div class="form-group">
-                                    <label class="form-control-label" for="grande_sao_paulo">Grande São Paulo</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">R$</span>
-                                        </div>
-                                        <input type="number" name="grande_sao_paulo"
-                                               value="@if (!empty($fretes['grande_sao_paulo'])){{ $fretes['grande_sao_paulo'] }}@endif"
-                                               step="0.01" min="0.01" class="form-control" placeholder="0,00" required>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                         {{-- Area Coleta --}}
                         <hr>
                         <div class="row mb-4">
@@ -176,7 +143,7 @@
                         <div class="form-group">
                             <label class="form-control-label" for="perfil">Perfil</label>
                             <textarea type="text" name="perfil" id="perfil" rows="5"
-                                      class="form-control form-control-alternative" required
+                                      class="form-control form-control-alternative"
                                       autofocus>@if (isset($dados['perfil'])){{ $dados['perfil'] }}@endif</textarea>
                         </div>
 

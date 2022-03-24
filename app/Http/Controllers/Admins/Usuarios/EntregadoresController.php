@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admins\Usuarios;
 
+use App\Models\PasswordNew;
 use App\Models\RegioesEntregadores;
 use App\Models\User;
 use App\Service\FretesService;
@@ -88,10 +89,24 @@ class EntregadoresController
 
     public function update(Request $request, $id)
     {
-        $clientes = new Entregadores();
-
-        $clientes->update($request);
+        $user = new Entregadores();
+        $user->update($request);
 
         return redirect()->route('admins.usuarios.entregadores.index');
+    }
+
+    public function show($id)
+    {
+        $users = new User();
+        $usuario = $users->newQuery()->find($id);
+        if (empty($usuario)) return redirect()->route('admins.usuarios.entregadores.index');
+
+        $dados = $users->metaValues($id);
+
+        $passwordNews = new PasswordNew();
+        $token = $passwordNews->getToken($usuario->email);
+
+        return view('pages.admins.usuarios.entregadores.show',
+            compact('usuario', 'dados', 'token'));
     }
 }

@@ -4,6 +4,7 @@ namespace App\src\Usuarios;
 
 use App\Models\UserMeta;
 use App\Service\FretesService;
+use App\src\Emails\NovoUsuario;
 
 class Entregadores extends Usuarios
 {
@@ -16,10 +17,11 @@ class Entregadores extends Usuarios
 
         // MataValues do Cliente
         $this->metaValues($request, $user->id);
-
         $this->precosFretes($request, $user->id);
-
         $this->setAreaAtendimento($request, $user);
+
+        $email = new NovoUsuario();
+        $email->enviar($request->nome, $request->email);
 
         session()->flash('sucesso', 'Entregador ' . $request['nome'] . ' cadastrado com sucesso.');
     }
@@ -65,9 +67,7 @@ class Entregadores extends Usuarios
     public function update($request)
     {
         $user = $this->editaUsuario($request, $request->id);
-
         $this->metaValues($request, $user->id);
-
         $this->setAreaAtendimento($request, $user);
 
         session()->flash('sucesso', 'Entregador ' . $request['nome'] . ' editado com sucesso.');

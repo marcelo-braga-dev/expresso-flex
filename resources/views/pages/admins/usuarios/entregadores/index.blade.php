@@ -8,7 +8,8 @@
                 <div class="row justify-content-between align-items-center px-3">
                     <div>
                         <h3>Entregadores Cadastrados</h3>
-                        <a class="btn btn-primary mb-2 mb-md-0" href="{{ route('admins.usuarios.entregadores.create') }}">
+                        <a class="btn btn-primary mb-2 mb-md-0"
+                           href="{{ route('admins.usuarios.entregadores.create') }}">
                             Cadastrar Entregador
                         </a>
                     </div>
@@ -37,10 +38,8 @@
                                     Id: #{{ $usuario->id }}<br>
                                     Email: {{ $usuario->email }}<br>
                                     @if (!empty($novaConta[$usuario->email]))
-                                        <a
-{{--                                            href="{{ route('admin.usuarios.clientes.info-clientes', ['id' => "$usuario->id"]) }}"--}}
-                                        >
-                                            <small>O usuário ainda não ativou sua conta.</small>
+                                        <a href="{{ route('admins.usuarios.entregadores.show', $usuario->id) }}">
+                                            O usuário ainda não ativou sua conta.
                                         </a>
                                     @endif
                                 </td>
@@ -77,10 +76,10 @@
                                                href="{{ route('admins.fretes.clientes.edit', $usuario->id) }}">
                                                 Editar Comissão
                                             </a>
-{{--                                            <a class="dropdown-item"--}}
-{{--                                               href="{{ route('admins.usuarios.entregadores.show', $usuario->id) }}">--}}
-{{--                                                Detalhes--}}
-{{--                                            </a>--}}
+                                            <a class="dropdown-item"
+                                               href="{{ route('admins.usuarios.entregadores.show', $usuario->id) }}">
+                                                Detalhes
+                                            </a>
                                         </div>
                                     </div>
                                 </td>

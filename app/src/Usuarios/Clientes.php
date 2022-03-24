@@ -37,8 +37,6 @@ class Clientes extends Usuarios
         // MataValues do Cliente
         $this->metaValues($request, $user->id);
 
-        if ($setFrete)
-
         session()->flash('sucesso', 'Cliente ' . $request['nome'] . ' cadastrado com sucesso.
         Foi enviado um email ao usuário para criação da senha.');
     }
