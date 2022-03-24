@@ -6,7 +6,7 @@
             <div class="card-header bg-white mb-0">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h4 class="card-title text-uppercase mb-0">Cadastro de Entregadores</h4>
+                        <h4 class="card-title text-uppercase mb-0">Editar Dados do Entregador</h4>
                     </div>
                     <div class="col-auto">
                         <a class="btn btn-primary btn-sm" href="{{ url()->previous() }}">Voltar</a>

@@ -6,7 +6,7 @@
             <div class="card-header bg-white mb-0">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h4 class="card-title text-uppercase mb-0">Cadastro de Entregadores</h4>
+                        <h4 class="card-title text-uppercase mb-0">Cadastro de Entregador</h4>
                     </div>
                     <div class="col-auto">
                         <a class="btn btn-primary btn-sm" href="{{ url()->previous() }}">Voltar</a>
@@ -14,12 +14,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <form method="post"
-                      action="{{ 'admins.usuarios.entregadores.store' }}"
-                      autocomplete="off">
-                    @csrf
-                    @method('put')
-
+                <form method="post" action="{{ route('admins.usuarios.entregadores.store') }}" autocomplete="off"> @csrf
                     <div class="px-lg-4">
                         <h6 class="heading-small text-muted mb-4">Informações do Entregador</h6>
                     </div>
@@ -113,7 +108,7 @@
                                     <div class="col-6 col-lg-2">
                                         <div class="form-group">
                                             <input type="number" name="regiao_coleta[]"
-                                                   class="form-control form-control-alternative" >
+                                                   class="form-control form-control-alternative">
                                         </div>
                                     </div>
                                 @endforeach
@@ -154,10 +149,10 @@
 
                             <div class="col-auto pt-2">
                                 <button class="btn btn-icon btn-success btn-sm rounded-circle"
-                                        id="btn-add-regiao-entrega"
-                                        type="button">
-                                    <span class="btn-inner--icon"><i class="ni ni-fat-add"
-                                                                     style="font-size: 16px"></i></span>
+                                        id="btn-add-regiao-entrega" type="button">
+                                    <span class="btn-inner--icon">
+                                        <i class="ni ni-fat-add" style="font-size: 16px"></i>
+                                    </span>
                                 </button>
                             </div>
 
@@ -167,8 +162,7 @@
                         <div class="form-group">
                             <label class="form-control-label" for="perfil">Perfil</label>
                             <textarea type="text" name="perfil" id="perfil" rows="5"
-                                      class="form-control form-control-alternative" required
-                                      autofocus></textarea>
+                                      class="form-control form-control-alternative"></textarea>
                         </div>
 
                         <div class="text-center">
