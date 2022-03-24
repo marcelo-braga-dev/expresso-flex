@@ -3,7 +3,7 @@
         <table style="font-size:12px">
             <tr>
                 <td>
-                    <img src="{{ asset('assets') }}/img/brand/logo-x256.png" width="80px">
+                    <img src="{{ asset('assets') }}/img/brand/logo-x256.png" width="80px" alt="Expresso Flex">
                 </td>
                 <td style="padding-left:5px">
                     <small><b>Remetente:</b></small><br>
@@ -50,4 +50,3 @@
         <span>Assinatura: _______________________________</span>
     </div>
 </div>
-
