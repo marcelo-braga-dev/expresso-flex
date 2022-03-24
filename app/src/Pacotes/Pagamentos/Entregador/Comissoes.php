@@ -3,6 +3,7 @@
 namespace App\src\Pacotes\Pagamentos\Entregador;
 
 use App\Models\ComissoesEntregadores;
+use App\Models\FretesRealizados;
 use App\Models\Pacotes;
 use App\Models\PrecosFretes;
 use App\src\Enderecos\RegiaoCep;
@@ -35,8 +36,9 @@ class Comissoes
     {
         $preco = $this->getPreco($this->pacote->user_id);
 
-        $commisaoEntregadores = new ComissoesEntregadores();
-        $commisaoEntregadores->criar($this->idPacote, $this->status, $this->regiao, $preco->value);
+        $commisaoEntregadores = new FretesRealizados();
+        $commisaoEntregadores->cadastrar($this->pacote->user_id, $this->idPacote, id_usuario_atual(),
+            $this->status, $this->regiao, $preco->value);
     }
 
     private function getPacote()

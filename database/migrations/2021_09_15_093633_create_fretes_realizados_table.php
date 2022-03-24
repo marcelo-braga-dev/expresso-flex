@@ -16,10 +16,10 @@ class CreateFretesRealizadosTable extends Migration
         Schema::create('fretes_realizados', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('pacotes_id')->constrained('pacotes'); 
-            $table->bigInteger('entregador');           
+            $table->foreignId('pacotes_id')->constrained('pacotes');
+            $table->bigInteger('entregador');
             $table->string('status');
-            $table->string('tag');
+            $table->string('regiao');
             $table->string('value');
             $table->timestamps();
         });
