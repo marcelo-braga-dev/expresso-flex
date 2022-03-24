@@ -31,23 +31,26 @@ class FretesService
 
         $user = User::where('id', '=', $userId)->first('tipo');
 
-        $precoFrete->newQuery()->updateOrInsert(
-            ['meta_key' => 'sao_paulo', 'user_id' => $userId],
-            [
-                'value' =>  convertMoneyToFloat($request->sao_paulo),
-                'title' => 'São Paulo',
-                'tipo' => $user->tipo
-            ]
-        );
+        if (!empty($request->sao_paulo)) {
+            $precoFrete->newQuery()->updateOrInsert(
+                ['meta_key' => 'sao_paulo', 'user_id' => $userId],
+                [
+                    'value' => convertMoneyToFloat($request->sao_paulo),
+                    'title' => 'São Paulo',
+                    'tipo' => $user->tipo
+                ]
+            );
+        }
 
-        $precoFrete->newQuery()->updateOrInsert(
-            ['meta_key' => 'grande_sao_paulo', 'user_id' => $userId],
-            [
-                'value' => convertMoneyToFloat($request->grande_sao_paulo),
-                'title' => 'Grande São Paulo',
-                'tipo' => $user->tipo
-            ]
-        );
+        if (!empty($request->grande_sao_paulo)) {
+            $precoFrete->newQuery()->updateOrInsert(
+                ['meta_key' => 'grande_sao_paulo', 'user_id' => $userId], [
+                    'value' => convertMoneyToFloat($request->grande_sao_paulo),
+                    'title' => 'Grande São Paulo',
+                    'tipo' => $user->tipo
+                ]
+            );
+        }
 
         return $user->tipo;
     }
