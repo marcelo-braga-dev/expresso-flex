@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admins\Usuarios;
 
 use App\Http\Controllers\Controller;
+use App\Models\PasswordNew;
 use App\Models\User;
 use App\Service\FretesService;
 use App\Service\Usuarios\UsuariosService;
@@ -41,7 +42,16 @@ class ClientesController extends Controller
 
     public function show($id)
     {
-        echo 'SHOW CLIENTE';
+        $users = new User();
+        $usuario = $users->newQuery()->find($id);
+        if (empty($usuario)) return redirect()->route('admins.usuarios.clientes.index');
+
+        $dados = $users->metaValues($id);
+
+        $passwordNews = new PasswordNew();
+        $token = $passwordNews->getToken($usuario->email);
+
+        return view('pages.admins.usuarios.clientes.show', compact('usuario', 'dados', 'token'));
     }
 
     public function edit($id)

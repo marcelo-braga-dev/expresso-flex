@@ -58,8 +58,7 @@ class User extends Authenticatable
 
         $userMeta = new UserMeta();
         $metas = $userMeta->newQuery()
-            ->where(
-                'user_id', '=', $id)
+            ->where('user_id', '=', $id)
             ->get();
 
         foreach ($metas as $meta) {

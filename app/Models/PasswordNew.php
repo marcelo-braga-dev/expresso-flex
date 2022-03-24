@@ -13,4 +13,13 @@ class PasswordNew extends Model
         'email',
         'token'
     ];
+
+    public function getToken($email)
+    {
+        $token = $this->newQuery()
+            ->where('email', '=', $email)
+            ->first('token');
+
+        return $token->token ?? '';
+    }
 }

@@ -33,25 +33,29 @@
                             @foreach ($clientes as $usuario)
                                 <tr>
                                     <td>
+                                        <span class="text-gray-dark">
                                         <b>{{ $usuario->name }}</b><br>
                                         Id: #{{ $usuario->id }} <br>
                                         Email: {{ $usuario->email }}<br>
+                                        </span>
                                         @if (!empty($novaConta[$usuario->email]))
                                             <a href="{{ route('admins.usuarios.clientes.show', $usuario->id) }}">
-                                                <small>
-                                                    O usuário ainda não ativou sua conta.
-                                                </small>
+                                                O usuário ainda não ativou sua conta.
                                             </a>
                                         @endif
                                     </td>
                                     <td>
-                                        <b>Preços dos Fretes</b><br>
-                                        São Paulo: @if (!empty($fretes[$usuario->id]['sao_paulo']))
-                                            R$ {{ $fretes[$usuario->id]['sao_paulo'] }}@else <span class="text-danger">Não Inserido</span>@endif
-                                        <br>
-                                        Grande SP: @if (!empty($fretes[$usuario->id]['grande_sao_paulo']))
-                                            R$ {{ $fretes[$usuario->id]['grande_sao_paulo'] }}@else <span
-                                                class="text-danger">Não Inserido</span>@endif
+                                        <a class="text-gray-dark"
+                                           href="{{ route('admins.fretes.clientes.edit', $usuario->id) }}">
+                                            <b>Preços dos Fretes</b><br>
+                                            São Paulo: @if (!empty($fretes[$usuario->id]['sao_paulo']))
+                                                R$ {{ $fretes[$usuario->id]['sao_paulo'] }}@else <span
+                                                    class="text-danger">Não Inserido</span>@endif
+                                            <br>
+                                            Grande SP: @if (!empty($fretes[$usuario->id]['grande_sao_paulo']))
+                                                R$ {{ $fretes[$usuario->id]['grande_sao_paulo'] }}@else <span
+                                                    class="text-danger">Não Inserido</span>@endif
+                                        </a>
                                     </td>
                                     <td>
                                         <b>Status</b><br>
@@ -77,10 +81,10 @@
                                                    href="{{ route('admins.fretes.clientes.edit', $usuario->id) }}">
                                                     Editar Preço Frete
                                                 </a>
-{{--                                                <a class="dropdown-item"--}}
-{{--                                                   href="{{ route('admins.usuarios.clientes.show', $usuario->id) }}">--}}
-{{--                                                    Detalhes--}}
-{{--                                                </a>--}}
+                                                <a class="dropdown-item"
+                                                   href="{{ route('admins.usuarios.clientes.show', $usuario->id) }}">
+                                                    Detalhes
+                                                </a>
                                             </div>
                                         </div>
                                     </td>
