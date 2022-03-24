@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout menu="coletas" submenu="coletas-configs">
 
     <div class="header bg-principal bg-height-top"></div>
     <!-- Page content -->

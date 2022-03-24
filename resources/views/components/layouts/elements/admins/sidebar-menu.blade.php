@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-6 collapse-brand">
                 <a href="{{ route('home') }}">
-                    <img src="/assets/img/brand/logo-x256.png">
+                    <img src="{{ asset('assets') }}/img/brand/logo-x256.png">
                 </a>
             </div>
             <div class="col-6 collapse-close">
@@ -28,26 +28,26 @@
                 <i class="ni ni-fat-add text-principal"></i>
                 <span class="nav-link-text text-principal">Usuários</span>
             </a>
-            <div class="collapse usuarios" id="navbar-usuarios">
+            <div class="collapse @if (MENU === 'usuarios') show @endif" id="navbar-usuarios">
                 <ul class="nav nav-sm flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link ml-1 pl-4" href="{{ route('admins.usuarios.clientes.index') }}">
+                    <li class="nav-item @if (SUBMENU === 'usuarios-clientes') active @endif">
+                        <a class="nav-link pl-5" href="{{ route('admins.usuarios.clientes.index') }}">
                             Clientes
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link ml-1 pl-4" href="{{ route('admins.usuarios.entregadores.index') }}">
+                    <li class="nav-item @if (SUBMENU === 'usuarios-entregadores') active @endif">
+                        <a class="nav-link pl-5" href="{{ route('admins.usuarios.entregadores.index') }}">
                             Entregadores
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link ml-1 pl-4" href="{{ route('admins.usuarios.conferentes.index') }}">
-                            Conferente
+                    <li class="nav-item @if (SUBMENU === 'usuarios-conferentes') active @endif">
+                        <a class="nav-link pl-5" href="{{ route('admins.usuarios.conferentes.index') }}">
+                            Conferentes
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link ml-1 pl-4" href="{{ route('admins.usuarios.admins.index') }}">
-                            Administrador
+                    <li class="nav-item @if (SUBMENU === 'usuarios-admins') active @endif">
+                        <a class="nav-link pl-5" href="{{ route('admins.usuarios.admins.index') }}">
+                            Administradores
                         </a>
                     </li>
                 </ul>
@@ -63,16 +63,16 @@
                 <i class="ni ni-fat-add text-principal"></i>
                 <span class="nav-link-text text-principal">Integração</span>
             </a>
-            <div class="collapse mercado_livre" id="navbar-mercado-livre">
+            <div class="collapse @if (MENU === 'integracoes') show @endif" id="navbar-mercado-livre">
                 <ul class="nav nav-sm flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link ml-1 pl-4"
+                    <li class="nav-item @if (SUBMENU === 'integracoes-mercadolivre') active @endif">
+                        <a class="nav-link pl-5"
                            href="{{ route('admins.integracoes.clientes.mercadolivre.index') }}">
                             Contas Mercado Livre
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link ml-1 pl-4" href="{{ route('admins.integracoes.admins.mercadolivre.index') }}">
+                    <li class="nav-item @if (SUBMENU === 'integracoes-mercadolivre-expressoflex') active @endif">
+                        <a class="nav-link pl-5" href="{{ route('admins.integracoes.admins.mercadolivre.index') }}">
                             Conta Expresso Flex
                         </a>
                     </li>
@@ -89,30 +89,30 @@
                 <i class="ni ni-fat-add text-principal"></i>
                 <span class="nav-link-text text-principal">Pacotes</span>
             </a>
-            <div class="collapse pacotes" id="navbar-pacotes">
+            <div class="collapse @if (MENU === 'pacotes') show @endif" id="navbar-pacotes">
                 <ul class="nav nav-sm flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link ml-1 pl-4" href="{{ route('admins.pacotes.sob_coleta') }}">
+                    <li class="nav-item @if (SUBMENU === 'pacotes-coleta') active @endif">
+                        <a class="nav-link pl-5" href="{{ route('admins.pacotes.sob_coleta') }}">
                             Sendo Coletados
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link ml-1 pl-4" href="{{ route('admins.pacotes.base') }}">
+                    <li class="nav-item @if (SUBMENU === 'pacotes-base') active @endif">
+                        <a class="nav-link pl-5" href="{{ route('admins.pacotes.base') }}">
                             Na Base
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link ml-1 pl-4" href="{{ route('admins.pacotes.sob_entrega') }}">
+                    <li class="nav-item @if (SUBMENU === 'pacotes-entregue') active @endif">
+                        <a class="nav-link pl-5" href="{{ route('admins.pacotes.sob_entrega') }}">
                             Sendo Entregue
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link ml-1 pl-4" href="{{ route('admins.pacotes.historico.clientes.index') }}">
+                    <li class="nav-item @if (SUBMENU === 'pacotes-clientes') active @endif">
+                        <a class="nav-link pl-5" href="{{ route('admins.pacotes.historico.clientes.index') }}">
                             Por Cliente
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link ml-1 pl-4" href="{{ route('admins.pacotes.historico.index') }}">
+                    <li class="nav-item @if (SUBMENU === 'pacotes-historico') active @endif">
+                        <a class="nav-link pl-5" href="{{ route('admins.pacotes.historico.index') }}">
                             Histórico de Pacotes
                         </a>
                     </li>
@@ -129,15 +129,15 @@
                 <i class="ni ni-fat-add text-principal"></i>
                 <span class="nav-link-text text-principal">Coletas</span>
             </a>
-            <div class="collapse coletas" id="navbar-coletas">
+            <div class="collapse @if (MENU === 'coletas') show @endif" id="navbar-coletas">
                 <ul class="nav nav-sm flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link ml-1 pl-4" href="{{ route('admins.coletas.historico') }}">
+                    <li class="nav-item @if (SUBMENU === 'coletas-historicos') active @endif">
+                        <a class="nav-link pl-5" href="{{ route('admins.coletas.historico') }}">
                             Histórico de Coletas
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link ml-1 pl-4" href="{{ route('admins.coletas.config.index') }}">
+                    <li class="nav-item @if (SUBMENU === 'coletas-configs') active @endif">
+                        <a class="nav-link pl-5" href="{{ route('admins.coletas.config.index') }}">
                             Configurações
                         </a>
                     </li>
@@ -154,20 +154,20 @@
                 <i class="ni ni-fat-add text-principal"></i>
                 <span class="nav-link-text text-principal">Financeiro</span>
             </a>
-            <div class="collapse financeiro" aba="financeiro" id="navbar-financeiro">
+            <div class="collapse @if (MENU === 'financeiro') show @endif" id="navbar-financeiro">
                 <ul class="nav nav-sm flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link ml-1 pl-4" href="{{ route('admins.financeiros.index') }}">
+                    <li class="nav-item @if (SUBMENU === 'financeiro-clientes') active @endif">
+                        <a class="nav-link pl-5" href="{{ route('admins.financeiros.index') }}">
                             Clientes
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link ml-1 pl-4" href="{{ route('admins.financeiros.entregadores.index') }}">
+                    <li class="nav-item @if (SUBMENU === 'financeiro-entregadores') active @endif">
+                        <a class="nav-link pl-5" href="{{ route('admins.financeiros.entregadores.index') }}">
                             Entregadores
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link ml-1 pl-4" href="{{ route('admins.integracoes.admins.mercadopago.index') }}">
+                    <li class="nav-item @if (SUBMENU === 'financeiro-mercadopago') active @endif">
+                        <a class="nav-link pl-5" href="{{ route('admins.integracoes.admins.mercadopago.index') }}">
                             Conta Mercado Pago
                         </a>
                     </li>

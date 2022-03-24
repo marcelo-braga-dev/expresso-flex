@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout menu="coletas" submenu="coletas-historicos">
     <div class="header bg-principal bg-height-top"></div>
 
     <div class="container-fluid mt--9">

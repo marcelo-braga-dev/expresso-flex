@@ -10,6 +10,7 @@ class EntregadoresController
 {
     public function index(FinanceiroService $financeiroService)
     {
+        print_pre('Em manutencao');
         $fretesRealizados = ComissoesEntregadores::get();
 
         $entregadores = $financeiroService->getUsuarios($fretesRealizados);

@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout menu="usuarios" submenu="usuarios-clientes">
     <div class="header bg-principal bg-height-top"></div>
     <div class="container-fluid mt--9">
         <div class="row">
@@ -77,10 +77,10 @@
                                                    href="{{ route('admins.fretes.clientes.edit', $usuario->id) }}">
                                                     Editar Preço Frete
                                                 </a>
-                                                <a class="dropdown-item"
-                                                   href="{{ route('admins.usuarios.clientes.show', $usuario->id) }}">
-                                                    Detalhes
-                                                </a>
+{{--                                                <a class="dropdown-item"--}}
+{{--                                                   href="{{ route('admins.usuarios.clientes.show', $usuario->id) }}">--}}
+{{--                                                    Detalhes--}}
+{{--                                                </a>--}}
                                             </div>
                                         </div>
                                     </td>

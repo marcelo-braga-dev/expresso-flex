@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout menu="integracoes" submenu="integracoes-mercadolivre">
 
     <div class="header bg-principal bg-height-top"></div>
 

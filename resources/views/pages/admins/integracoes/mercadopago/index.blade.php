@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout menu="financeiro" submenu="financeiro-mercadopago">
 
     <div class="header bg-principal bg-height-top"></div>
 

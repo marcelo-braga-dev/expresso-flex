@@ -105,7 +105,7 @@
                             </div>
                         </div>
                         <a class="btn bg-yellow text-dark"
-                           href="{{ route('admin.mercadolivre.contas-sincronizadas') }}">
+                           href="{{ route('admins.integracoes.clientes.mercadolivre.index') }}">
                             Ver Contas
                         </a>
                     </div>

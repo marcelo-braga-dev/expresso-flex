@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout menu="usuarios" submenu="usuarios-entregadores">
     <div class="bg-principal bg-height-top"></div>
 
     <div class="container-fluid mt--9">

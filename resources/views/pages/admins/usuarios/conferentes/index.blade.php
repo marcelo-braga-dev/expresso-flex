@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout menu="usuarios" submenu="usuarios-conferentes">
 
     <div class="header bg-principal bg-height-top"></div>
 
@@ -70,10 +70,10 @@
                                            href="{{ route('admins.usuarios.conferentes.edit', $usuario->id) }}">
                                             Editar
                                         </a>
-                                        <a class="dropdown-item"
-                                           href="{{ route('admins.usuarios.conferentes.show', $usuario->id) }}">
-                                            Detalhes
-                                        </a>
+{{--                                        <a class="dropdown-item"--}}
+{{--                                           href="{{ route('admins.usuarios.conferentes.show', $usuario->id) }}">--}}
+{{--                                            Detalhes--}}
+{{--                                        </a>--}}
                                     </div>
                                 </div>
                             </td>

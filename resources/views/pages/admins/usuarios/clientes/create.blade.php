@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout menu="usuarios" submenu="usuarios-clientes">
 
     <div class="header bg-principal bg-height-top"></div>
 

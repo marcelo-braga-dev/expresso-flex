@@ -10,6 +10,7 @@ class ClientesController
 {
     public function index(FinanceiroService $financeiroService)
     {
+        print_pre('Em manutencao');
         $fretesRealizados = FretesRealizados::get();
 
         $clientes = $financeiroService->getUsuarios($fretesRealizados);
