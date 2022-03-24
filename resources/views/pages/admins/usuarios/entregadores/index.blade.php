@@ -38,7 +38,8 @@
                                     Email: {{ $usuario->email }}<br>
                                     @if (!empty($novaConta[$usuario->email]))
                                         <a
-                                            href="{{ route('admin.usuarios.clientes.info-clientes', ['id' => "$usuario->id"]) }}">
+{{--                                            href="{{ route('admin.usuarios.clientes.info-clientes', ['id' => "$usuario->id"]) }}"--}}
+                                        >
                                             <small>O usuário ainda não ativou sua conta.</small>
                                         </a>
                                     @endif

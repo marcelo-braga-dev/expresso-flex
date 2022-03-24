@@ -136,11 +136,11 @@
                             Histórico de Coletas
                         </a>
                     </li>
-                    <li class="nav-item @if (SUBMENU === 'coletas-configs') active @endif">
-                        <a class="nav-link pl-5" href="{{ route('admins.coletas.config.index') }}">
-                            Configurações
-                        </a>
-                    </li>
+{{--                    <li class="nav-item @if (SUBMENU === 'coletas-configs') active @endif">--}}
+{{--                        <a class="nav-link pl-5" href="{{ route('admins.coletas.config.index') }}">--}}
+{{--                            Configurações--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
                 </ul>
             </div>
         </li>
