@@ -6,7 +6,7 @@ class UploadArquivoExcel
 {
     public function upload($file)
     {
-        return $path = $file->move(storage_path('importacao'), uniqid() . '.xlsx');
+        return $file->move(storage_path('importacao'), uniqid() . '.xlsx');
     }
 
     public function deletar(string $path)

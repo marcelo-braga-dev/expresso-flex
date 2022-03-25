@@ -8,12 +8,6 @@ class AnalizarArquivo
 {
     public function executar(string $path)
     {
-        //if ( $xlsx = SimpleXLSX::parse($path) ) {
-        //    print_pre( $xlsx->rows() );
-        //} else {
-        //    echo SimpleXLSX::parseError();
-        //}
-
         $xlsx = SimpleXLSX::parse($path);
         $rows = $xlsx->rows();
 
@@ -38,7 +32,7 @@ class AnalizarArquivo
                 ];
         }
 
-        if (empty($dados)) session()->flash('erro', 'Não há pacote para importar');
+        if (empty($dados)) modalErro('Não há pacote para importar');
 
         return $dados;
     }

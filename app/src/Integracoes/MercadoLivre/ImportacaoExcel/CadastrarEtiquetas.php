@@ -24,14 +24,16 @@ class CadastrarEtiquetas
                 $etiqueta->salvar(
                     $idEndereco, $idDestinatario, $dado['codigo'], id_usuario_atual(), $loja, $this->origem
                 );
-                 session()->flash('sucesso', 'Pacotes cadastrados com sucesso!');
+                modalSucesso('Pacotes cadastrados com sucesso!');
             }
         }
     }
 
     private function isImportar($status): bool
     {
-        return $status == 'Pronto para coleta' || $status == 'Etiqueta pronta para imprimir';
+        return $status == 'Etiqueta impressa' ||
+            $status == 'Pronto para coleta' ||
+            $status == 'Etiqueta pronta para imprimir';
     }
 
     private function getEndereco($dados)
