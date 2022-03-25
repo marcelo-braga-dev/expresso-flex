@@ -91,6 +91,11 @@
             </a>
             <div class="collapse @if (MENU === 'pacotes') show @endif" id="navbar-pacotes">
                 <ul class="nav nav-sm flex-column">
+                    <li class="nav-item @if (SUBMENU === 'pacotes-pesquisar') active @endif">
+                        <a class="nav-link pl-5" href="{{ route('admins.pacotes.search') }}">
+                            Pesquisar Pacote
+                        </a>
+                    </li>
                     <li class="nav-item @if (SUBMENU === 'pacotes-coleta') active @endif">
                         <a class="nav-link pl-5" href="{{ route('admins.pacotes.sob_coleta') }}">
                             Sendo Coletados

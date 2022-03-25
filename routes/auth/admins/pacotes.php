@@ -6,6 +6,7 @@ Route::name('admins.')
     ->namespace('Pacotes')
     ->group(function () {
         Route::resource('pacote', 'PacotesController');
+        Route::get('pacotes/pesquisar', 'PacotesController@search')->name('pacotes.search');
     });
 
 Route::prefix('pacotes/status')
