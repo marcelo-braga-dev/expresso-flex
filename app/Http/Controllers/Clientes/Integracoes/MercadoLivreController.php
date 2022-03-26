@@ -21,15 +21,9 @@ class MercadoLivreController extends Controller
 
     public function autenticar(Request $request)
     {
-        // $autenticacao = new AutenticacaoAutorizacaoMercadoLivre();
-
-        // $arg = $request->code;
-
-        // $code = $arg['code'];
-
         $autenticacao = new Autenticar();
         $autenticacao->autenticar($request->code);
 
-        return redirect()->route('mercadolivre.todas-contas');
+        return redirect()->route('clientes.integracoes.mercadolivre.index');
     }
 }
