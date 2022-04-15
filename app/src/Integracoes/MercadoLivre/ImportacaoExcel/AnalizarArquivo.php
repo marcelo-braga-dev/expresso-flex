@@ -47,7 +47,7 @@ class AnalizarArquivo
         }
 
         if (empty($dados)) modalErro('Não há pacote para importar');
-        print_pre($dados);
+
         return $dados;
     }
 
