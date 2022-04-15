@@ -51,7 +51,7 @@ class AnalizarArquivo
         return $dados;
     }
 
-    private function getSessao(mixed $row): array
+    private function getSessao($row): array
     {
         if ($row[0] != 'Vendas') return [];
         $sessao = [];
