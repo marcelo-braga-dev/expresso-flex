@@ -7,7 +7,7 @@ use App\Models\Destinatarios;
 class Destinatario
 {
     public string $nome;
-    public string $telefone;
+    public ?string $telefone;
     public string $cpf;
     public string $endereco;
     private $destinatario;
@@ -40,12 +40,12 @@ class Destinatario
         return $this->destinatario->nome;
     }
 
-    private function getTelefone(): string
+    private function getTelefone(): ?string
     {
         return $this->destinatario->telefone;
     }
 
-    private function getCpf(): string
+    private function getCpf(): ?string
     {
         return $this->destinatario->cpf;
     }
