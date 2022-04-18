@@ -18,7 +18,7 @@
                     <div class="card card-body bg-white mb-3">
                         <div class="row">
                             <div class="col-12">
-                                <h5>Link para cadastrar a senha do primeiro acesso:</h5>
+                                <h5>Link para entregador cadastrar a sua senha:</h5>
                                 <span>{{ route('mail.usuario.retorno.novo-senha', [$usuario->email, $token]) }}</span>
                             </div>
                         </div>
@@ -97,6 +97,5 @@
                 </div>
             </div>
         </div>
-
     </div>
 </x-layout>

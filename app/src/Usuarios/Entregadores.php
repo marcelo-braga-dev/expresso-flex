@@ -21,7 +21,7 @@ class Entregadores extends Usuarios
         $this->setAreaAtendimento($request, $user);
 
         $email = new NovoUsuario();
-        $email->enviar($request->nome, $request->email);
+        $email->enviar($request->nome ?? 'Entregador(a)', $request->email);
 
         session()->flash('sucesso', 'Entregador ' . $request['nome'] . ' cadastrado com sucesso.');
     }

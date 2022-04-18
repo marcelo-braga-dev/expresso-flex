@@ -23,7 +23,7 @@
                         <div class="form-group">
                             <label class="form-control-label" for="nome">Nome</label>
                             <input type="text" name="nome" id="nome" class="form-control form-control-alternative"
-                                   required autofocus>
+                                   requ ired autofocus>
                         </div>
 
                         <div class="row">
@@ -31,8 +31,7 @@
                                 <div class="form-group">
                                     <label class="form-control-label" for="cpf">CPF</label>
                                     <input type="text" name="cpf" id="cpf" class="form-control form-control-alternative"
-                                           required
-                                           autofocus>
+                                           requ ired autofocus>
                                 </div>
                             </div>
                             <div class="col">
@@ -41,7 +40,7 @@
                                     <input type="text" name="celular" id="celular"
                                            class="form-control form-control-alternative"
 
-                                           required autofocus>
+                                           requ ired autofocus>
                                 </div>
                             </div>
                         </div>
@@ -52,7 +51,6 @@
                                     <label class="form-control-label" for="email">E-mail</label>
                                     <input type="email" name="email" id="email"
                                            class="form-control form-control-alternative"
-
                                            required autofocus>
                                 </div>
                             </div>
