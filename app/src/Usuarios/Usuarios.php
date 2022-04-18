@@ -37,15 +37,13 @@ class Usuarios
                 ->where('email', '=', $user->email)
                 ->update(['email' => $data['email']]);
 
-            $user->update(
-                [
-                    'name' => $data['nome'],
-                    'email' => strtolower($data['email'])
-                ]
-            );
-            session()->flash('sucesso', 'Dados atualizados com sucesso!');
+            $user->update([
+                'name' => $data['nome'],
+                'email' => strtolower($data['email'])
+            ]);
+            modalSucesso('Dados atualizados com sucesso!');
         } catch (QueryException $e) {
-            session()->flash('erro', 'Já existe um usuário com esse email.');
+            modalErro('Já existe um usuário com esse email.');
         }
 
         return $user;

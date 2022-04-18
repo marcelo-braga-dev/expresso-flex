@@ -108,5 +108,23 @@
                 </ul>
             </div>
         </li>
+
+        <li class="nav-item">
+            <span class="nav-link p-0 ml-3 m-2" href="#navbar-perfil" data-toggle="collapse" role="button"
+                  aria-expanded="true" aria-controls="navbar-perfil">
+                <i class="fas fa-user text-principal"></i>
+                <span class="nav-link-text text-principal">Perfil</span>
+            </span>
+            <div class="collapse  @if (MENU === 'perfil') show @endif" id="navbar-perfil">
+                <ul class="nav nav-sm flex-column">
+                    <li class="nav-item @if (SUBMENU === 'perfil-pagamentos') active @endif">
+                        <a class="nav-link pl-5"
+                           href="{{ route('entregadores.perfil.edit', id_usuario_atual()) }}">
+                            Sua conta
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
     </ul>
 </div>

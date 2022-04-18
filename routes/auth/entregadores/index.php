@@ -14,5 +14,6 @@ Route::group([
     include_once 'entregas.php';
     include_once 'financeiro.php';
     include_once 'pacotes.php';
+    include_once 'perfil.php';
 });
 
