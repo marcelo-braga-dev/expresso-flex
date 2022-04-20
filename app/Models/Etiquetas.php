@@ -60,7 +60,9 @@ class Etiquetas extends Model
     public function origem(string $origem)
     {
         return $this->newQuery()
-            ->where('origem', '=', $origem)
-            ->paginate(10);
+            ->where([
+                ['origem', '=', $origem],
+                ['user_id', '=', id_usuario_atual()]
+            ])->paginate(10);
     }
 }

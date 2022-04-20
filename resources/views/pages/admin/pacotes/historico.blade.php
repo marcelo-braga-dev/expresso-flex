@@ -26,7 +26,7 @@
                                 @endif
                                 {{ date('d/m/Y', strtotime($pacote[0])) }}<br>
                                 <small class="d-block">
-                                    {{ count($pacote) }} entragas
+                                    {{ count($pacote) }} pacotes
                                 </small>
                             </span>
                             <a class="btn btn-link p-0 btn-sm"

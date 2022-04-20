@@ -23,7 +23,7 @@
                             <span>
                                 {{ date('d/m/Y', strtotime($pacote[0])) }}<br>
                                 <small class="d-block">
-                                    {{ count($pacote) }} entragas
+                                    {{ count($pacote) }} pacotes
                                 </small>
                                 <a class="btn btn-link p-0 btn-sm"
                                     href="{{ route('entregadores.pacotes.historico-dia', ['data' => "$pacote[0]"]) }}">
