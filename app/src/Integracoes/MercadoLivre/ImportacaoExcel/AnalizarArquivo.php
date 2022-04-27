@@ -26,7 +26,6 @@ class AnalizarArquivo
             }
 
             if (!empty($coluna)) {
-
                 $dados[] = [
                     'codigo' => $row[$coluna['codigo']],
                     'status' => $row[$coluna['status']],
@@ -46,7 +45,7 @@ class AnalizarArquivo
             }
         }
 
-        if (empty($dados)) modalErro('Não há pacote para importar');
+        if (empty($dados)) throw new \DomainException('Não há pacotes para importar');
 
         return $dados;
     }
@@ -114,18 +113,5 @@ class AnalizarArquivo
         }
 
         return $dados;
-    }
-
-    private function cabecalho()
-    {
-        //foreach ($cols as $index => $col) {
-        //    foreach ($sessao as $indexSessao => $s) {
-        //        if ($index >= $s['inicio'] && $index <= $s['fim']) {
-        //            $sdv[$indexSessao]
-        //            [] =
-        //                $col;
-        //        }
-        //    }
-        //}
     }
 }

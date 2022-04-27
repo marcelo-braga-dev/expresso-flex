@@ -165,29 +165,29 @@ function converterMes(int $mes)
 {
     switch ($mes) {
         case '01':
-            return 'Janeiro';
+            return 'janeiro';
         case '02':
-            return 'Fevereiro';
+            return 'fevereiro';
         case '03':
-            return 'Março';
+            return 'março';
         case '04':
-            return 'Abril';
+            return 'abril';
         case '05':
-            return 'Maio';
+            return 'maio';
         case '06':
-            return 'Junho';
+            return 'junho';
         case '07':
-            return 'Julho';
+            return 'julho';
         case '08':
-            return 'Agosto';
+            return 'agosto';
         case '09':
-            return 'Setembro';
+            return 'setembro';
         case '10':
-            return 'Outubro';
+            return 'outubro';
         case '11':
-            return 'Novembro';
+            return 'novembro';
         case '12':
-            return 'Dezembro';
+            return 'dezembro';
     }
     return $mes;
 }

@@ -1,5 +1,9 @@
+<style>
+    .text-principal {
+        color: #4b4b4b !important;
+    }
+</style>
 <div class="collapse navbar-collapse" id="sidenav-collapse-main">
-    <!-- Mobile -->
     <div class="navbar-collapse-header d-md-none">
         <div class="row">
             <div class="col-6 collapse-brand">
@@ -86,7 +90,7 @@
                     </li>
                     <li class="nav-item @if (SUBMENU === 'historico') active @endif">
                         <a class="nav-link pl-5"
-                           href="{{ route('clientes.etiquetas.historico') }}">
+                           href="{{ route('clientes.etiquetas.historico.index') }}">
                             Histórico
                         </a>
                     </li>

@@ -20,7 +20,7 @@
                     @foreach ($pacotes as $pacote)
                         <li class="list-group-item d-flex justify-content-between align-items-center row-clickable px-4">
                             <span>
-                                {{ date('m/Y', strtotime($pacote[0])) }}<br>
+                                {{ converterMes(date('m', strtotime($pacote[0]))) . '/' . date('Y', strtotime($pacote[0])) }}<br>
                                 <small class="d-block">
                                     {{ count($pacote) }} pacotes
                                 </small>

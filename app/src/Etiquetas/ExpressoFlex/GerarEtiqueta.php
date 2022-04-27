@@ -3,6 +3,7 @@
 namespace App\src\Etiquetas\ExpressoFlex;
 
 use App\Models\Etiquetas;
+use App\src\Etiquetas\Etiqueta;
 use App\src\Pacotes\CodigoRastreio;
 use App\src\Pacotes\Destinatarios\CadastrarDestinatario;
 
@@ -12,16 +13,20 @@ class GerarEtiqueta
 
     public function gerar($dados)
     {
-        $idEndereco = $this->getEndereco($dados['endereco']);
+        $etiqueta = new Etiqueta();
+        $etiqueta->idUsuario = id_usuario_atual();
+        $etiqueta->loja = $dados['loja'];
+        $etiqueta->origem = $this->origem;
+        $etiqueta->idEndereco = $this->getEndereco($dados['endereco']);
 
         $destinatario = new CadastrarDestinatario($dados['nome'], $dados['celular'], $dados['cpf']);
-        $idDestinatario = $destinatario->cadastrar();
+        $etiqueta->idDestinatario = $destinatario->cadastrar();
 
         $codigoRastreio = new CodigoRastreio();
-        $rastreio = $codigoRastreio->gerar();
+        $etiqueta->rastreio = $codigoRastreio->gerar();
 
-        $etiqueta = new Etiquetas();
-        $etiqueta->salvar($idEndereco, $idDestinatario, $rastreio, id_usuario_atual(), $dados['loja'], $this->origem);
+        $etiquetas = new Etiquetas();
+        $etiquetas->salvar($etiqueta);
     }
 
     private function getEndereco($dados)

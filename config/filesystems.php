@@ -67,8 +67,7 @@ return [
     */
 
     'links' => [
-        // public_path('storage') => storage_path('app/public'),
-        public_path('../public_html/storage') => storage_path('app/public'),
+        public_path('storage') => storage_path('app/public'),
     ],
     //ln -s /home/storage/4/31/33/appexpressoflex2/public_html/storage /home/storage/4/31/33/appexpressoflex2/storage/app/public/images
 ];

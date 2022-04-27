@@ -20,7 +20,7 @@
                     @foreach ($solicitacoes as $solicitacao)
                         <li class="list-group-item d-flex justify-content-between align-items-center row-clickable px-4">
                             <span>
-                                {{ date('m/Y', strtotime($solicitacao[0])) }}<br>
+                                {{ converterMes(date('m', strtotime($solicitacao[0]))) . '/' . date('Y', strtotime($solicitacao[0])) }}<br>
                                 <small class="d-block">
                                     {{ count($solicitacao) }} coletas
                                 </small>

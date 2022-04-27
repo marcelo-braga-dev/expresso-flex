@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\src\Etiquetas\Etiqueta;
 use App\src\Etiquetas\Status\Novo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -22,7 +23,7 @@ class Etiquetas extends Model
         'origem'
     ];
 
-    public function salvar(int $idEndereco, int $idDestinatario, string $rastreio, int $cliente, int $loja, string $origem)
+    public function salvar(Etiqueta $dados)
     {
         $novo = new Novo();
 
@@ -30,13 +31,13 @@ class Etiquetas extends Model
         try {
             $etiqueta = $this->newQuery()
                 ->create([
-                    'user_id' => $cliente,
-                    'rastreio' => $rastreio,
+                    'user_id' => $dados->idUsuario,
+                    'rastreio' => $dados->rastreio,
                     'status' => $novo->getStatus(),
-                    'destinatarios_id' => $idDestinatario,
-                    'enderecos_id' => $idEndereco,
-                    'lojas_id' => $loja,
-                    'origem' => $origem
+                    'destinatarios_id' => $dados->idDestinatario,
+                    'enderecos_id' => $dados->idEndereco,
+                    'lojas_id' => $dados->loja,
+                    'origem' => $dados->origem
                 ]);
 
             DB::commit();
@@ -46,7 +47,6 @@ class Etiquetas extends Model
             return $etiqueta->id;
         } catch (QueryException $e) {
             DB::rollback();
-            if ($e->getCode() == 23000) session()->flash('erro', 'Etiqueta já cadastrado');
         }
     }
 

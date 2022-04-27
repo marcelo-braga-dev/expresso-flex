@@ -2,17 +2,12 @@
 
 namespace App\src\Etiquetas;
 
-use App\src\Etiquetas\Status\StatusEtiqueta;
-
 class Etiqueta
 {
-    public function __construct(StatusEtiqueta $status)
-    {
-
-    }
-
-    public function criar()
-    {
-        
-    }
+    public $idEndereco;
+    public $idDestinatario;
+    public $rastreio;
+    public $idUsuario;
+    public $loja;
+    public $origem;
 }

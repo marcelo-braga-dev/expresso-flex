@@ -7,5 +7,5 @@ Route::prefix('etiquetas')
     ->namespace('Etiquetas')
     ->group(function () {
         Route::resource('expressoflex', 'ExpressoFlexController');
-        Route::get('historico', 'HistoricoController@index')->name('historico');
+        Route::resource('historico', 'HistoricoController');
     });

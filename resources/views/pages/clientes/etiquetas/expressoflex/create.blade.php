@@ -43,26 +43,14 @@
                     <h5>Informações do Destinatário</h5>
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="form-group">
-                                <label class="form-control-label" for="nome">Nome do Destinatario</label>
-                                <input type="text" name="nome" id="nome" class="form-control form-control-alternative"
-                                       required autofocus>
-                            </div>
+                            <x-inputs.input label="Nome do Destinatario" type="text" name="nome" id="nome" required
+                                            autofocus></x-inputs.input>
                         </div>
                         <div class="col-lg-3">
-                            <div class="form-group">
-                                <label class="form-control-label" for="cpf">CPF</label>
-                                <input type="text" name="cpf" id="cpf" class="form-control form-control-alternative"
-                                       required autofocus>
-                            </div>
+                            <x-inputs.input label="CPF" type="text" name="cpf"></x-inputs.input>
                         </div>
                         <div class="col-lg-3">
-                            <div class="form-group">
-                                <label class="form-control-label" for="celular">Telefone</label>
-                                <input type="text" name="celular" id="celular"
-                                       class="form-control form-control-alternative"
-                                       required autofocus>
-                            </div>
+                            <x-inputs.input label="Telefone" type="text" name="celular"></x-inputs.input>
                         </div>
                     </div>
 
@@ -71,65 +59,41 @@
                     <h5>Endereço de Entrega</h5>
                     <div class="row">
                         <div class="col-lg-3">
-                            <div class="form-group">
-                                <label class="form-control-label" for="cep">Cep</label>
-                                <input type="text" name="endereco[cep]" id="cep"
-                                       class="form-control cep form-control-alternative input" minlength="9" required
-                                       autofocus>
-                            </div>
+                            <x-inputs.input label="Cep" type="text" name="endereco[cep]" id="cep"
+                                            required></x-inputs.input>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-9">
-                            <div class="form-group">
-                                <label class="form-control-label" for="rua">Rua/Avenida</label>
-                                <input type="text" name="endereco[rua]" id="rua"
-                                       class="form-control form-control-alternative input" required autofocus>
-                            </div>
+                            <x-inputs.input label="Rua/Avenida" type="text" name="endereco[rua]"
+                                            id="rua" required></x-inputs.input>
                         </div>
                         <div class="col-lg-3">
-                            <div class="form-group">
-                                <label class="form-control-label" for="numero">Número</label>
-                                <input type="text" name="endereco[numero]" id="numero"
-                                       class="form-control form-control-alternative input" required autofocus>
-                            </div>
+                            <x-inputs.input label="Número" type="text" name="endereco[numero]"
+                                            required></x-inputs.input>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-2">
-                            <div class="form-group">
-                                <label class="form-control-label" for="complemento">Complemento</label>
-                                <input type="text" name="endereco[complemento]" id="complemento"
-                                       class="form-control form-control-alternative input" autofocus>
-                            </div>
+                            <x-inputs.input label="Complemento" type="text"
+                                            name="endereco[complemento]"></x-inputs.input>
                         </div>
                         <div class="col-lg-4">
-                            <div class="form-group">
-                                <label class="form-control-label" for="bairro">Bairro</label>
-                                <input type="text" name="endereco[bairro]" id="bairro"
-                                       class="form-control form-control-alternative input" required autofocus>
-                            </div>
+                            <x-inputs.input label="Bairro" type="text" name="endereco[bairro]"
+                                            id="bairro" required></x-inputs.input>
                         </div>
                         <div class="col-lg-3">
-                            <div class="form-group">
-                                <label class="form-control-label" for="cidade">Cidade</label>
-                                <input type="text" name="endereco[cidade]" id="cidade"
-                                       class="form-control form-control-alternative input" required autofocus>
-                            </div>
+                            <x-inputs.input label="Cidade" type="text" name="endereco[cidade]"
+                                            id="cidade" required></x-inputs.input>
                         </div>
                         <div class="col-lg-3">
-                            <div class="form-group">
-                                <label class="form-control-label" for="cidade">Estado</label>
-                                <input type="text" name="endereco[estado]" id="estado"
-                                       class="form-control form-control-alternative input" required autofocus>
-                            </div>
+                            <x-inputs.input label="Estado" type="text" name="endereco[estado]"
+                                            id="estado" required></x-inputs.input>
                         </div>
                     </div>
-                    <div class="row justify-content-center mb-3 mt-3">
-                        <div class="col-auto">
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-primary">Criar Etiqueta</button>
-                            </div>
+                    <div class="row my-3">
+                        <div class="col-auto mx-auto">
+                            <button type="submit" class="btn btn-primary">Criar Etiqueta</button>
                         </div>
                     </div>
                 </form>
@@ -138,6 +102,6 @@
     </div>
 
     @push('js')
-        <script src="/assets/js/components/busca-cep.js"></script>
+        <script src="{{ asset('assets') }}/js/components/busca-cep.js"></script>
     @endpush
 </x-layout>
