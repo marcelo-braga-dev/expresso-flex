@@ -8,7 +8,7 @@ class Destinatario
 {
     public string $nome;
     public ?string $telefone;
-    public string $cpf;
+    public ?string $cpf;
     public string $endereco;
     private $destinatario;
     private int $idDestinatario;

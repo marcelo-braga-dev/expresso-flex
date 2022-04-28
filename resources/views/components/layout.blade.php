@@ -20,9 +20,8 @@
     <!-- Argon CSS -->
     <link type="text/css" href="{{ asset('argon') }}/css/argon.css?v=2.0.1" rel="stylesheet">
     <link type="text/css" href="{{ asset('assets') }}/css/style.css?ver=1.0" rel="stylesheet">
-    <style>
-
-    </style>
+    <link type="text/css" href="{{ asset('assets') }}/select2/css/select2.min.css" rel="stylesheet">
+git
 </head>
 
 <body {{ $attributes }}>
@@ -48,15 +47,18 @@
 <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>
 <script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
-{{-- <script src="/assets/js/jquery.mask.min.js"></script> --}}
 <script src="{{ asset('assets') }}/js/config.js"></script>
 
 <script src="{{ asset('argon') }}/js/argon.min.js?v=2.0.0"></script>
-<script src="{{ asset('assets') }}/vendor/select2/dist/js/select2.min.js"></script>
+{{--<script src="{{ asset('assets') }}/vendor/select2/dist/js/select2.min.js"></script>--}}
+<script src="{{ asset('assets') }}/select2/js/select2.min.js"></script>
 
-{{--<input type="hidden" id="menu_suspenso"--}}
-{{--       value="@if (!empty($menu_suspenso)){{ $menu_suspenso }}@else{{ 'empty' }}@endif">--}}
 @stack('js')
+<script>
+    $(document).ready(function () {
+        $('.select2').select2();
+    });
+</script>
 </body>
 
 </html>

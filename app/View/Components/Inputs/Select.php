@@ -4,27 +4,20 @@ namespace App\View\Components\Inputs;
 
 use Illuminate\View\Component;
 
-class Input extends Component
+class Select extends Component
 {
-    public $type;
-    public $name;
     public $label;
-    public $id;
-    public $class;
+    public $name;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($type, $name, $label, $id = null, $class = null)
+    public function __construct($label, $name)
     {
-        //
-        $this->type = $type;
-        $this->name = $name;
         $this->label = $label;
-        $this->id = $id;
-        $this->class = $class;
+        $this->name = $name;
     }
 
     /**
@@ -34,6 +27,6 @@ class Input extends Component
      */
     public function render()
     {
-        return view('components.inputs.input');
+        return view('components.inputs.select');
     }
 }

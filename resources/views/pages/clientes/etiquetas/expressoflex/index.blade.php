@@ -72,12 +72,8 @@
                     <div class="row">
                         <div class="col-auto mx-auto text-muted pt-4 text-center">
                             <small class="text-muted d-block">
-                                Não há etiquetas emitidas para imprimir.
+                                Não há registro de etiquetas emitidas para imprimir.
                             </small>
-                            <a class="btn btn-primary my-2"
-                               href="{{ route('clientes.etiquetas.expressoflex.create') }}">
-                                Emitir Etiqueta
-                            </a>
                         </div>
                     </div>
                 @endif

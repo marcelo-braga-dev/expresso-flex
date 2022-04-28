@@ -72,7 +72,7 @@
             <a class="nav-link p-0 ml-3 m-2" href="#navbar-etiquetas" data-toggle="collapse" role="button"
                aria-expanded="true" aria-controls="navbar-etiquetas">
                 <i class="fas fa-file-pdf text-principal"></i>
-                <span class="nav-link-text text-principal">Etiquetas</span>
+                <span class="nav-link-text text-principal">Etiquetas ExpressoFlex</span>
             </a>
             <div class="collapse @if (MENU === 'etiquetas') show @endif" id="navbar-etiquetas">
                 <ul class="nav nav-sm flex-column">

@@ -18,15 +18,15 @@
             </div>
 
             <div class="card-body">
-                <form method="POST" action="{{ route('entregadores.coletas.store') }}"> @csrf
-                    <div class="row mb-3">
-                        <div class="col-12">
-                            <p>
-                                Selecione o cliente ou abra a câmera para ler o QrCode de identifição
-                                do Ponto de Coleta do cliente.
-                            </p>
-                        </div>
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <p>
+                            Selecione o cliente ou abra a câmera para ler o QrCode de identifição
+                            do Ponto de Coleta do cliente.
+                        </p>
                     </div>
+                </div>
+                <form method="POST" action="{{ route('entregadores.coletas.store') }}"> @csrf
                     <div class="row mb-3">
                         <div class="col-md-6 mb-3">
                             <select class="form-control select2" name="id">
@@ -41,7 +41,7 @@
                             </select>
                         </div>
                         <div class="col-md-6">
-                            <button type="submit" class="btn btn-success">Enviar</button>
+                            <button type="submit" class="btn btn-success">Abrir Solicitação</button>
                         </div>
                     </div>
                 </form>
