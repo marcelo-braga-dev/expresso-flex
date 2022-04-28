@@ -21,7 +21,7 @@
     <link type="text/css" href="{{ asset('argon') }}/css/argon.css?v=2.0.1" rel="stylesheet">
     <link type="text/css" href="{{ asset('assets') }}/css/style.css?ver=1.0" rel="stylesheet">
     <link type="text/css" href="{{ asset('assets') }}/select2/css/select2.min.css" rel="stylesheet">
-git
+
 </head>
 
 <body {{ $attributes }}>
