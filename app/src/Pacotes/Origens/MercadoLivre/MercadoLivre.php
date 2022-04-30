@@ -17,7 +17,7 @@ class MercadoLivre implements OrigemPacote
 
     public function getPacote($dados)
     {
-        // TODO: Implement getPacote() method.
+        print_pre('PEGA PACOTE MERCADO LIVRE');
     }
 
     public function getOrigem(): string
