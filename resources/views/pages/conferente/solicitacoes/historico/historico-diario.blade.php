@@ -26,7 +26,6 @@
             </div>
             <div class="card-body p-0">
                 <ul class="list-group list-group-flush">
-
                     @foreach ($solicitacoes as $pacote)
                         <li class="list-group-item ro w-clickable">
                             <div class="row d-flex justify-content-between align-items-center">
