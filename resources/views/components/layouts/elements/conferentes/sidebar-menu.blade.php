@@ -31,12 +31,12 @@
             </a>
             <div class="collapse show" id="navbar-status">
                 <ul class="nav nav-sm flex-column">
-                    <li class="nav-item">
+                    <li class="nav-item @if (SUBMENU === 'checkin-pacotes') active @endif">
                         <a class="nav-link ml-1 pl-4" href="{{ route('conferentes.checkin.index') }}">
                             Check-in de Pacotes
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item @if (SUBMENU === 'pacotes-base') active @endif">
                         <a class="nav-link ml-1 pl-4" href="{{ route('conferentes.checkin.pacotes-base') }}">
                             Pacotes na Base
                         </a>
@@ -54,13 +54,13 @@
             </a>
             <div class="collapse show" id="navbar-pacotes">
                 <ul class="nav nav-sm flex-column">
-                    <li class="nav-item">
+                    <li class="nav-item @if (SUBMENU === 'sendo-coletados') active @endif">
                         <a class="nav-link ml-1 pl-4"
                            href="{{ route('conferentes.pacotes.pacotes-sob-coleta') }}">
                             Pacotes sendo Coletados
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item @if (SUBMENU === 'sendo-entregue') active @endif">
                         <a class="nav-link ml-1 pl-4"
                            href="{{ route('conferentes.pacotes.pacotes-sob-entrega') }}">
                             Pacotes sendo Entregue
@@ -79,7 +79,7 @@
             </a>
             <div class="collapse show" id="navbar-historico">
                 <ul class="nav nav-sm flex-column">
-                    <li class="nav-item">
+                    <li class="nav-item @if (SUBMENU === 'pacotes') active @endif">
                         <a class="nav-link ml-1 pl-4"
                            href="{{ route('conferentes.pacotes.historico') }}">
                             Histórico de Pacotes
@@ -87,7 +87,7 @@
                     </li>
                 </ul>
                 <ul class="nav nav-sm flex-column">
-                    <li class="nav-item">
+                    <li class="nav-item @if (SUBMENU === 'solicitacoes') active @endif">
                         <a class="nav-link ml-1 pl-4"
                            href="{{ route('conferentes.solicitacoes.historico') }}">
                             Histórico de Solicitações

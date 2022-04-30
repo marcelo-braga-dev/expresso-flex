@@ -17,6 +17,7 @@ class CheckinController extends Controller
         $pacotes = new Pacotes();
         $pacotes = $pacotes->newQuery()
             ->where('status', '=', $status->getStatus())
+            ->orderBy('id', 'DESC')
             ->paginate();
 
         return view('pages.conferente.checkin.index', compact('pacotes'));

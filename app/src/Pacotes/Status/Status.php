@@ -32,7 +32,7 @@ abstract class Status
             ]);
 
             alterarStatusPacote(id_usuario_atual(), $pacote->id, $this->getStatus());
-            //new HistoricoStatusPacote(, );
+
             modalSucesso('Pacote registrado com sucesso!');
             return;
         }

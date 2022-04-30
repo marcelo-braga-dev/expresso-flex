@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout menu="pacotes" submenu="sendo-entregue">
 
     <div class="header bg-principal bg-height-top"></div>
 
@@ -19,19 +19,19 @@
             </div>
             <div class="card-body p-1">
 
-                @if (count($entregadores))
+            @if (count($entregadores))
 
-                    <!-- Cria os Botoes com nome dos entregadores -->
+                <!-- Cria os Botoes com nome dos entregadores -->
                     <div class="nav-wrapper">
                         <ul class="nav nav-pills nav-fill flex-column flex-md-row" role="tablist">
                             <?php $aba = true; ?>
                             @foreach ($entregadores as $entregador)
                                 <li class="nav-item mb-2">
                                     <a class="nav-link mb-sm-3 mb-md-0 @if ($aba) active @endif"
-                                        id="tabs-entregador-{{ $entregador['id_entregador'] }}-tab" data-toggle="tab"
-                                        href="#tabs-entregador-{{ $entregador['id_entregador'] }}" role="tab"
-                                        aria-controls="tabs-entregador-{{ $entregador['id_entregador'] }}"
-                                        aria-selected="true">
+                                       id="tabs-entregador-{{ $entregador['id_entregador'] }}-tab" data-toggle="tab"
+                                       href="#tabs-entregador-{{ $entregador['id_entregador'] }}" role="tab"
+                                       aria-controls="tabs-entregador-{{ $entregador['id_entregador'] }}"
+                                       aria-selected="true">
                                         {{ get_dados_usuario($entregador['id_entregador'])->name }}
                                     </a>
                                 </li>
@@ -46,8 +46,8 @@
                                 <?php $aba = true; ?>
                                 @foreach ($entregadores as $entregador)
                                     <div class="tab-pane fade @if ($aba) show active @endif"
-                                        id="tabs-entregador-{{ $entregador['id_entregador'] }}" role="tabpanel"
-                                        aria-labelledby="tabs-entregador--tab">
+                                         id="tabs-entregador-{{ $entregador['id_entregador'] }}" role="tabpanel"
+                                         aria-labelledby="tabs-entregador--tab">
                                         <ul class="list-group list-group-flush">
                                             @foreach ($entregador['pacotes'] as $pacote)
 
@@ -66,11 +66,13 @@
                     </div>
 
                 @else
-                    Não há pacotes sendo entregues.
+                    <div class="row">
+                        <div class="col-auto mx-auto p-2 text-sm">Não há pacotes sendo entregues.</div>
+                    </div>
                 @endif
 
             </div>
         </div>
 
     </div>
-    </x-layout>
+</x-layout>

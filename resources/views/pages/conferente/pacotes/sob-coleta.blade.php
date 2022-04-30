@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout menu="pacotes" submenu="sendo-coletados">
 
     <div class="header bg-principal bg-height-top"></div>
 
@@ -67,7 +67,9 @@
                     </div>
 
                 @else
-                    Não há pacotes sendo coletados.
+                    <div class="row">
+                        <div class="col-auto mx-auto p-2 text-sm">Não há pacotes sendo coletados.</div>
+                    </div>
                 @endif
 
             </div>

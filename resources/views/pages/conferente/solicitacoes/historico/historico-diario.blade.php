@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout menu="historico" submenu="solicitacoes">
     <div class="header bg-principal bg-height-top"></div>
 
     <div class="container-fluid mt--9">
@@ -28,7 +28,7 @@
                 <ul class="list-group list-group-flush">
 
                     @foreach ($solicitacoes as $pacote)
-                        <li class="list-group-item row-clickable row-clickable">
+                        <li class="list-group-item ro w-clickable">
                             <div class="row d-flex justify-content-between align-items-center">
                                 <div class="col-12 col-md-10">
                                     <p class="mb-0">
