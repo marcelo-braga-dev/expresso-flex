@@ -17,8 +17,8 @@ abstract class Status
         $verificarOrigem = new VerificarOrigemPacote();
         $origem = $verificarOrigem->verificarOrigem($dados);
 
-throw new \DomainException(print_r($pacote));
         $pacote = $origem->getPacote($dados);
+        print_pre($pacote);
         $pacotes = new PacotesHistoricos();
         $exist = $pacotes->newQuery()
             ->where([
