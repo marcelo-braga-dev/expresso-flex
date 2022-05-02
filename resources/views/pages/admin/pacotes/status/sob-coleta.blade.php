@@ -8,9 +8,6 @@
                     <div class="col">
                         <h4 class="card-title text-uppercase mb-2">Pacotes Sendo Coletados</h4>
                     </div>
-                    <div class="col-auto">
-                        <a class="btn btn-primary btn-sm" href="{{ url()->previous() }}">Voltar</a>
-                    </div>
                 </div>
             </div>
             <div class="card-body p-0">

@@ -28,6 +28,8 @@
                 @else
                     - <b>{{ $pacote->rastreio }}</b>
                 @endif
+                <i class="fas fa-calendar mr-2 ml-4"></i>
+                {{ date('d/m/y H:i', strtotime($pacote->created_at)) }}
             </p>
             @empty($simples)
                 <small class="d-block text-success mt-2">

@@ -1,7 +1,7 @@
 <x-layout menu="pacotes" submenu="pacotes-clientes">
     <div class="header bg-principal bg-height-top"></div>
 
-    <div class="container-fluid mt--9">
+    <div class="container-fluid mt--9 mb-6">
         <div class="card bg-secondary shadow">
             <div class="card-header bg-white mb-0">
                 <div class="row align-items-center">
@@ -21,7 +21,7 @@
                         <li class="list-group-item align-items-center row-clickable px-4">
                             <p class="mb-0">
                                 <i class="fas fa-user mr-2 text-primary"></i>
-                                <b>{{ get_nome_usuario($index) }}</b> #ID: {{ $index }}
+                                <b>{{ get_nome_usuario($index) }}</b> <small>#ID: {{ $index }}</small>
                                 <span class="ml-4 d-block">
                                     <a class="btn btn-link p-0 btn-sm"
                                        href="{{ route('admins.pacotes.historico.clientes.meses', $index) }}">

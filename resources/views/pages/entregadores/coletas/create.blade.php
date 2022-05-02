@@ -29,8 +29,8 @@
                 <form method="POST" action="{{ route('entregadores.coletas.store') }}"> @csrf
                     <div class="row mb-3">
                         <div class="col-md-6 mb-3">
-                            <select class="form-control select2" name="id">
-                                <option>Selecione o Cliente</option>
+                            <select class="form-control select2" name="id" required>
+                                <option value="">Selecione o Cliente</option>
                                 @foreach ($clientes as $cliente)
                                     @foreach ($cliente['lojas'] as $loja)
                                         <option value="{{ $loja['id'] }}">
