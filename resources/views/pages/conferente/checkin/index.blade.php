@@ -25,7 +25,7 @@
                 <ul class="list-group list-group-flush">
                     @foreach ($pacotes as $pacote)
                         @include('layouts.componentes.list-pacotes',
-                        ['link' => 'conferentes.pacotes.info', 'simples' => true, 'data' => true])
+                        ['link' => 'conferentes.pacote.show', 'simples' => true, 'data' => true])
                     @endforeach
 
                     @if ($pacotes->isEmpty())

@@ -18,53 +18,57 @@
                 </div>
             </div>
             <div class="card-body p-1">
+                @if (count($entregadores))
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="nav-wrapper">
+                                <h5>Entregadores</h5>
+                                <ul class="nav nav-pills nav-fill flex-column flex-md-row" role="tablist">
+                                    <?php $aba = true; ?>
+                                    @foreach ($entregadores as $entregador)
+                                        <li class="nav-item mb-2">
+                                            <a class="nav-link mb-sm-3 mb-md-0 @if ($aba) active @endif"
+                                               id="tabs-entregador-{{ $entregador['id_entregador'] }}-tab"
+                                               data-toggle="tab"
+                                               href="#tabs-entregador-{{ $entregador['id_entregador'] }}" role="tab"
+                                               aria-controls="tabs-entregador-{{ $entregador['id_entregador'] }}"
+                                               aria-selected="true">
+                                                {{ get_dados_usuario($entregador['id_entregador'])->name }}
+                                            </a>
+                                        </li>
+                                        <?php $aba = false; ?>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <h5 class="pt-3">Pacotes</h5>
+                            <div class="card shadow">
+                                <div class="card-body p-1">
+                                    <div class="tab-content" id="myTabContent">
+                                        <?php $aba = true; ?>
+                                        @foreach ($entregadores as $entregador)
+                                            <div class="tab-pane fade @if ($aba) show active @endif"
+                                                 id="tabs-entregador-{{ $entregador['id_entregador'] }}" role="tabpanel"
+                                                 aria-labelledby="tabs-entregador--tab">
+                                                <ul class="list-group list-group-flush">
+                                                    @foreach ($entregador['pacotes'] as $pacote)
 
-            @if (count($entregadores))
+                                                        @include('layouts.componentes.list-pacotes', [
+                                                        'link' => 'conferentes.pacote.show',
+                                                        'data' => true ]
+                                                        )
 
-                <!-- Cria os Botoes com nome dos entregadores -->
-                    <div class="nav-wrapper">
-                        <ul class="nav nav-pills nav-fill flex-column flex-md-row" role="tablist">
-                            <?php $aba = true; ?>
-                            @foreach ($entregadores as $entregador)
-                                <li class="nav-item mb-2">
-                                    <a class="nav-link mb-sm-3 mb-md-0 @if ($aba) active @endif"
-                                       id="tabs-entregador-{{ $entregador['id_entregador'] }}-tab" data-toggle="tab"
-                                       href="#tabs-entregador-{{ $entregador['id_entregador'] }}" role="tab"
-                                       aria-controls="tabs-entregador-{{ $entregador['id_entregador'] }}"
-                                       aria-selected="true">
-                                        {{ get_dados_usuario($entregador['id_entregador'])->name }}
-                                    </a>
-                                </li>
-                                <?php $aba = false; ?>
-                            @endforeach
-                        </ul>
-                    </div>
-
-                    <div class="card shadow">
-                        <div class="card-body p-1">
-                            <div class="tab-content" id="myTabContent">
-                                <?php $aba = true; ?>
-                                @foreach ($entregadores as $entregador)
-                                    <div class="tab-pane fade @if ($aba) show active @endif"
-                                         id="tabs-entregador-{{ $entregador['id_entregador'] }}" role="tabpanel"
-                                         aria-labelledby="tabs-entregador--tab">
-                                        <ul class="list-group list-group-flush">
-                                            @foreach ($entregador['pacotes'] as $pacote)
-
-                                                @include('layouts.componentes.list-pacotes', [
-                                                'link' => 'conferentes.pacotes.info',
-                                                'data' => true ]
-                                                )
-
-                                            @endforeach
-                                        </ul>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                            <?php $aba = false; ?>
+                                        @endforeach
                                     </div>
-                                    <?php $aba = false; ?>
-                                @endforeach
+                                </div>
                             </div>
                         </div>
                     </div>
-
                 @else
                     <div class="row">
                         <div class="col-auto mx-auto p-2 text-sm">Não há pacotes sendo entregues.</div>
@@ -73,6 +77,5 @@
 
             </div>
         </div>
-
     </div>
 </x-layout>

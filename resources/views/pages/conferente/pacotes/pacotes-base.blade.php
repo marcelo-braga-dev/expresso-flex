@@ -76,7 +76,7 @@
                                 <div class="row justify-content-end mb-2">
                                     <div class="col-auto text-right">
                                         <a class="btn btn-link btn-sm text-primary"
-                                            href="{{ route('conferentes.pacotes.info', ['id' => $pacote->id]) }}">
+                                            href="{{ route('conferentes.pacote.show', $pacote->id) }}">
                                             Detalhes</a>
                                     </div>
                                     <div class="col-auto text-right">

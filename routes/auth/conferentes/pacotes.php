@@ -4,6 +4,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::name('conferentes.')
     ->namespace('Pacotes')
+    ->group(function () {
+        Route::resource('pacote', 'PacotesController');
+    });
+
+Route::name('conferentes.')
+    ->namespace('Pacotes')
     ->controller('StatusController')
     ->group(function () {
         Route::get('pacotes/pacotes-sob-coleta', 'sobColeta')
@@ -14,8 +20,6 @@ Route::name('conferentes.')
 
         Route::get('pacotes/pacotes-base', 'naBase')
             ->name('pacotes.pacotes-base');
-
-
     });
 
 Route::name('conferentes.')
@@ -28,10 +32,6 @@ Route::name('conferentes.')
 
         Route::get('pacotes/historico-diario', 'historicoDiario')
             ->name('pacotes.historico-diario');
-
-        Route::get('pacotes/detalhes', 'show')
-            ->name('pacotes.info');
-
     });
 
 
