@@ -14,6 +14,7 @@ class CadastrarEtiquetas
     public function cadastrar(array $dados, $loja)
     {
         $qtdPacotes = 0;
+        $error = 0;
 
         foreach ($dados as $dado) {
             if ($this->statusImportaveis($dado['status'])) {
@@ -23,21 +24,31 @@ class CadastrarEtiquetas
                 $etiqueta->loja = $loja;
                 $etiqueta->origem = $this->origem;
 
-                $etiqueta->idEndereco = $this->getEndereco($dado['endereco']);
+                try {
+                    $etiqueta->idEndereco = $this->getEndereco($dado['endereco']);
 
-                $dadosDestinatario = $dado['destinatario'];
-                $destinatario = new CadastrarDestinatario($dadosDestinatario['nome'], null, $dadosDestinatario['documento']);
-                $etiqueta->idDestinatario = $destinatario->cadastrar();
+                    $dadosDestinatario = $dado['destinatario'];
+                    $destinatario = new CadastrarDestinatario($dadosDestinatario['nome'], null, $dadosDestinatario['documento']);
+                    $etiqueta->idDestinatario = $destinatario->cadastrar();
 
-                $etiquetas = new Etiquetas();
-                $res = $etiquetas->salvar($etiqueta);
+                    $etiquetas = new Etiquetas();
+                    $res = $etiquetas->salvar($etiqueta);
 
-                if ($res) $qtdPacotes++;
+                    if ($res) $qtdPacotes++;
+                } catch (\TypeError $e) {
+                    $error++;
+                }
             }
         }
 
-        if ($qtdPacotes) return modalSucesso("Foram cadastrados $qtdPacotes com sucesso!");
-        modalErro('Nenhum pacote foi cadastrado.');
+        $msgErro = $error ? "Foi encontrado erros em $error pacotes." : '';
+
+        if ($qtdPacotes) {
+            modalSucesso("Foram cadastrados $qtdPacotes com sucesso! $msgErro");
+            return;
+        }
+
+        modalErro("Nenhum pacote foi cadastrado. $msgErro");
     }
 
     private function statusImportaveis($status): bool

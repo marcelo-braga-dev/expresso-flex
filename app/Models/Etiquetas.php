@@ -63,6 +63,8 @@ class Etiquetas extends Model
             ->where([
                 ['origem', '=', $origem],
                 ['user_id', '=', id_usuario_atual()]
-            ])->paginate(10);
+            ])
+            ->orderBy('created_at', 'DESC')
+            ->paginate(20);
     }
 }
