@@ -40,7 +40,7 @@ class PesquisarEntregador
 
         if ($pacote->status != 'pacote_coletado') {
             session()->flash('erro', 'Já foi realizado o check-in desse pacote.');
-            return redirect()->route('conferente.checkin.pacotes');
+            return redirect()->route('conferentes.checkin.index');
         }
 
         $todosEntregadores = $entregadoresService->getEntregadores();

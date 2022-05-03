@@ -64,12 +64,12 @@ class ConferenteController extends Controller
 
         if (empty($pacote->id) || $pacote->status == 'pacote_nova_etiqueta') {
             session()->flash('erro', 'Registro não encontrado.');
-            return redirect()->route('conferente.checkin.pacotes');
+            return redirect()->route('conferentes.checkin.index');
         }
 
         if ($pacote->status != 'pacote_coletado') {
             session()->flash('erro', 'Já foi realizado o check-in desse pacote.');
-            return redirect()->route('conferente.checkin.pacotes');
+            return redirect()->route('conferentes.checkin.index');
         }
 
         $todosEntregadores = $entregadoresService->getEntregadores();
@@ -108,6 +108,6 @@ class ConferenteController extends Controller
 
         session()->flash('sucesso', 'Check-in do pacote realizado com sucesso.');
 
-        return redirect()->route('conferente.checkin.pacotes');
+        return redirect()->route('conferentes.checkin.index');
     }
 }

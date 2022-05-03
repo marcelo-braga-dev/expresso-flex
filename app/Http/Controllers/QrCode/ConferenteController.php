@@ -22,7 +22,7 @@ class ConferenteController extends Controller
             }
         } catch (QrCodeException $e) {
             session()->flash('erro', 'Não foi possível ler o QrCode.');
-            return redirect()->route('conferente.checkin.pacotes');
+            return redirect()->route('conferentes.checkin.index');
         }
 
         return redirect()->route('conferentes.checkin.create', $resposta);

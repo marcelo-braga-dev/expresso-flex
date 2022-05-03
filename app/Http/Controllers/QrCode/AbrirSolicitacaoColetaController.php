@@ -28,6 +28,6 @@ class AbrirSolicitacaoColetaController extends Controller
 
     private function getResposta($resposta): bool
     {
-        return empty($resposta['id']) || empty($resposta['origem'] || empty($resposta['id_loja']));
+        return empty($resposta['id']) || empty($resposta['origem']) || empty($resposta['id_loja']);
     }
 }
