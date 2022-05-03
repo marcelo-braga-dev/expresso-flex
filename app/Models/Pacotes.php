@@ -47,7 +47,7 @@ class Pacotes extends Model
 
             DB::commit();
 
-            alterarStatusPacote($pacote->cliente(), $pacoteCriado->id, $pacote->status());
+            atualizarHistoricoPacote($pacote->cliente(), $pacoteCriado->id, $pacote->status());
 
             modalSucesso('Pacote Cadastrado com sucesso. Código de Rastreio: ' . $pacote->rastreio());
         } catch (QueryException $e) {

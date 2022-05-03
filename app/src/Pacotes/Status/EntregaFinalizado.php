@@ -21,7 +21,7 @@ class EntregaFinalizado extends Status
             ->find($id)
             ->update(['status' => $this->status]);
 
-        alterarStatusPacote(id_usuario_atual(), $id, $this->getStatus());
+        atualizarHistoricoPacote(id_usuario_atual(), $id, $this->getStatus());
 
         $comissao = new Comissoes($id);
         $comissao->entregador();

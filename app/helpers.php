@@ -155,7 +155,7 @@ function modalErro($mensagem)
     session()->flash('erro', $mensagem);
 }
 
-function alterarStatusPacote(int $idCliente, int $idPacote, string $status)
+function atualizarHistoricoPacote(int $idCliente, int $idPacote, string $status)
 {
     $historico = new PacotesHistoricos();
     $historico->novo($idCliente, $idPacote, $status);

@@ -31,7 +31,13 @@ abstract class Status
                 'status' => $this->getStatus()
             ]);
 
-            alterarStatusPacote(id_usuario_atual(), $pacote->id, $this->getStatus());
+            if (auth()->user()->tipo == 'entregador') {
+                $pacote->update([
+                    'entregador' => id_usuario_atual()
+                ]);
+            }
+
+            atualizarHistoricoPacote(id_usuario_atual(), $pacote->id, $this->getStatus());
 
             modalSucesso('Pacote registrado com sucesso!');
             return;

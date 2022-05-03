@@ -17,15 +17,13 @@ class Pacote
 
     public function cadastrar($dados)
     {
-        if ($this->verificarDuplicidade($dados['id'], $this->origem)) {
-            session()->flash('erro', 'Pacote já cadastrado.');
-
+        if ($this->verificarDuplicidade($dados['id'])) {
+            modalErro('Pacote já cadastrado.');
             return;
         }
 
         if ($this->etiqueta->verificar($dados['id'], $this->origem)) {
             $this->etiqueta->cadastrar($dados, $this->origem);
-
             return;
         }
 
