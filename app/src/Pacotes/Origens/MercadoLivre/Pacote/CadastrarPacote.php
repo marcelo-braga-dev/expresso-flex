@@ -24,6 +24,7 @@ class CadastrarPacote
             $dadosEnvio = new DadosEnvio();
             $dadosDestinatario = $dadosEnvio->executar($dadosRequisicao);
         } catch (\DomainException $exception) {
+            modalErro($exception->getMessage());
             return;
         }
 
