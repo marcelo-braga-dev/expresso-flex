@@ -6,13 +6,13 @@ use App\Models\Destinatarios;
 
 class CadastrarDestinatario implements Destinatario
 {
-    private string $nome;
+    private ?string $nome;
     private ?string $telefone;
     private ?string $documento;
 
-    public function __construct(string $nome, ?string $telefone, ?string $documento)
+    public function __construct(?string $nome, ?string $telefone, ?string $documento)
     {
-        $this->nome = $nome;
+        $this->nome = $nome ?? 'Não Informado';
         $this->telefone = $telefone;
         $this->documento = $documento;
     }
