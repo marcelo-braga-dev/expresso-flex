@@ -48,8 +48,12 @@ class RequisicaoGet
         $validade = strtotime($dadosRequisicao->updatedAt) + $dadosRequisicao->expiresIn;
 
         if (time() > $validade) {
-            $autorizar = new Autorizar();
-            $autorizar->renovarAutorizacao($dadosRequisicao);
+            try {
+                $autorizar = new Autorizar();
+                $autorizar->renovarAutorizacao($dadosRequisicao);
+            } catch (\DomainException $exception) {
+                modalErro($exception->getMessage());
+            }
         }
     }
 }
