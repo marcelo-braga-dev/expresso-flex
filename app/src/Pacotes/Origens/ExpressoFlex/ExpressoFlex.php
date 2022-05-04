@@ -17,7 +17,7 @@ class ExpressoFlex implements OrigemPacote
         $pacote->cadastrar();
     }
 
-    public function getPacote($dados): Model
+    public function getPacote($dados)
     {
         $etiquetas = new Etiquetas();
 

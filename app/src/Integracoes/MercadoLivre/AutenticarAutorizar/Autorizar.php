@@ -37,8 +37,7 @@ class Autorizar extends DadosIntegracao
 
             $dadosRequisicao->accessToken = $dados['access_token'];
         } catch (ClientException $e) {
-            throw new \DomainException("Conexão com o Mercado Livre Inválido.");
+            throw new \DomainException("Conexão com o Mercado Livre do cliente Inválido.");
         }
-
     }
 }

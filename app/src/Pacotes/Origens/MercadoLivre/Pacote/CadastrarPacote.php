@@ -28,12 +28,6 @@ class CadastrarPacote
             return;
         }
 
-
-        // if (empty($dadosDestinatario)) {
-        //     session()->flash('erro', 'Falha ao conectar ao Mercado Livre.');
-        //
-        // }
-
         $coleta = new Coleta(id_usuario_atual(), $dados['coleta']);
 
         $destinatario = $this->getDestinatario($dadosDestinatario['receiver_address']);

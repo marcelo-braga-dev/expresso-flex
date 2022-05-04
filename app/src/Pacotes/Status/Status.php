@@ -18,6 +18,10 @@ abstract class Status
         $origem = $verificarOrigem->verificarOrigem($dados);
 
         $pacote = $origem->getPacote($dados);
+        if (empty($pacote)) {
+            modalErro('Não foi possível atualizar esse pacote.');
+            return;
+        }
 
         $pacotes = new PacotesHistoricos();
         $exist = $pacotes->newQuery()
