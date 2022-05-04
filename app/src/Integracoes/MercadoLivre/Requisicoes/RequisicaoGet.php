@@ -36,9 +36,10 @@ class RequisicaoGet
             $json = $res->getBody();
             return json_decode($json, true);
 
-        } catch (ClientException $exception) {
-            echo $exception->getMessage();
+        } catch (ClientException | \DomainException $exception) {
+            modalErro($exception->getMessage());
         }
+
         return null;
     }
 

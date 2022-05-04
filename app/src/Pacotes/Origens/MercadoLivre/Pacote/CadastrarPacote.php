@@ -24,7 +24,7 @@ class CadastrarPacote
         $dadosDestinatario = $dadosEnvio->executar($dadosRequisicao);
 
         if (empty($dadosDestinatario)) {
-            session()->flash('erro', 'Cliente não encontrado.');
+            session()->flash('erro', 'Falha ao conectar ao Mercado Livre.');
             return;
         }
 
