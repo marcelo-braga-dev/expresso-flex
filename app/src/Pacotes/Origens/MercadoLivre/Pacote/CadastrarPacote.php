@@ -20,13 +20,18 @@ class CadastrarPacote
         $dadosRequisicao->codigo = $dados['id'];
         $dadosRequisicao->senderId = $dados['sender_id'];
 
-        $dadosEnvio = new DadosEnvio();
-        $dadosDestinatario = $dadosEnvio->executar($dadosRequisicao);
-
-        if (empty($dadosDestinatario)) {
-            session()->flash('erro', 'Falha ao conectar ao Mercado Livre.');
+        try {
+            $dadosEnvio = new DadosEnvio();
+            $dadosDestinatario = $dadosEnvio->executar($dadosRequisicao);
+        } catch (\DomainException $exception) {
             return;
         }
+
+
+        // if (empty($dadosDestinatario)) {
+        //     session()->flash('erro', 'Falha ao conectar ao Mercado Livre.');
+        //
+        // }
 
         $coleta = new Coleta(id_usuario_atual(), $dados['coleta']);
 

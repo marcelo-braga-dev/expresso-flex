@@ -37,10 +37,8 @@ class RequisicaoGet
             return json_decode($json, true);
 
         } catch (ClientException | \DomainException $exception) {
-            modalErro($exception->getMessage());
+            throw new \DomainException($exception->getMessage());
         }
-
-        return null;
     }
 
     private function verificarValidadeToken($dadosRequisicao)
