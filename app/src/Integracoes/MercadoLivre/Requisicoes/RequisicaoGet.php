@@ -14,7 +14,9 @@ class RequisicaoGet
         $integracaoMercadoLivre = new IntegracaoMercadoLivre();
         $token = $integracaoMercadoLivre->token($dadosRequisicao->senderId);
 
-        if (empty($token)) return null;
+
+        if (empty($token)) throw new \DomainException(
+            "Não foi encontrada a conta integrada desse cliente ao Mercado Livre");
 
         $dadosRequisicao->accessToken = $token->access_token;
         $dadosRequisicao->updatedAt = $token->updated_at;
@@ -33,8 +35,9 @@ class RequisicaoGet
                 ]
             ]);
 
-            $json = $res->getBody();
-            return json_decode($json, true);
+            $dados = json_decode($res->getBody(), true);
+            if (empty($dados)) throw new \DomainException('Não foi possível comunicar à conta Mercado Livre do Cliente.');
+            return $dados;
 
         } catch (ClientException | \DomainException $exception) {
             throw new \DomainException($exception->getMessage());
