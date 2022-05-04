@@ -48,8 +48,8 @@
                                         </div>
                                         <div class="col-auto">
                                             <span class="d-block">
-                                                {{ $conta['brand_name'] }} @if (!empty($conta['nickname']))
-                                                    ({{ $conta['nickname'] }}) @endif
+                                                {{ $conta['brand_name'] }}
+                                                @if (!empty($conta['nickname'])) ({{ $conta['nickname'] }}) @endif
                                             </span>
                                             <span class="d-block">
                                                 <small>ID da Conta: {{ $conta['seller_id'] }}</small>
@@ -57,20 +57,20 @@
                                         </div>
                                     </div>
 
-                                    <div>
-                                        <div class="dropdown">
-                                            <a class="btn border btn-sm btn-icon-only text-dark" href="#" role="button"
-                                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                <a href="{{ route('mercadolivre.excluir-conta', $conta['id']) }}"
-                                                   class="dropdown-item">
-                                                    Excluir
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
+{{--                                    <div>--}}
+{{--                                        <div class="dropdown">--}}
+{{--                                            <a class="btn border btn-sm btn-icon-only text-dark" href="#" role="button"--}}
+{{--                                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--                                                <i class="fas fa-ellipsis-v"></i>--}}
+{{--                                            </a>--}}
+{{--                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">--}}
+{{--                                                <a href="{{ route('mercadolivre.excluir-conta', $conta['id']) }}"--}}
+{{--                                                   class="dropdown-item">--}}
+{{--                                                    Excluir--}}
+{{--                                                </a>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
                                 </li>
                             </ul>
                         @endforeach
