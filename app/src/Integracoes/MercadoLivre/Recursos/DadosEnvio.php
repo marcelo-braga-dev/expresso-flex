@@ -14,7 +14,7 @@ class DadosEnvio
             $requisicao = new RequisicaoGet();
             return $requisicao->executar($dadosRequisicao, $link);
         } catch (\DomainException $exception) {
-
+            throw new \DomainException($exception->getMessage());
         }
     }
 }

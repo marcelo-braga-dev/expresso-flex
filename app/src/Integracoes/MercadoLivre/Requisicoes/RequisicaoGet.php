@@ -50,7 +50,7 @@ class RequisicaoGet
                 $autorizar = new Autorizar();
                 $autorizar->renovarAutorizacao($dadosRequisicao);
             } catch (\DomainException $exception) {
-                modalErro($exception->getMessage());
+                throw new \DomainException($exception->getMessage());
             }
         }
     }
