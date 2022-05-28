@@ -77,6 +77,10 @@
                                                 Editar Comissão
                                             </a>
                                             <a class="dropdown-item"
+                                               href="{{ route('admins.usuarios.senha.edit', $usuario->id) }}">
+                                                Alterar Senha
+                                            </a>
+                                            <a class="dropdown-item"
                                                href="{{ route('admins.usuarios.entregadores.show', $usuario->id) }}">
                                                 Detalhes
                                             </a>

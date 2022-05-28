@@ -70,6 +70,10 @@
                                            href="{{ route('admins.usuarios.conferentes.edit', $usuario->id) }}">
                                             Editar
                                         </a>
+                                        <a class="dropdown-item"
+                                           href="{{ route('admins.usuarios.senha.edit', $usuario->id) }}">
+                                            Alterar Senha
+                                        </a>
 {{--                                        <a class="dropdown-item"--}}
 {{--                                           href="{{ route('admins.usuarios.conferentes.show', $usuario->id) }}">--}}
 {{--                                            Detalhes--}}

@@ -10,6 +10,7 @@ Route::prefix('usuarios')
         Route::resource('clientes', 'ClientesController');
         Route::resource('entregadores', 'EntregadoresController');
         Route::resource('conferentes', 'ConferentesController');
+        Route::resource('senha', 'AlterarSenhaController');
 
         Route::get('ajax/usuario/atualiza-status-usuario/', 'UsuariosController@modificaStatusUsuario')
             ->name('atualiza-status-usuario');

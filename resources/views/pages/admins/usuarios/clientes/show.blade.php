@@ -25,6 +25,18 @@
                     </div>
                 @endif
                 <div class="card card-body bg-white mb-3">
+                    <div class="row justify-content-end">
+                        <div class="col-auto">
+                            <a class="btn-link text-sm" href="{{ route('admins.usuarios.senha.edit', $usuario->id) }}">
+                                Alterar senha
+                            </a>
+                        </div>
+                        <div class="col-auto">
+                            <a class="btn-link text-sm" href="{{ route('admins.usuarios.clientes.edit', $usuario->id) }}">
+                                Editar
+                            </a>
+                        </div>
+                    </div>
                     <h5>Informações Pessoais</h5>
                     <div class="row">
                         <div class="col-md-6">
@@ -70,13 +82,6 @@
                         <div class="col-md-6">
                             <p>Email
                                 Comercial: @if (isset($dados['email_comercial'])) {{ $dados['email_comercial'] }} @endif</p>
-                        </div>
-                    </div>
-                    <div class="row justify-content-end">
-                        <div class="col-auto">
-                            <a class="btn-link text-sm" href="{{ route('admins.usuarios.clientes.edit', $usuario->id) }}">
-                                Editar Informações do Cliente
-                            </a>
                         </div>
                     </div>
                 </div>
