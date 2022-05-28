@@ -25,7 +25,7 @@
     <!-- Menu Principal -->
     <ul class="navbar-nav">
         <!-- Cliente -->
-        <li class="nav-item">
+        <li class="nav-item border-bottom py-2">
             <a class="nav-link p-0 ml-3 m-2" href="#navbar-coletas" data-toggle="collapse" role="button"
                aria-expanded="true" aria-controls="navbar-coletas">
                 <i class="fas fa-shipping-fast text-principal"></i>
@@ -44,7 +44,7 @@
         </li>
 
         <!-- Lojas -->
-        <li class="nav-item">
+        <li class="nav-item border-bottom py-2">
             <a class="nav-link p-0 ml-3 m-2" href="#navbar-lojas" data-toggle="collapse" role="button"
                aria-expanded="true" aria-controls="navbar-lojas">
                 <i class="fas fa-store text-principal"></i>
@@ -68,7 +68,7 @@
         </li>
 
         <!-- Etiquetas -->
-        <li class="nav-item">
+        <li class="nav-item border-bottom py-2">
             <a class="nav-link p-0 ml-3 m-2" href="#navbar-etiquetas" data-toggle="collapse" role="button"
                aria-expanded="true" aria-controls="navbar-etiquetas">
                 <i class="fas fa-file-pdf text-principal"></i>
@@ -99,7 +99,7 @@
         </li>
 
         <!-- Importacao -->
-        <li class="nav-item">
+        <li class="nav-item border-bottom py-2">
             <a class="nav-link p-0 ml-3 m-2" href="#navbar-importacao" data-toggle="collapse" role="button"
                aria-expanded="true" aria-controls="navbar-importacao">
                 <i class="fas fa-file-upload text-principal"></i>
@@ -124,7 +124,7 @@
         </li>
 
         <!-- Pacotes -->
-        <li class="nav-item">
+        <li class="nav-item border-bottom py-2">
             <a class="nav-link p-0 ml-3 m-2" href="#navbar-pacotes" data-toggle="collapse" role="button"
                aria-expanded="true" aria-controls="navbar-pacotes">
                 <i class="fas fa-box text-principal"></i>
@@ -147,7 +147,7 @@
         </li>
 
         <!-- Integrações -->
-        <li class="nav-item">
+        <li class="nav-item border-bottom py-2">
             <a class="nav-link p-0 ml-3 m-2" href="#navbar-integracoes" data-toggle="collapse" role="button"
                aria-expanded="true" aria-controls="navbar-integracoes">
                 <i class="fas fa-link text-principal"></i>
@@ -165,7 +165,7 @@
         </li>
 
         <!-- Financeiro -->
-        <li class="nav-item">
+        <li class="nav-item border-bottom py-2">
             <span class="nav-link p-0 ml-3 m-2" href="#navbar-entregas" data-toggle="collapse" role="button"
                   aria-expanded="true" aria-controls="navbar-entregas">
                 <i class="fas fa-dollar-sign text-principal"></i>
@@ -184,7 +184,7 @@
         </li>
 
         <!-- Sua conta -->
-        <li class="nav-item">
+        <li class="nav-item border-bottom py-2">
             <span class="nav-link p-0 ml-3 m-2" href="#navbar-perfil" data-toggle="collapse" role="button"
                   aria-expanded="true" aria-controls="navbar-perfil">
                 <i class="fas fa-user text-principal"></i>
@@ -196,6 +196,12 @@
                         <a class="nav-link pl-5"
                            href="{{ route('clientes.perfil.index') }}">
                             Editar Perfil
+                        </a>
+                    </li>
+                    <li class="nav-item @if (SUBMENU === 'alterar-senha') active @endif">
+                        <a class="nav-link pl-5"
+                           href="{{ route('clientes.senha.index') }}">
+                            Alterar Senha
                         </a>
                     </li>
                 </ul>

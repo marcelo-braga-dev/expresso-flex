@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admins\Usuarios;
+namespace App\Http\Controllers\Clientes\Perfil;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -9,11 +9,11 @@ use Illuminate\Support\Facades\Hash;
 
 class AlterarSenhaController extends Controller
 {
-    public function edit($id)
+    public function index()
     {
-        $user = (new User())->newQuery()->findOrFail($id);
+        $user = (new User())->newQuery()->findOrFail(id_usuario_atual());
 
-        return view('pages.admins.usuarios.alterar-senha.edit', compact('user'));
+        return view('pages.clientes.perfil.alterar-senha.index', compact('user'));
     }
 
     public function update(Request $request, $id)

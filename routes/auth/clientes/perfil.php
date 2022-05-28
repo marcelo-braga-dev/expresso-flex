@@ -6,4 +6,5 @@ Route::name('clientes.')
     ->namespace('Perfil')
     ->group(function () {
         Route::resource('perfil', 'PerfilController');
+        Route::resource('senha', 'AlterarSenhaController');
     });
