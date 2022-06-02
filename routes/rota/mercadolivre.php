@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 // Retorno de Autenticacao - URI de redirect
 Route::get(
     'mercadolivre/autenticacao',
-    'App\Http\Controllers\Clientes\Integracoes\MercadoLivreController@autenticar')
+    [App\Http\Controllers\Clientes\Integracoes\MercadoLivreController::class, 'autenticar'])
     ->name('mercadolivre.integracao.autenticacao');
 
 // Recebimento de notificacao do Mercado Livre

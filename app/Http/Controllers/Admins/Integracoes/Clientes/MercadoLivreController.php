@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admins\Integracoes\Clientes;
 
 use App\Models\IntegracaoMercadoLivre;
+use App\Models\UsersNotifications;
+use Illuminate\Http\Request;
 
 class MercadoLivreController
 {
@@ -15,17 +17,44 @@ class MercadoLivreController
             ->orderBy('user_id', 'DESC')
             ->get();
 
+        function diasDatas($data_inicial, $data_final)
+        {
+            $diferenca = strtotime($data_final) - strtotime('now');
+            return floor($diferenca / (60 * 60 * 24));
+        }
+
         foreach ($todasContas as $conta) {
             $contas[$conta->user_id]['user_id'] = $conta->user_id;
 
             $contas[$conta->user_id]['contas'][] =
                 [
+                    'id' => $conta->id,
                     'seller_id' => $conta->seller_id,
                     'nickname' => $conta->nickname,
-                    'created_at' => date('d/m/y', strtotime($conta->created_at))
+                    'created_at' => date('d/m/y', strtotime($conta->created_at)),
+                    'updated_at' => date('d/m/y', strtotime($conta->updated_at . " +6 months")),
+                    'dias' => diasDatas($conta->created_at, $conta->updated_at . " +6 months")
                 ];
         }
 
-        return view('pages.admin.mercadolivre.contas-sincronizadas', compact('contas'));
+        return view('pages.admins.integracoes.mercadolivre.clientes.index', compact('contas'));
+    }
+
+    public function destroy($id, Request $request)
+    {
+        (new UsersNotifications())->newQuery()
+            ->create([
+                'user_id' => $request->id,
+                'type' => 'removido_conta_mercadolivre',
+                'value' => "A sincronia da sua conta Mercado Livre ($request->nome) foi inativada,
+                por favor, autorize novamente a sincronia.",
+            ]);
+
+        (new IntegracaoMercadoLivre())->newQuery()
+            ->findOrFail($id)
+            ->delete();
+
+        modalSucesso('Conta deletada com sucesso.');
+        return redirect()->back();
     }
 }

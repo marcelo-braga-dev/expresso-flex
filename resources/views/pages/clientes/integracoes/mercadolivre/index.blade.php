@@ -3,7 +3,7 @@
     <div class="header bg-principal bg-height-top"></div>
 
     <!-- Page content -->
-    <div class="container-fluid mt--9">
+    <div class="container-fluid mt--9 mb-6">
         <div class="card bg-secondary">
             <div class="card-header bg-white">
                 <h3 class="mb-0 text-principal">
@@ -13,7 +13,6 @@
             <div class="card-body">
                 <div class="row justify-content-center">
                     <div class="col-12">
-                        <h3></h3>
                         <p>A vinculação de conta é necessária para que o Mercado Livre autorize a nossa plataforma
                             a obter as informações de entregas das suas encomendas.</p>
                         <p>
@@ -23,6 +22,17 @@
                         <p>
                             Clique no botão abaixo para iniciar o processo de autorização de acesso.
                         </p>
+                    </div>
+                    <div class="col-12">
+                        @foreach($notificacoes as $item)
+                        <div class="alert alert-danger d-block">
+                            {{ $item->value }}
+                            <form method="POST" action="{{ route('clientes.notificacoes.update', $item->id) }}">
+                                @csrf @method('PUT')
+                                <button type="submit" class="btn btn-link text-white btn-sm pl-0 mt-2">Excluir Mensagem</button>
+                            </form>
+                        </div>
+                        @endforeach
                     </div>
                     <div class="col-md-4">
                         <a class="btn btn-primary btn-block" href="{{ $urlIntegracao }}">
@@ -54,23 +64,18 @@
                                             <span class="d-block">
                                                 <small>ID da Conta: {{ $conta['seller_id'] }}</small>
                                             </span>
+                                            <span class="d-block">
+                                                <small>
+                                                Data da sincronia: {{ date('d/m/y i:s', strtotime($conta['created_at'])) }} |
+                                                Válido até {{ date('d/m/y', strtotime($conta->updated_at . " +6 months")) }},
+                                                @if (diferencaDias($conta->updated_at) > 1)
+                                                        restam {{ diferencaDias($conta->updated_at) }} dias.
+                                                    @else <span class="text-danger"> venceu a {{ str_replace('-', '', diferencaDias($conta->updated_at)) }} dias.</span>
+                                                    @endif
+                                                </small>
+                                            </span>
                                         </div>
                                     </div>
-
-{{--                                    <div>--}}
-{{--                                        <div class="dropdown">--}}
-{{--                                            <a class="btn border btn-sm btn-icon-only text-dark" href="#" role="button"--}}
-{{--                                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-{{--                                                <i class="fas fa-ellipsis-v"></i>--}}
-{{--                                            </a>--}}
-{{--                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">--}}
-{{--                                                <a href="{{ route('mercadolivre.excluir-conta', $conta['id']) }}"--}}
-{{--                                                   class="dropdown-item">--}}
-{{--                                                    Excluir--}}
-{{--                                                </a>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
                                 </li>
                             </ul>
                         @endforeach

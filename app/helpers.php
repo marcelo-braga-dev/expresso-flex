@@ -199,3 +199,9 @@ function getRastreioPeloId(int $id)
 
     if (!empty($rastreio)) return $rastreio->rastreio;
 }
+
+function diferencaDias($dataFinal)
+{
+    $diferenca = strtotime($dataFinal) - strtotime('now');
+    return floor($diferenca / (60 * 60 * 24));
+}
