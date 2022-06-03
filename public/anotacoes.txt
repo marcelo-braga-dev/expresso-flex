@@ -5,3 +5,8 @@ leitura da etiqueta flex
     "hash_code":"TBxbo1g33fsgCRI+DzLap/sk15eWT8+Zvx0XkL7zsQM=",
     "security_digit":"0"
 }
+
+Liks Simbolicos
+ln -s "pasta" "atalho"
+ln -s /home/storage/4/31/33/appexpressoflex2/public /home/storage/4/31/33/appexpressoflex2/public_html
+ln -s /home/storage/4/31/33/appexpressoflex2/public_html/storage /home/storage/4/31/33/appexpressoflex2/storage/app/public/images
