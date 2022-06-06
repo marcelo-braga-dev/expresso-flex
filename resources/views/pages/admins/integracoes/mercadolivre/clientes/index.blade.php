@@ -84,7 +84,7 @@
                                               class="form-inline d-inline"> @csrf @method('DELETE')
                                             <input type="hidden" name="user_id" value="{{ $conta['user_id'] }}">
                                             <input type="hidden" name="nome"
-                                                   value="{{ $info['nickname'] }} #{{ $info['seller_id'] }}">
+                                                   value="{{ $item['nickname'] }} #{{ $item['seller_id'] }}">
                                             <button type="submit" class="btn btn-danger btn-sm">
                                                 <i class="fas fa-trash"></i>
                                             </button>
