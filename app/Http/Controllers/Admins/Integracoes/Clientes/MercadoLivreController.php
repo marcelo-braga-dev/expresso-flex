@@ -49,17 +49,7 @@ class MercadoLivreController
             ->where('seller_id', '=', $request->seller_id)
             ->firstOrFail(['seller_id', 'refresh_token']);
 
-        $dados = new DadosRequisicao();
-        $dados->refreshToken = $cliente->refresh_token;
-        $dados->sellerId = $cliente->seller_id;
-
-        try {
-            $autorizar = new Autorizar();
-            $autorizar->renovarAutorizacao($dados);
-            modalSucesso('Conta renovada com sucesso!');
-        } catch (\DomainException $e) {
-            modalErro('Não foi possível atualizar a integracão. ' . $e->getMessage());
-        }
+        $this->atualizar($cliente);
 
         return redirect()->back();
     }
@@ -80,5 +70,31 @@ class MercadoLivreController
 
         modalSucesso('Conta deletada com sucesso.');
         return redirect()->back();
+    }
+
+    public function atualizarTodos()
+    {
+        $clientes = (new IntegracaoMercadoLivre())->newQuery()
+            ->where('status', '=', 1)
+            ->get(['seller_id', 'refresh_token']);
+
+        foreach ($clientes as $cliente) {
+            $this->atualizar($cliente);
+        }
+    }
+
+    private function atualizar($cliente): void
+    {
+        $dados = new DadosRequisicao();
+        $dados->refreshToken = $cliente->refresh_token;
+        $dados->sellerId = $cliente->seller_id;
+
+        try {
+            $autorizar = new Autorizar();
+            $autorizar->renovarAutorizacao($dados);
+            modalSucesso('Conta renovada com sucesso!');
+        } catch (\DomainException $e) {
+            modalErro('Não foi possível atualizar a integracão. ' . $e->getMessage());
+        }
     }
 }

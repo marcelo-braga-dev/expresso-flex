@@ -8,6 +8,10 @@
                 <div class="row justify-content-between align-items-center px-3">
                     <div>
                         <h3 class="mb-0">Contas Mercado Livre Sincronizadas</h3>
+                        <form method="POST" action="{{ route('admins.integracoes.clientes.atualizarTodos') }}"> @csrf @method('PUT')
+                            <button type="submit" class="btn btn-primary" >Atualizar Integrações</button>
+                        </form>
+
                     </div>
                     <div>
                         <div class="form-group m-0">
