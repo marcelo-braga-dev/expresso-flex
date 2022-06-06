@@ -47,10 +47,10 @@
                                 </td>
                                 <td>
                                     @foreach ($conta['contas'] as $info)
-                                        <span class="mb-2 d-block">
+                                        <span class="mb-2 d-block @if (!$info['status'])text-danger @endif">
                                             <b>{{ $info['nickname'] }}</b>
                                             [#{{ $info['seller_id'] }}]
-                                            </span>
+                                        </span>
                                     @endforeach
                                 </td>
                                 <td>

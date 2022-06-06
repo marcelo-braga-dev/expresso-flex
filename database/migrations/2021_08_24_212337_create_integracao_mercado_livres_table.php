@@ -17,6 +17,7 @@ class CreateIntegracaoMercadoLivresTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->string('seller_id')->nullable();
+            $table->boolean('status')->default(1);
             $table->string('loja')->nullable();
             $table->string('access_token')->nullable();
             $table->string('refresh_token')->nullable();

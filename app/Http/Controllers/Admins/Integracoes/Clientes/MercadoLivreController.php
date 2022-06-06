@@ -32,6 +32,7 @@ class MercadoLivreController
                 [
                     'id' => $conta->id,
                     'seller_id' => $conta->seller_id,
+                    'status' => $conta->status,
                     'nickname' => $conta->nickname,
                     'created_at' => date('d/m/y', strtotime($conta->created_at)),
                     'updated_at' => date('d/m/y', strtotime($conta->updated_at . " +6 months")),

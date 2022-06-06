@@ -32,11 +32,15 @@ class Autorizar extends DadosIntegracao
                 ->update([
                     'access_token' => $dados['access_token'],
                     'refresh_token' => $dados['refresh_token'],
-                    'expires_in' => $dados['expires_in']
+                    'expires_in' => $dados['expires_in'],
+                    'status' => 1
                 ]);
 
             $dadosRequisicao->accessToken = $dados['access_token'];
         } catch (ClientException $e) {
+            $integracao->newQuery()
+                ->where('seller_id', '=', $dadosRequisicao->sellerId)
+                ->update(['status' => 0]);
             throw new \DomainException("Conexão com o Mercado Livre do cliente Inválido.");
         }
     }

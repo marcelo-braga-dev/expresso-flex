@@ -13,6 +13,7 @@ class IntegracaoMercadoLivre extends Model
         [
             'user_id',
             'seller_id',
+            'status',
             'loja',
             'access_token',
             'refresh_token',
