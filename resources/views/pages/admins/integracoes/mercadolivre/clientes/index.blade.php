@@ -71,13 +71,23 @@
                                 <td>
                                     @foreach ($conta['contas'] as $item)
                                         <span class="mb-2 d-block">
-                                        Renovar |
+                                        <form method="POST"
+                                              action="{{ route('admins.integracoes.clientes.mercadolivre.update', $item['id']) }}"
+                                              class="form-inline d-inline"> @csrf @method('PUT')
+                                            <input type="hidden" name="seller_id" value="{{ $info['seller_id'] }}">
+                                            <button type="submit" class="btn btn-success btn-sm">
+                                                <i class="fas fa-recycle"></i>
+                                            </button>
+                                        </form>
                                         <form method="POST"
                                               action="{{ route('admins.integracoes.clientes.mercadolivre.destroy', $item['id']) }}"
                                               class="form-inline d-inline"> @csrf @method('DELETE')
-                                            <input type="hidden" name="id" value="{{ $conta['user_id'] }}">
-                                            <input type="hidden" name="nome" value="{{ $info['nickname'] }} #{{ $info['seller_id'] }}">
-                                            <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
+                                            <input type="hidden" name="user_id" value="{{ $conta['user_id'] }}">
+                                            <input type="hidden" name="nome"
+                                                   value="{{ $info['nickname'] }} #{{ $info['seller_id'] }}">
+                                            <button type="submit" class="btn btn-danger btn-sm">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
                                         </form>
                                         </span>
                                     @endforeach

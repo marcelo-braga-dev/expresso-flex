@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admins\Integracoes\Clientes;
 
 use App\Models\IntegracaoMercadoLivre;
 use App\Models\UsersNotifications;
+use App\src\Integracoes\MercadoLivre\AutenticarAutorizar\Autorizar;
+use App\src\Integracoes\MercadoLivre\Requisicoes\DadosRequisicao;
 use Illuminate\Http\Request;
 
 class MercadoLivreController
@@ -40,11 +42,32 @@ class MercadoLivreController
         return view('pages.admins.integracoes.mercadolivre.clientes.index', compact('contas'));
     }
 
+    public function update($id, Request $request)
+    {
+        $cliente = (new IntegracaoMercadoLivre())->newQuery()
+            ->where('seller_id', '=', $request->seller_id)
+            ->firstOrFail(['seller_id', 'refresh_token']);
+
+        $dados = new DadosRequisicao();
+        $dados->refreshToken = $cliente->refresh_token;
+        $dados->sellerId = $cliente->seller_id;
+
+        try {
+            $autorizar = new Autorizar();
+            $autorizar->renovarAutorizacao($dados);
+            modalSucesso('Conta renovada com sucesso!');
+        } catch (\DomainException $e) {
+            modalErro('Não foi possível atualizar a integracão. ' . $e->getMessage());
+        }
+
+        return redirect()->back();
+    }
+
     public function destroy($id, Request $request)
     {
         (new UsersNotifications())->newQuery()
             ->create([
-                'user_id' => $request->id,
+                'user_id' => $request->user_id,
                 'type' => 'removido_conta_mercadolivre',
                 'value' => "A sincronia da sua conta Mercado Livre ($request->nome) foi inativada,
                 por favor, autorize novamente a sincronia.",
