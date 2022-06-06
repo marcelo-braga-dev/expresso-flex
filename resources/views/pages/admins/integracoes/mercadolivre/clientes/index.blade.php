@@ -74,7 +74,7 @@
                                         <form method="POST"
                                               action="{{ route('admins.integracoes.clientes.mercadolivre.update', $item['id']) }}"
                                               class="form-inline d-inline"> @csrf @method('PUT')
-                                            <input type="hidden" name="seller_id" value="{{ $info['seller_id'] }}">
+                                            <input type="hidden" name="seller_id" value="{{ $item['seller_id'] }}">
                                             <button type="submit" class="btn btn-success btn-sm">
                                                 <i class="fas fa-recycle"></i>
                                             </button>
