@@ -20,8 +20,8 @@
                     </div>
                 </div>
                 <div class="d-none d-md-block">
-                    <form method="post" action="{{ route('clientes.importacoes.mercadolivre.store') }}"
-                          enctype="multipart/form-data"> @csrf
+                    <form method="post" action="{{ route('clientes.importacoes.mercadolivre.edit', id_usuario_atual()) }}"
+                          enctype="multipart/form-data"> @csrf @method('GET')
                         <div class="row mb-4">
                             <div class="col-md-6">
                                 <label>Arquivo de Importação</label>
@@ -30,7 +30,7 @@
                             <div class="col-md-3">
                                 <label>Ponto de Coleta</label>
                                 <select class="form-control" name="loja" required>
-                                    <option value=""></option>
+                                    <option value="">Selecione...</option>
                                     @foreach($lojas as $loja)
                                         <option value="{{ $loja->id }}">{{ $loja->nome }}</option>
                                     @endforeach

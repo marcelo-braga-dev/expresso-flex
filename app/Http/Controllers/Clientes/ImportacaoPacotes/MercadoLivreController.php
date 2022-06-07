@@ -17,9 +17,22 @@ class MercadoLivreController extends Controller
         return view('pages.clientes.importacoes.mercadolivre.index', compact('lojas'));
     }
 
+    public function edit(Request $request)
+    {
+        try {
+            $dados = (new ImportacaoMercadoLivre())->read($request);
+            $loja = $request->loja;
+        } catch (\DomainException $e) {
+            return redirect()->back();
+        }
+        modalSucesso('Verifique os pacotes a serem importados e clique no botão "Continuar".');
+        return view('pages.clientes.importacoes.mercadolivre.edit', compact('dados', 'loja'));
+    }
+
     public function store(Request $request)
     {
-        (new ImportacaoMercadoLivre())->execute($request);
+        $dados = json_decode($request->dados, true );
+        (new ImportacaoMercadoLivre())->armazenar($dados, $request->loja);
 
         return redirect()->route('clientes.importacoes.pacotes.index');
     }
