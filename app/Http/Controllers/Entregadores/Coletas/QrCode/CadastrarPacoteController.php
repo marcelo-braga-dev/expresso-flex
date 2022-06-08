@@ -21,9 +21,9 @@ class CadastrarPacoteController
 
             return redirect()->route('entregadores.coletas.pacotes.show', $dados['coleta']);
         } catch (QrCodeException $e) {
-            session()->flash('erro', 'Não foi possível ler o QrCode.');
+            modalErro('Não foi possível ler o QrCode.');
 
-            return redirect()->route('entregadores.coletas-abertas.index');
+            return redirect()->route('entregadores.coletas.index');
         }
     }
 }

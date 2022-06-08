@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-6 collapse-brand">
                 <a href="{{ route('home') }}">
-                    <img src="{{ asset('assets') }}/img/brand/logo-x256.png">
+                    <img src="{{ asset('assets') }}/img/brand/logo-x256.png" alt="logo">
                 </a>
             </div>
             <div class="col-6 collapse-close">
@@ -22,7 +22,7 @@
     <!-- Menu Principal -->
     <ul class="navbar-nav">
         <!-- Coletas -->
-        <li class="nav-item">
+        <li class="nav-item border-bottom py-2">
             <a class="nav-link p-0 ml-3 m-2" href="#navbar-coletas" data-toggle="collapse" role="button"
                aria-expanded="true" aria-controls="navbar-coletas">
                 <i class="fas fa-dolly text-principal"></i>
@@ -32,7 +32,7 @@
                 <ul class="nav nav-sm flex-column">
                     <li class="nav-item @if (SUBMENU === 'solicitacoes') active @endif">
                         <a class="nav-link pl-5"
-                           href="{{ route('entregadores.coletas-abertas.index') }}">
+                           href="{{ route('entregadores.coletas.index') }}">
                             Solicitações de Coletas
                         </a>
                     </li>
@@ -40,10 +40,8 @@
             </div>
         </li>
 
-{{--        <div class="dropdown-divider"></div>--}}
-
         <!-- Entregas -->
-        <li class="nav-item">
+        <li class="nav-item border-bottom py-2">
                     <span class="nav-link p-0 ml-3 m-2" href="#navbar-entregas" data-toggle="collapse" role="button"
                           aria-expanded="true" aria-controls="navbar-entregas">
                         <i class="fas fa-shipping-fast text-principal"></i>
@@ -61,10 +59,8 @@
             </div>
         </li>
 
-{{--        <div class="dropdown-divider"></div>--}}
-
         <!-- Historicos -->
-        <li class="nav-item">
+        <li class="nav-item border-bottom py-2">
             <span class="nav-link p-0 ml-3 m-2" href="#navbar-historico" data-toggle="collapse" role="button"
                   aria-expanded="true" aria-controls="navbar-historico">
                 <i class="fas fa-clock text-principal"></i>
@@ -88,10 +84,8 @@
             </div>
         </li>
 
-{{--        <div class="dropdown-divider"></div>--}}
-
         <!-- Financeiro -->
-        <li class="nav-item">
+        <li class="nav-item border-bottom py-2">
             <span class="nav-link p-0 ml-3 m-2" href="#navbar-financeiro" data-toggle="collapse" role="button"
                   aria-expanded="true" aria-controls="navbar-financeiro">
                 <i class="fas fa-dollar-sign text-principal"></i>
@@ -109,7 +103,7 @@
             </div>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item border-bottom py-2">
             <span class="nav-link p-0 ml-3 m-2" href="#navbar-perfil" data-toggle="collapse" role="button"
                   aria-expanded="true" aria-controls="navbar-perfil">
                 <i class="fas fa-user text-principal"></i>

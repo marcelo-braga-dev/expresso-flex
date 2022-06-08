@@ -13,7 +13,8 @@
                         <span class="h3 font-weight-bold mb-0"></span>
                         <div class="row">
                             <div class="col">
-                                <a class="btn btn-sm btn-primary my-2" href="{{ route('entregadores.coletas.create') }}">
+                                <a class="btn btn-sm btn-primary my-2"
+                                   href="{{ route('entregadores.coletas.create') }}">
                                     Abrir Nova Coleta
                                 </a>
                             </div>
@@ -41,50 +42,6 @@
                 <div class="px-lg-4">
                     <div class="row mb-4">
                         <div class="col-lg-12">
-                            @foreach ($coletasParaAceitar['solicitacoes'] as $solicitacoes)
-                                @if (count($solicitacoes['coletas']))
-                                    <small class="text-muted">Região: {{ $solicitacoes['regiao'] }}</small>
-                                    @foreach ($solicitacoes['coletas'] as $coleta)
-
-                                        <div class="card mb-3 border-success info-search">
-                                            <div class="row justify-content-between align-items-center p-3">
-                                                <div class="col-md-9 mb-2">
-                                                    <p class="mb-0">
-                                                        <i class="fas fa-user mr-2 text-primary"></i>
-                                                        <b>{{ get_nome_usuario($coleta['user_id']) }}
-                                                            ({{ get_loja($coleta['loja'])->nome }})</b>
-                                                    </p>
-
-                                                    <p class="mb-0">
-                                                        <i class="fas fa-map-marker-alt mr-2 text-danger"></i>
-                                                        {{ get_endereco_loja($coleta['loja']) }} - Cep:
-                                                        {{ formatar_cep($coleta['cep']) }}
-                                                    </p>
-
-                                                    <small class="d-block text-muted">
-                                                        <i class="fas fa-hashtag mr-2 text-primary"></i>
-                                                        ID da solicitação: #{{ $coleta['id'] }}
-                                                    </small>
-
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <form method="POST"
-                                                          action="{{ route('entregadores.coletas.aceitar-coleta') }}">
-                                                        @csrf @method('put')
-                                                        <input type="hidden" name="id_coleta"
-                                                               value="{{ $coleta['id'] }}">
-                                                        <button type="submit" class="btn btn-success btn-block">
-                                                            Aceitar Coleta
-                                                        </button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                    <hr class="my-2">
-                                @endif
-                            @endforeach
-
                             @foreach ($solicitacoesAceitas as $solicitacao)
                                 <div
                                     class="card my-3 shadow-sm border-primary info-search @if (!$solicitacao['status']) bg-light @endif">
@@ -162,22 +119,19 @@
                                     </div>
                                 </div>
                             @endforeach
+
+                            @if ($solicitacoesAceitas->isEmpty())
+                                <div class="row pt-3">
+                                    <div class="col-auto mx-auto">
+                                        <small class="text-muted">Não há coletas</small>
+                                    </div>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
-
-                @if (!$coletasParaAceitar['count'] && !$solicitacoesAceitas)
-                    <div class="row justify-content-center mb-3">
-                        <div class="col-auto">
-                            <small class="text-muted">
-                                Não há solicitações de coletas.
-                            </small>
-                        </div>
-                    </div>
-                @endif
             </div>
         </div>
-
     </div>
     @push('js')
         <script>

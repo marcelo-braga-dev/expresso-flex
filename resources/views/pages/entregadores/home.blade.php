@@ -22,7 +22,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a class="btn btn-info" href="{{ route('entregadores.coletas-abertas.index') }}">
+                        <a class="btn btn-info" href="{{ route('entregadores.coletas.index') }}">
                             Ver Coletas em Aberto
                         </a>
                     </div>

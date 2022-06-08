@@ -14,30 +14,29 @@ class ColetasController extends Controller
 {
     public function index(Request $request)
     {
-        $coleta = new Coleta(new Aceito());
-        $coleta->aceitar($request->id_loja);
+        $status = new Aceito();
+        $solicitacaoRetiradas = new SolicitacaoRetiradas();
 
-        return redirect()->route('entregadores.coletas-abertas.index');
+        $solicitacoesAceitas = $solicitacaoRetiradas
+            ->where('entregador', '=', id_usuario_atual())
+            ->where('status', '=', $status->getStatus())
+            ->orderBy('id', 'DESC')
+            ->get();
+
+        return view(
+            'pages.entregadores.coletas.index',
+            compact('solicitacoesAceitas')//, 'coletasParaAceitar'
+        );
     }
 
     public function create()
     {
         $lojasClientes = new LojasClientes();
 
-        $clientes = [];
-
-        $lojas = $lojasClientes->query()
+        $clientes = $lojasClientes->query()
             ->where('status', '=', '1')
+            ->orderBy('nome')
             ->get();
-
-        foreach ($lojas as $loja) {
-            $clientes[$loja->user_id]['user_id'] = $loja->user_id;
-
-            $clientes[$loja->user_id]['lojas'][] = [
-                'id' => $loja->id,
-                'name' => $loja->nome
-            ];
-        }
 
         return view('pages.entregadores.coletas.create', compact('clientes'));
     }
@@ -47,17 +46,7 @@ class ColetasController extends Controller
         $coleta = new Coleta(new Aceito());
         $coleta->aceitar($request->id);
 
-        return redirect()->route('entregadores.coletas-abertas.index');
-    }
-
-    public function show($id)
-    {
-        //
-    }
-
-    public function edit($id)
-    {
-        //
+        return redirect()->route('entregadores.coletas.index');
     }
 
     public function update(Request $request)
@@ -67,12 +56,8 @@ class ColetasController extends Controller
         $coleta = new SolicitacaoRetiradas();
         $coleta->aletarStatus($request->id_coleta, $status->getStatus());
 
-        return redirect()->route('entregadores.coletas-abertas.index');
-    }
-
-    public function destroy($id)
-    {
-        //
+        modalSucesso('Coleta finalizada com sucesso.');
+        return redirect()->route('entregadores.coletas.index');
     }
 
     // Cancelar coleta
@@ -91,21 +76,5 @@ class ColetasController extends Controller
         session()->flash('sucesso', 'Coleta cancelada com sucesso');
 
         return redirect()->back();
-    }
-
-    public function alterarStatus(Request $request)
-    {
-        //$solicitacao = new SolicitacaoRetiradas();
-        //
-        //$coleta = $solicitacao->find($request->id_coleta);
-        //
-        //if ($request->reabrir) {
-        //    $coleta->update(['status' => 'coleta_aceita']);
-        //} else {
-        //    $coleta->update(['status' => 'coleta_realizada']);
-        //    session()->flash('sucesso', 'Coleta finalizada com sucesso');
-        //}
-        //
-        //return redirect()->route('entregadores.coletas.todas-coletas');
     }
 }
