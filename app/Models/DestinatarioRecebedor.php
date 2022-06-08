@@ -17,7 +17,7 @@ class DestinatarioRecebedor extends Model
         'recebedor',
         'nome',
         'documento',
-        'obsevacoes',
+        'observacoes',
         'img_pacote',
     ];
 }

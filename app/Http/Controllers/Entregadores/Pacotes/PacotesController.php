@@ -6,14 +6,12 @@ use App\Models\DestinatarioRecebedor;
 use App\Models\FretesRealizados;
 use App\Models\Pacotes;
 use App\Models\PacotesHistoricos;
+use App\Models\SolicitacaoRetiradas;
 
 class PacotesController
 {
     public function show($id)
     {
-        $recebedor = [];
-        $historicos = [];
-
         $pacotes = new Pacotes();
         $pacote = $pacotes->newQuery()->find($id);
 
@@ -22,15 +20,14 @@ class PacotesController
         }
 
         $destinatarioRecebedor = new DestinatarioRecebedor();
-        $dadosRecebedor = $destinatarioRecebedor->query()->where('pacotes_id', '=', $pacote->id)->get();
-
-        foreach ($dadosRecebedor as $value) {
-            $recebedor[$value->meta_key] = $value->value;
-        }
+        $recebedor = $destinatarioRecebedor->newQuery()
+            ->where('pacotes_id', '=', $pacote->id)
+            ->first();
 
         $pacotesHistoricos = new PacotesHistoricos();
         $dadosHistoricos = $pacotesHistoricos->query()->where('pacotes_id', '=', $pacote->id)->get();
 
+        $historicos = [];
         foreach ($dadosHistoricos as $value) {
             $historicos[] = [
                 'status' => $value->status,
@@ -39,8 +36,13 @@ class PacotesController
             ];
         }
 
+        $loja = (new SolicitacaoRetiradas())->newQuery()
+            ->find($pacote->coleta, 'loja');
+        $loja = $loja->loja;
+
         $frete = FretesRealizados::query()->where('pacotes_id', '=', $pacote->id)->first();
 
-        return view('pages.entregadores.pacotes.show', compact('pacote', 'historicos'));
+        return view('pages.entregadores.pacotes.show',
+            compact('pacote', 'historicos', 'recebedor', 'loja'));
     }
 }

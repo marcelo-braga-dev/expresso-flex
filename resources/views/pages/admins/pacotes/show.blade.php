@@ -139,7 +139,7 @@
                         <div class="row mb-2">
                             <div class="col-md-6">
                                 <p class="text-sm mb-0">
-                                    <b>Observações:</b> {{ $recebedor->obsevacoes }}
+                                    <b>Observações:</b> {{ $recebedor->observacoes }}
                                 </p>
                             </div>
                         </div>

@@ -80,6 +80,12 @@
                             Histórico de Coletas
                         </a>
                     </li>
+                    <li class="nav-item @if (SUBMENU === 'entregas-finalizadas') active @endif">
+                        <a class="nav-link pl-5"
+                           href="{{ route('entregadores.historicos.entregas-finalizadas.index') }}">
+                            Entregas Finalizadas
+                        </a>
+                    </li>
                 </ul>
             </div>
         </li>

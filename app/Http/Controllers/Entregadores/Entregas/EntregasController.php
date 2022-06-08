@@ -55,7 +55,7 @@ class EntregasController extends Controller
                 'recebedor' => $request->recebedor,
                 'nome' => $request->nome_recebedor,
                 'documento' => $request->documento_recebedor,
-                'obsevacoes' => $request->observacoes,
+                'observacoes' => $request->observacoes,
                 'img_pacote' => $imagem
             ]);
 

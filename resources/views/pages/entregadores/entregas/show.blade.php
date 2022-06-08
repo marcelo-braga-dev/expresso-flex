@@ -17,6 +17,32 @@
                 </div>
             </div>
             <div class="card-body p-1 p-md-3">
+                <div class="card">
+
+                    <div class="row justify-content-between align-items-center m-3">
+                        <div class="pt-3">
+                            <div class="row">
+                                <div class="col-1"></div>
+                                <div class="col-auto"><h5>Destinatário:</h5></div>
+                            </div>
+                            <p>
+                                <i class="fas fa-user mr-2"></i>
+                                <b>{{ get_destinatario_pacote($pacote->destinatario)->nome }}</b>
+                            </p>
+                            <p>
+                                <i class="fas fa-phone mr-2"></i>
+                                {{ get_destinatario_pacote($pacote->destinatario)->telefone }}
+                            </p>
+                        </div>
+                        <div>
+                            <button class="icon btn btn-success rounded-circle icon-shape">
+                                <span class="btn-inner--icon">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-md-6 pt-2">
                         <div class="card p-3">
@@ -31,24 +57,15 @@
                             {{--    </div>--}}
                             {{--@endif--}}
 
-                            <div class="row">
+                            <div class="row mb-3">
                                 <div class="col-1 text-center">
                                     <p class="mb-1">
-                                        <i class="fas fa-map-marker-alt mr-2"></i>
+                                        <i class="fas fa-map-marker-alt mr-2 text-danger"></i>
                                     </p>
                                 </div>
                                 <div class="col-10">
+                                    <h5>Endereço:</h5>
                                     <p class="h3">
-                                        {{ get_endereco($pacote->endereco) }}
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <div class="col-1"></div>
-                                <div class="col-10">
-                                    <p class="text-sm">
-                                        Cep: {{ formatar_cep($pacote->cep) }},
                                         {{ get_endereco($pacote->endereco) }}
                                     </p>
                                 </div>
@@ -74,28 +91,6 @@
                         </div>
                     </div>
                     <div class="col-md-6 pt-2">
-                        <div class="card mb-3">
-                            <div class="row justify-content-between align-items-center m-3">
-                                <div class="pt-3">
-                                    <p>
-                                        <i class="fas fa-user mr-2"></i>
-                                        <b>{{ get_destinatario_pacote($pacote->destinatario)->nome }}</b>
-                                    </p>
-                                    <p>
-                                        <i class="fas fa-phone mr-2"></i>
-                                        {{ get_destinatario_pacote($pacote->destinatario)->telefone }}
-                                    </p>
-                                </div>
-                                <div>
-                                    <button type="submit" class="icon btn btn-success rounded-circle icon-shape">
-                                        <span class="btn-inner--icon">
-                                            <i class="fas fa-phone"></i>
-                                        </span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="card mb-3">
                             <div class="row justify-content-between align-items-center m-3">
                                 <div class="pt-3">

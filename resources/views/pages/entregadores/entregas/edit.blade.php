@@ -60,9 +60,9 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col-12">
-                        <small>
+
                             <b>Endereço:</b> {{ get_endereco($pacote->endereco) }}
-                        </small>
+
                     </div>
                 </div>
                 <hr class="my-2">
@@ -95,26 +95,28 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label class="form-control-label" for="documento_recebedor">CPF</label>
+                                <label class="form-control-label" for="documento_recebedor">RG/CPF</label>
                                 <input type="text" name="documento_recebedor" id="documento_recebedor"
                                        class="form-control form-control-alternative cpf" required autofocus>
                             </div>
                         </div>
                     </div>
                     <div class="form-row">
-                        <div class="col-lg-6">
+                        <div class="col-12">
                             <div class="form-group">
                                 <label class="form-control-label" for="observacoes">Observações</label>
                                 <textarea class="form-control" name="observacoes"></textarea>
                             </div>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label class="form-control-label" for="observacoes">Fotos</label>
-                                <input type="file" name="imagem" class="form-control">
-                            </div>
-                        </div>
                     </div>
+{{--                    <div class="form-row">--}}
+{{--                        <div class="col-12">--}}
+{{--                            <div class="form-group">--}}
+{{--                                <label class="form-control-label">Fotos</label>--}}
+{{--                                <input type="file" name="imagem" class="form-control">--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                     <div class="form-row justify-content-center">
                         <div class="col-auto">
                             <button type="submit" class="btn btn-success">Finalizar Entrega</button>

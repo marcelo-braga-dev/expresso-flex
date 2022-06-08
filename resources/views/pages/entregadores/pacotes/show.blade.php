@@ -1,4 +1,4 @@
-<x-layout menu="historico" submenu="historico-pacotes">
+<x-layout>
     <div class="header bg-principal bg-height-top"></div>
 
     <div class="container-fluid mt--9">
@@ -96,20 +96,20 @@
                                 {{ get_dados_usuario($pacote->user_id)->name }}
                             </p>
                         </div>
-                        <div class="col-md-3">
-                            <p class="text-sm mb-0">
-                                <b>Telefone:</b>
-                                @if (!empty($pacote->loja))
-                                    {{ get_loja($pacote->loja, $pacote->user_id)->celular }}
-                                @endif
-                            </p>
-                        </div>
+{{--                        <div class="col-md-3">--}}
+{{--                            <p class="text-sm mb-0">--}}
+{{--                                <b>Telefone:</b>--}}
+{{--                                @if (!empty($pacote->loja))--}}
+{{--                                    {{ get_loja($pacote->loja, $pacote->user_id)->celular }}--}}
+{{--                                @endif--}}
+{{--                            </p>--}}
+{{--                        </div>--}}
                     </div>
                     <div class="row">
                         <div class="col-12">
                             <p class="text-sm mb-0">
                                 <b>Endereço:</b>
-                                {{ get_endereco_loja($pacote->loja) }}
+                                {{ get_endereco_loja($loja) }}
                             </p>
                         </div>
                     </div>
@@ -121,38 +121,28 @@
                         <div class="col-md-6">
                             <p class="text-sm mb-0">
                                 <b>Quem recebeu?</b>
-                                @isset($recebedor['recebedor'])
-                                    {{ ucfirst($recebedor['recebedor']) }}
-                                @endisset
+                                {{ $recebedor->recebedor }}
                             </p>
                         </div>
                     </div>
                     <div class="row mb-2">
                         <div class="col-md-6">
                             <p class="text-sm mb-0">
-                                <b>Nome:</b>
-                                @isset($recebedor['nome_recebedor'])
-                                    {{ $recebedor['nome_recebedor'] }}
-                                @endisset
+                                <b>Nome:</b> {{ $recebedor->nome }}
                             </p>
                         </div>
                         <div class="col-md-6">
                             <p class="text-sm mb-0">
-                                <b>CPF/RG:</b>
-                                @isset($recebedor['documento_recebedor'])
-                                    {{ $recebedor['documento_recebedor'] }}
-                                @endisset
+                                <b>CPF/RG:</b> {{ $recebedor->documento }}
                             </p>
                         </div>
                     </div>
-                    @if (!empty($recebedor['observacoes']))
+                    @if (!empty($recebedor->observacoes))
                         <div class="row mt-2">
                             <div class="col-12">
                                 <p class="text-sm mb-0">
                                     <b>Observações:</b><br>
-                                    @isset($recebedor['observacoes'])
-                                        {{ $recebedor['observacoes'] }}
-                                    @endisset
+                                    {{ $recebedor->observacoes }}
                                 </p>
                             </div>
                         </div>
@@ -168,9 +158,9 @@
                                     <thead class="thead-light">
                                     <tr>
                                         <th scope="col" class="col-1"></th>
+                                        <th scope="col">Data</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Mensagem</th>
-                                        <th scope="col">Data</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -183,14 +173,14 @@
                                                     <i class="fas fa-times text-danger"></i>
                                                 @endif
                                             </td>
+                                            <td>
+                                                {{ date('d/m/y H:i', strtotime($historico['data'])) }}
+                                            </td>
                                             <th scope="row">
                                                 {{ get_status_pacote($historico['status']) }}
                                             </th>
                                             <td>
                                                 -
-                                            </td>
-                                            <td>
-                                                {{ date('d/m/y H:i', strtotime($historico['data'])) }}
                                             </td>
                                         </tr>
                                     @endforeach

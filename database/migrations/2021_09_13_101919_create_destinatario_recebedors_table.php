@@ -19,7 +19,7 @@ class CreateDestinatarioRecebedorsTable extends Migration
             $table->string('recebedor');
             $table->string('nome');
             $table->string('documento');
-            $table->string('obsevacoes')->nullable();
+            $table->string('observacoes')->nullable();
             $table->string('img_pacote')->nullable();
         });
     }
