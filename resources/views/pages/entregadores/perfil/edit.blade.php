@@ -1,4 +1,4 @@
-<x-layout menu="perfil" submenu="perfil-editar">
+<x-layout menu="perfil" submenu="minha-conta">
     <div class="header bg-principal bg-height-top"></div>
     <div class="container-fluid mt--9">
         <div class="card bg-secondary shadow">
@@ -10,7 +10,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <form method="post" action="{{ route('entregadores.perfil.update', id_usuario_atual()) }}"
+                <form method="post" action="{{ route('entregadores.perfil.usuario.update', id_usuario_atual()) }}"
                       autocomplete="off">
                     @csrf @method('put')
                     <div class="row">

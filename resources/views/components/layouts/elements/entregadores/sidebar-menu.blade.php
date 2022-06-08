@@ -117,10 +117,16 @@
             </span>
             <div class="collapse  @if (MENU === 'perfil') show @endif" id="navbar-perfil">
                 <ul class="nav nav-sm flex-column">
-                    <li class="nav-item @if (SUBMENU === 'perfil-pagamentos') active @endif">
+                    <li class="nav-item @if (SUBMENU === 'minha-conta') active @endif">
                         <a class="nav-link pl-5"
-                           href="{{ route('entregadores.perfil.edit', id_usuario_atual()) }}">
-                            Sua conta
+                           href="{{ route('entregadores.perfil.usuario.edit', id_usuario_atual()) }}">
+                            Minha conta
+                        </a>
+                    </li>
+                    <li class="nav-item @if (SUBMENU === 'alterar-senha') active @endif">
+                        <a class="nav-link pl-5"
+                           href="{{ route('entregadores.perfil.alterar-senha.index') }}">
+                           Alterar Senha
                         </a>
                     </li>
                 </ul>
