@@ -88,7 +88,7 @@
                     <div class="card-header bg-white mb-0">
                         <div class="row align-items-center">
                             <div class="col-auto">
-                                <h4 class="card-title text-uppercase mb-0">Faturamento</h4>
+                                <h4 class="card-title text-uppercase mb-0">Faturamento Diário</h4>
                                 <p class="mb-0">Período: {{$mes . '/' . $ano}}</p>
                             </div>
                         </div>
@@ -117,7 +117,7 @@
                             <div class="row justify-content-center">
                                 <div class="col-auto p-3">
                                     <small class="text-muted">
-                                        Não há histórico de pagamentos
+                                        Não há histórico de faturamento
                                     </small>
                                 </div>
                             </div>
@@ -173,7 +173,7 @@
                             <div class="row justify-content-center">
                                 <div class="col-auto p-3">
                                     <small class="text-muted">
-                                        Não há histórico de pagamentos
+                                        Não há histórico de pacotes
                                     </small>
                                 </div>
                             </div>

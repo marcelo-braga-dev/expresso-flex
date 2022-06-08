@@ -22,7 +22,7 @@
                             class="list-group-item d-flex justify-content-between align-items-center px-4 row-clickable">
                             <div class="row">
                                 <div class="col-auto pt-2">
-                                    <span>{{ $frete['mes'] . '/' . $frete['ano'] }}</span>
+                                    <span>{{ converterMes($frete['mes'])  . '/' . $frete['ano'] }}</span>
                                 </div>
                                 <div class="col-auto">
                                     <small>
