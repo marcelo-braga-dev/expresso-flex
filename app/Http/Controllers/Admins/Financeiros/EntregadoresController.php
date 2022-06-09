@@ -10,52 +10,48 @@ class EntregadoresController
 {
     public function index(FinanceiroService $financeiroService)
     {
-        print_pre('Em manutencao');
-        $fretesRealizados = ComissoesEntregadores::get();
+        $fretesRealizados = (new ComissoesEntregadores())->newQuery()->get();
 
-        $entregadores = $financeiroService->getUsuarios($fretesRealizados);
+        $clientes = $financeiroService->getUsuarios($fretesRealizados);
 
-        return view('pages.admin.financeiro.entregadores.todos-entregadores', compact('entregadores'));
+        return view('pages.admins.financeiros.entregadores.index', compact('clientes'));
     }
 
-    public function historicoMes(Request $request, FinanceiroService $financeiroService)
+    public function mes($id)
     {
-        $user = $request->id;
+        $financeiroService = new \App\Service\Clientes\Financeiro\FinanceiroService();
+        $fretes = $financeiroService->historicoMensal(new ComissoesEntregadores(), $id);
 
-        $fretesRealizados = ComissoesEntregadores::where('user_id', '=', $user)->get();
-
-        $fretes = $financeiroService->getHistoricoFinanceiro($fretesRealizados);
-
-        return view('pages.admin.financeiro.entregadores.mes', compact('fretes', 'user'));
+        return view('pages.admins.financeiros.entregadores.mes', compact('fretes', 'id'));
     }
 
-    public function historicoQuinzena(Request $request, FinanceiroService $financeiroService)
+    public function quinzena(Request $request, $id)
     {
-        $user = $request->id;
+        $mes = $request->mes;
+        $ano = $request->ano;
+        $financeiroService = new \App\Service\Clientes\Financeiro\FinanceiroService();
+        $fretes = $financeiroService->quinzena(new ComissoesEntregadores(), $mes, $ano, $id);
 
-        $clsComissoesEntregadores = new ComissoesEntregadores;
-
-        $fretes = $financeiroService->getHistoricoQuinzena($clsComissoesEntregadores, $request);
-
-        return view('pages.admin.financeiro.entregadores.quinzena', compact('fretes', 'user'));
+        return view('pages.admins.financeiros.entregadores.quinzena',
+            compact('fretes', 'id', 'mes', 'ano'));
     }
 
-    public function historicoDetalhesMes(Request $request, FinanceiroService $financeiroService)
+    public function show(Request $request)
     {
+        $financeiroService = new FinanceiroService();
         $fretesRealizados = new ComissoesEntregadores();
 
         $user = $request->id;
 
         $fretes = $financeiroService->getInfoQuinzena($fretesRealizados, $request);
 
-        return view('pages.admin.financeiro.entregadores.detalhes-mes', compact('fretes', 'user'));
+        return view('pages.admins.financeiros.entregadores.show',
+            compact('fretes', 'user'));
     }
 
-    public function pagamentoDinheiro(Request $request, FinanceiroService $financeiroService)
+    public function pago($id, Request $request)
     {
-        $fretesRealizados = new ComissoesEntregadores();
-
-        $financeiroService->setPagamentoDinheiro($fretesRealizados, $request, $request->id);
+        (new FinanceiroService)->setPagamentoDinheiro(new FretesRealizados(), $request, $id);
 
         return redirect()->back();
     }

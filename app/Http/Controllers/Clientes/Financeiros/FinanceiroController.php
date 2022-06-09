@@ -14,7 +14,7 @@ class FinanceiroController extends Controller
     public function historicoMensal()
     {
         $financeiroService = new \App\Service\Clientes\Financeiro\FinanceiroService();
-        $fretes = $financeiroService->historicoMensal();
+        $fretes = $financeiroService->historicoMensal(new FretesRealizados());
 
         return view('pages.clientes.financeiro.index', compact('fretes'));
     }

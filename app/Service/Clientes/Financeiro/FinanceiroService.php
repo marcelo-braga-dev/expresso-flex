@@ -7,11 +7,11 @@ use App\Models\FretesRealizados;
 
 class FinanceiroService
 {
-    public function historicoMensal($id = null)
+    public function historicoMensal($classe, $id = null)
     {
         $id = $id ?? id_usuario_atual();
 
-        $todosFretes = (new FretesRealizados())->newQuery()
+        $todosFretes = $classe->newQuery()
             ->where('user_id', '=', $id)
             ->orderBy('created_at', 'DESC')
             ->get();
@@ -39,22 +39,20 @@ class FinanceiroService
         return $fretes;
     }
 
-    public function quinzena($mes, $ano, $id = null)
+    public function quinzena($cls, $mes, $ano, $id = null)
     {
         $id = $id ?? id_usuario_atual();
         $abertoQuinzena2 = [];
         $abertoQuinzena1 = [];
         $pagoQuinzena2 = [];
         $pagoQuinzena1 = [];
-        $fretesRealizados = new FretesRealizados();
 
-        $todosFretes = $fretesRealizados->query()
+        $todosFretes = $cls->newQuery()
             ->where('user_id', '=', $id)
             ->whereMonth('created_at', $mes)
             ->whereYear('created_at', $ano)
             ->orderBy('created_at', 'ASC')
             ->get(['status', 'value', 'created_at']);
-
 
         foreach ($todosFretes as $item) {
             $dia = date('d', strtotime($item['created_at']));

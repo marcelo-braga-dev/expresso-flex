@@ -20,7 +20,7 @@ class ClientesController
     public function mes($id)
     {
         $financeiroService = new \App\Service\Clientes\Financeiro\FinanceiroService();
-        $fretes = $financeiroService->historicoMensal($id);
+        $fretes = $financeiroService->historicoMensal(new FretesRealizados(), $id);
 
         return view('pages.admins.financeiros.clientes.mes', compact('fretes', 'id'));
     }
