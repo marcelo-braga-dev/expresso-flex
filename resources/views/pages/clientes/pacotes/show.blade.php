@@ -94,38 +94,28 @@
                         <div class="col-md-6">
                             <p class="text-sm mb-0">
                                 <b>Quem recebeu?</b>
-                                @isset($recebedor['recebedor'])
-                                    {{ ucfirst($recebedor['recebedor']) }}
-                                @endisset
+                                {{ $recebedor->recebedor }}
                             </p>
                         </div>
                     </div>
                     <div class="row mb-2">
                         <div class="col-md-6">
                             <p class="text-sm mb-0">
-                                <b>Nome:</b>
-                                @isset($recebedor['nome_recebedor'])
-                                    {{ $recebedor['nome_recebedor'] }}
-                                @endisset
+                                <b>Nome:</b> {{ $recebedor->nome }}
                             </p>
                         </div>
                         <div class="col-md-6">
                             <p class="text-sm mb-0">
-                                <b>CPF/RG:</b>
-                                @isset($recebedor['documento_recebedor'])
-                                    {{ $recebedor['documento_recebedor'] }}
-                                @endisset
+                                <b>CPF/RG:</b> {{ $recebedor->documento }}
                             </p>
                         </div>
                     </div>
-                    @if (!empty($recebedor['observacoes']))
+                    @if (!empty($recebedor->observacoes))
                         <div class="row mt-2">
                             <div class="col-12">
                                 <p class="text-sm mb-0">
                                     <b>Observações:</b><br>
-                                    @isset($recebedor['observacoes'])
-                                        {{ $recebedor['observacoes'] }}
-                                    @endisset
+                                    {{ $recebedor->observacoes }}
                                 </p>
                             </div>
                         </div>
@@ -142,9 +132,10 @@
                                     <table class="table align-items-center table-flush">
                                         <thead class="thead-light">
                                         <tr>
-                                            <th scope="col"></th>
-                                            <th scope="col">Status</th>
+                                            <th scope="col" class="col-1"></th>
                                             <th scope="col">Data</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Mensagem</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -154,14 +145,17 @@
                                                     @if (empty($historico['obs']))
                                                         <i class="fas fa-check text-success"></i>
                                                     @else
-                                                        {{ $historico['obs'] }}
+                                                        <i class="fas fa-times text-danger"></i>
                                                     @endif
+                                                </td>
+                                                <td>
+                                                    {{ date('d/m/y H:i', strtotime($historico['data'])) }}
                                                 </td>
                                                 <th scope="row">
                                                     {{ get_status_pacote($historico['status']) }}
                                                 </th>
                                                 <td>
-                                                    {{ date('d/m/y H:i', strtotime($historico['data'])) }}
+                                                    -
                                                 </td>
                                             </tr>
                                         @endforeach

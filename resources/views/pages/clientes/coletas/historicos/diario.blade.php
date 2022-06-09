@@ -7,7 +7,7 @@
                 <div class="row align-items-center">
                     <div class="col">
                         <h4 class="card-title text-uppercase mb-2">
-                            Histórico de Pacotes Coletados no Dia
+                            Histórico de Pacotes Coletados
                         </h4>
                     </div>
                     <div class="col-auto">

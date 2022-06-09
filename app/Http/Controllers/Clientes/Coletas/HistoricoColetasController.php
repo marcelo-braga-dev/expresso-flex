@@ -15,15 +15,15 @@ class HistoricoColetasController extends Controller
 
         $solicitacoes = [];
 
-        $coletas = $solicitacaoRetiradas
+        $coletas = $solicitacaoRetiradas->newQuery()
             ->where('user_id', '=', id_usuario_atual())
-            ->orderBy('updated_at', 'DESC')
+            ->orderBy('created_at', 'DESC')
             ->get();
 
         foreach ($coletas as $arg) {
-            $data = date('m/y', strtotime($arg->updated_at));
+            $data = date('m/y', strtotime($arg->created_at));
 
-            $solicitacoes[$data][] = $arg->updated_at;
+            $solicitacoes[$data][] = $arg->created_at;
         }
 
         return view('pages.clientes.coletas.historicos.index', compact('solicitacoes'));
@@ -38,9 +38,9 @@ class HistoricoColetasController extends Controller
 
         $solicitacoes = $solicitacaoRetiradas->query()
             ->where('user_id', '=', id_usuario_atual())
-            ->whereMonth('updated_at', $mes)
-            ->whereYear('updated_at', $ano)
-            ->orderBy('updated_at', 'DESC')
+            ->whereMonth('created_at', $mes)
+            ->whereYear('created_at', $ano)
+            ->orderBy('created_at', 'DESC')
             ->get();
 
         return view('pages.clientes.coletas.historicos.mensal', compact('solicitacoes'));
@@ -52,10 +52,8 @@ class HistoricoColetasController extends Controller
 
         $pacotes = $clsPacotes->query()
             ->where('user_id', '=', id_usuario_atual())
-            ->whereYear('updated_at', $request->ano)
-            ->whereMonth('updated_at', $request->mes)
-            ->whereDay('updated_at', $request->dia)
-            ->orderBy('updated_at', 'DESC')
+            ->where('coleta', '=', $request->id)
+            ->orderBy('created_at', 'DESC')
             ->get();
 
         return view('pages.clientes.coletas.historicos.diario', compact('pacotes'));

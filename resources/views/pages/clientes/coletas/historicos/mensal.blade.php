@@ -21,18 +21,17 @@
                                 <p class="mb-0 d-block">
                                     <b>Data: {{ date('d/m/Y', strtotime($solicitacao->updated_at)) }}</b>
                                 </p>
-                                <small class="d-block">
+                                <small class="mr-3">
                                     Status: {{ get_status_coleta($solicitacao->status) }}
+                                </small>
+                                <small>
+                                    ID: #{{ $solicitacao->id }}
                                 </small>
                             </div>
                             <div>
                                 <a class="small"
                                    href="
-                                        {{ route('clientes.coletas.historicos.diario', [
-                                            'dia' => date('d', strtotime($solicitacao->updated_at)),
-                                            'mes' => date('m', strtotime($solicitacao->updated_at)),
-                                            'ano' => date('Y', strtotime($solicitacao->updated_at)),
-                                        ]) }} ">
+                                        {{ route('clientes.coletas.historicos.diario', ['id' => $solicitacao->id]) }} ">
                                     Ver pacotes coleados
                                 </a>
                             </div>
