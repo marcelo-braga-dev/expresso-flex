@@ -42,6 +42,6 @@ class StatusController extends Controller
         $pacotes = new Pacotes();
         return $pacotes->newQuery()
             ->where('status', '=', $status->getStatus())
-            ->get();
+            ->paginate();
     }
 }
