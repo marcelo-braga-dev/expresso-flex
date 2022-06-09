@@ -11,61 +11,43 @@ class HistoricoController
 {
     public function index()
     {
-        $solicitacaoRetiradas = new SolicitacaoRetiradas();
-
-        $solicitacoes = [];
-
-        $_solicitacoes =
-            $solicitacaoRetiradas
-                //->where('entregador', '=', id_usuario_atual())
+        $items = (new SolicitacaoRetiradas())->newQuery()
                 ->orderBy('updated_at', 'DESC')
                 ->get();
 
-        foreach ($_solicitacoes as $arg) {
-            $data = date('d/m/y', strtotime($arg->updated_at));
+        $solicitacoes = [];
+        foreach ($items as $item) {
+            $data = date('d/m/y', strtotime($item->updated_at));
 
-            $solicitacoes[$data][] = $arg->updated_at;
+            $solicitacoes[$data][] = $item->updated_at;
         }
 
-        return view('pages.admin.coletas.historico-coletas', compact('solicitacoes'));
+        return view('pages.admins.coletas.index', compact('solicitacoes'));
     }
 
     public function historicoPacotesColetadosDia(Request $request)
     {
-        $clsPacotes = new Pacotes();
-
-        $pacotes = $clsPacotes->query()
+        $pacotes = (new Pacotes())->newQuery()
             ->where('coleta', '=', $request->id)
             ->orderBy('updated_at', 'DESC')
             ->get();
 
-        return view('pages.admin.coletas.historico-pacotes-coletados-dia', compact('pacotes'));
+        return view('pages.admins.coletas.show', compact('pacotes'));
     }
 
     // Historico de coletas
     public function historicoDiario(Request $request)
     {
-        $solicitacaoRetiradas = new SolicitacaoRetiradas();
-
-        $pacotes = [];
         $dia = $request->data;
 
-        $data = $request->data;
         $data = date('Y-m-d', strtotime($request->data));
 
-        $solicitacoes = $solicitacaoRetiradas->query()
+        $solicitacoes = (new SolicitacaoRetiradas())->newQuery()
             ->whereDate('updated_at', $data)
             ->orderBy('updated_at', 'DESC')
             ->get();
 
-        return view('pages.admin.coletas.historico-dia-coletas', compact('solicitacoes', 'dia'));
-    }
-
-    public function config(MetaValues $metaValues)
-    {
-        $horarioLimite = '';
-
-        return view('pages.admin.coletas.config-coletas', compact('horarioLimite'));
+        return view('pages.admins.coletas.dia', compact('solicitacoes', 'dia'));
     }
 
     public function update(Request $request, MetaValues $metaValues)

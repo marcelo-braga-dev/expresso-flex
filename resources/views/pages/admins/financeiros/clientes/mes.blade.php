@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout menu="financeiro" submenu="financeiro-clientes">
     <div class="header bg-principal bg-height-top"></div>
 
     <div class="container-fluid mt--9">
@@ -7,7 +7,7 @@
                 <div class="row align-items-center">
                     <div class="col">
                         <h4 class="card-title text-uppercase mb-1">Histórico de Pagamentos</h4>
-                        <p class="mb-1">{{ get_nome_usuario($user) }}</p>
+                        <p class="mb-1"><b>Cliente:</b> {{ get_nome_usuario($id) }}</p>
                     </div>
                     <div class="col-auto">
                         <div class="icon icon-shape bg-primary text-white rounded-circle shadow">
@@ -23,7 +23,7 @@
                             class="list-group-item d-flex justify-content-between align-items-center px-4 row-clickable">
                             <div class="row">
                                 <div class="col-auto pt-2">
-                                    <span>{{ $frete['mes'] . '/' . $frete['ano'] }}</span>
+                                    <span>{{ converterMes($frete['mes']) . '/' . $frete['ano'] }}</span>
                                 </div>
                                 <div class="col-auto">
                                     <small>
@@ -56,10 +56,8 @@
                                     </small>
                                 </div>
                             </div>
-                            <?php $mes = $frete['mes'];
-                            $ano = $frete['ano']; ?>
                             <a class="btn btn-link p-0 btn-sm"
-                               href="{{ route('admins.financeiros.historicoQuinzena', ['mes' => $frete['mes'], 'ano' => $frete['ano'], 'id' => $user]) }}">
+                               href="{{ route('admins.financeiros.quinzena', ['id' => $id, 'mes' => $frete['mes'], 'ano' => $frete['ano'] ]) }}">
                                 Detalhes
                             </a>
                         </li>

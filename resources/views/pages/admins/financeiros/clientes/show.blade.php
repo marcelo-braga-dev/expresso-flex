@@ -1,7 +1,7 @@
-<x-layout>
+<x-layout menu="financeiro" submenu="financeiro-clientes">
     <div class="header bg-principal bg-height-top"></div>
 
-    <div class="container-fluid mt--9 mb-4">
+    <div class="container-fluid mt--9 mb-5">
         <div class="row">
             <div class="col-md-5">
                 {{-- Faturamento --}}
@@ -12,9 +12,11 @@
                                 <h5 class="card-title text-uppercase text-muted mb-0">
                                     Valor a pagar
                                 </h5>
-                                <span class="text-warning d-block"><b>
+                                <span class="text-warning d-block">
+                                    <b>
                                         {{ $fretes['quinzena'] }}° Quinzena de
-                                        {{ $fretes['mes'] . '/' . $fretes['ano'] }}</b>
+                                        {{ converterMes($fretes['mes']) . '/' . $fretes['ano'] }}
+                                    </b>
                                 </span>
                                 <span class="h2 font-weight-bold mb-0">
                                     R$ {{ number_format($fretes['faturamento']['aberto'], 2, ',', '.') }}
@@ -26,7 +28,7 @@
                                 </div>
                             </div>
                         </div>
-                        <p class="mt-1 mb-0 text-sm">
+                        <div class="mt-1 mb-0 text-sm">
                             <span class="text-nowrap d-block">
                                 <b>Valores Pagos:</b> R$ {{ number_format($fretes['faturamento']['pago'], 2, ',', '.') }}
                             </span>
@@ -34,7 +36,7 @@
                                 <b>Faturamento Total:</b> R$
                                 {{ number_format($fretes['faturamento']['total'], 2, ',', '.') }}
                             </span>
-                        </p>
+                        </div>
                     </div>
                 </div>
 
@@ -96,7 +98,6 @@
                                 <tr>
                                     <th>Data</th>
                                     <th>Total do Dia</th>
-                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody class="list bg-white">
@@ -108,9 +109,6 @@
                                             </th>
                                             <td>
                                                 R$ {{ number_format($frete, 2, ',', '.') }}
-                                            </td>
-                                            <td class="text-right">
-                                                <a href="/">Detalhes</a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -146,12 +144,11 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    Confirmar o pagamento da quinzena?
+                    Confirmar o recebimento do pagamento da quinzena.
                 </div>
                 <div class="modal-footer">
-                    <form method="POST" action="{{ route('admins.financeiros.entregadores.pagamentoDinheiro') }}">
+                    <form method="POST" action="{{ route('admins.financeiros.pago', $user) }}">
                         @csrf @method('put')
-                        <input type="hidden" name="id" value="{{ $user }}">
                         <input type="hidden" name="quinzena" value="{{ $fretes['quinzena'] }}">
                         <input type="hidden" name="mes" value="{{ $fretes['mes'] }}">
                         <input type="hidden" name="ano" value="{{ $fretes['ano'] }}">

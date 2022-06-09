@@ -18,7 +18,7 @@ class StatusController extends Controller
 
         $pacotes = $this->getPacotes($status);
 
-        return view('pages.admin.pacotes.status.sob-coleta', compact('pacotes'));
+        return view('pages.admins.pacotes.status.sendo-coletados.index', compact('pacotes'));
     }
 
     public function base()
@@ -26,7 +26,7 @@ class StatusController extends Controller
         $status = new Base();
         $pacotes = $this->getPacotes($status);
 
-        return view('pages.admin.pacotes.status.base', compact('pacotes'));
+        return view('pages.admins.pacotes.status.base.index', compact('pacotes'));
     }
 
     public function sobEntrega()
@@ -34,7 +34,7 @@ class StatusController extends Controller
         $status = new EntregaIniciado();
         $pacotes = $this->getPacotes($status);
 
-        return view('pages.admin.pacotes.status.sob-entrega', compact('pacotes'));
+        return view('pages.admins.pacotes.status.sendo-entregue.index', compact('pacotes'));
     }
 
     private function getPacotes(Status $status)

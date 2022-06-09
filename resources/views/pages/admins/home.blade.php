@@ -14,7 +14,7 @@
                                     Usuários
                                 </h5>
                                 <span class="h2 font-weight-bold mb-0">
-                                    Clientes X2
+                                    Clientes
                                 </span>
                             </div>
                             <div class="col-auto">

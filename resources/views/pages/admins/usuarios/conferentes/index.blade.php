@@ -88,5 +88,5 @@
             </div>
         </div>
     </div>
-    @include('pages.admin.usuarios.partials.modalAlteraStatus')
+    @include('pages.admins.usuarios.partials.modalAlteraStatus')
 </x-layout>

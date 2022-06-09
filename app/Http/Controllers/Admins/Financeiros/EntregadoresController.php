@@ -55,7 +55,7 @@ class EntregadoresController
     {
         $fretesRealizados = new ComissoesEntregadores();
 
-        $financeiroService->setPagamentoDinheiro($fretesRealizados, $request);
+        $financeiroService->setPagamentoDinheiro($fretesRealizados, $request, $request->id);
 
         return redirect()->back();
     }

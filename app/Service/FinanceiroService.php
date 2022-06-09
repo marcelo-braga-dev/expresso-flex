@@ -52,12 +52,13 @@ class FinanceiroService
         return $entregadores;
     }
 
-    public function setPagamentoDinheiro($cls, $request) {
+    public function setPagamentoDinheiro($cls, $request, $id)
+    {
         $operador = '<=';
         if ($request->quinzena == 2) $operador = '>';
 
-        $todosFretes = $cls->query()
-            ->where('user_id', '=', $request->id)
+        $cls->newQuery()
+            ->where('user_id', '=', $id)
             ->whereMonth('created_at', $request->mes)
             ->whereYear('created_at', $request->ano)
             ->whereDay('created_at', $operador, 15)

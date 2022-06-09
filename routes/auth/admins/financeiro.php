@@ -7,6 +7,10 @@ Route::prefix('financeiro/clientes')
     ->controller('ClientesController')
     ->group(function () {
         Route::get('', 'index')->name('index');
+        Route::get('mes/{id}', 'mes')->name('mes');
+        Route::get('quinzena/{id}', 'quinzena')->name('quinzena');
+        Route::get('show/{id}', 'show')->name('show');
+        Route::put('pago/{id}', 'pago')->name('pago');
     });
 
 Route::prefix('financeiro/entregadores')

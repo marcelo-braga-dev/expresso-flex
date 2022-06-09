@@ -9,45 +9,30 @@ class HistoricoController
 {
     public function index()
     {
-        $Pacotes = new Pacotes();
-
-        $pacotes = [];
-
-        $_pacotes = $Pacotes->query()
-            ->where('status', '!=', 'pacote_nova_etiqueta')
+        $items = (new Pacotes())->newQuery()
             ->orderBy('updated_at', 'DESC')
             ->get();
 
-        foreach ($_pacotes as $arg) {
-            $data = date('d/m/y', strtotime($arg->updated_at));
+        $pacotes = [];
+        foreach ($items as $item) {
+            $data = date('d/m/y', strtotime($item->updated_at));
 
-            $pacotes[$data][] = $arg->updated_at;
+            $pacotes[$data][] = $item->updated_at;
         }
 
-        return view('pages.admin.pacotes.historico', compact('pacotes'));
+        return view('pages.admins.pacotes.historicos.index', compact('pacotes'));
     }
 
     public function diario(Request $request)
     {
-        $Pacotes = new Pacotes();
-
-        $pacotes = [];
         $dia = $request->data;
-
-        $data = $request->data;
         $data = date('Y-m-d', strtotime($request->data));
 
-        $pacotes = $Pacotes->query()
-            ->where('status', '!=', 'pacote_nova_etiqueta')
+        $pacotes = (new Pacotes())->newQuery()
             ->whereDate('updated_at', $data)
             ->get();
 
-        return view('pages.admin.pacotes.historico-diario', compact('pacotes', 'dia'));
-    }
-
-    public function info(Request $request)
-    {
-
+        return view('pages.admins.pacotes.historicos.show', compact('pacotes', 'dia'));
     }
 }
 
