@@ -12,12 +12,11 @@ abstract class Status
 
     }
 
-    public function update($dados)
+    public function update($dados, $userId)
     {
-        $verificarOrigem = new VerificarOrigemPacote();
-        $origem = $verificarOrigem->verificarOrigem($dados);
-
+        $origem = (new VerificarOrigemPacote())->verificarOrigem($dados);
         $pacote = $origem->getPacote($dados);
+
         if (empty($pacote)) {
             modalErro('Não foi possível atualizar esse pacote.');
             return;
@@ -30,23 +29,20 @@ abstract class Status
                 ['status', '=', $this->getStatus()]
             ])->exists();
 
-        if (!$exist) {
-            $pacote->update([
-                'status' => $this->getStatus()
-            ]);
+        if ($exist) throw new \DomainException('Status já cadastrado.');
 
-            if (auth()->user()->tipo == 'entregador') {
-                $pacote->update([
-                    'entregador' => id_usuario_atual()
-                ]);
-            }
+        $pacote->update([
+            'status' => $this->getStatus()
+        ]);
 
-            atualizarHistoricoPacote(id_usuario_atual(), $pacote->id, $this->getStatus());
+        // ATUALIZAR ENTREGADOR
+        //if (auth()->user()->tipo == 'entregador') {
+        //    $pacote->update([
+        //        'entregador' => id_usuario_atual()
+        //    ]);
+        //}
 
-            modalSucesso('Pacote registrado com sucesso!');
-            return;
-        }
-        modalErro('Pacote já registrado.');
+        atualizarHistoricoPacote($userId, $pacote->id, $this->getStatus());
     }
 
     abstract function getStatus(): string;

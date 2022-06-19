@@ -13,7 +13,7 @@ class ExpressoFlex implements OrigemPacote
 
     public function cadastrarPacote($dados)
     {
-        $pacote = new CadastrarPacotesExrpessoFlex($dados['id'], $dados['coleta']);
+        $pacote = new CadastrarPacotesExrpessoFlex($dados['id'], $dados['coleta'], $dados['entregador']);
         $pacote->cadastrar();
     }
 

@@ -1,7 +1,7 @@
 <x-layout menu="coletas" submenu="solicitacoes">
     <div class="header bg-principal bg-height-top"></div>
-
-    <div class="container-fluid mt--9 px-1">
+    <div class="container-fluid mt--9 px-1 mb-6">
+        <x-entregadores.botoes-header-entregador categoria="coletas"></x-entregadores.botoes-header-entregador>
         <div class="card bg-secondary shadow">
             <div class="card-header bg-white mb-0">
                 <div class="row align-items-center">
@@ -42,21 +42,10 @@
                 <div class="px-lg-4">
                     <div class="row mb-4">
                         <div class="col-lg-12">
-                            @foreach ($solicitacoesAceitas as $solicitacao)
-                                <div
-                                    class="card my-3 shadow-sm border-primary info-search @if (!$solicitacao['status']) bg-light @endif">
+                            @foreach ($solicitacoes as $solicitacao)
+                                <div class="card my-3 shadow-sm border-primary">
                                     <div class="row p-3">
                                         <div class="col-md-9">
-                                            @if (!$solicitacao['status'])
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <div class="alert alert-danger">
-                                                            COLETA CANCELADA PELO CLIENTE
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            @endif
-
                                             <p class="mb-0">
                                                 <i class="fas fa-user mr-2 text-primary"></i>
                                                 <b>{{ get_nome_usuario($solicitacao['user_id']) }}
@@ -67,11 +56,20 @@
                                                 <i class="fas fa-map-marker-alt mr-2 text-danger"></i>
                                                 {{ get_endereco_loja($solicitacao['loja']) }}
                                             </p>
-
-                                            <small class="d-block text-muted">
-                                                <i class="fas fa-hashtag mr-2 text-primary"></i>
-                                                ID da solicitação: #{{ $solicitacao['id'] }}
-                                            </small>
+                                            <div class="row">
+                                                <div class="col-6 col-md-3">
+                                                    <small class="text-muted">
+                                                        <i class="fas fa-calendar-alt mr-2 text-primary"></i>
+                                                        {{ date('d/m/y H:i', strtotime($solicitacao->updated_at)) }}
+                                                    </small>
+                                                </div>
+                                                <div class="col-6 col-md-3">
+                                                    <small class="text-muted">
+                                                        <i class="fas fa-hashtag mr-2 text-primary"></i>
+                                                        ID: #{{ $solicitacao['id'] }}
+                                                    </small>
+                                                </div>
+                                            </div>
 
                                             <form method="POST"
                                                   action="{{ route('entregadores.coletas.cancelar-coleta') }}">
@@ -83,9 +81,13 @@
                                                 <textarea class="form-control mb-2 d-none cancelar-coleta"
                                                           name="motivo_cancelamento"
                                                           placeholder="Motivo do cancelamento da coleta" rows="5"
-                                                          minlength="10"
+                                                          minlength="5"
                                                           required></textarea>
                                                 <div class="text-center mb-3">
+                                                    <button type="button"
+                                                            class="btn btn-secondary d-none cancelar-coleta btn-cancelar">
+                                                        Canelar
+                                                    </button>
                                                     <button type="submit" name="id_coleta"
                                                             value="{{ $solicitacao['id'] }}"
                                                             class="btn btn-success d-none cancelar-coleta">
@@ -97,13 +99,13 @@
                                         <div class="col-md-3">
                                             @if ($solicitacao['status'])
                                                 <div>
-                                                    <a class="btn btn-primary btn-block mb-3"
+                                                    <a class="btn btn-primary btn-block mb-3 cancelar-coleta"
                                                        href="{{ route('entregadores.coletas.pacotes.show', $solicitacao['id']) }}">
                                                         Cadastrar Pacotes
                                                     </a>
 
                                                     <button type="button"
-                                                            class="btn btn-danger btn-block btn-sm btn-cancelar">
+                                                            class="cancelar-coleta text-right btn btn-link text-danger btn-block btn-sm btn-cancelar">
                                                         Cancelar Coleta
                                                     </button>
                                                 </div>
@@ -120,7 +122,7 @@
                                 </div>
                             @endforeach
 
-                            @if ($solicitacoesAceitas->isEmpty())
+                            @if ($solicitacoes->isEmpty())
                                 <div class="row pt-3">
                                     <div class="col-auto mx-auto">
                                         <small class="text-muted">Não há coletas</small>
@@ -137,7 +139,7 @@
         <script>
             $(function () {
                 $('.btn-cancelar').click(function () {
-                    $(this).parent().parent().parent().find('.cancelar-coleta').toggleClass('d-none');
+                    $(this).parent().parent().parent().parent().find('.cancelar-coleta').toggleClass('d-none');
                 });
             });
         </script>

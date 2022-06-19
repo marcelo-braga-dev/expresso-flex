@@ -83,17 +83,8 @@
         </div>
     </div>
 
-    <!-- Botao Flutuante -->
-    <a href="{{ route('entregador.qrcode.usuario.cliente.start') }}" class="btn-flutuante btn-danger btn-camera"
-       target="_blank" style="display: none">
-        <i style="margin-top:12px" class="fas fa-camera"></i>
-    </a>
-    @push('js')
-        <script>
-            if (Android.isAndroid()) {
-                $('.btn-camera').show();
-            }
-        </script>
-    @endpush
+    <x-elements.camera-botao-flutuante
+        operacao="{{ route('entregadores.qrcode.nova-coleta', ['entregador' => id_usuario_atual()]) }}"
+        retorno="{{ route('entregadores.coletas.index') }}"></x-elements.camera-botao-flutuante>
 
 </x-layout>

@@ -18,10 +18,9 @@ class Pacote
         $this->status->coletar($dados);
     }
 
-    public function alterarStatus($dados)
+    public function alterarStatus($dados, $userId)
     {
-
-        $this->status->update($dados);
+        $this->status->update($dados, $userId);
     }
 
     public function finalizar(int $id)

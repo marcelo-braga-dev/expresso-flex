@@ -37,11 +37,11 @@ class QrCodeLojasController extends Controller
         ]);
 
         $data =
-            '{
-                "id" : "' . $id . '",
-                "id_loja": "' . $loja_sel . '",
-                "origem" : "identifica_usuario"
-            }';
+            '{' .
+                '"user_id":"' . $id . '",' .
+                '"id_ponto_coleta":"' . $loja_sel . '",' .
+                '"origem":"ponto_coleta"' .
+            '}';
 
         $QrCode = new QRCode($options);
         $qrCode = $QrCode->render($data);

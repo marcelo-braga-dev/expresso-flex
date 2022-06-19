@@ -12,7 +12,7 @@ class CheckinEntregaPacote
         $resposta = json_decode($_GET['json'], true);
 
         $pacote = new Pacote(new EntregaIniciado());
-        $pacote->alterarStatus($resposta);
+        $pacote->alterarStatus($resposta, id_usuario_atual());
 
         return redirect()->route('entregadores.entregas.index');
     }

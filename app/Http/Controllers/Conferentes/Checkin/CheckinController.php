@@ -26,7 +26,7 @@ class CheckinController extends Controller
     public function create(Request $request)
     {
         $pacote = new Pacote(new Base());
-        $pacote->alterarStatus($request);
+        $pacote->alterarStatus($request, id_usuario_atual());
 
         return redirect()->route('conferentes.checkin.index');
     }

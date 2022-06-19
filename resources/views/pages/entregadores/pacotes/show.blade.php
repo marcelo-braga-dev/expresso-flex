@@ -121,19 +121,19 @@
                         <div class="col-md-6">
                             <p class="text-sm mb-0">
                                 <b>Quem recebeu?</b>
-                                {{ $recebedor->recebedor }}
+                                {{ $recebedor->recebedor ?? '' }}
                             </p>
                         </div>
                     </div>
                     <div class="row mb-2">
                         <div class="col-md-6">
                             <p class="text-sm mb-0">
-                                <b>Nome:</b> {{ $recebedor->nome }}
+                                <b>Nome:</b> {{ $recebedor->nome ?? '' }}
                             </p>
                         </div>
                         <div class="col-md-6">
                             <p class="text-sm mb-0">
-                                <b>CPF/RG:</b> {{ $recebedor->documento }}
+                                <b>CPF/RG:</b> {{ $recebedor->documento ?? '' }}
                             </p>
                         </div>
                     </div>

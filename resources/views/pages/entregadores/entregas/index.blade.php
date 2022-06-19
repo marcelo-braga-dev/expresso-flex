@@ -1,6 +1,7 @@
 <x-layout menu="entregas" submenu="realizar">
     <div class="header bg-principal bg-height-top"></div>
-    <div class="container-fluid mt--9 p-1">
+    <div class="container-fluid mt--9 p-1 mb-6">
+        <x-entregadores.botoes-header-entregador categoria="entregas"></x-entregadores.botoes-header-entregador>
         <div class="card bg-secondary shadow">
             <div class="card-header bg-white mb-0">
                 <div class="row justify-content-between align-items-center">
@@ -39,18 +40,22 @@
                                 <div class="row justify-content-between align-items-center row-clickable p-3">
                                     <div class="col-md-12">
                                         <p class="mb-0">
+                                            <i class="fas fa-user mr-2 text-primary"></i>
+                                            {{ get_destinatario_pacote($pacote->destinatario)->nome }}
+                                        </p>
+
+                                        <p class="mb-0">
                                             <i class="fas fa-map-marker-alt mr-2 text-danger"></i>
                                             {{ get_endereco($pacote->endereco) }}
-                                            - Cep: {{ formatar_cep($pacote->cep) }}
                                         </p>
 
                                         <p class="text-sm mb-0">
                                             <i class="fas fa-qrcode mr-2"></i>
                                             {{ get_origem_pacote($pacote->origem) }}
                                             @if (!empty($pacote->codigo))
-                                                - <b>#{{ $pacote->codigo }}</b>
+                                                <b> #{{ $pacote->codigo }}</b>
                                             @else
-                                                - <b>{{ $pacote->rastreio }}</b>
+                                                <b> {{ $pacote->rastreio }}</b>
                                             @endif
                                         </p>
 
@@ -80,15 +85,4 @@
         </div>
     </div>
 
-    <a href="{{ route('entregadores.pacotes.qrcode.saida-entrega.start') }}" class="btn-flutuante btn-danger btn-camera"
-       target="_blank" style="display: none">
-        <i style="margin-top:12px" class="fas fa-camera"></i>
-    </a>
-    @push('js')
-        <script>
-            if (Android.isAndroid()) {
-                $('.btn-camera').show();
-            }
-        </script>
-    @endpush
 </x-layout>

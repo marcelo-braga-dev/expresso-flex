@@ -44,6 +44,13 @@
 
 @include('layouts.componentes.modal-sucesso')
 
+<script>
+    if (typeof Android == 'object'){
+        versao = Android.versaoApp();
+        if (versao !== 7) window.location.href = 'https://play.google.com/store/apps/details?id=com.expressoflexapp';
+    }
+</script>
+
 <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>
 <script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 

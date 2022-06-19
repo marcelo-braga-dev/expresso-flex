@@ -11,7 +11,11 @@ Route::group([
 
     include_once 'pacotes.php';
     include_once 'coletas.php';
-
     include_once 'checkin.php';
 });
 
+Route::group([
+    'namespace' => 'App\Http\Controllers\Conferentes',
+], function () {
+    include_once 'qrcode.php';
+});

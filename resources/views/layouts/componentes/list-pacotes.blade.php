@@ -28,7 +28,9 @@
                 @else
                     - <b>{{ $pacote->rastreio }}</b>
                 @endif
-                <i class="fas fa-calendar mr-2 ml-4"></i>
+            </p>
+            <p class="text-sm mb-0">
+                <i class="fas fa-calendar-alt mr-2"></i>
                 {{ date('d/m/y H:i', strtotime($pacote->created_at)) }}
             </p>
             @empty($simples)

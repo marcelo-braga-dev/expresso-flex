@@ -13,7 +13,7 @@ class PacotesController extends Controller
     public function show(string $idColeta)
     {
         $solicitacaoRetirada = new SolicitacaoRetiradas();
-        $pacotes = new Pacotes();
+
         $status = new Coletado();
 
         $solicitacao = $solicitacaoRetirada->newQuery()
@@ -24,9 +24,8 @@ class PacotesController extends Controller
 
         if (empty($solicitacao)) return redirect()->back()->with(['erro' => 'Ocorreu um erro.']);
 
-        $pacotesCadastrados = $pacotes->newQuery()
+        $pacotes = (new Pacotes())->newQuery()
             ->where([
-                ['user_id', '=', $solicitacao['user_id']],
                 ['entregador', '=', id_usuario_atual()],
                 ['status', '=', $status->getStatus()],
                 ['coleta', '=', $idColeta]
@@ -36,7 +35,7 @@ class PacotesController extends Controller
 
         return view(
             'pages.entregadores.coletas.pacotes.show',
-            compact('solicitacao', 'pacotesCadastrados', 'idColeta')
+            compact('solicitacao', 'pacotes', 'idColeta')
         );
     }
 }

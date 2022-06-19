@@ -18,3 +18,9 @@ Route::group([
     include_once 'historico.php';
 });
 
+Route::group([
+    'namespace' => 'App\Http\Controllers\Entregadores',
+], function () {
+    include_once 'qrcode.php';
+});
+

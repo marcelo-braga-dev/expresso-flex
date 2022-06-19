@@ -38,21 +38,13 @@
                             {{ $pacotes }}
                         </div>
                     </div>
-
                 </ul>
             </div>
         </div>
 
-        <a href="{{ route('conferente.pacotes.qrcode.checkin.start') }}" class="btn-flutuante btn-danger btn-camera"
-           target="_blank" style="display: none">
-            <i style="margin-top:12px" class="fas fa-camera"></i>
-        </a>
-        @push('js')
-            <script>
-                if (Android.isAndroid()) {
-                    $('.btn-camera').show();
-                }
-            </script>
-        @endpush
+        <x-elements.camera-botao-flutuante
+            operacao="{{ route('conferentes.qrcode.checkin-pacote', ['user_id' => id_usuario_atual()]) }}"
+            retorno="{{ url()->current() }}"></x-elements.camera-botao-flutuante>
+
     </div>
 </x-layout>

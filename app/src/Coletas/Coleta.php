@@ -23,9 +23,9 @@ class Coleta
         $this->status->aceitar($this, $idLoja);
     }
 
-    public function solicitar()
+    public function criar()
     {
-
+        $this->status->solicitar($this);
     }
 
     public function finalizar()

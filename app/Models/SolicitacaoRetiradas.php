@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\src\Coletas\AbrirColeta;
 use App\src\Coletas\AceitarColeta;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -19,15 +20,15 @@ class SolicitacaoRetiradas extends Model
         'texto'
     ];
 
-    public function criar(AceitarColeta $dados)
+    public function criar(AbrirColeta $dados)
     {
         $this->newQuery()
             ->create([
-                'user_id' => $dados->idUsuario,
-                'cep' => $dados->cep,
-                'entregador' => $dados->entregador,
-                'loja' => $dados->idLoja,
-                'status' => $dados->status
+                'user_id' => $dados->getIdUsuario(),
+                'cep' => $dados->getCep(),
+                'entregador' => $dados->getEntregador(),
+                'loja' => $dados->getIdLoja(),
+                'status' => $dados->getStatus()
             ]);
     }
 

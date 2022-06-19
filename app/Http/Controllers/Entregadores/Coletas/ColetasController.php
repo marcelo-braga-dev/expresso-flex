@@ -15,18 +15,14 @@ class ColetasController extends Controller
     public function index(Request $request)
     {
         $status = new Aceito();
-        $solicitacaoRetiradas = new SolicitacaoRetiradas();
 
-        $solicitacoesAceitas = $solicitacaoRetiradas
+        $solicitacoes = (new SolicitacaoRetiradas())->newQuery()
             ->where('entregador', '=', id_usuario_atual())
             ->where('status', '=', $status->getStatus())
             ->orderBy('id', 'DESC')
             ->get();
 
-        return view(
-            'pages.entregadores.coletas.index',
-            compact('solicitacoesAceitas')//, 'coletasParaAceitar'
-        );
+        return view('pages.entregadores.coletas.index', compact('solicitacoes'));
     }
 
     public function create()

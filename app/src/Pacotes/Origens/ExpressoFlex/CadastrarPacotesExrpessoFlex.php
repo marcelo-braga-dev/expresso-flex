@@ -3,6 +3,7 @@
 namespace App\src\Pacotes\Origens\ExpressoFlex;
 
 use App\Models\Etiquetas;
+use App\Models\Pacotes;
 use App\src\Pacotes\NovoPacote;
 use App\src\Pacotes\Info\Coleta;
 use App\src\Pacotes\Info\Destinatario;
@@ -14,11 +15,13 @@ class CadastrarPacotesExrpessoFlex
     private string $origem = 'origem_expresso_flex';
     private $etiqueta;
     private int $idColeta;
+    private int $entregador;
 
-    public function __construct(int $idEtiqueta, int $idColeta)
+    public function __construct(int $idEtiqueta, int $idColeta, int $entregador)
     {
         $this->etiqueta = $this->getEtiqueta($idEtiqueta);
         $this->idColeta = $idColeta;
+        $this->entregador = $entregador;
     }
 
     private function getEtiqueta($id)
@@ -28,6 +31,8 @@ class CadastrarPacotesExrpessoFlex
 
     public function cadastrar()
     {
+        $this->jaCadastrado();
+
         $coleta = $this->getColeta();
 
         $destinatario = $this->getDestinatario();
@@ -40,7 +45,7 @@ class CadastrarPacotesExrpessoFlex
 
     private function getColeta(): Coleta
     {
-        return new Coleta(id_usuario_atual(), $this->idColeta);
+        return new Coleta($this->entregador, $this->idColeta);
     }
 
     private function getDestinatario(): Destinatario
@@ -52,5 +57,13 @@ class CadastrarPacotesExrpessoFlex
     private function getEndereco(): Endereco
     {
         return new Endereco($this->etiqueta->enderecos_id);
+    }
+
+    private function jaCadastrado(): void
+    {
+        $exist = (new Pacotes())->newQuery()
+            ->where('rastreio', '=', $this->etiqueta->rastreio)
+            ->exists();
+        if ($exist) throw new \DomainException('Pacote já cadastrado.');
     }
 }

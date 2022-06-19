@@ -19,7 +19,7 @@ class Coletado extends Status
         $verificarOrigem = new VerificarOrigemPacote();
         $origem = $verificarOrigem->verificarOrigem($dados);
 
-        if (empty($origem)) throw new QrCodeException();
+        if (empty($origem)) throw new \DomainException('Cod 1: Erro na leitura');
 
         $origem->cadastrarPacote($dados);
     }

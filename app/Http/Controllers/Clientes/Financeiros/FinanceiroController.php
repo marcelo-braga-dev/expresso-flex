@@ -3,26 +3,21 @@
 namespace App\Http\Controllers\Clientes\Financeiros;
 
 use App\Http\Controllers\Controller;
-use App\Models\ComissoesEntregadores;
 use App\Models\FretesRealizados;
-use App\Service\FinanceiroService;
-use App\src\Financeiro\ClienteFinanceiro;
-use Illuminate\Http\Request;
+use App\Service\Clientes\Financeiro\FinanceiroService;
 
 class FinanceiroController extends Controller
 {
     public function historicoMensal()
     {
-        $financeiroService = new \App\Service\Clientes\Financeiro\FinanceiroService();
-        $fretes = $financeiroService->historicoMensal(new FretesRealizados());
+        $fretes = (new FinanceiroService())->historicoMensal(new FretesRealizados());
 
         return view('pages.clientes.financeiro.index', compact('fretes'));
     }
 
     public function histricoQuinzenal($mes, $ano)
     {
-        $financeiroService = new \App\Service\Clientes\Financeiro\FinanceiroService();
-        $fretes = $financeiroService->quinzena($mes, $ano);
+        $fretes = (new FinanceiroService())->quinzena(new FretesRealizados(), $mes, $ano);
 
         return view('pages.clientes.financeiro.quinzena', compact('fretes', 'mes', 'ano'));
     }
@@ -32,8 +27,8 @@ class FinanceiroController extends Controller
         if ($quinzena < 1 || $quinzena > 2 ) return redirect('/');
 
         $valores = [];
-        $financeiroService = new \App\Service\Clientes\Financeiro\FinanceiroService();
-        $fretes = $financeiroService->quinzena($mes, $ano);
+        $financeiroService = new FinanceiroService();
+        $fretes = $financeiroService->quinzena(new FretesRealizados(),$mes, $ano);
 
         if ($quinzena == 1) {
             $valores['receber'] = $fretes['aberto_quinzena1'];
@@ -48,8 +43,7 @@ class FinanceiroController extends Controller
         $operadorDia = '<=';
         if ($quinzena == 2) $operadorDia = '>';
 
-        $comissoesEntregadores = new FretesRealizados();
-        $entregas = $comissoesEntregadores->newQuery()
+        $entregas = (new FretesRealizados())->newQuery()
             ->where('user_id', '=', id_usuario_atual())
             ->whereMonth('created_at', '=', $mes)
             ->whereYear('created_at', '=', $ano)
