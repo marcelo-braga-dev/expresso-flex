@@ -46,15 +46,25 @@ class ExpressoFlexController extends Controller
         return redirect()->route('clientes.etiquetas.expressoflex.index');
     }
 
-    public function show($id)
+    public function show($id,Request $request)
     {
-        $etiqueta = new VisualizarEtiqueta();
-        $etiqueta->visualizar($id);
-    }
+        if(empty($request->etiquetas)) {
+            modalErro('Selecione as etiquetas.');
+            return redirect()->back();
+        }
 
-    public function edit($id)
-    {
-        //
+        if ($request->impresso) {
+            foreach ($request->etiquetas as $id) {
+                $impresso = new Impressa();
+
+                $etiqueta = new Etiquetas();
+                $etiqueta->atualizarStatus($id, $impresso->getStatus());
+            }
+            modalSucesso('Ação realizada com sucesso!');
+            return redirect()->back();
+        }
+
+        (new VisualizarEtiqueta())->visualizar($request->etiquetas);
     }
 
     public function update(Request $request, $id)
@@ -66,10 +76,5 @@ class ExpressoFlexController extends Controller
 
         return redirect()->back();
 
-    }
-
-    public function destroy($id)
-    {
-        //
     }
 }
