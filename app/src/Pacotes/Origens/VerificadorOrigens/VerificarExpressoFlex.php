@@ -17,10 +17,11 @@ class VerificarExpressoFlex implements VerificadorOrigemPacote
     public function verificar($dados)
     {
         if (!empty($dados['origem']) && $dados['origem'] === 'expresso_flex') {
-
+            if (!is_int($dados['id']) || !is_int($dados['sender_id'] )) {
+                throw new \DomainException('Erro na leitura do QrCode, dados inválidos.');
+            }
             return new ExpressoFlex();
         }
-
         return $this->origem->verificar($dados);
     }
 }

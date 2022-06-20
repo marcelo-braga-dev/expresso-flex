@@ -22,6 +22,6 @@ class QrCodeController
             $resposta = $e->getMessage();
         }
 
-        return ['resposta' => $resposta];
+        return ['resposta' => $resposta, 'nova_url_retorno' => ''];
     }
 }

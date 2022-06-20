@@ -84,5 +84,28 @@
             </div>
         </div>
     </div>
+    <style>
+        .btn-flutuante-2 {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 120px;
+            right: 40px;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 1px 1px 2px #888;
+            z-index: 1000;
+        }
+    </style>
+    <a class="btn-flutuante-2 btn-success btn-camera"
+       href="{{ route('entregadores.qrcode', [route('entregadores.qrcode.identificar-pacote-entrega', ['user_id' => id_usuario_atual()]),
+                url()->current()]) }}"
+       style="display: none">
+        <i style="margin-top:14px" class="fas fa-shipping-fast"></i>
+    </a>
 
+    <x-elements.camera-botao-flutuante
+        operacao="{{ route('entregadores.qrcode.checkin-pacote', ['user_id' => id_usuario_atual()]) }}"
+        retorno="{{ url()->current() }}"></x-elements.camera-botao-flutuante>
 </x-layout>

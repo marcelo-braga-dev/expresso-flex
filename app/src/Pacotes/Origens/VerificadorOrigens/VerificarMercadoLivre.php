@@ -9,10 +9,11 @@ class VerificarMercadoLivre implements VerificadorOrigemPacote
 {
     public function verificar($dados)
     {
-        if (!empty($dados['id']) && !empty($dados['sender_id'])) {
+        if (!empty($dados['id']) &&
+            !empty($dados['sender_id']) &&
+            !array_key_exists('origem', $dados)) {
             return new MercadoLivre();
         }
-
-        return null;
+        throw new \DomainException('Erro na leitura do QrCode. Origem do pacote não encontrada.');
     }
 }

@@ -21,7 +21,7 @@ class GerarQrCode
 
         $data =
             '{' .
-                '"id":"' . $id . '",' .
+                '"id":' . $id . ',' .
                 '"sender_id":' . $senderId . ',' .
                 '"origem":"expresso_flex"' .
             '}';

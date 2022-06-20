@@ -3,8 +3,10 @@ namespace App\Http\Controllers\Entregadores\QrCode;
 
 use App\src\Coletas\Coleta;
 use App\src\Coletas\Status\SolicitadoEntregador;
+use App\src\Pacotes\Origens\VerificadorOrigens\VerificarOrigemPacote;
 use App\src\Pacotes\Pacote;
 use App\src\Pacotes\Status\Coletado;
+use App\src\Pacotes\Status\EntregaIniciado;
 use App\src\QrCode\DecodeJson\DecodificarJson;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -30,7 +32,7 @@ class QrCodeController extends Controller
             $resposta = $e->getMessage();
         }
 
-        return ['resposta' => $resposta];
+        return ['resposta' => $resposta, 'nova_url_retorno' => ''];
     }
 
     public function novaColeta(Request $request)
@@ -50,6 +52,50 @@ class QrCodeController extends Controller
             $resposta = $e->getMessage();
         }
 
-        return ['resposta' => $resposta];
+        return ['resposta' => $resposta, 'nova_url_retorno' => ''];
+    }
+
+    public function checkinPacote(Request $request)
+    {
+        $resposta = 'Checkin realizado com sucesso!';
+
+        try {
+            $dados = (new DecodificarJson())->decodificar($request->json);
+
+            $pacote = new Pacote(new EntregaIniciado());
+            $pacote->alterarStatus($dados, $request->user_id);
+        } catch (\DomainException $e) {
+            $resposta = $e->getMessage();
+        }
+
+        return ['resposta' => $resposta, 'nova_url_retorno' => ''];
+    }
+
+    public function identificarPacoteEntrega(Request $request)
+    {
+        $resposta = 'Pesquisa de pacote.';
+        $urlRetorno = '';
+
+        try {
+            $dados = (new DecodificarJson())->decodificar($request->json);
+
+            $origem = (new VerificarOrigemPacote())->verificarOrigem($dados);
+            $pacote = $origem->getPacote($dados);
+
+            if (empty($pacote->id)) {
+                throw new \DomainException('Pacte não encontrado no sistema.');
+            }
+
+            $status = new EntregaIniciado();
+            if ($pacote->status != $status->getStatus()) {
+                throw new \DomainException('Pacote não cadastrado para entrega.');
+            }
+
+            $urlRetorno = route('entregadores.entregas.show',  $pacote->id);
+        } catch (\DomainException $e) {
+            $resposta = $e->getMessage();
+        }
+
+        return ['resposta' => $resposta, 'nova_url_retorno' => $urlRetorno];
     }
 }

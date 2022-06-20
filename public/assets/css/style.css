@@ -6,12 +6,15 @@
 .bg-principal {
     background-color: var(--verde) !important;
 }
+
 .bg-secundario {
     background-color: var(--azul) !important;
 }
+
 .text-principal {
     color: var(--azul) !important;
 }
+
 .text-secundario {
     color: var(--verde) !important;
 }
@@ -33,17 +36,30 @@
 }
 
 .btn-flutuante {
-    position:fixed;
-    width:60px;
-    height:60px;
-    bottom:40px;
-    right:40px;
-    border-radius:50px;
-    text-align:center;
-    font-size:30px;
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
     box-shadow: 1px 1px 2px #888;
-    z-index:1000;
-  }
+    z-index: 1000;
+}
+
+.btn-flutuante-2 {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 120px;
+    right: 40px;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 1px 1px 2px #888;
+    z-index: 1000;
+}
 
 .navbar-vertical.navbar-expand-md .navbar-nav .nav .nav-link {
     padding-left: 1.75rem;
