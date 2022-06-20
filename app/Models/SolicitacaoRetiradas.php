@@ -22,7 +22,7 @@ class SolicitacaoRetiradas extends Model
 
     public function criar(AbrirColeta $dados)
     {
-        $this->newQuery()
+        return $this->newQuery()
             ->create([
                 'user_id' => $dados->getIdUsuario(),
                 'cep' => $dados->getCep(),

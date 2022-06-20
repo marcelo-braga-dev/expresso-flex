@@ -103,11 +103,22 @@
                                                        href="{{ route('entregadores.coletas.pacotes.show', $solicitacao['id']) }}">
                                                         Cadastrar Pacotes
                                                     </a>
+                                                    <div class="row justify-content-between">
+                                                        <div class="col-auto">
+                                                            <button type="button" value="{{ $solicitacao['id'] }}"
+                                                                    class="btn btn-link text-success btn-block btn-sm btn-finalizar-coleta"
+                                                                    data-toggle="modal" data-target="#modalFinalizarColeta">
+                                                                Finalizar Coleta
+                                                            </button>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <button type="button"
+                                                                    class="btn btn-link text-danger btn-block btn-sm btn-cancelar cancelar-coleta">
+                                                                Cancelar Coleta
+                                                            </button>
+                                                        </div>
+                                                    </div>
 
-                                                    <button type="button"
-                                                            class="cancelar-coleta text-right btn btn-link text-danger btn-block btn-sm btn-cancelar">
-                                                        Cancelar Coleta
-                                                    </button>
                                                 </div>
                                             @else
                                                 <div>
@@ -135,11 +146,44 @@
             </div>
         </div>
     </div>
+    <!-- Modal Finalizar Coleta-->
+    <div class="modal fade" id="modalFinalizarColeta" tabindex="-1" role="dialog"
+         aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="TituloModalCentralizado">Finalizar coleta</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="post"
+                      action="{{ route('entregadores.coletas.update', 1) }}">
+                    <div class="modal-body">
+                        @csrf @method('put')
+                        Confimar finalização da coleta no cliente?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="submit" class="btn btn-success" name="id_coleta" id="btn-modal-finalizar-coleta"
+                                value="">
+                            Finalizar Coleta
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     @push('js')
         <script>
             $(function () {
+                $('.btn-finalizar-coleta').click(function () {
+                    $('#btn-modal-finalizar-coleta').val($(this).val());
+                    console.log($(this).val());
+                });
                 $('.btn-cancelar').click(function () {
-                    $(this).parent().parent().parent().parent().find('.cancelar-coleta').toggleClass('d-none');
+                    $(this).parent().parent().parent().parent().parent().find('.cancelar-coleta').toggleClass('d-none');
                 });
             });
         </script>

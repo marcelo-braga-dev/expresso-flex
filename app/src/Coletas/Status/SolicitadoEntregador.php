@@ -23,7 +23,7 @@ class SolicitadoEntregador extends StatusColeta
 
     function solicitar(Coleta $coleta)
     {
-        (new AbrirColeta($this->pontoColeta, $this->entregador, $this->getStatus()))
+        return (new AbrirColeta($this->pontoColeta, $this->entregador, $this->getStatus()))
             ->criar();
     }
 }

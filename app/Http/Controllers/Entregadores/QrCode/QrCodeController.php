@@ -38,6 +38,7 @@ class QrCodeController extends Controller
     public function novaColeta(Request $request)
     {
         $resposta = 'Nova Coleta cadastrada com sucesso!';
+        $urlRetorno = '';
 
         try {
             $dados = (new DecodificarJson())->decodificar($request->json);
@@ -46,13 +47,15 @@ class QrCodeController extends Controller
                 throw new \DomainException('Não foi possível identificar o ponto de coleta.');
 
             $coleta = new Coleta(new SolicitadoEntregador($dados['id_ponto_coleta'], $request->entregador));
-            $coleta->criar();
+            $coleta = $coleta->criar();
 
+            if (empty($coleta->id)) throw new \DomainException('Não foi possível cadastrar a coleta.');
+            $urlRetorno = route('entregadores.coletas.pacotes.show', $coleta->id);
         } catch (\DomainException $e) {
             $resposta = $e->getMessage();
         }
 
-        return ['resposta' => $resposta, 'nova_url_retorno' => ''];
+        return ['resposta' => $resposta, 'nova_url_retorno' => $urlRetorno];
     }
 
     public function checkinPacote(Request $request)

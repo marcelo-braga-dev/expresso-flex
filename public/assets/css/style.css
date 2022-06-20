@@ -35,11 +35,10 @@
     background-color: #fafafa;
 }
 
-.btn-flutuante {
+.btn-flutuante-1, .btn-flutuante-2 {
     position: fixed;
     width: 60px;
     height: 60px;
-    bottom: 40px;
     right: 40px;
     border-radius: 50px;
     text-align: center;
@@ -48,17 +47,12 @@
     z-index: 1000;
 }
 
+.btn-flutuante-1 {
+    bottom: 40px;
+}
+
 .btn-flutuante-2 {
-    position: fixed;
-    width: 60px;
-    height: 60px;
     bottom: 120px;
-    right: 40px;
-    border-radius: 50px;
-    text-align: center;
-    font-size: 30px;
-    box-shadow: 1px 1px 2px #888;
-    z-index: 1000;
 }
 
 .navbar-vertical.navbar-expand-md .navbar-nav .nav .nav-link {
@@ -71,8 +65,8 @@
 }
 
 .navbar-vertical.navbar-expand-md .navbar-nav .nav-link.active:before {
-    border-left: 0px solid white;
-    border-right: 0px solid #f5f5f5;
+    border-left: 0 solid white;
+    border-right: 0 solid #f5f5f5;
 }
 
 /* Works on Firefox */

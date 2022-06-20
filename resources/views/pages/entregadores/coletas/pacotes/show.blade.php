@@ -1,8 +1,6 @@
 <x-layout menu="coletas" submenu="solicitacoes">
-
     <div class="header bg-principal bg-height-top"></div>
-
-    <div class="container-fluid mt--9 mb-5">
+    <div class="container-fluid mt--9 px-1 mb-6">
         <x-entregadores.botoes-header-entregador categoria="coletas"></x-entregadores.botoes-header-entregador>
         <div class="card bg-secondary shadow mb-3">
             <div class="card-header bg-white mb-0">
@@ -76,13 +74,10 @@
         </div>
 
         <!-- Botao Flutuante -->
-        <a href="{{  route('entregadores.qrcode', [
-                                    urlencode(route('entregadores.qrcode.cadastrarPacote').
-                                        '?coleta=' . $solicitacao['id'] . '&entregador=' . id_usuario_atual() ),
-                                    urlencode(url()->current())]) }}"
-           class="btn-flutuante btn-danger btn-camera" target="_blank" style="display: none">
-            <i style="margin-top:12px" class="fas fa-camera"></i>
-        </a>
+        <x-elements.camera-botao-flutuante
+            operacao="{{ urlencode(route('entregadores.qrcode.cadastrarPacote').
+                                        '?coleta=' . $solicitacao['id'] . '&entregador=' . id_usuario_atual() ) }}"
+            retorno="{{ url()->current() }}" icon="fas fa-plus"></x-elements.camera-botao-flutuante>
 
         <!-- Modal Finalizar Coleta-->
         <div class="modal fade" id="modalFinalizarColeta" tabindex="-1" role="dialog"
@@ -112,12 +107,5 @@
                 </div>
             </div>
         </div>
-        @push('js')
-            <script>
-                if (Android.isAndroid()) {
-                    $('.btn-camera').show();
-                }
-            </script>
-        @endpush
     </div>
 </x-layout>

@@ -25,7 +25,7 @@ class Coleta
 
     public function criar()
     {
-        $this->status->solicitar($this);
+        return $this->status->solicitar($this);
     }
 
     public function finalizar()

@@ -1,7 +1,7 @@
-<a class="btn-flutuante btn-warning btn-camera"
+<a class="btn-flutuante-{{ $posicao ?? '1' }} {{ $bg ?? 'btn-warning' }} btn-camera"
    href="{{ route('entregadores.qrcode', [$operacao, $retorno]) }}"
    style="display: none">
-    <i style="margin-top:12px" class="fas fa-camera"></i>
+    <i style="margin-top:12px" class="{{ $icon ?? 'fas fa-camera' }}"></i>
 </a>
 @push('js')
     <script>

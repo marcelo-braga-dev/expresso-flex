@@ -26,9 +26,9 @@ class AbrirColeta
     public function criar()
     {
         $solicitarRetirada = new SolicitacaoRetiradas();
-        $solicitarRetirada->criar($this);
-
         modalSucesso('Solicitação de coleta realizada com sucesso.');
+        return $solicitarRetirada->criar($this);
+
     }
 
     public function getLoja()

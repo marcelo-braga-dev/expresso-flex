@@ -11,9 +11,9 @@
                     <div class="card-body">
                         <div class="row mb-3">
                             <div class="col">
-                                <h5 class="card-title text-uppercase text-muted mb-0">Coletas</h5>
-                                <span class="h2 font-weight-bold mb-0 d-block">
-                                    Coletas em Aberto.
+{{--                                <h5 class="card-title text-uppercase text-muted mb-0">Coletas</h5>--}}
+                                <span class="pt-2 h2 font-weight-bold mb-0 d-block">
+                                    Coletas
                                 </span>
                             </div>
                             <div class="col-auto">
@@ -23,7 +23,7 @@
                             </div>
                         </div>
                         <a class="btn btn-info" href="{{ route('entregadores.coletas.index') }}">
-                            Ver Coletas em Aberto
+                            Ir para Coletas
                         </a>
                     </div>
                 </div>
@@ -35,11 +35,11 @@
                     <div class="card-body">
                         <div class="row mb-3">
                             <div class="col">
-                                <h5 class="card-title text-uppercase text-muted mb-0">
+{{--                                <h5 class="card-title text-uppercase text-muted mb-0">--}}
+{{--                                    Entregas--}}
+{{--                                </h5>--}}
+                                <span class="pt-2 h2 font-weight-bold mb-0 d-block">
                                     Entregas
-                                </h5>
-                                <span class="h2 font-weight-bold mb-0">
-                                    Entregas para realizar
                                 </span>
                             </div>
                             <div class="col-auto">
@@ -49,7 +49,7 @@
                             </div>
                         </div>
                         <a class="btn btn-success" href="{{ route('entregadores.entregas.index') }}">
-                            Ver Entregas
+                            Ir para Entregas
                         </a>
                     </div>
                 </div>
