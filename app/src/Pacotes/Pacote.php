@@ -13,9 +13,9 @@ class Pacote
         $this->status = $status;
     }
 
-    public function coletar($dados)
+    public function coletar($dados): ?int
     {
-        $this->status->coletar($dados);
+        return $this->status->coletar($dados);
     }
 
     public function alterarStatus($dados, $userId)

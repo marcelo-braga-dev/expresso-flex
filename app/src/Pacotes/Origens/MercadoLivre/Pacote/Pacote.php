@@ -18,8 +18,7 @@ class Pacote
     public function cadastrar($dados)
     {
         if ($this->verificarDuplicidade($dados['id'])) {
-            modalErro('Pacote já cadastrado.');
-            return;
+            throw new \DomainException('Pacote já cadastrado.');
         }
 
         if ($this->etiqueta->verificar($dados['id'], $this->origem)) {
@@ -27,15 +26,12 @@ class Pacote
             return;
         }
 
-        $cadastrarPacote = new CadastrarPacote();
-        $cadastrarPacote->cadastrar($dados, $this->origem);
+        return (new CadastrarPacote())->cadastrar($dados, $this->origem);
     }
 
     private function verificarDuplicidade($codigo): bool
     {
-        $pacotes = new Pacotes();
-
-        return $pacotes->newQuery()
+        return (new Pacotes())->newQuery()
             ->where([
                 ['codigo', '=', $codigo],
                 ['origem', '=', $this->origem]

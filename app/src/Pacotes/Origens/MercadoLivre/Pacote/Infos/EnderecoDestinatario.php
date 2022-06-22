@@ -30,7 +30,6 @@ class EnderecoDestinatario
         $endereco->latitude($destinatario['latitude']);
 
         $id = $endereco->cadastrar();
-
         return new Endereco($id);
     }
 }

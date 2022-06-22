@@ -13,7 +13,7 @@ class MercadoLivre implements OrigemPacote
     public function cadastrarPacote($dados)
     {
         $cadastrar = new Pacote($this->origem);
-        $cadastrar->cadastrar($dados);
+        return $cadastrar->cadastrar($dados);
     }
 
     public function getPacote($dados)

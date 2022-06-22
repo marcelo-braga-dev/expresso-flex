@@ -10,11 +10,7 @@ class DadosEnvio
     public function executar(DadosRequisicao $dadosRequisicao)
     {
         $link = 'https://api.mercadolibre.com/shipments/' . $dadosRequisicao->codigo;
-        try {
-            $requisicao = new RequisicaoGet();
-            return $requisicao->executar($dadosRequisicao, $link);
-        } catch (\DomainException $exception) {
-            throw new \DomainException($exception->getMessage());
-        }
+
+        return (new RequisicaoGet())->executar($dadosRequisicao, $link);
     }
 }

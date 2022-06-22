@@ -7,45 +7,26 @@ use App\src\Pacotes\Status\Status;
 
 class Destinatario
 {
-    private int $destinatario;
-    private int $cliente;
-    private ?string $codigo;
-    private Status $status;
-    private string $origem;
+    private int $id;
+    private int $endereco;
 
-    public function __construct(int $destinatario, int $cliente, ?string $codigo, Status $status, string $origem)
+    public function getId(): int
     {
-        $this->destinatario = $destinatario;
-        $this->cliente = $cliente;
-        $this->codigo = $codigo;
-        $this->status = $status;
-        $this->origem = $origem;
+        return $this->id;
     }
 
-    public function getDestinatario()
+    public function setId($id)
     {
-        return $this->destinatario;
+        $this->id = $id;
     }
 
-    public function getCliente(): int
+    public function setIdEndereco($id)
     {
-        return $this->cliente;
+        $this->endereco = $id;
     }
 
-    public function getCodigo(): ?string
+    public function getIdEndereco(): int
     {
-        return $this->codigo;
+        return $this->endereco;
     }
-
-    public function getStatus(): string
-    {
-        return $this->status->getStatus();
-    }
-
-    public function getOrigem(): string
-    {
-        return $this->origem;
-    }
-
-
 }

@@ -21,6 +21,6 @@ class Coletado extends Status
 
         if (empty($origem)) throw new \DomainException('Cod 1: Erro na leitura');
 
-        $origem->cadastrarPacote($dados);
+        return $origem->cadastrarPacote($dados);
     }
 }

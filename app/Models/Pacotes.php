@@ -30,7 +30,7 @@ class Pacotes extends Model
     {
         DB::beginTransaction();
         try {
-            $pacoteCriado = $this->newQuery()
+            $pacoteCadastrado = $this->newQuery()
                 ->create([
                     'user_id' => $pacote->cliente(),
                     'rastreio' => $pacote->rastreio(),
@@ -46,10 +46,9 @@ class Pacotes extends Model
                 ]);
 
             DB::commit();
+            atualizarHistoricoPacote($pacote->cliente(), $pacoteCadastrado->id, $pacote->status());
 
-            atualizarHistoricoPacote($pacote->cliente(), $pacoteCriado->id, $pacote->status());
-
-            modalSucesso('Pacote Cadastrado com sucesso. Código de Rastreio: ' . $pacote->rastreio());
+            return $pacoteCadastrado->id;
         } catch (QueryException $e) {
             DB::rollback();
             if ($e->getCode() == 23000) session()->flash('erro', 'Pacote já cadastrado');

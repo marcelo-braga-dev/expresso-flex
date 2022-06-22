@@ -20,14 +20,14 @@ class QrCodeController extends Controller
 
     public function cadastrarPacote(Request $request)
     {
-        $resposta = "Pacote cadastrado com sucesso!";
+        $resposta = "Falha no cadastro do pacote!";
 
         try {
             $dados = (new DecodificarJson())->decodificar($request->json);
             $dados = array_merge($dados, ['coleta' => $request->coleta, 'entregador' => $request->entregador]);
 
             $pacote = new Pacote(new Coletado());
-            $pacote->coletar($dados);
+            if (is_int($pacote->coletar($dados))) $resposta = "Pacote cadastrado com sucesso!";
         } catch (\DomainException $e) {
             $resposta = $e->getMessage();
         }

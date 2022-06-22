@@ -13,7 +13,7 @@ class Endereco
         $this->cep = get_cep_endereco($endereco);
     }
 
-    public function getEndereco(): int
+    public function getIdEndereco(): int
     {
         return $this->endereco;
     }

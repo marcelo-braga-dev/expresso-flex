@@ -9,6 +9,8 @@ use App\src\Pacotes\Destinatarios\CadastrarDestinatario;
 use App\src\Pacotes\Info\Coleta;
 use App\src\Pacotes\Info\Destinatario;
 use App\src\Pacotes\Info\Endereco;
+use App\src\Pacotes\NovoPacote;
+use App\src\Pacotes\Origens\MercadoLivre\Pacote\Infos\DadosPacote;
 use App\src\Pacotes\Origens\MercadoLivre\Pacote\Infos\EnderecoDestinatario;
 use App\src\Pacotes\Status\Coletado;
 
@@ -20,35 +22,32 @@ class CadastrarPacote
         $dadosRequisicao->codigo = $dados['id'];
         $dadosRequisicao->senderId = $dados['sender_id'];
 
-        try {
-            $dadosEnvio = new DadosEnvio();
-            $dadosDestinatario = $dadosEnvio->executar($dadosRequisicao);
-        } catch (\DomainException $exception) {
-            modalErro($exception->getMessage());
-            return;
-        }
+        // Coleta
+        $coleta = new Coleta($dados['coleta'], $dados['entregador'], new Coletado());
 
-        $coleta = new Coleta(id_usuario_atual(), $dados['coleta']);
+        // Destinatario
+        $dadosDestinatario = (new DadosEnvio())->executar($dadosRequisicao);
+        $destinatario = $this->setDestinatario($dadosDestinatario);
 
-        $destinatario = $this->getDestinatario($dadosDestinatario['receiver_address']);
+        // Pacote
+        $dadosPacote = new DadosPacote($dados['id'], $this->getCodigoRastreio(), $origem);
 
-        $destinatario = new Destinatario($destinatario, $dados['cliente'], $dados['id'], new Coletado(), $origem);
-
-        $endereco = $this->getEndereco($dadosDestinatario);
-
-        $rastreio = $this->getCodigoRastreio();
-
-        $pacote = new \App\src\Pacotes\NovoPacote($coleta, $destinatario, $endereco, $rastreio);
-        $pacote->cadastrar();
+        $pacote = new NovoPacote($coleta, $destinatario, $dadosPacote);
+        return $pacote->cadastrar();
     }
 
-    private function getDestinatario($receiver_address): int
+    private function setDestinatario($receiver_address)
     {
-        $cadastrarDestinatario = new CadastrarDestinatario(
-            $receiver_address['receiver_name'],
-            $receiver_address['receiver_phone'], null);
+        $destinatario = new Destinatario();
 
-        return $cadastrarDestinatario->cadastrar();
+        $cadastrarDestinatario = new CadastrarDestinatario(
+            $receiver_address['receiver_address']['receiver_name'],
+            $receiver_address['receiver_address']['receiver_phone'], null);
+
+        $destinatario->setIdEndereco($this->getEndereco($receiver_address));
+        $destinatario->setId($cadastrarDestinatario->cadastrar());
+
+        return $destinatario;
     }
 
     private function getEndereco($dadosDestinatario): Endereco

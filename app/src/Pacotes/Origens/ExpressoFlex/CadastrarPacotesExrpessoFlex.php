@@ -8,6 +8,7 @@ use App\src\Pacotes\NovoPacote;
 use App\src\Pacotes\Info\Coleta;
 use App\src\Pacotes\Info\Destinatario;
 use App\src\Pacotes\Info\Endereco;
+use App\src\Pacotes\Origens\MercadoLivre\Pacote\Infos\DadosPacote;
 use App\src\Pacotes\Status\Coletado;
 
 class CadastrarPacotesExrpessoFlex
@@ -26,7 +27,8 @@ class CadastrarPacotesExrpessoFlex
 
     private function getEtiqueta($id)
     {
-        return Etiquetas::query()->where('id', '=', $id)->first();
+        return
+            (new Etiquetas)->newQuery()->where('id', '=', $id)->first();
     }
 
     public function cadastrar()
@@ -37,26 +39,25 @@ class CadastrarPacotesExrpessoFlex
 
         $destinatario = $this->getDestinatario();
 
-        $endereco = $this->getEndereco();
+        $dadosPacote = new DadosPacote(null, $this->etiqueta->rastreio, $this->origem);
 
-        $pacote = new NovoPacote($coleta, $destinatario, $endereco, $this->etiqueta->rastreio);
-        $pacote->cadastrar();
+        $pacote = new NovoPacote($coleta, $destinatario, $dadosPacote);
+        return $pacote->cadastrar();
     }
 
     private function getColeta(): Coleta
     {
-        return new Coleta($this->entregador, $this->idColeta);
+        return new Coleta($this->idColeta, $this->entregador, new Coletado());
     }
 
     private function getDestinatario(): Destinatario
     {
-        return new Destinatario($this->etiqueta->destinatarios_id,
-            $this->etiqueta->user_id, null, new Coletado(), $this->origem);
-    }
+        $destinatario = new Destinatario();
+        $destinatario->setId($this->etiqueta->destinatarios_id);
 
-    private function getEndereco(): Endereco
-    {
-        return new Endereco($this->etiqueta->enderecos_id);
+        $destinatario->setIdEndereco($this->etiqueta->enderecos_id);
+
+        return $destinatario;
     }
 
     private function jaCadastrado(): void

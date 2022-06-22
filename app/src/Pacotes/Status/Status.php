@@ -9,7 +9,7 @@ abstract class Status
 {
     public function coletar($dados)
     {
-
+        return;
     }
 
     public function update($dados, $userId)
@@ -34,13 +34,6 @@ abstract class Status
         $pacote->update([
             'status' => $this->getStatus()
         ]);
-
-        // ATUALIZAR ENTREGADOR
-        //if (auth()->user()->tipo == 'entregador') {
-        //    $pacote->update([
-        //        'entregador' => id_usuario_atual()
-        //    ]);
-        //}
 
         atualizarHistoricoPacote($userId, $pacote->id, $this->getStatus());
     }

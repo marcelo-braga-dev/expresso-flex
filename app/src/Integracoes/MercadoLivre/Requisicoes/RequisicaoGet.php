@@ -6,6 +6,7 @@ use App\Models\IntegracaoMercadoLivre;
 use App\src\Integracoes\MercadoLivre\AutenticarAutorizar\Autorizar;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\GuzzleException;
 
 class RequisicaoGet
 {
@@ -13,7 +14,6 @@ class RequisicaoGet
     {
         $integracaoMercadoLivre = new IntegracaoMercadoLivre();
         $token = $integracaoMercadoLivre->token($dadosRequisicao->senderId);
-
 
         if (empty($token)) throw new \DomainException(
             "Não foi encontrada a conta integrada desse cliente ao Mercado Livre");
@@ -36,11 +36,12 @@ class RequisicaoGet
             ]);
 
             $dados = json_decode($res->getBody(), true);
-            if (empty($dados)) throw new \DomainException('Não foi possível comunicar à conta Mercado Livre do Cliente.');
+            if (empty($dados)) throw new \DomainException();
+
             return $dados;
 
-        } catch (ClientException | \DomainException $exception) {
-            throw new \DomainException($exception->getMessage());
+        } catch (ClientException|\DomainException|GuzzleException $exception) {
+            throw new \DomainException('Não foi possível comunicar à conta Mercado Livre do Cliente.');
         }
     }
 
