@@ -6,6 +6,6 @@ class HomeController
 {
     public function index()
     {
-        return view('pages.cliente.home');
+        return view('pages.clientes.home');
     }
 }

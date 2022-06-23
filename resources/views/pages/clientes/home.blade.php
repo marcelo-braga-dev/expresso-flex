@@ -6,13 +6,13 @@
         <div class="row">
             <div class="col-md-6 mb-5">
                 <div class="card mb-3 p-4 pb-1">
-                    <form action="{{ route('cliente.home.index') }}">
+                    <form action="{{ route('clientes.pacotes.pesquisar.show') }}">
                         @csrf
                         <div class="row">
                             <div class="col-md-8 mb-3">
                                 <div class="form-group m-0">
                                     <label class="form-control-label" for="input-name">Pesquisar Pacote</label>
-                                    <input type="text" name="codigo_pacote_pesquisar"
+                                    <input type="text" name="id"
                                         class="form-control form-control-alternative" value="" placeholder="EF0000SP"
                                         required autofocus>
                                 </div>
@@ -30,32 +30,6 @@
         </div>
 
         <div class="row">
-            {{-- Coletas
-            <div class="col-md-6 mb-3">
-                <div class="card card-stats shadow">
-                    <div class="card-body">
-                        <div class="row mb-3">
-                            <div class="col">
-                                <h5 class="card-title text-uppercase text-muted mb-0">
-                                    Coletas
-                                </h5>
-                                <span class="h2 font-weight-bold mb-0">
-                                    Solicitar Coletas de Pacotes
-                                </span>
-                            </div>
-                            <div class="col-auto">
-                                <div class="icon icon-shape bg-success text-white rounded-circle shadow">
-                                    <i class="fas fa-dolly"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <a class="btn btn-success" href="{{ route('cliente.coleta.solicitar-coleta') }}">
-                            Solicitar Coleta
-                        </a>
-                    </div>
-                </div>
-            </div>--}}
-
             {{-- Gerar Etiqueta --}}
             <div class="col-md-6 mb-3">
                 <div class="card card-stats shadow">
