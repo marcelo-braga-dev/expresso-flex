@@ -43,9 +43,11 @@
 @endguest
 <x-elements.modal-session></x-elements.modal-session>
 <script>
-    if (typeof Android == 'object'){
-        versao = Android.versaoApp();
-        if (versao !== 7) window.location.href = 'https://play.google.com/store/apps/details?id=com.expressoflexapp';
+    if (typeof Android == 'object') {
+        if (typeof Android.versaoApp !== 'function') {
+            window.location.href = 'https://play.google.com/store/apps/details?id=com.expressoflexapp';
+        }
+        if (Android.versaoApp() !== 7) window.location.href = 'https://play.google.com/store/apps/details?id=com.expressoflexapp';
     }
 </script>
 
