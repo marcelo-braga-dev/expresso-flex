@@ -16,10 +16,10 @@
                 </div>
             </div>
             <div class="card-body p-1">
-                <form method="GET" action="{{ route('clientes.etiquetas.expressoflex.show', 1) }}">
+                <form method="GET" id="form-etiquetas" action="{{ route('clientes.etiquetas.expressoflex.show', 1) }}">
                     <div class="row p-2">
                         <div class="col-auto is-android">
-                            <button type="submit" class="btn btn-primary m-2">Imprimir Selecionados</button>
+                            <button type="submit" id="imprimir-selecionados" class="btn btn-primary m-2">Imprimir Selecionados</button>
                         </div>
                         <div class="col-auto">
                             <button type="submit" class="btn btn-link m-2" name="impresso" value="true">
@@ -33,13 +33,13 @@
                             <div class="row justify-content-between">
                                 <div class="col-2 col-md-1 text-center">
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" name="etiquetas[]"
+                                        <input type="checkbox" class="custom-control-input checkbox-etiqueta" name="etiquetas[]"
                                                value="{{ $etiqueta->id }}" id="customCheck{{ $etiqueta->id }}">
-                                        <label class="custom-control-label"
+                                        <label  class="custom-control-label"
                                                for="customCheck{{ $etiqueta->id }}"></label>
                                     </div>
                                 </div>
-                                <div class="col-10 col-md-11">
+                                <div class="col-10 col-md-11 etiqueta">
                                     <p class="mb-0">
                                         <i class="fas fa-user mr-2 text-primary"></i>
                                         <b>{{ get_destinatario_pacote($etiqueta->destinatarios_id)->nome }}</b>
@@ -88,6 +88,35 @@
         </div>
     </div>
     @push('js')
+        <script>
+            $(function () {
+                let qtdChecked = 0;
+                $('.checkbox-etiqueta').click(function () {
+                    if ($(this).is(':checked')) {
+                        qtdChecked++;
+                    } else {
+                        qtdChecked--;
+                    }
+                });
+                $('.etiqueta').click(function () {
+                    const checkbox = $(this).parent().find('input');
+                    if (checkbox.is(':checked')) {
+                        checkbox.prop('checked', false);
+                        qtdChecked--;
+                    } else {
+                        checkbox.prop('checked', true);
+                        qtdChecked++;
+                    }
+                });
+                $('#imprimir-selecionados').click(function () {
+                    if (qtdChecked > 0) {
+                        $('#form-etiquetas').attr('target', '_blanck');
+                    } else {
+                        $('#form-etiquetas').attr('target', '');
+                    }
+                });
+            })
+        </script>
         <script>
             $(function () {
                 if (typeof Android == 'object') {
