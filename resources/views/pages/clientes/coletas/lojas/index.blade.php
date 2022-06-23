@@ -10,11 +10,6 @@
                         <h4 class="card-title text-uppercase mb-1">
                             Seus Pontos de Coleta
                         </h4>
-                        @if (!count($lojas))
-                            <a class="btn btn-primary" href="{{ route('clientes.lojas.create') }}">
-                                Novo Ponto de Coleta
-                            </a>
-                        @endif
                     </div>
                     <div class="col-auto">
                         <div class="icon icon-shape bg-primary text-white rounded-circle shadow">
@@ -35,7 +30,11 @@
                                             <b>{{ $loja['nome'] }}</b>
                                         </p>
                                         <p class="mb-0">
-                                            <i class="fas fa-map-marked-alt mr-2 text-danger"></i>
+                                            <i class="fas fa-phone mr-2 text-info"></i>
+                                            <b>{{ $loja['celular'] }}</b>
+                                        </p>
+                                        <p class="mb-0">
+                                            <i class="fas fa-map-marker-alt mr-2 text-danger"></i>
                                             <b>{{ get_endereco($loja['endereco']) }}</b>
                                         </p>
                                     </div>
@@ -46,12 +45,15 @@
                                                 <i class="fas fa-ellipsis-v"></i>
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                                <a class="dropdown-item"
+                                                   href="{{ route('clientes.lojas.edit', $loja->id) }}">
+                                                    Editar
+                                                </a>
                                                 <form method="POST" id="{{ $loja['id'] }}"
-                                                      action="{{ route('clientes.lojas.delete') }}">
-                                                    @csrf @method('put')
-                                                    <input type="hidden" name="id" value="{{ $loja['id'] }}">
-                                                    <button type="submit" class="dropdown-item btn-excluir"
-                                                            value="{{ $loja['id'] }}">
+                                                      action="{{ route('clientes.lojas.destroy', $loja->id) }}">
+                                                    @csrf @method('delete')
+                                                    <button type="submit" class="dropdown-item btn-excluir text-red"
+                                                            value="{{ $loja->id }}">
                                                         Excluir
                                                     </button>
                                                 </form>
@@ -63,12 +65,15 @@
                         @endforeach
 
                         @if (!count($lojas))
-                            <div class="row justify-content-center">
-                                <div class="col-auto">
-                                    <span class="d-block">
+                            <div class="row justify-content-center p-4">
+                                <div class="col-auto text-center">
+                                    <span class="d-block mb-3">
                                         Você não possui nenhum ponto de coleta
                                         cadastrado.
                                     </span>
+                                    <a class="btn btn-primary" href="{{ route('clientes.lojas.create') }}">
+                                       Cadastrar Ponto de Coleta
+                                    </a>
                                 </div>
                             </div>
                         @endif

@@ -2,13 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('lojas')
-    ->name('clientes.lojas.')
+Route::name('clientes.')
     ->namespace('Coletas')
     ->group(function () {
-        Route::get('', 'LojasController@index')->name('index');
-        Route::get('create', 'LojasController@create')->name('create');
-        Route::post('store', 'LojasController@store')->name('store');
-        Route::put('delete', 'LojasController@delete')->name('delete');
-        Route::get('qrcode','QrCodeLojasController@index')->name('qrcode');
+        Route::resource('lojas', 'LojasController');
+        Route::get('lojas-qrcode','QrCodeLojasController@index')->name('lojas.qrcode');
     });

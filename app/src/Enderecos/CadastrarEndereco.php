@@ -8,9 +8,12 @@ class CadastrarEndereco extends Endereco
 {
     public function cadastrar()
     {
-        $endereco = new Enderecos();
+        return (new Enderecos())->cadastrar($this);
+    }
 
-        return $endereco->cadastrar($this);
+    public function atualizar($id)
+    {
+        (new Enderecos())->atualizar($id, $this);
     }
 
     public function cep(string $cep)

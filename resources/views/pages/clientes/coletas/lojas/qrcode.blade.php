@@ -18,8 +18,8 @@
             <div class="card-body text-center">
                 @if (empty($qrCode))
                     <div class="row">
-                        <div class="col-12 mb-2">
-                            <p>
+                        <div class="col-12">
+                            <p >
                                 É necessário ter um ponto de coleta ativo para emitir o QrCode de identificação.
                             </p>
                             <a class="btn btn-primary" href="{{ route('clientes.lojas.create') }}">
@@ -30,7 +30,7 @@
                 @else
                     <div id="qrcode">
                         <div class="row">
-                            <div class="col-12 mb-2">
+                            <div class="col-12 mb-4">
                                 <span>
                                     Use o QrCode abaixo para facilitar a identificação do seu Ponto de Coleta de
                                     Pacotes.
