@@ -11,16 +11,16 @@
     <!-- Favicon -->
     {{-- <link href="/assets/img/brand/logo-x256.png" rel="icon"> --}}
 
-    <link type="text/css" href="{{ asset('assets') }}/css/font-google.css" rel="stylesheet">
+    <link type="text/css" href="{{ asset('assets') }}/css/font-google.css?ver=1.0" rel="stylesheet">
 
     <!-- Icons -->
-    <link href="{{ asset('argon') }}/vendor/nucleo/css/nucleo.css" rel="stylesheet">
-    <link href="{{ asset('argon') }}/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="{{ asset('argon') }}/vendor/nucleo/css/nucleo.css?ver=1.0" rel="stylesheet">
+    <link href="{{ asset('argon') }}/vendor/@fortawesome/fontawesome-free/css/all.min.css?ver=1.0" rel="stylesheet">
 
     <!-- Argon CSS -->
-    <link type="text/css" href="{{ asset('argon') }}/css/argon.css?v=2.0.1" rel="stylesheet">
+    <link type="text/css" href="{{ asset('argon') }}/css/argon.css?v=1.0" rel="stylesheet">
     <link type="text/css" href="{{ asset('assets') }}/css/style.css?ver=1.0" rel="stylesheet">
-    <link type="text/css" href="{{ asset('assets') }}/select2/css/select2.min.css" rel="stylesheet">
+    <link type="text/css" href="{{ asset('assets') }}/select2/css/select2.min.css?ver=1.0" rel="stylesheet">
 
 </head>
 
@@ -51,13 +51,11 @@
     }
 </script>
 
-<script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js?v=1.0.0"></script>
-<script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js?v=1.0.0"></script>
-
-<script src="{{ asset('assets') }}/js/config.js?v=1.0.0"></script>
-
-<script src="{{ asset('argon') }}/js/argon.min.js?v=2.0.1"></script>
-<script src="{{ asset('assets') }}/select2/js/select2.min.js?v=1.0.0"></script>
+<script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js?v=1.0"></script>
+<script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js?v=1.0"></script>
+<script src="{{ asset('assets') }}/js/config.js?v=1.0"></script>
+<script src="{{ asset('argon') }}/js/argon.min.js?v=1.0"></script>
+<script src="{{ asset('assets') }}/select2/js/select2.min.js?v=1.0"></script>
 
 @stack('js')
 </body>
