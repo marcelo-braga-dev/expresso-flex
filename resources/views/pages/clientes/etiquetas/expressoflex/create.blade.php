@@ -2,7 +2,7 @@
 
     <div class="header bg-principal bg-height-top"></div>
 
-    <div class="container-fluid mt--9 mb-4">
+    <div class="container-fluid mt--9 p-1 mb-6">
         <div class="card bg-secondary shadow">
             <div class="card-header bg-white">
                 <div class="row align-items-center">
@@ -43,13 +43,13 @@
                     <h5>Informações do Destinatário</h5>
                     <div class="row">
                         <div class="col-lg-6">
-                            <x-inputs.input label="Nome do Destinatario" type="text" name="nome" id="nome" required
-                                            autofocus></x-inputs.input>
+                            <x-inputs.input label="Nome do Destinatario" type="text" name="nome" id="nome"
+                                            required autofocus></x-inputs.input>
                         </div>
-                        <div class="col-lg-3">
-                            <x-inputs.input label="CPF" type="text" name="cpf"></x-inputs.input>
+                        <div class="col-6 col-lg-3">
+                            <x-inputs.input label="CPF" class="cpf" type="text" name="cpf"></x-inputs.input>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-6 col-lg-3">
                             <x-inputs.input label="Telefone" type="text" name="celular"></x-inputs.input>
                         </div>
                     </div>
@@ -58,7 +58,7 @@
                     <hr>
                     <h5>Endereço de Entrega</h5>
                     <div class="row">
-                        <div class="col-lg-3">
+                        <div class="col-6 col-lg-3">
                             <x-inputs.input label="Cep" type="text" name="endereco[cep]" id="cep"
                                             required></x-inputs.input>
                         </div>
@@ -68,13 +68,13 @@
                             <x-inputs.input label="Rua/Avenida" type="text" name="endereco[rua]"
                                             id="rua" required></x-inputs.input>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-6 col-lg-3">
                             <x-inputs.input label="Número" type="text" name="endereco[numero]"
                                             required></x-inputs.input>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-2">
+                        <div class="col-8 col-lg-2">
                             <x-inputs.input label="Complemento" type="text"
                                             name="endereco[complemento]"></x-inputs.input>
                         </div>

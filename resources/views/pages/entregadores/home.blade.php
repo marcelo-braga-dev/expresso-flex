@@ -3,7 +3,7 @@
     <div class="header bg-principal bg-height-top"></div>
 
     <!-- Page content -->
-    <div class="container-fluid mt--8">
+    <div class="container-fluid mt--8 mb-6">
         <div class="row">
             {{-- Coletas --}}
             <div class="col-md-6 mb-3">

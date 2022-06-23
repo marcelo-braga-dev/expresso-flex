@@ -6,12 +6,10 @@ use App\Models\Pacotes;
 
 class Pacote
 {
-    private PacoteImportado $etiqueta;
     private string $origem;
 
     public function __construct(string $origem)
     {
-        $this->etiqueta = new PacoteImportado();
         $this->origem = $origem;
     }
 
@@ -21,11 +19,10 @@ class Pacote
             throw new \DomainException('Pacote já cadastrado.');
         }
 
-        if ($this->etiqueta->verificar($dados['id'], $this->origem)) {
-            $this->etiqueta->cadastrar($dados, $this->origem);
-            return;
+        $etiqueta = new PacoteImportado($dados['id'], $this->origem);
+        if ($etiqueta->verificar()) {
+            return $etiqueta->cadastrar($dados, $this->origem);
         }
-
         return (new CadastrarPacote())->cadastrar($dados, $this->origem);
     }
 
@@ -37,6 +34,4 @@ class Pacote
                 ['origem', '=', $this->origem]
             ])->exists();
     }
-
-
 }

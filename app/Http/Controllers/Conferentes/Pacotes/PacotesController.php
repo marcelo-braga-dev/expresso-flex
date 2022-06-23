@@ -15,9 +15,6 @@ class PacotesController
         $pacote = $pacotes->newQuery()
             ->findOrFail($id);
 
-
-
-
         $recebedor = [];
         $historicos = [];
 

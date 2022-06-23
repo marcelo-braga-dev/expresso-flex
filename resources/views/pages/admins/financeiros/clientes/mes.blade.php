@@ -1,7 +1,7 @@
 <x-layout menu="financeiro" submenu="financeiro-clientes">
     <div class="header bg-principal bg-height-top"></div>
 
-    <div class="container-fluid mt--9">
+    <div class="container-fluid mt--9 p-1 mb-6">
         <div class="card bg-secondary shadow">
             <div class="card-header bg-white mb-0">
                 <div class="row align-items-center">
@@ -22,7 +22,7 @@
                         <li
                             class="list-group-item d-flex justify-content-between align-items-center px-4 row-clickable">
                             <div class="row">
-                                <div class="col-auto pt-2">
+                                <div class="col-12 col-md-auto pt-2">
                                     <span>{{ converterMes($frete['mes']) . '/' . $frete['ano'] }}</span>
                                 </div>
                                 <div class="col-auto">

@@ -8,15 +8,21 @@ Route::name('conferentes.')
         Route::resource('pacote', 'PacotesController');
     });
 
+Route::name('conferentes.pacotes.')
+    ->namespace('Pacotes')
+    ->group(function () {
+        Route::resource('sob-coleta', 'SobColetaController');
+        Route::resource('sob-entrega', 'SobEntregaController');
+        Route::resource('por-cliente', 'PorClientesController');
+        Route::resource('na-base', 'NaBaseController');
+    });
+
+
+
 Route::name('conferentes.')
     ->namespace('Pacotes')
     ->controller('StatusController')
     ->group(function () {
-        Route::get('pacotes/pacotes-sob-coleta', 'sobColeta')
-            ->name('pacotes.pacotes-sob-coleta');
-
-        Route::get('pacotes/pacotes-sob-entrega', 'sobEntrega')
-            ->name('pacotes.pacotes-sob-entrega');
 
         Route::get('pacotes/pacotes-base', 'naBase')
             ->name('pacotes.pacotes-base');

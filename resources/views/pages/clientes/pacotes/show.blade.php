@@ -2,7 +2,7 @@
     <div class="header bg-principal bg-height-top"></div>
 
     <!-- Page content -->
-    <div class="container-fluid mt--9">
+    <div class="container-fluid mt--9 p-1 mb-6">
         <div class="card mb-6">
             <!-- Card header -->
             <div class="card-header border">

@@ -1,6 +1,6 @@
 <x-layout menu="perfil" submenu="minha-conta">
     <div class="header bg-principal bg-height-top"></div>
-    <div class="container-fluid mt--9">
+    <div class="container-fluid mt--9 p-1 mb-6">
         <div class="card bg-secondary shadow">
             <div class="card-header bg-white mb-0">
                 <div class="row align-items-center">
@@ -14,7 +14,7 @@
                       autocomplete="off">
                     @csrf @method('put')
                     <div class="row">
-                        <div class="col">
+                        <div class="col-12">
                             <div class="form-group">
                                 <label class="form-control-label" for="nome">Seu Nome</label>
                                 <input type="text" name="nome" id="nome"
@@ -23,19 +23,7 @@
                                        autofocus>
                             </div>
                         </div>
-                        <div class="col">
-                            <div class="form-group">
-                                <label class="form-control-label" for="cpf">CPF</label>
-                                <input type="text" name="cpf" id="cpf"
-                                       class="form-control form-control-alternative"
-                                       value="{{ $usuario['cpf'] ?? '' }}"
-                                       required autofocus>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col">
+                        <div class="col-12">
                             <div class="form-group">
                                 <label class="form-control-label" for="email">E-mail</label>
                                 <input type="email" name="email" id="email"
@@ -44,7 +32,19 @@
                                        required autofocus>
                             </div>
                         </div>
-                        <div class="col">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label class="form-control-label" for="cpf">CPF</label>
+                                <input type="text" name="cpf" id="cpf"
+                                       class="form-control form-control-alternative"
+                                       value="{{ $usuario['cpf'] ?? '' }}"
+                                       required autofocus>
+                            </div>
+                        </div>
+                        <div class="col-6">
                             <div class="form-group">
                                 <label class="form-control-label" for="celular">Celular</label>
                                 <input type="text" name="celular" id="celular"

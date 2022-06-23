@@ -41,9 +41,7 @@
 @guest()
     {{ $slot }}
 @endguest
-
-@include('layouts.componentes.modal-sucesso')
-
+<x-elements.modal-session></x-elements.modal-session>
 <script>
     if (typeof Android == 'object'){
         versao = Android.versaoApp();
@@ -51,21 +49,15 @@
     }
 </script>
 
-<script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>
-<script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js?v=1.0.0"></script>
+<script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js?v=1.0.0"></script>
 
-<script src="{{ asset('assets') }}/js/config.js"></script>
+<script src="{{ asset('assets') }}/js/config.js?v=1.0.0"></script>
 
-<script src="{{ asset('argon') }}/js/argon.min.js?v=2.0.0"></script>
-{{--<script src="{{ asset('assets') }}/vendor/select2/dist/js/select2.min.js"></script>--}}
-<script src="{{ asset('assets') }}/select2/js/select2.min.js"></script>
+<script src="{{ asset('argon') }}/js/argon.min.js?v=2.0.1"></script>
+<script src="{{ asset('assets') }}/select2/js/select2.min.js?v=1.0.0"></script>
 
 @stack('js')
-<script>
-    $(document).ready(function () {
-        $('.select2').select2();
-    });
-</script>
 </body>
 
 </html>

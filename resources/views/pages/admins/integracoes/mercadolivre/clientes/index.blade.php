@@ -2,20 +2,23 @@
 
     <div class="header bg-principal bg-height-top"></div>
 
-    <div class="container-fluid mt--9 mb-6">
+    <div class="container-fluid mt--9 p-1 mb-6">
         <div class="card bg-secondary shadow">
-            <div class="card-header bg-white">
-                <div class="row justify-content-between align-items-center px-3">
-                    <div>
+            <div class="card-header border-bottom">
+                <div class="row justify-content-between align-items-center p-0 mb-3">
+                    <div class="col-12">
                         <h3 class="mb-0">Contas Mercado Livre Sincronizadas</h3>
-                        <form method="POST" action="{{ route('admins.integracoes.clientes.atualizarTodos') }}"> @csrf @method('PUT')
-                            <button type="submit" class="btn btn-primary" >Atualizar Integrações</button>
-                        </form>
-
                     </div>
-                    <div>
+                    <div class="col-12">
+                        <a class="btn btn-link" href="{{ route('admins.integracoes.clientes.atualizarTodos') }}">
+                            Atualizar Integrações
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
                         <div class="form-group m-0">
-                            <div class="input-group">
+                            <div class="input-group input-group-alternative input-group-merge bg-white">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">
                                         <i class="fas fa-search"></i>

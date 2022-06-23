@@ -1,7 +1,7 @@
 <x-layout menu="financeiro" submenu="financeiro-pagamentos">
     <div class="header bg-principal bg-height-top"></div>
 
-    <div class="container-fluid mt--9 mb-6">
+    <div class="container-fluid mt--9 p-1 mb-6">
         <div class="row">
             <div class="col-md-4">
                 <div class="card card-stats mb-3">

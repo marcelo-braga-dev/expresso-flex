@@ -1,7 +1,7 @@
 <x-layout menu="etiquetas" submenu="para-imprimir">
     <div class="header bg-principal bg-height-top"></div>
 
-    <div class="container-fluid mt--9 mb-6">
+    <div class="container-fluid mt--9 p-1 mb-6">
         <div class="card bg-secondary shadow">
             <div class="card-header bg-white">
                 <div class="row align-items-center">
@@ -22,8 +22,8 @@
                             <button type="submit" class="btn btn-primary m-2">Imprimir Selecionados</button>
                         </div>
                         <div class="col-auto">
-                            <button type="submit" class="btn btn-link m-2" name="impresso" value="true">Marcar como
-                                impresso
+                            <button type="submit" class="btn btn-link m-2" name="impresso" value="true">
+                                Marcar como impresso
                             </button>
                         </div>
                     </div>

@@ -1,12 +1,12 @@
 <x-layout menu="importacao" submenu="importados">
     <div class="header bg-principal bg-height-top"></div>
 
-    <div class="container-fluid mt--9 mb-5">
+    <div class="container-fluid mt--9 p-1 mb-6">
         <div class="card bg-secondary shadow">
             <div class="card-header bg-white">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h4 class="card-title text-uppercase mb-1">Pacotes Importados</h4>
+                        <h4 class="card-title text-uppercase mb-1">Etiquetas Importadas</h4>
                     </div>
                 </div>
             </div>

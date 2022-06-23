@@ -1,21 +1,24 @@
 <x-layout menu="usuarios" submenu="usuarios-clientes">
     <div class="header bg-principal bg-height-top"></div>
-    <div class="container-fluid mt--9">
+    <div class="container-fluid mt--9 p-1 mb-6">
         <div class="row">
             <div class="col">
                 <div class="card">
-                    <!-- Card header -->
                     <div class="card-header border-bottom">
-                        <div class="row justify-content-between align-items-center px-3">
-                            <div>
+                        <div class="row justify-content-between align-items-center p-0 mb-3">
+                            <div class="col-5">
                                 <h3 class="mb-0">Clientes Cadastrados</h3>
+                            </div>
+                            <div class="col-7 text-right">
                                 <a class="btn btn-primary" href="{{ route('admins.usuarios.clientes.create') }}">
-                                    Cadastrar Cliente
+                                    Novo Cliente
                                 </a>
                             </div>
-                            <div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
                                 <div class="form-group m-0">
-                                    <div class="input-group">
+                                    <div class="input-group input-group-alternative input-group-merge bg-white">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon1">
                                                 <i class="fas fa-search"></i>
@@ -49,12 +52,18 @@
                                            href="{{ route('admins.fretes.clientes.edit', $usuario->id) }}">
                                             <b>Preços dos Fretes</b><br>
                                             São Paulo: @if (!empty($fretes[$usuario->id]['sao_paulo']))
-                                                R$ {{ $fretes[$usuario->id]['sao_paulo'] }}@else <span
-                                                    class="text-danger">Não Inserido</span>@endif
+                                                R$ {{ $fretes[$usuario->id]['sao_paulo'] }}
+                                            @else
+                                                <span
+                                                    class="text-danger">Não Inserido</span>
+                                            @endif
                                             <br>
                                             Grande SP: @if (!empty($fretes[$usuario->id]['grande_sao_paulo']))
-                                                R$ {{ $fretes[$usuario->id]['grande_sao_paulo'] }}@else <span
-                                                    class="text-danger">Não Inserido</span>@endif
+                                                R$ {{ $fretes[$usuario->id]['grande_sao_paulo'] }}
+                                            @else
+                                                <span
+                                                    class="text-danger">Não Inserido</span>
+                                            @endif
                                         </a>
                                     </td>
                                     <td>

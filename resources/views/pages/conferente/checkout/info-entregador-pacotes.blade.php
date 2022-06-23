@@ -3,7 +3,7 @@
     <div class="header bg-principal bg-height-top"></div>
 
     <!-- Page content -->
-    <div class="container-fluid mt--9">
+    <div class="container-fluid mt--9 p-1 mb-6">
         <div class="row">
             <div class="col">
                 <div class="card bg-secondary">

@@ -45,6 +45,7 @@ $(document).ready(function () {
     $('.selectonfocus').mask("00/00/0000", { selectOnFocus: true });
 });
 
+// Tabelas clicaveis
 $(function () {
     // redireciona no click
     $('.row-clickable').css('cursor', 'pointer');
@@ -54,6 +55,7 @@ $(function () {
     });
 })
 
+// Input Pesquisar nas Tabelas
 $(function() {
     var $rowsTable = $('.table tbody tr');
     $('#search').keyup(function() {
@@ -82,3 +84,6 @@ $(function() {
     });
 });
 
+$(document).ready(function () {
+    $('.select2').select2();
+});

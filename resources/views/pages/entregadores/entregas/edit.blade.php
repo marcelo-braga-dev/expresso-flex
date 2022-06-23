@@ -1,6 +1,6 @@
 <x-layout menu="entregas" submenu="realizar">
     <div class="header bg-principal bg-height-top"></div>
-    <div class="container-fluid mt--9 mb-5">
+    <div class="container-fluid mt--9 p-1 mb-6">
         <div class="card bg-secondary shadow">
             <div class="card-header">
                 <div class="row align-items-center justify-content-between">

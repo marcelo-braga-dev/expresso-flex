@@ -3,25 +3,30 @@
     <div class="header bg-principal bg-height-top"></div>
 
     <!-- Page content -->
-    <div class="container-fluid mt--9">
+    <div class="container-fluid mt--9 p-1 mb-6">
         <div class="card">
-            <div class="card-header border-0">
-                <div class="row justify-content-between align-items-center px-3">
-                    <div>
-                        <h3 class="mb-0">Administradores Cadastrados</h3>
-                        <a class="btn btn-primary mb-2 mb-md-0" href="{{ route('admins.usuarios.admins.create') }}">
-                            Cadastrar Administrador
+            <div class="card-header border-bottom">
+                <div class="row justify-content-between align-items-center p-0 mb-3">
+                    <div class="col-5">
+                        <h3 class="mb-0">Admins. Cadastrados</h3>
+                    </div>
+                    <div class="col-7 text-right">
+                        <a class="btn btn-primary" href="{{ route('admins.usuarios.admins.create') }}">
+                            Novo Admin
                         </a>
                     </div>
-
-                    <div class="form-group m-0">
-                        <div class="input-group input-group-alternative input-group-merge bg-white">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">
-                                    <i class="fas fa-search"></i>
-                                </span>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group m-0">
+                            <div class="input-group input-group-alternative input-group-merge bg-white">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <i class="fas fa-search"></i>
+                                    </span>
+                                </div>
+                                <input type="text" class="form-control" id="search" placeholder="Pesquisar...">
                             </div>
-                            <input type="text" class="form-control" id="search" placeholder="Pesquisar...">
                         </div>
                     </div>
                 </div>

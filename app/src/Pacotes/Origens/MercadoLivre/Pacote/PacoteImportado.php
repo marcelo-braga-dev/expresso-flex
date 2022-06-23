@@ -3,72 +3,81 @@
 namespace App\src\Pacotes\Origens\MercadoLivre\Pacote;
 
 use App\Models\Etiquetas;
-use App\src\Pacotes\CodigoRastreio;
+use App\Models\Pacotes;
 use App\src\Pacotes\Info\Coleta;
 use App\src\Pacotes\Info\Destinatario;
-use App\src\Pacotes\Info\Endereco;
 use App\src\Pacotes\NovoPacote;
-use App\src\Pacotes\Origens\MercadoLivre\MercadoLivre;
+use App\src\Pacotes\Origens\MercadoLivre\Pacote\Infos\DadosPacote;
 use App\src\Pacotes\Status\Coletado;
 
 class PacoteImportado
 {
-    public function verificar($codigo, $origem): bool
-    {
-        $etiqueta = new Etiquetas();
+    private $etiqueta;
+    private int $idColeta;
+    private int $entregador;
+    private string $origem;
+    private $rastreio;
 
-        return $etiqueta->newQuery()
-            ->where([
-                ['rastreio', '=', $codigo],
-                ['origem', '=', $origem]
-            ])->exists();
+    public function __construct($rastreio, $origem)
+    {
+        $this->rastreio = $rastreio;
+        $this->origem = $origem;
     }
 
-    public function cadastrar($dados, string $origem)
+    private function getEtiqueta($id, $origem)
     {
-        $etiqueta = $this->getEtiqueta($dados['id']);
-
-        $coleta = $this->getColeta($dados['coleta']);
-
-        $destinatario = $this->getDestinatario($etiqueta, $dados['id']);
-
-        $endereco = $this->getEndereco($etiqueta);
-
-        $rastreio = $this->getRastreio();
-
-        $pacote = new NovoPacote($coleta, $destinatario, $endereco, $rastreio);
-        return $pacote->cadastrar();
-    }
-
-    private function getEtiqueta($codigo)
-    {
-        $etiquetas = new Etiquetas();
-
-        return $etiquetas->newQuery()
-            ->where('rastreio', '=', $codigo)
+        return (new Etiquetas)->newQuery()
+            ->where('rastreio', '=', $id)
+            ->where('origem', '=', $origem)
             ->first();
     }
 
-    private function getEndereco($etiqueta): Endereco
+    public function cadastrar($dados, $origem)
     {
-        return new Endereco($etiqueta->enderecos_id);
+        $this->etiqueta = $this->getEtiqueta($dados['id'], $origem);
+        $this->cadastrado();
+        $this->idColeta = $dados['coleta'];
+        $this->entregador = $dados['entregador'];
+        $this->origem = $origem;
+
+        $coleta = $this->getColeta();
+
+        $destinatario = $this->getDestinatario();
+
+        $dadosPacote = new DadosPacote(null, $this->etiqueta->rastreio, $origem);
+
+        $pacote = new NovoPacote($coleta, $destinatario, $dadosPacote);
+        return $pacote->cadastrar();
     }
 
-    private function getRastreio(): string
+    private function getColeta(): Coleta
     {
-        $codRastreio = new CodigoRastreio();
-        return $codRastreio->gerar();
+        return new Coleta($this->idColeta, $this->entregador, new Coletado());
     }
 
-    private function getDestinatario($etiqueta, $id): Destinatario
+    private function getDestinatario(): Destinatario
     {
-        $origem = new MercadoLivre();
-        return new Destinatario(
-            $etiqueta->destinatarios_id, $etiqueta->user_id, $id, new Coletado(), $origem->getOrigem());
+        $destinatario = new Destinatario();
+        $destinatario->setId($this->etiqueta->destinatarios_id);
+
+        $destinatario->setIdEndereco($this->etiqueta->enderecos_id);
+
+        return $destinatario;
     }
 
-    private function getColeta(int $coleta): Coleta
+    public function verificar(): bool
     {
-        return new Coleta(id_usuario_atual(), $coleta);
+        return (new Etiquetas())->newQuery()
+            ->where('rastreio', '=', $this->rastreio)
+            ->where('origem', '=', $this->origem)
+            ->exists();
+    }
+
+    private function cadastrado()
+    {
+        if ((new Pacotes())->newQuery()
+            ->where('rastreio', '=', $this->rastreio)
+            ->where('origem', '=', $this->origem)
+            ->exists()) throw new \DomainException('Pacote já cadastrado');;
     }
 }

@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\src\Coletas\AbrirColeta;
-use App\src\Coletas\AceitarColeta;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

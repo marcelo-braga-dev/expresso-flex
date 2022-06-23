@@ -1,6 +1,6 @@
 <x-layout menu="historico" submenu="entregas-finalizadas">
     <div class="header bg-principal bg-height-top"></div>
-    <div class="container-fluid mt--9">
+    <div class="container-fluid mt--9 p-1 mb-6">
         <div class="card card-stats mb-5 border shadow-sm">
             <div class="card-header">
                 <div class="row align-items-center justify-content-between">

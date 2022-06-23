@@ -38,7 +38,7 @@
                     </li>
                     <li class="nav-item @if (SUBMENU === 'pacotes-base') active @endif">
                         <a class="nav-link ml-1 pl-4" href="{{ route('conferentes.checkin.pacotes-base') }}">
-                            Pacotes na Base
+                            Pacotes Presentes na Base
                         </a>
                     </li>
                 </ul>
@@ -50,20 +50,32 @@
             <a class="nav-link p-0 ml-3 m-2" href="#navbar-pacotes" data-toggle="collapse" role="button"
                aria-expanded="true" aria-controls="navbar-pacotes">
                 <i class="fas fa-box text-principal"></i>
-                <span class="nav-link-text text-principal">Pacotes</span>
+                <span class="nav-link-text text-principal">Pacotes de Hoje</span>
             </a>
             <div class="collapse show" id="navbar-pacotes">
                 <ul class="nav nav-sm flex-column">
                     <li class="nav-item @if (SUBMENU === 'sendo-coletados') active @endif">
                         <a class="nav-link ml-1 pl-4"
-                           href="{{ route('conferentes.pacotes.pacotes-sob-coleta') }}">
-                            Pacotes sendo Coletados
+                           href="{{ route('conferentes.pacotes.sob-coleta.index') }}">
+                            Sendo Coletados Hoje
+                        </a>
+                    </li>
+                    <li class="nav-item @if (SUBMENU === 'sendo-coletados') active @endif">
+                        <a class="nav-link ml-1 pl-4"
+                           href="{{ route('conferentes.pacotes.na-base.index') }}">
+                            Presentes na Base Hoje
                         </a>
                     </li>
                     <li class="nav-item @if (SUBMENU === 'sendo-entregue') active @endif">
                         <a class="nav-link ml-1 pl-4"
-                           href="{{ route('conferentes.pacotes.pacotes-sob-entrega') }}">
-                            Pacotes sendo Entregue
+                           href="{{ route('conferentes.pacotes.sob-entrega.index') }}">
+                            Sendo Entregue Hoje
+                        </a>
+                    </li>
+                    <li class="nav-item @if (SUBMENU === 'por-cliente') active @endif">
+                        <a class="nav-link ml-1 pl-4"
+                           href="{{ route('conferentes.pacotes.por-cliente.index') }}">
+                            Pacotes de Hoje dos Clientes
                         </a>
                     </li>
                 </ul>

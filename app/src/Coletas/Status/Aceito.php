@@ -2,8 +2,8 @@
 
 namespace App\src\Coletas\Status;
 
+use App\src\Coletas\AbrirColeta;
 use App\src\Coletas\Coleta;
-use App\src\Coletas\AceitarColeta;
 
 class Aceito extends StatusColeta
 {
@@ -16,8 +16,8 @@ class Aceito extends StatusColeta
 
     public function aceitar(Coleta $coleta, int $idLoja)
     {
-        $coletaService = new AceitarColeta($idLoja, $this->status);
-        $coletaService->criar();
+        $coletaService = new AbrirColeta($idLoja, id_usuario_atual(), $this->status);
+        return $coletaService->criar();
     }
 
     public function finalizar(Coleta $coleta)

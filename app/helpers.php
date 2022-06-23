@@ -72,17 +72,13 @@ function get_destinatario_pacote(int $id)
         ->first();
 }
 
-function get_endereco_loja(?int $id)
+function get_endereco_loja(?int $id): string
 {
     $loja = LojasClientes::find($id);
 
     if (!empty($loja)) return get_endereco($loja->endereco);
+    return 'Não encontrado.';
 }
-
-//function get_endereco_destinatario(int $id, $separado = false): string
-//{
-//    return get_endereco($id);
-//}
 
 function get_cep_endereco(int $id)
 {

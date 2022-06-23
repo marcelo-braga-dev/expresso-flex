@@ -20,7 +20,7 @@ class Coleta
 
     public function aceitar(int $idLoja)
     {
-        $this->status->aceitar($this, $idLoja);
+        return $this->status->aceitar($this, $idLoja);
     }
 
     public function criar()

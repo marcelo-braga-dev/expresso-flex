@@ -40,9 +40,9 @@ class ColetasController extends Controller
     public function store(Request $request)
     {
         $coleta = new Coleta(new Aceito());
-        $coleta->aceitar($request->id);
+        $dados = $coleta->aceitar($request->id);
 
-        return redirect()->route('entregadores.coletas.index');
+        return redirect()->route('entregadores.coletas.pacotes.show', $dados->id);
     }
 
     public function update(Request $request)

@@ -1,7 +1,7 @@
 <x-layout menu="usuarios" submenu="usuarios-entregadores">
     <div class="header bg-principal bg-height-top"></div>
 
-    <div class="container-fluid mt--9">
+    <div class="container-fluid mt--9 p-1 mb-6">
         <div class="card shadow mb-4">
             <div class="card-header border">
                 <div class="d-flex justify-content-between align-items-center">

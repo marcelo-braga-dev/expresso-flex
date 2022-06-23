@@ -30,7 +30,7 @@ class ClientesController
         $mes = $request->mes;
         $ano = $request->ano;
         $financeiroService = new \App\Service\Clientes\Financeiro\FinanceiroService();
-        $fretes = $financeiroService->quinzena($mes, $ano, $id);
+        $fretes = $financeiroService->quinzena(new FretesRealizados(), $mes, $ano, $id);
 
         return view('pages.admins.financeiros.clientes.quinzena',
             compact('fretes', 'id', 'mes', 'ano'));

@@ -3,7 +3,7 @@
     <div class="header bg-principal bg-height-top"></div>
 
     <!-- Nova Loja -->
-    <div class="container-fluid mt--9">
+    <div class="container-fluid mt--9 p-1 mb-6">
         <div class="card mb-4">
             <!-- Card header -->
             <div class="card-header border">
