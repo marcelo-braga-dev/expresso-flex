@@ -10,18 +10,14 @@ class HistoricoController
 {
     public function index()
     {
-        $solicitacaoRetiradas = new SolicitacaoRetiradas();
-
-        $solicitacoes = [];
-
-        $_solicitacoes = $solicitacaoRetiradas->query()
-            ->orderBy('updated_at', 'DESC')
+        $items = (new SolicitacaoRetiradas())->newQuery()
+            ->orderBy('created_at', 'DESC')
             ->get();
 
-        foreach ($_solicitacoes as $arg) {
-            $data = date('d/m/y', strtotime($arg->updated_at));
-
-            $solicitacoes[$data][] = $arg->updated_at;
+        $solicitacoes = [];
+        foreach ($items as $item) {
+            $data = date('d/m/y', strtotime($item->updated_at));
+            $solicitacoes[$data][] = $item->updated_at;
         }
 
         return view('pages.conferente.solicitacoes.historico.historico-geral', compact('solicitacoes'));
@@ -29,56 +25,31 @@ class HistoricoController
 
     public function historicoDiario(Request $request)
     {
-        $solicitacaoRetiradas = new SolicitacaoRetiradas();
-        $clsPacotes = new Pacotes();
-
-        $solicitacoes = [];
-        $pacotes = [];
         $dia = $request->data;
+        $data = date('Y-m-d', strtotime($dia));
 
-        $data = $request->data;
-        $data = date('Y-m-d', strtotime($request->data));
-
-        $solicitacoes = $solicitacaoRetiradas->query()
+        $solicitacoes = (new SolicitacaoRetiradas())->newQuery()
+            ->orderBy('created_at', 'DESC')
             ->whereDate('updated_at', $data)
             ->get();
 
-        $todosPacotes = $clsPacotes->query()
-            ->get();
+        $todosPacotes = (new Pacotes())->newQuery()->get();
 
-        foreach ($todosPacotes as $arg)
+        $pacotes = [];
+        foreach ($todosPacotes as $item)
         {
-            $pacotes[$arg->coleta][] = 'x';
+            $pacotes[$item->coleta][] = 'x';
         }
 
         return view('pages.conferente.solicitacoes.historico.historico-diario', compact('solicitacoes', 'pacotes', 'dia'));
     }
 
-    public function info(Request $request, DestinatarioRecebedor $destinatarioRecebedor, PacotesHistoricos $pacotesHistoricos)
+    public function show($id)
     {
-        $pacote = Pacotes::find($request->id);
+        $pacotes = (new Pacotes())->newQuery()
+            ->where('coleta', '=', $id)
+            ->get();
 
-        $recebedor = [];
-        $historicos = [];
-
-        $dadosRecebedor = $destinatarioRecebedor->query()->where('pacotes_id', '=', $pacote->id)->get();
-
-        foreach ($dadosRecebedor as $value) {
-            $recebedor[$value->meta_key] = $value->value;
-        }
-
-        $dadosHistoricos = $pacotesHistoricos->query()->where('pacotes_id', '=', $pacote->id)->get();
-
-        foreach ($dadosHistoricos as $value) {
-            $historicos[] = [
-                'status' => $value->status,
-                'obs' => $value->value,
-                'data' => $value->created_at
-            ];
-        }
-
-        $frete = FretesRealizados::query()->where('pacotes_id', '=', $pacote->id)->first();
-
-        return view('pages.conferente.pacotes.info-pacote', compact('pacote', 'recebedor', 'historicos', 'frete'));
+        return view('pages.conferente.solicitacoes.show', compact('pacotes'));
     }
 }

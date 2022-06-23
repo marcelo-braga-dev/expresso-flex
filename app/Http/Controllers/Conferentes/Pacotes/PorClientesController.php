@@ -34,6 +34,6 @@ class PorClientesController extends Controller
             ->orderBy('updated_at', 'DESC')
             ->get();
 
-        return view('pages.conferente.pacotes.por-cliente.show', compact('pacotes'));
+        return view('pages.conferente.pacotes.por-cliente.show', compact('pacotes', 'id'));
     }
 }

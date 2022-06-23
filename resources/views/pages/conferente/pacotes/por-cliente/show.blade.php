@@ -1,4 +1,4 @@
-<x-layout menu="pacotes" submenu="sendo-coletados">
+<x-layout menu="pacotes" submenu="por-cliente">
     <div class="header bg-principal bg-height-top"></div>
 
     <!-- Page content -->
@@ -8,6 +8,7 @@
                 <div class="row align-items-center">
                     <div class="col">
                         <h4 class="card-title text-uppercase mb-0">Pacotes de hoje do Cliente</h4>
+                        <p class="mb-0"><b>Cliente:</b> {{ get_nome_usuario($id) }}</p>
                     </div>
                     <div class="col-auto">
                         <a class="btn btn-primary btn-sm" href="{{ url()->previous() }}">Voltar</a>

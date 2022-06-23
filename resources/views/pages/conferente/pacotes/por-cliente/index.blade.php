@@ -1,4 +1,4 @@
-<x-layout menu="pacotes" submenu="sendo-coletados">
+<x-layout menu="pacotes" submenu="por-cliente">
 
     <div class="header bg-principal bg-height-top"></div>
 
@@ -8,7 +8,7 @@
             <div class="card-header bg-white mb-0">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h4 class="card-title text-uppercase mb-0">Pacotes sendo Entregue</h4>
+                        <h4 class="card-title text-uppercase mb-0">Pacotes de hoje dos Clientes</h4>
                     </div>
                     <div class="col-auto">
                         <div class="icon icon-shape bg-success text-white rounded-circle shadow">
@@ -24,7 +24,7 @@
                             <div class="row d-flex justify-content-between align-items-center">
                                 <div class="col-12">
                                     <p class="mb-0">
-                                        <i class="fas fa-motorcycle mr-2 text-black"></i>
+                                        <i class="fas fa-user mr-2 text-primary"></i>
                                         <b>{{ get_nome_usuario($index) }}</b>
                                     </p>
                                 </div>

@@ -1,4 +1,4 @@
-<x-layout menu="pacotes" submenu="sendo-coletados">
+<x-layout menu="pacotes" submenu="sendo-entregue">
 
     <div class="header bg-principal bg-height-top"></div>
 

@@ -1,4 +1,4 @@
-<x-layout menu="pacotes" submenu="sendo-coletados">
+<x-layout menu="pacotes" submenu="na-base">
     <div class="header bg-principal bg-height-top"></div>
 
     <!-- Page content -->
