@@ -50,7 +50,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a class="btn btn-primary" href="{{ route('conferentes.pacotes.pacotes-sob-coleta') }}">
+                        <a class="btn btn-primary" href="{{ route('conferentes.pacotes.sob-coleta.index') }}">
                             Ver Pacotes
                         </a>
                     </div>
@@ -67,7 +67,7 @@
                                     Pacotes
                                 </h5>
                                 <span class="h2 font-weight-bold mb-0">
-                                    Pacotes sendo Entregues
+                                    Pacotes sendo Entregue
                                 </span>
                             </div>
                             <div class="col-auto">
@@ -76,7 +76,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a class="btn btn-success" href="{{ route('conferentes.pacotes.pacotes-sob-entrega') }}">
+                        <a class="btn btn-success" href="{{ route('conferentes.pacotes.sob-entrega.index') }}">
                             Ver Pacotes
                         </a>
                     </div>
