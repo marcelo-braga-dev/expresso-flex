@@ -41,9 +41,6 @@ class Etiquetas extends Model
                 ]);
 
             DB::commit();
-
-            session()->flash('sucesso', 'Etiqueta(s) cadastrada com sucesso.');
-
             return $etiqueta->id;
         } catch (QueryException $e) {
             DB::rollback();

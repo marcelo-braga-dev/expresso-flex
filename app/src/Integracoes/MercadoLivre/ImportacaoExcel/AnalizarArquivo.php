@@ -26,7 +26,9 @@ class AnalizarArquivo
             }
 
             if (!empty($coluna)) {
+
                 $dados[] = [
+                    'importar' => $this->importavel($row, $coluna),
                     'codigo' => $row[$coluna['codigo']],
                     'status' => $row[$coluna['status']],
                     'metodo_entrega' => $row[$coluna['metodo_entrega']],
@@ -34,6 +36,7 @@ class AnalizarArquivo
                         'nome' => $row[$coluna['nome']],
                         'documento' => $row[$coluna['documento']],
                     ],
+                    'rastreio' => $row[$coluna['rastreio']],
                     'endereco' => [
                         'cep' => $row[$coluna['cep']],
                         'endereco' => $row[$coluna['endereco']],
@@ -44,7 +47,6 @@ class AnalizarArquivo
                 unset($dados[0]);
             }
         }
-
         if (empty($dados)) throw new \DomainException('Não há pacotes para importar');
 
         return $dados;
@@ -85,6 +87,7 @@ class AnalizarArquivo
             ],
             'Envios' => [
                 'metodo_entrega' => 'Forma de entrega',
+                'rastreio' => 'Código de rastreamento'
             ],
             'Compradores' => [
                 'nome' => 'Comprador',
@@ -111,7 +114,25 @@ class AnalizarArquivo
                 }
             }
         }
-
         return $dados;
+    }
+
+    private function importavel($row, $coluna): bool
+    {
+        if (!$this->status($row[$coluna['status']])) return false;
+        if ($this->rastreio($row[$coluna['rastreio']])) return false;
+        return true;
+    }
+
+    private function status($status): bool
+    {
+        return $status == 'Etiqueta impressa' ||
+            $status == 'Pronto para coleta' ||
+            $status == 'Etiqueta pronta para imprimir';
+    }
+
+    private function rastreio($rastreio): bool
+    {
+        return !intval($rastreio);
     }
 }

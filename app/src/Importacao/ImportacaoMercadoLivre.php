@@ -15,7 +15,15 @@ class ImportacaoMercadoLivre
         $this->path = '';
     }
 
-    public function read($request)
+    public function cadastrar($request, $loja)
+    {
+        $dados = $this->read($request);
+        $etiquetas = new CadastrarEtiquetas();
+
+        return $etiquetas->cadastrar($dados, $loja);
+    }
+
+    private function read($request)
     {
         $uploadArquivoExcel = new UploadArquivoExcel();
 
@@ -29,18 +37,7 @@ class ImportacaoMercadoLivre
             return $dados;
         } catch (\DomainException $e) {
             if ($this->path) $uploadArquivoExcel->deletar($this->path);
-            modalErro($e->getMessage());
-            throw new \DomainException();
-        }
-    }
-
-    public function armazenar($dados, $loja)
-    {
-        try {
-            $etiquetas = new CadastrarEtiquetas();
-            $etiquetas->cadastrar($dados, $loja);
-        } catch (\DomainException $e) {
-            modalErro($e->getMessage());
+            throw new \DomainException($e->getMessage());
         }
     }
 }

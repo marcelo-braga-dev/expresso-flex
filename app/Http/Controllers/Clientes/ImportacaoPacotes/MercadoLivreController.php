@@ -12,7 +12,7 @@ class MercadoLivreController extends Controller
     public function index()
     {
         $lojasClientes = new LojasClientes();
-        $lojas = $lojasClientes->lojas(id_usuario_atual());
+        $lojas = $lojasClientes->lojasAtivas(id_usuario_atual());
 
         return view('pages.clientes.importacoes.mercadolivre.index', compact('lojas'));
     }
@@ -20,20 +20,13 @@ class MercadoLivreController extends Controller
     public function edit(Request $request)
     {
         try {
-            $dados = (new ImportacaoMercadoLivre())->read($request);
             $loja = $request->loja;
+            $dados = (new ImportacaoMercadoLivre())->cadastrar($request, $request->loja);
         } catch (\DomainException $e) {
+            modalErro($e->getMessage());
             return redirect()->back();
         }
-        modalSucesso('Verifique os pacotes a serem importados e clique no botão "Continuar".');
+
         return view('pages.clientes.importacoes.mercadolivre.edit', compact('dados', 'loja'));
-    }
-
-    public function store(Request $request)
-    {
-        $dados = json_decode($request->dados, true );
-        (new ImportacaoMercadoLivre())->armazenar($dados, $request->loja);
-
-        return redirect()->route('clientes.importacoes.pacotes.index');
     }
 }

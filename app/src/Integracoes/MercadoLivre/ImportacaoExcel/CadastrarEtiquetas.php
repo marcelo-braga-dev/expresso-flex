@@ -3,6 +3,7 @@
 namespace App\src\Integracoes\MercadoLivre\ImportacaoExcel;
 
 use App\Models\Etiquetas;
+use App\Models\Pacotes;
 use App\src\Etiquetas\Etiqueta;
 use App\src\Etiquetas\ExpressoFlex\EnderecoDestinatario;
 use App\src\Pacotes\Destinatarios\CadastrarDestinatario;
@@ -16,46 +17,35 @@ class CadastrarEtiquetas
         $qtdPacotes = 0;
         $error = 0;
 
-        foreach ($dados as $dado) {
-            if ($this->statusImportaveis($dado['status'])) {
-                $etiqueta = new Etiqueta();
-                $etiqueta->rastreio = $dado['codigo'];
-                $etiqueta->idUsuario = id_usuario_atual();
-                $etiqueta->loja = $loja;
-                $etiqueta->origem = $this->origem;
+        foreach ($dados as $index => $dado) {
+            if ($dado['importar']) {
+                if ($this->isExists($dado['rastreio'])) {
 
-                try {
-                    $etiqueta->idEndereco = $this->getEndereco($dado['endereco']);
+                    $etiqueta = new Etiqueta();
+                    $etiqueta->rastreio = $dado['rastreio'];
+                    $etiqueta->idUsuario = id_usuario_atual();
+                    $etiqueta->loja = $loja;
+                    $etiqueta->origem = $this->origem;
 
-                    $dadosDestinatario = $dado['destinatario'];
-                    $destinatario = new CadastrarDestinatario($dadosDestinatario['nome'], null, $dadosDestinatario['documento']);
-                    $etiqueta->idDestinatario = $destinatario->cadastrar();
+                    try {
+                        $etiqueta->idEndereco = $this->getEndereco($dado['endereco']);
 
-                    $etiquetas = new Etiquetas();
-                    $res = $etiquetas->salvar($etiqueta);
+                        $dadosDestinatario = $dado['destinatario'];
+                        $destinatario = new CadastrarDestinatario($dadosDestinatario['nome'], null, $dadosDestinatario['documento']);
+                        $etiqueta->idDestinatario = $destinatario->cadastrar();
 
-                    if ($res) $qtdPacotes++;
-                } catch (\TypeError $e) {
-                    $error++;
-                }
+                        $etiquetas = new Etiquetas();
+                        $res = $etiquetas->salvar($etiqueta);
+
+                        if ($res) $qtdPacotes++;
+                    } catch (\TypeError $e) {
+                        $error++;
+                    }
+                } else $dados[$index]['existe'] = true;
             }
         }
 
-        $msgErro = $error ? "Foi encontrado erros em $error pacotes." : '';
-
-        if ($qtdPacotes) {
-            modalSucesso("Foram cadastrados $qtdPacotes com sucesso! $msgErro");
-            return;
-        }
-
-        modalErro("Nenhum pacote foi cadastrado. $msgErro");
-    }
-
-    private function statusImportaveis($status): bool
-    {
-        return $status == 'Etiqueta impressa' ||
-            $status == 'Pronto para coleta' ||
-            $status == 'Etiqueta pronta para imprimir';
+        return $dados;
     }
 
     private function getEndereco($dados)
@@ -64,8 +54,15 @@ class CadastrarEtiquetas
         $endereco->cep($dados['cep']);
         $endereco->enderecoCompleto($dados['endereco']);
         $endereco->cidade($dados['cidade']);
-        $endereco->estado($dados['cidade']);
+        $endereco->estado($dados['estado']);
 
         return $endereco->salvar();
+    }
+
+    private function isExists($rastreio): bool
+    {
+        return !(new Etiquetas())->newQuery()
+            ->where('rastreio', '=', $rastreio)
+            ->exists();
     }
 }

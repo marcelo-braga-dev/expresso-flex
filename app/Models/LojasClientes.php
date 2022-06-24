@@ -44,10 +44,11 @@ class LojasClientes extends Model
             ->update(['status' => false]);
     }
 
-    public function lojas(int $id)
+    public function lojasAtivas(int $id)
     {
         return $this->newQuery()
             ->where('user_id', '=', $id)
+            ->where('status', '=', '1')
             ->get();
     }
 }

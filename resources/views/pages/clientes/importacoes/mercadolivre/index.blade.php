@@ -39,7 +39,7 @@
                         </div>
                         <div class="row justify-content-center">
                             <div class="col-auto">
-                                <button type="submit" class="btn btn-primary">Importar Pacotes</button>
+                                <button type="submit" class="btn btn-primary">Abrir Arquivo</button>
                             </div>
                         </div>
                     </form>
