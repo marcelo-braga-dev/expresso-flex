@@ -2,6 +2,7 @@
 
 namespace App\src\Pacotes;
 
+use App\Models\Enderecos;
 use App\Models\Pacotes;
 use App\src\Pacotes\Info\Cadastrar;
 use App\src\Pacotes\Info\Coleta;
@@ -59,7 +60,7 @@ class NovoPacote extends Cadastrar
 
     public function destinatario()
     {
-        return $this->coleta->getEntregador();
+        return $this->destinatario->getId();
     }
 
     public function status()
@@ -69,7 +70,8 @@ class NovoPacote extends Cadastrar
 
     public function cep()
     {
-        return $this->destinatario->getIdEndereco(); //
+        $endereco = (new Enderecos())->newQuery()->find($this->destinatario->getIdEndereco());
+        return $endereco->cep;
     }
 
     public function origem()

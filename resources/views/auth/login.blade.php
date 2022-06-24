@@ -7,6 +7,9 @@
                         <div class="row justify-content-center mx-auto mb-3">
                             <img src="/assets/img/brand/logo-x256.png" width="50%"/>
                         </div>
+                        @if (env('APP_ENV') == 'local')
+                            DESENVOLVEDOR
+                        @endif
                         <form role="form" method="POST" action="{{ route('login') }}">
                             @csrf
                             @include('layouts.componentes.alerts')
