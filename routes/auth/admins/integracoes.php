@@ -15,7 +15,7 @@ Route::prefix('integracoes-clientes')
     ->namespace('Integracoes\Clientes')
     ->group(function () {
         Route::resource('mercadolivre', 'MercadoLivreController');
-        Route::put('mercadolivre-atualizar-todos', 'MercadoLivreController@atualizarTodos')
+        Route::get('mercadolivre-atualizar-todos', 'MercadoLivreController@atualizarTodos')
             ->name('atualizarTodos');
     });
 
