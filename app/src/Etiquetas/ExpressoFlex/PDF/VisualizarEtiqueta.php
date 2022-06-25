@@ -3,6 +3,7 @@
 namespace App\src\Etiquetas\ExpressoFlex\PDF;
 
 use App\Models\Etiquetas;
+use App\src\Etiquetas\Status\Visualizada;
 use Mpdf\Mpdf;
 
 class VisualizarEtiqueta
@@ -35,6 +36,9 @@ class VisualizarEtiqueta
 
             $qrCode[$idEtiqueta] = (new GerarQrCode())->gerar($etiqueta->id, $etiqueta->user_id);
             $rastreio[$idEtiqueta] = $etiqueta->rastreio;
+
+            (new Etiquetas())->newQuery()
+                ->update(['status' => (new Visualizada())->getStatus()]);
         }
 
         $this->mpdf->SetTitle('Etiqueta - ' . $etiqueta->rastreio);

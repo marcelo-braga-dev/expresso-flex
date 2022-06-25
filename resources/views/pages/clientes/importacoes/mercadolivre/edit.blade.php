@@ -37,7 +37,7 @@
                                     @if (!empty($item['existe']))
                                         <span class="text-red d-block mb-2"><b>Já Importado</b></span>
                                     @elseif(!$item['importar'])
-                                        <span class="text-red d-block mb-2"><b>Dados inválidos</b></span>
+                                        <span class="text-red d-block mb-2"><b>Não Importado</b></span>
                                     @else
                                         <span class="text-success d-block mb-2"><b>Importado</b></span>
                                     @endif

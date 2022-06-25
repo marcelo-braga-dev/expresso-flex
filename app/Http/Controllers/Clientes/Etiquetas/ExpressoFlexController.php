@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Clientes\Etiquetas;
 use App\Http\Controllers\Controller;
 use App\Models\Etiquetas;
 use App\Models\LojasClientes;
+use App\src\Etiquetas\Etiqueta;
 use App\src\Etiquetas\ExpressoFlex\GerarEtiqueta;
 use App\src\Etiquetas\ExpressoFlex\PDF\VisualizarEtiqueta;
 use App\src\Etiquetas\Status\Impressa;
@@ -16,18 +17,20 @@ class ExpressoFlexController extends Controller
 {
     public function index()
     {
-        $novo = new Novo();
+        $novo = new Impressa();
         $origem = new ExpressoFlex();
 
         $etiquetas = Etiquetas::query()
             ->where([
                 ['user_id', '=', id_usuario_atual()],
-                ['status', '=', $novo->getStatus()],
+                ['status', '!=', $novo->getStatus()],
                 ['origem', '=', $origem->getOrigem()]])
             ->orderBy('id', 'DESC')
             ->paginate();
 
-        return view('pages.clientes.etiquetas.expressoflex.index', compact('etiquetas'));
+        $status = (new Etiqueta())->getStatus();
+
+        return view('pages.clientes.etiquetas.expressoflex.index', compact('etiquetas', 'status'));
     }
 
     public function create()
@@ -43,6 +46,7 @@ class ExpressoFlexController extends Controller
         $etiqueta = new GerarEtiqueta();
         $etiqueta->gerar($request);
 
+        modalSucesso('Etiqueta cadastrada com sucesso!');
         return redirect()->route('clientes.etiquetas.expressoflex.index');
     }
 

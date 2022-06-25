@@ -5,14 +5,15 @@
         <div class="card bg-secondary shadow">
             <div class="card-header bg-white mb-0">
                 <div class="row align-items-center">
-                    <div class="col">
-                        <small class="">Coleta de Pacotes <i class="fas fa-dolly"></i></small>
+                    <div class="col-6">
+                        <small class="badge badge-info"><i class="fas fa-dolly"></i> Coleta de Pacotes</small>
                         <h4 class="card-title text-uppercase mb-0">
                             Solicitações de Coleta
                         </h4>
-                        <span class="h3 font-weight-bold mb-0"></span>
-                        <div class="row">
-                            <div class="col">
+                    </div>
+                    <div class="col-6">
+                        <div class="row justify-content-end">
+                            <div class="col-auto">
                                 <a class="btn btn-sm btn-primary my-2"
                                    href="{{ route('entregadores.coletas.create') }}">
                                     Abrir Nova Coleta
@@ -20,14 +21,16 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group m-0 pt-2">
-                        <div class="input-group input-group-alternative input-group-merge bg-white">
-                            <div class="input-group-prepend">
+                    <div class="col-12 col-md-auto">
+                        <div class="form-group m-0 pt-2">
+                            <div class="input-group input-group-alternative input-group-merge bg-white">
+                                <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1">
                                     <i class="fas fa-search"></i>
                                 </span>
+                                </div>
+                                <input type="text" class="form-control" id="search-list" placeholder="Pesquisar...">
                             </div>
-                            <input type="text" class="form-control" id="search-list" placeholder="Pesquisar...">
                         </div>
                     </div>
                     <div class="col-auto d-none d-md-block">
@@ -99,22 +102,23 @@
                                         <div class="col-md-3">
                                             @if ($solicitacao['status'])
                                                 <div>
-                                                    <a class="btn btn-primary btn-block mb-3 cancelar-coleta"
+                                                    <a class="btn btn-success btn-block mb-3 cancelar-coleta"
                                                        href="{{ route('entregadores.coletas.pacotes.show', $solicitacao['id']) }}">
                                                         Cadastrar Pacotes
                                                     </a>
                                                     <div class="row justify-content-between">
                                                         <div class="col-auto">
-                                                            <button type="button" value="{{ $solicitacao['id'] }}"
-                                                                    class="btn btn-link text-success btn-block btn-sm btn-finalizar-coleta"
-                                                                    data-toggle="modal" data-target="#modalFinalizarColeta">
-                                                                Finalizar Coleta
-                                                            </button>
-                                                        </div>
-                                                        <div class="col-auto">
                                                             <button type="button"
                                                                     class="btn btn-link text-danger btn-block btn-sm btn-cancelar cancelar-coleta">
                                                                 Cancelar Coleta
+                                                            </button>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <button type="button" value="{{ $solicitacao['id'] }}"
+                                                                    class="btn btn-primary btn-block btn-sm btn-finalizar-coleta"
+                                                                    data-toggle="modal"
+                                                                    data-target="#modalFinalizarColeta">
+                                                                Finalizar Coleta
                                                             </button>
                                                         </div>
                                                     </div>

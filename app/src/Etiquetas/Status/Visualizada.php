@@ -2,10 +2,10 @@
 
 namespace App\src\Etiquetas\Status;
 
-class Novo extends StatusEtiqueta
+class Visualizada
 {
-    private string $status = 'etiqueta_novo';
-    private string $nomeStatus = 'Nova';
+    private string $status = 'etiqueta_visualizada';
+    private string $nomeStatus = 'Visualizada';
 
     function getStatus(): string
     {

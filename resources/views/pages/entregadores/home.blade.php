@@ -11,7 +11,6 @@
                     <div class="card-body">
                         <div class="row mb-3">
                             <div class="col">
-{{--                                <h5 class="card-title text-uppercase text-muted mb-0">Coletas</h5>--}}
                                 <span class="pt-2 h2 font-weight-bold mb-0 d-block">
                                     Coletas
                                 </span>
@@ -35,9 +34,6 @@
                     <div class="card-body">
                         <div class="row mb-3">
                             <div class="col">
-{{--                                <h5 class="card-title text-uppercase text-muted mb-0">--}}
-{{--                                    Entregas--}}
-{{--                                </h5>--}}
                                 <span class="pt-2 h2 font-weight-bold mb-0 d-block">
                                     Entregas
                                 </span>
@@ -61,21 +57,18 @@
                     <div class="card-body">
                         <div class="row mb-3">
                             <div class="col">
-                                <h5 class="card-title text-uppercase text-muted mb-0">
-                                    Coletas
-                                </h5>
                                 <span class="h2 font-weight-bold mb-0">
                                     Abrir Solicitação de Coleta
                                 </span>
                             </div>
                             <div class="col-auto">
                                 <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
-                                    <i class="fas fa-shopping-basket"></i>
+                                    <i class="fas fa-store"></i>
                                 </div>
                             </div>
                         </div>
                         <a class="btn btn-warning" href="{{ route('entregadores.coletas.create') }}">
-                            Ver Entregas
+                            Abrir Nova Coleta
                         </a>
                     </div>
                 </div>

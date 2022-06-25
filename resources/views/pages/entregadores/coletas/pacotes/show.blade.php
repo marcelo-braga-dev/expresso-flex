@@ -6,16 +6,21 @@
             <div class="card-header bg-white mb-0">
                 <div class="row align-items-center">
                     <div class="col-9">
-                        <small class="badge badge-info">
-                            <i class="fas fa-dolly mr-1"></i>
-                            Cadastro de Pacotes da Coleta
-                        </small>
+                        <small class="badge badge-info"><i class="fas fa-dolly"></i> Coleta de Pacotes</small>
                         <h3 class="mb-0 text-principal">Cadastrar Pacotes da Coleta</h3>
                     </div>
                     <div class="col-3 text-right">
                         <div class="icon icon-shape bg-primary text-white rounded-circle shadow">
-                            <i class="fas fa-boxes"></i>
+                            <i class="fas fa-dolly"></i>
                         </div>
+                    </div>
+                </div>
+                <div class="row pt-3 justify-content-end btn-camera" style="display: none">
+                    <div class="col-auto text-warning">
+                        <button class="btn btn-warning btn-sm link-btn-flutuante-1">
+                            <i class="fas fa-plus-circle"></i>
+                            Cadastrar pacote
+                        </button>
                     </div>
                 </div>
             </div>
@@ -32,13 +37,8 @@
                         </span>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-auto">
-                        <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                data-target="#modalFinalizarColeta">
-                            Finalizar Coleta
-                        </button>
-                    </div>
+                <div class="row justify-content-end">
+
                 </div>
             </div>
         </div>
@@ -46,15 +46,21 @@
         <div class="card bg-secondary shadow">
             <div class="card-header bg-white mb-0">
                 <div class="row align-items-center">
-                    <div class="col">
+                    <div class="col-5">
                         <h4 class="card-title text-uppercase mb-0">
-                            Pacotes Cadastrados
+                            Pacotes Coletados
                         </h4>
                         @if (count($pacotes))
                             <small>
                                 Quantidade: {{ count($pacotes) }} pacotes.
                             </small>
                         @endif
+                    </div>
+                    <div class="col-7">
+                        <button type="button" class="btn btn-success" data-toggle="modal"
+                                data-target="#modalFinalizarColeta">
+                            Finalizar Coleta
+                        </button>
                     </div>
                 </div>
             </div>
@@ -74,10 +80,10 @@
         </div>
 
         <!-- Botao Flutuante -->
-        <x-elements.camera-botao-flutuante
-            operacao="{{ urlencode(route('entregadores.qrcode.cadastrarPacote').
+        <x-elements.camera-botao-flutuante operacao="{{ urlencode(route('entregadores.qrcode.cadastrarPacote').
                                         '?coleta=' . $solicitacao['id'] . '&entregador=' . id_usuario_atual() ) }}"
-            retorno="{{ url()->current() }}" icon="fas fa-plus"></x-elements.camera-botao-flutuante>
+                                           retorno="{{ url()->current() }}"
+                                           icon="fas fa-plus"></x-elements.camera-botao-flutuante>
 
         <!-- Modal Finalizar Coleta-->
         <div class="modal fade" id="modalFinalizarColeta" tabindex="-1" role="dialog"

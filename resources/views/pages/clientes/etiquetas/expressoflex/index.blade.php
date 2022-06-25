@@ -22,7 +22,7 @@
                             <button type="submit" id="imprimir-selecionados" class="btn btn-primary m-2">Imprimir Selecionados</button>
                         </div>
                         <div class="col-auto">
-                            <button type="submit" class="btn btn-link m-2" name="impresso" value="true">
+                            <button type="submit" class="btn btn-link m-2" id="btn-impresso" name="impresso" value="true">
                                 Marcar como impresso
                             </button>
                         </div>
@@ -49,7 +49,7 @@
                                         <i class="fas fa-map-marker-alt mr-2 text-danger"></i>
                                         {{ get_endereco($etiqueta->enderecos_id) }}
                                     </p>
-                                    <div class="row">
+                                    <div class="row mb-2">
                                         <div class="col-md-auto">
                                             <p class="text-sm mb-0">
                                                 <i class="fas fa-qrcode mr-2"></i>
@@ -61,6 +61,11 @@
                                                 <i class="far fa-calendar-alt"></i>
                                                 {{ date('d/m/Y H:i', strtotime($etiqueta->created_at)) }}
                                             </p>
+                                        </div>
+                                        <div class="col-md-auto">
+                                            <small class="text-success mb-0 ">
+                                                {{ $status[$etiqueta->status] }}
+                                            </small>
                                         </div>
                                     </div>
                                 </div>
@@ -76,7 +81,7 @@
                     <div class="row">
                         <div class="col-auto mx-auto text-muted pt-4 text-center">
                             <small class="text-muted d-block">
-                                Não há registro de etiquetas emitidas para imprimir.
+                                Não há etiquetas para imprimir.
                             </small>
                         </div>
                     </div>
@@ -114,6 +119,9 @@
                     } else {
                         $('#form-etiquetas').attr('target', '');
                     }
+                });
+                $('#btn-impresso').click(function () {
+                    $('#form-etiquetas').attr('target', '');
                 });
             })
         </script>

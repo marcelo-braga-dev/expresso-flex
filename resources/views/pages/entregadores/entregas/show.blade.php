@@ -5,9 +5,9 @@
             <div class="card-header">
                 <div class="row align-items-center justify-content-between">
                     <div class="col-auto">
-                        <small class="badge badge-success">
-                            Entrega de Pacotes
-                            <i class="fas fa-shipping-fast"></i></small>
+                        <small class="badge badge-warning">
+                            <i class="fas fa-shipping-fast"></i> Entrega de Pacotes
+                        </small>
                     </div>
                     <div class="col-auto">
                         <a class="btn btn-primary btn-sm" href="{{ route('entregadores.entregas.index') }}">

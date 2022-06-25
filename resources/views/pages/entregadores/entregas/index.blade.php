@@ -1,36 +1,51 @@
 <x-layout menu="entregas" submenu="realizar">
     <div class="header bg-principal bg-height-top"></div>
-    <div class="container-fluid mt--9 p-1 mb-6">
+    <div class="container-fluid mt--9 px-1 mb-6">
         <x-entregadores.botoes-header-entregador categoria="entregas"></x-entregadores.botoes-header-entregador>
         <div class="card bg-secondary shadow">
             <div class="card-header bg-white mb-0">
-                <div class="row justify-content-between align-items-center">
-                    <div class="col-auto mb-2">
-                        <h4 class="card-title text-uppercase mb-0">Pacotes para Entregar</h4>
+                <div class="row align-items-center">
+                    <div class="col-9">
+                        <small class="badge badge-warning">
+                            <i class="fas fa-shipping-fast"></i> Entrega de Pacotes
+                        </small>
+                        <h3 class="mb-0 text-principal">Cadastrar Pacotes da Coleta</h3>
                     </div>
-                    <div class="col-auto text-right">
-                        <div class="row text-right align-items-center">
-                            <div class="col-auto">
-                                <div class="form-group m-0 pt-2">
-                                    <div class="input-group input-group-alternative input-group-merge bg-white">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1">
-                                                <i class="fas fa-search"></i>
-                                            </span>
-                                        </div>
-                                        <input type="text" class="form-control" id="search-list"
-                                               placeholder="Pesquisar...">
-                                    </div>
+                    <div class="col-3 text-right">
+                        <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                            <i class="fas fa-shipping-fast"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-auto">
+                        <div class="form-group m-0 pt-2">
+                            <div class="input-group input-group-alternative input-group-merge bg-white">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <i class="fas fa-search"></i>
+                                </span>
                                 </div>
-                            </div>
-                            <div class="col-auto d-none d-md-block">
-                                <div class="icon icon-shape bg-primary text-white rounded-circle shadow">
-                                    <i class="fas fa-box"></i>
-                                </div>
+                                <input type="text" class="form-control" id="search-list" placeholder="Pesquisar...">
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="row pt-3 justify-content-end btn-camera" style="display: none">
+                    <div class="col-6 text-warning">
+                        <button class="btn btn-success btn-sm link-btn-flutuante-2">
+                            <i class="fas fa-shipping-fast"></i>
+                            Entregar Pacote
+                        </button>
+                    </div>
+                    <div class="col-6 text-warning">
+                        <button class="btn btn-warning btn-sm link-btn-flutuante-1">
+                            <i class="fas fa-plus-circle"></i>
+                            Adicionar Pacote
+                        </button>
+                    </div>
+                </div>
+
             </div>
             <div class="card-body p-1 p-md-3">
                 <div class="row">
@@ -43,7 +58,6 @@
                                             <i class="fas fa-user mr-2 text-primary"></i>
                                             {{ get_destinatario_pacote($pacote->destinatario)->nome }}
                                         </p>
-
                                         <p class="mb-0">
                                             <i class="fas fa-map-marker-alt mr-2 text-danger"></i>
                                             {{ get_endereco($pacote->endereco) }}
@@ -84,12 +98,6 @@
             </div>
         </div>
     </div>
-{{--    <a class="btn-flutuante-2 btn-success btn-camera"--}}
-{{--       href="{{ route('entregadores.qrcode', [route('entregadores.qrcode.identificar-pacote-entrega', ['user_id' => id_usuario_atual()]),--}}
-{{--                url()->current()]) }}"--}}
-{{--       style="display: none">--}}
-{{--        <i style="margin-top:14px" class="fas fa-shipping-fast"></i>--}}
-{{--    </a>--}}
 
     <x-elements.camera-botao-flutuante
         operacao="{{ route('entregadores.qrcode.checkin-pacote', ['user_id' => id_usuario_atual()]) }}"
@@ -97,5 +105,6 @@
 
     <x-elements.camera-botao-flutuante
         operacao="{{ route('entregadores.qrcode.identificar-pacote-entrega', ['user_id' => id_usuario_atual()]) }}"
-        retorno="{{ url()->current() }}" icon="fas fa-shipping-fast" posicao="2" bg="btn-success"></x-elements.camera-botao-flutuante>
+        retorno="{{ url()->current() }}" icon="fas fa-shipping-fast" posicao="2"
+        bg="btn-success"></x-elements.camera-botao-flutuante>
 </x-layout>

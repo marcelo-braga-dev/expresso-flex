@@ -52,38 +52,11 @@
                     </div>
                 </div>
             </div>
-{{--            <div class="col-md-4">--}}
-{{--                <div class="card card-stats mb-3">--}}
-{{--                    <div class="card-body" style="background-color: white !important">--}}
-{{--                        <div class="row">--}}
-{{--                            <div class="col">--}}
-{{--                                <h5 class="card-title text-uppercase text-muted mb-0">Total de Pacotes</h5>--}}
-{{--                                <span class="h2 font-weight-bold mb-0">--}}
-{{--                                    {{ $total['total_pacotes'] }} <span class="small font-weight-normal">pacotes</span>--}}
-{{--                                </span>--}}
-{{--                            </div>--}}
-{{--                            <div class="col-auto">--}}
-{{--                                <div class="icon icon-shape bg-orange text-white rounded-circle shadow">--}}
-{{--                                    <i class="fas fa-boxes"></i>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <p class="mt-1 mb-0 text-sm">--}}
-{{--                            <span class="text-nowrap d-block">--}}
-{{--                                <b>São Paulo:</b> {{ $total['pacotes_sp'] }} pacotes--}}
-{{--                            </span>--}}
-{{--                            <span class="text-nowrap">--}}
-{{--                                <b>Grande São Paulo:</b> {{ $total['pacotes_g_sp'] }} pacotes--}}
-{{--                            </span>--}}
-{{--                        </p>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
         </div>
 
         <!-- Tabela -->
         <div class="row">
-            <div class="col-md-4 mb-4">
+            <div class="col-md-3 mb-4">
                 <div class="card bg-secondary shadow">
                     <div class="card-header bg-white mb-0">
                         <div class="row align-items-center">
@@ -106,7 +79,7 @@
                                 @foreach ($faturamentos as $data=>$faturamento)
                                     <tr>
                                         <th>{{ $data }}</th>
-                                        <td>R$ {{ $faturamento }}</td>
+                                        <td>R$ {{ convertFloatToMoney($faturamento) }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -125,7 +98,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-8 mb-3">
+            <div class="col-md-9 mb-3">
                 <div class="card bg-secondary shadow">
                     <div class="card-header bg-white mb-0">
                         <div class="row align-items-center">
@@ -144,10 +117,11 @@
                                 <thead class="thead-light">
                                 <tr>
                                     <th>Data</th>
-                                    <th>Código</th>
+                                    <th>Rastreio</th>
+                                    <th>Valor</th>
                                     <th>Região</th>
                                     <th>Pagamento</th>
-                                    <th>Valor</th>
+                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody class="list">
@@ -157,12 +131,17 @@
                                             {{ date('d/m/y', strtotime($entrega->created_at)) }}
                                         </th>
                                         <td>{{ getRastreioPeloId($entrega->pacotes_id)  }}</td>
+                                        <td>R$ {{ convertFloatToMoney($entrega->value) }}</td>
                                         <td>
                                             @if ($entrega->regiao == 'sao_paulo') São Paulo @endif
                                             @if ($entrega->regiao == 'grande_sao_paulo') Grande São Paulo @endif
                                         </td>
                                         <td>{{ ucfirst($entrega->status) }}</td>
-                                        <td>R$ {{ convertFloatToMoney($entrega->value) }}</td>
+                                        <td>
+                                            <a class="btn btn-link btn-sm" href="{{ route('entregadores.pacote.show', $entrega->pacotes_id) }}">
+                                                Detalhes
+                                            </a>
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>

@@ -36,6 +36,12 @@
                             Solicitações de Coletas
                         </a>
                     </li>
+                    <li class="nav-item @if (SUBMENU === 'historico-coletas') active @endif">
+                        <a class="nav-link pl-5"
+                           href="{{ route('entregadores.coletas.historico-coleta') }}">
+                            Histórico de Coletas
+                        </a>
+                    </li>
                 </ul>
             </div>
         </li>
@@ -72,12 +78,6 @@
                         <a class="nav-link pl-5"
                            href="{{ route('entregadores.pacotes.historico') }}">
                             Histórico de Pacotes
-                        </a>
-                    </li>
-                    <li class="nav-item @if (SUBMENU === 'historico-coletas') active @endif">
-                        <a class="nav-link pl-5"
-                           href="{{ route('entregadores.coletas.historico-coleta') }}">
-                            Histórico de Coletas
                         </a>
                     </li>
                     <li class="nav-item @if (SUBMENU === 'entregas-finalizadas') active @endif">

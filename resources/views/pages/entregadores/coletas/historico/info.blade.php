@@ -1,10 +1,7 @@
-<x-layout menu="historico" submenu="historico-coletas">
+<x-layout menu="coletas" submenu="historico-coletas">
     <div class="header bg-principal bg-height-top"></div>
-
-    <!-- Page content -->
     <div class="container-fluid mt--9 p-1 mb-6">
         <div class="card mb-4">
-            <!-- Card header -->
             <div class="card-header border">
                 <div class="d-flex justify-content-between align-items-center">
                     <h3 class="mb-0">Irformações da Coleta</h3>
@@ -54,18 +51,6 @@
                             </p>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <form method="post" action="{{ route('entregadores.coleta.alterar-status') }}">
-                                @csrf @method('put')
-                                <input type="hidden" name="reabrir" value="true">
-                                <button type="submit" class="btn btn-success btn-sm" name="id_coleta"
-                                    value="{{ $coleta->id }}">
-                                    Reabrir Coleta
-                                </button>
-                            </form>
-                        </div>
-                    </div>
                 </div>
 
                 <div class="card p-3 mb-4">
@@ -78,33 +63,33 @@
                             <div class="table-responsive">
                                 <table class="table align-items-center table-flush">
                                     <thead class="thead-light">
-                                        <tr>
-                                            <th scope="col">Código de Rastreio</th>
-                                            <th scope="col">Status</th>
-                                            <th scope="col">Data</th>
-                                            <th scope="col"></th>
-                                        </tr>
+                                    <tr>
+                                        <th scope="col">Código de Rastreio</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Data</th>
+                                        <th scope="col"></th>
+                                    </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($pacotes as $pacote)
-                                            <tr>
-                                                <th scope="row">
-                                                    {{ $pacote->rastreio }}
-                                                </th>
-                                                <td>
-                                                    {{ get_status_pacote($pacote->status) }}
-                                                </td>
-                                                <td>
-                                                    {{ date('d/m/y H:i', strtotime($pacote->updated_at)) }}
-                                                </td>
-                                                <td>
-                                                    <a class="btn btn-link p-0 btn-sm"
-                                                        href="{{ route('entregadores.pacote.show', $pacote->id) }}">
-                                                        Ver Pacote
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        @endforeach
+                                    @foreach ($pacotes as $pacote)
+                                        <tr>
+                                            <th scope="row">
+                                                {{ $pacote->rastreio }}
+                                            </th>
+                                            <td>
+                                                {{ get_status_pacote($pacote->status) }}
+                                            </td>
+                                            <td>
+                                                {{ date('d/m/y H:i', strtotime($pacote->updated_at)) }}
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-link p-0 btn-sm"
+                                                   href="{{ route('entregadores.pacote.show', $pacote->id) }}">
+                                                    Ver Pacote
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -114,6 +99,4 @@
             </div>
         </div>
     </div>
-
-    </div>
-    </x-layout>
+</x-layout>
