@@ -102,6 +102,6 @@
     </div>
 
     @push('js')
-        <script src="{{ asset('assets') }}/js/components/busca-cep.js"></script>
+        <script src="{{ asset('assets') }}/js/components/busca-cep.js?ver=1.0.0"></script>
     @endpush
 </x-layout>

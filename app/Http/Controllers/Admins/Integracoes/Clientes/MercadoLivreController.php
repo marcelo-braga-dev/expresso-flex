@@ -81,6 +81,8 @@ class MercadoLivreController
         foreach ($clientes as $cliente) {
             $this->atualizar($cliente);
         }
+        modalSucesso('Atualização Realizada com sucesso!');
+        return redirect()->back();
     }
 
     private function atualizar($cliente): void

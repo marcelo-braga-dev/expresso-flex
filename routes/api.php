@@ -19,4 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 // API para o site - consulta historico de pacote
-Route::get('status/pacote', 'App\Http\Controllers\API\StatusPacoteController@index');
+Route::get('status/pacote', [App\Http\Controllers\API\StatusPacoteController::class, 'index']);

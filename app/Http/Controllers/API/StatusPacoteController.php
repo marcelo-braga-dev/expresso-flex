@@ -15,6 +15,7 @@ class StatusPacoteController extends Controller
         $pacotes = new Pacotes();
         $pacote = $pacotes->newQuery()
             ->where('rastreio', '=', $request->cod)
+            ->orWhere('codigo', '=', $request->cod)
             ->first('id');
 
         if (empty($pacote)) {

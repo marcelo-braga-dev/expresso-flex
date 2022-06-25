@@ -22,13 +22,6 @@ $(document).ready(function() {
 
             //Valida o formato do CEP.
             if(validacep.test(cep)) {
-
-                //Preenche os campos com "..." enquanto consulta webservice.
-                $("#rua").val("...");
-                $("#bairro").val("...");
-                $("#cidade").val("...");
-                $("#estado").val("...");
-
                 //Consulta o webservice viacep.com.br/
                 $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
 
@@ -42,7 +35,6 @@ $(document).ready(function() {
                     else {
                         //CEP pesquisado não foi encontrado.
                         limpa_formulario_cep();
-                        //alert("CEP não encontrado.");
                     }
                 });
             } //end if.
