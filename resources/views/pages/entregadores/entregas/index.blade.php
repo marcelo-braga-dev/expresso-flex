@@ -9,7 +9,7 @@
                         <small class="badge badge-warning">
                             <i class="fas fa-shipping-fast"></i> Entrega de Pacotes
                         </small>
-                        <h3 class="mb-0 text-principal">Cadastrar Pacotes da Coleta</h3>
+                        <h3 class="mb-0 text-principal">Pacotes para Entrega</h3>
                     </div>
                     <div class="col-3 text-right">
                         <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
