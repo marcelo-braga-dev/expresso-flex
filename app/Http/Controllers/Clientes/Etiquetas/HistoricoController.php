@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Clientes\Etiquetas;
 
 use App\Http\Controllers\Controller;
 use App\Models\Etiquetas;
+use App\src\Etiquetas\Etiqueta;
 use App\src\Pacotes\Origens\ExpressoFlex\ExpressoFlex;
 use Illuminate\Http\Request;
 
@@ -43,6 +44,8 @@ class HistoricoController extends Controller
             ->orderBy('id', 'DESC')
             ->paginate(20);
 
-        return view('pages.clientes.etiquetas.historico.show', compact('etiquetas'));
+        $status = (new Etiqueta())->getStatus();
+
+        return view('pages.clientes.etiquetas.historico.show', compact('etiquetas', 'status'));
     }
 }

@@ -3,6 +3,7 @@
 namespace App\src\Etiquetas\ExpressoFlex\PDF;
 
 use App\Models\Etiquetas;
+use App\src\Etiquetas\Status\Impressa;
 use App\src\Etiquetas\Status\Visualizada;
 use Mpdf\Mpdf;
 
@@ -37,8 +38,7 @@ class VisualizarEtiqueta
             $qrCode[$idEtiqueta] = (new GerarQrCode())->gerar($etiqueta->id, $etiqueta->user_id);
             $rastreio[$idEtiqueta] = $etiqueta->rastreio;
 
-            (new Etiquetas())->newQuery()
-                ->update(['status' => (new Visualizada())->getStatus()]);
+            $this->alterarStatus($etiqueta, $idEtiquetas);
         }
 
         $this->mpdf->SetTitle('Etiqueta - ' . $etiqueta->rastreio);
@@ -66,6 +66,16 @@ class VisualizarEtiqueta
 
         foreach ($qrCode as $path) {
             unlink($path);
+        }
+    }
+
+    private function alterarStatus($etiqueta, $idEtiquetas): void
+    {
+        $impresso = new Impressa();
+        if ($etiqueta->status != $impresso->getStatus()) {
+            (new Etiquetas())->newQuery()
+                ->where('id', '=', $idEtiquetas)
+                ->update(['status' => (new Visualizada())->getStatus()]);
         }
     }
 }
