@@ -89,7 +89,7 @@
                                                 <div class="text-center mb-3">
                                                     <button type="button"
                                                             class="btn btn-secondary d-none cancelar-coleta btn-cancelar">
-                                                        Canelar
+                                                        Cancelar
                                                     </button>
                                                     <button type="submit" name="id_coleta"
                                                             value="{{ $solicitacao['id'] }}"

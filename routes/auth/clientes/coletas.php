@@ -2,6 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::name('clientes.coletas.')
+    ->namespace('Coletas')
+    ->group(function () {
+        Route::resource('sob-entrega', 'PacotesSobEntrega');
+    });
+
 Route::prefix('coletas')
     ->name('clientes.coletas.historicos.')
     ->namespace('Coletas')

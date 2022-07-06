@@ -14,6 +14,11 @@ class Base extends Status
         return $this->status;
     }
 
+    function getNomeStatus(): string
+    {
+        return 'Pacote na base';
+    }
+
     public function update($dados, $userId)
     {
         $origem = (new VerificarOrigemPacote())->verificarOrigem($dados);

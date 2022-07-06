@@ -6,6 +6,7 @@ use App\Models\LojasClientes;
 use App\Models\MetaValues;
 use App\Models\PacotesHistoricos;
 use App\Models\User;
+use App\src\Pacotes\StatusPacotes;
 
 function id_usuario_atual()
 {
@@ -41,9 +42,8 @@ function get_status_coleta(string $key)
 
 function get_status_pacote(string $key)
 {
-    $metaValue = new MetaValues();
-
-    return $metaValue->value($key);
+    $status = (new StatusPacotes())->status();
+    return $status[$key];
 }
 
 function get_origem_pacote(string $origem)
@@ -151,10 +151,10 @@ function modalErro($mensagem)
     session()->flash('erro', $mensagem);
 }
 
-function atualizarHistoricoPacote(int $idCliente, int $idPacote, string $status)
+function atualizarHistoricoPacote(int $idCliente, int $idPacote, string $status, $mensagem = null)
 {
     $historico = new PacotesHistoricos();
-    $historico->novo($idCliente, $idPacote, $status);
+    $historico->novo($idCliente, $idPacote, $status, $mensagem);
 }
 
 function converterMes(int $mes)
@@ -200,4 +200,10 @@ function diferencaDias($dataFinal)
 {
     $diferenca = strtotime($dataFinal) - strtotime('now');
     return floor($diferenca / (60 * 60 * 24));
+}
+
+function entregaNaoFinalizada($status): bool
+{
+    $statusPacotes = (new StatusPacotes())->statusSobEntrega();
+    return in_array($status, $statusPacotes);
 }

@@ -14,6 +14,11 @@ class EntregaFinalizado extends Status
         return $this->status;
     }
 
+    function getNomeStatus(): string
+    {
+        return 'Entrega finalizada';
+    }
+
     public function finalizar(int $id)
     {
         $pacote = new Pacotes();

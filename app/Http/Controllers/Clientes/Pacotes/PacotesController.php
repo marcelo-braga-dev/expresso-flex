@@ -25,17 +25,9 @@ class PacotesController extends Controller
             ->where('pacotes_id', '=', $pacote->id)
             ->first();
 
-        $pacotesHistoricos = new PacotesHistoricos();
-        $dadosHistoricos = $pacotesHistoricos->query()->where('pacotes_id', '=', $pacote->id)->get();
-
-        $historicos = [];
-        foreach ($dadosHistoricos as $value) {
-            $historicos[] = [
-                'status' => $value->status,
-                'obs' => '',
-                'data' => $value->created_at
-            ];
-        }
+        $historicos = (new PacotesHistoricos())->newQuery()
+            ->where('pacotes_id', '=', $pacote->id)
+            ->get();
 
         $loja = (new SolicitacaoRetiradas())->newQuery()
             ->find($pacote->coleta, 'loja');

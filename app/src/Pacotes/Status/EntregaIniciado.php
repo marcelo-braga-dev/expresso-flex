@@ -14,6 +14,11 @@ class EntregaIniciado extends Status
         return $this->status;
     }
 
+    function getNomeStatus(): string
+    {
+        return 'Pacote coletado';
+    }
+
     public function update($dados, $userId)
     {
         $origem = (new VerificarOrigemPacote())->verificarOrigem($dados);

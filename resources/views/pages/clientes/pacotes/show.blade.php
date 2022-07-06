@@ -132,7 +132,6 @@
                                     <table class="table align-items-center table-flush">
                                         <thead class="thead-light">
                                         <tr>
-                                            <th scope="col" class="col-1"></th>
                                             <th scope="col">Data</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Mensagem</th>
@@ -141,21 +140,14 @@
                                         <tbody>
                                         @foreach ($historicos as $historico)
                                             <tr>
-                                                <td class="text-center">
-                                                    @if (empty($historico['obs']))
-                                                        <i class="fas fa-check text-success"></i>
-                                                    @else
-                                                        <i class="fas fa-times text-danger"></i>
-                                                    @endif
-                                                </td>
                                                 <td>
-                                                    {{ date('d/m/y H:i', strtotime($historico['data'])) }}
+                                                    {{ date('d/m/y H:i', strtotime($historico->updated_at)) }}
                                                 </td>
                                                 <th scope="row">
-                                                    {{ get_status_pacote($historico['status']) }}
+                                                    {{ get_status_pacote($historico->status) }}
                                                 </th>
                                                 <td>
-                                                    -
+                                                    {{ $historico['value'] }}
                                                 </td>
                                             </tr>
                                         @endforeach

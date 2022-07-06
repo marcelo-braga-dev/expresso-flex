@@ -39,6 +39,7 @@ abstract class Status
     }
 
     abstract function getStatus(): string;
+    abstract function getNomeStatus(): string;
 
     public function finalizar(int $id)
     {

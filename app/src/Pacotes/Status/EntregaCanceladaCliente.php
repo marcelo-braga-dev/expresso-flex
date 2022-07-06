@@ -2,9 +2,9 @@
 
 namespace App\src\Pacotes\Status;
 
-class EntregaCanceladaEntregador extends Status
+class EntregaCanceladaCliente extends Status
 {
-    private string $status = 'pacote_entrega_cancelada_entregador';
+    private string $status = 'pacote_cancelado_cliente';
 
     function getStatus(): string
     {
@@ -13,6 +13,6 @@ class EntregaCanceladaEntregador extends Status
 
     function getNomeStatus(): string
     {
-        return 'Entrega cancelada pelo entregador';
+        return 'Entrega cancelada';
     }
 }

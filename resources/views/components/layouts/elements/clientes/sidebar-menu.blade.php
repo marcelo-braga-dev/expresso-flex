@@ -33,6 +33,12 @@
             </a>
             <div class="collapse @if (MENU === 'coletas') show @endif" id="navbar-coletas">
                 <ul class="nav nav-sm flex-column">
+                    <li class="nav-item @if (SUBMENU === 'pacotes-sob-entrega') active @endif">
+                        <a class="nav-link pl-5"
+                           href="{{ route('clientes.coletas.sob-entrega.index') }}">
+                            Pacotes sendo Entregue
+                        </a>
+                    </li>
                     <li class="nav-item @if (SUBMENU === 'historico') active @endif">
                         <a class="nav-link pl-5"
                            href="{{ route('clientes.coletas.historicos.index') }}">

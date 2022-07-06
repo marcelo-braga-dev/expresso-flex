@@ -10,4 +10,9 @@ class DestinatarioAusente extends Status
     {
         return $this->status;
     }
+
+    function getNomeStatus(): string
+    {
+        return 'Destinatário ausente';
+    }
 }
