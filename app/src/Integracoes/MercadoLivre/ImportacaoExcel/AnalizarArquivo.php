@@ -15,7 +15,6 @@ class AnalizarArquivo
         $sessao = [];
         $coluna = [];
 
-
         foreach ($rows as $row) {
             if (empty($sessao)) {
                 $sessao = $this->getSessao($row);
@@ -83,7 +82,8 @@ class AnalizarArquivo
         $campos = [
             'Vendas' => [
                 'codigo' => 'N.º de venda',
-                'status' => 'Status'
+                'status' => 'Status',
+                'faturamento' => 'Faturamento'
             ],
             'Envios' => [
                 'metodo_entrega' => 'Forma de entrega',
@@ -119,20 +119,29 @@ class AnalizarArquivo
 
     private function importavel($row, $coluna): bool
     {
-        if (!$this->status($row[$coluna['status']])) return false;
+        if (!$this->status($row[$coluna['status']], $row[$coluna['faturamento']])) return false;
         if ($this->rastreio($row[$coluna['rastreio']])) return false;
+        if ($this->endereco($row[$coluna['endereco']])) return false;
         return true;
     }
 
-    private function status($status): bool
+    private function status($status, $faturamento): bool
     {
         return $status == 'Etiqueta impressa' ||
             $status == 'Pronto para coleta' ||
-            $status == 'Etiqueta pronta para imprimir';
+            $status == 'Etiqueta pronta para imprimir' ||
+            $status == '' ||
+            $status == ' ' &&
+            $faturamento == 'Autorizado';
     }
 
     private function rastreio($rastreio): bool
     {
         return !intval($rastreio);
+    }
+
+    private function endereco($endereco)
+    {
+        return empty($endereco) || $endereco == ' ';
     }
 }

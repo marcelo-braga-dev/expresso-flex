@@ -4,10 +4,10 @@
         <div class="card bg-secondary shadow">
             <div class="card-header bg-white">
                 <div class="row justify-content-between">
-                    <div class="col-auto">
+                    <div class="col-8">
                         <h4 class="card-title text-uppercase mb-1">Importar etiquetas Mercado Livre</h4>
                     </div>
-                    <div class="col-auto">
+                    <div class="col-4 text-right">
                         <a class="btn btn-primary btn-sm" href="{{ route('clientes.importacoes.pacotes.index') }}">Voltar</a>
                     </div>
                 </div>
@@ -50,6 +50,7 @@
                                     <b>Tipo:</b> {{ $item['metodo_entrega'] }}
                                 </td>
                                 <td class="white-text-normal">
+                                    <span class="d-block"><b>Endereço:</b></span>
                                     {{ $item['endereco']['endereco'] }}<br>
                                     Cep: {{ formatar_cep($item['endereco']['cep']) }}
                                 </td>
