@@ -4,6 +4,7 @@ namespace App\src\Pacotes\Status;
 
 use App\Models\PacotesHistoricos;
 use App\src\Pacotes\Origens\VerificadorOrigens\VerificarOrigemPacote;
+use App\src\Pacotes\StatusPacotes;
 
 class EntregaIniciado extends Status
 {
@@ -26,6 +27,11 @@ class EntregaIniciado extends Status
 
         if (empty($pacote->id)) {
             throw new \DomainException('Não foi possível atualizar, pacote não encontrado.');
+        }
+
+        if(!entregaNaoFinalizada($pacote->status)) {
+            $status = get_status_pacote($pacote->status);
+            throw new \DomainException("ATENÇÃO:\n\n$status");
         }
 
         $pacotes = new PacotesHistoricos();

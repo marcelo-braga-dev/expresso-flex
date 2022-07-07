@@ -66,6 +66,7 @@ class HistoricoPacotesController extends Controller
         $pacotes = $Pacotes->query()
             ->where('user_id', '=', id_usuario_atual())
             ->whereDate('updated_at', $data)
+            ->orderBy('updated_at', 'DESC')
             ->get();
 
         return view('pages.clientes.pacotes.historico.pacotes', compact('pacotes', 'dia'));

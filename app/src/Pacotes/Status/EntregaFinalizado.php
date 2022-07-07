@@ -21,10 +21,18 @@ class EntregaFinalizado extends Status
 
     public function finalizar(int $id)
     {
-        $pacote = new Pacotes();
-        $pacote->newQuery()
-            ->find($id)
-            ->update(['status' => $this->status]);
+        $pacote = (new Pacotes())->newQuery()
+            ->find($id);
+
+        if (empty($pacote)) return redirect()->back();
+
+        if (!entregaNaoFinalizada($pacote->status)) {
+            $status = get_status_pacote($pacote->status);
+            modalErro('ATENÇÃO: ' . $status);
+            echo redirect()->route('entregadores.pacote.show', $pacote->id);exit();
+        }
+
+        $pacote->update(['status' => $this->status]);
 
         atualizarHistoricoPacote(id_usuario_atual(), $id, $this->getStatus());
 
