@@ -21,7 +21,9 @@ class EntregasController extends Controller
             ->where([
                 ['status', '=', $status->getStatus()],
                 ['entregador', '=', id_usuario_atual()]
-            ])->get();
+            ])
+            ->orderBy('cep','ASC')
+            ->get();
 
         return view('pages.entregadores.entregas.index', compact('pacotes'));
     }

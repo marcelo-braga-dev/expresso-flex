@@ -14,15 +14,14 @@
             <div class="card-body">
                 <!-- Cliente -->
                 <div class="card p-3 mb-4">
-                    <h3>Cliente</h3>
                     <div class="row mb-3">
-                        <div class="col-md-6">
+                        <div class="col-12">
                             <p class="text-sm mb-0">
                                 <b>Cliente:</b>
                                 {{ get_dados_usuario($coleta->user_id)->name }}
                             </p>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-12">
                             <p class="text-sm mb-0">
                                 <b>Telefone:</b>
                                 @if (!empty($coleta->loja))
@@ -30,24 +29,10 @@
                                 @endif
                             </p>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-12">
                             <p class="text-sm mb-0">
                                 <b>Endereço:</b>
                                 {{ get_endereco_loja($coleta->loja) }}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Coleta -->
-                <div class="card p-3 mb-4">
-                    <h3>Detalhes</h3>
-                    <div class="row ">
-                        <div class="col-md-6">
-                            <p class="d-block">
-                                Status: {{ get_status_coleta($coleta->status) }}
                             </p>
                         </div>
                     </div>
@@ -67,7 +52,6 @@
                                         <th scope="col">Código de Rastreio</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Data</th>
-                                        <th scope="col"></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -77,16 +61,25 @@
                                                 {{ $pacote->rastreio }}
                                             </th>
                                             <td>
-                                                {{ get_status_pacote($pacote->status) }}
+                                                @if (pacoteStatusHistoricoExiste($pacote->id, $statusFinalizado))
+                                                    <span class="text-success">
+                                                        <i class="fas fa-check"></i>
+                                                        Coleta finalizada
+                                                    </span>
+                                                @elseif($pacote->status == $statusColetado)
+                                                    <span class="text-primary">
+                                                        <i class="fas fa-dolly"></i>
+                                                        {{ get_status_pacote($pacote->status) }}
+                                                    </span>
+                                                    @else
+                                                    <span class="text-danger">
+                                                        <i class="fas fa-times"></i>
+                                                    {{ get_status_pacote($pacote->status) }}
+                                                    </span>
+                                                @endif
                                             </td>
                                             <td>
                                                 {{ date('d/m/y H:i', strtotime($pacote->updated_at)) }}
-                                            </td>
-                                            <td>
-                                                <a class="btn btn-link p-0 btn-sm"
-                                                   href="{{ route('entregadores.pacote.show', $pacote->id) }}">
-                                                    Ver Pacote
-                                                </a>
                                             </td>
                                         </tr>
                                     @endforeach

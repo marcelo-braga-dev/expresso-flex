@@ -27,10 +27,6 @@
                                 <p class="text-mb mb-0">
                                     {{ get_endereco_loja($solicitacao->loja) }}
                                 </p>
-                                <small class="d-block text-success">
-                                    <i class="fas fa-dolly mr-1 mt-2"></i>
-                                    {{ get_status_coleta($solicitacao->status) }}
-                                </small>
                             </div>
                             <a class="btn btn-link p-0 btn-sm"
                                href="{{ route('entregadores.coletas.info', ['id' => $solicitacao->id]) }}">

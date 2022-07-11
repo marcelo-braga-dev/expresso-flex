@@ -13,17 +13,14 @@ class Entregadores extends Usuarios
         // Cria Usuario
         $user = $this->cadastraUsuario($request, 'entregador');
 
-        if (session('erro')) return;
-
         // MataValues do Cliente
         $this->metaValues($request, $user->id);
         $this->precosFretes($request, $user->id);
-        $this->setAreaAtendimento($request, $user);
 
         $email = new NovoUsuario();
-        $email->enviar($request->nome ?? 'Entregador(a)', $request->email);
+        //$email->enviar($request->nome ?? 'Entregador(a)', $request->email);
 
-        session()->flash('sucesso', 'Entregador ' . $request['nome'] . ' cadastrado com sucesso.');
+        modalSucesso('Entregador ' . $request['nome'] . ' cadastrado com sucesso.');
     }
 
     private function metaValues($request, $userId)
@@ -32,9 +29,11 @@ class Entregadores extends Usuarios
 
         $this->precosFretes($request, $userId);
 
-        $metaValues->updateOrInsert(['meta_key' => 'cpf', 'user_id' => $userId], ['value' => $request->cpf]);
-        $metaValues->updateOrInsert(['meta_key' => 'celular', 'user_id' => $userId], ['value' => $request->celular]);
-        $metaValues->updateOrInsert(['meta_key' => 'perfil', 'user_id' => $userId], ['value' => $request->perfil]);
+        $metaValues->newQuery()->updateOrInsert(['meta_key' => 'cpf', 'user_id' => $userId], ['value' => $request->cpf]);
+        $metaValues->newQuery()->updateOrInsert(['meta_key' => 'cnpj', 'user_id' => $userId], ['value' => $request->cnpj]);
+        $metaValues->newQuery()->updateOrInsert(['meta_key' => 'celular', 'user_id' => $userId], ['value' => $request->celular]);
+        $metaValues->newQuery()->updateOrInsert(['meta_key' => 'endereco', 'user_id' => $userId], ['value' => $request->endereco]);
+        $this->uploadImagens($request, $userId);
     }
 
     private function setAreaAtendimento($request, $user)
@@ -43,12 +42,10 @@ class Entregadores extends Usuarios
 
         foreach ($request->regiao_coleta as $regiao) {
             if (!empty($regiao)) {
-                $user->entregador()->create(
-                    [
-                        'meta_key' => 'regiao_coleta',
-                        'value' => $regiao
-                    ]
-                );
+                $user->entregador()->create([
+                    'meta_key' => 'regiao_coleta',
+                    'value' => $regiao
+                ]);
             }
         }
 
@@ -68,7 +65,6 @@ class Entregadores extends Usuarios
     {
         $user = $this->editaUsuario($request, $request->id);
         $this->metaValues($request, $user->id);
-        $this->setAreaAtendimento($request, $user);
 
         session()->flash('sucesso', 'Entregador ' . $request['nome'] . ' editado com sucesso.');
     }
@@ -78,5 +74,30 @@ class Entregadores extends Usuarios
         $fretesService = new FretesService();
 
         $fretesService->setPrecosFretes($request, $userId);
+    }
+
+    private function uploadImagens($request, $userId): void
+    {
+        $metaValues = new UserMeta();
+        if ($request->hasFile('img_cnh')) {
+            if ($request->file('img_cnh')->isValid()) {
+
+                $url = $request->file('img_cnh')->store('/entregadores/documentos');
+                $metaValues->newQuery()
+                    ->updateOrInsert(
+                        ['meta_key' => 'img_cnh', 'user_id' => $userId],
+                        ['value' => $url]);
+            }
+        }
+        if ($request->hasFile('img_documento_veiculo')) {
+            if ($request->file('img_documento_veiculo')->isValid()) {
+
+                $url = $request->file('img_documento_veiculo')->store('entregadores/documentos');
+                $metaValues->newQuery()
+                    ->updateOrInsert(
+                        ['meta_key' => 'img_documento_veiculo', 'user_id' => $userId],
+                        ['value' => $url]);
+            }
+        }
     }
 }

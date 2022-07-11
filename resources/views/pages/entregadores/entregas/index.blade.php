@@ -33,12 +33,6 @@
                 </div>
                 <div class="row pt-3 justify-content-end btn-camera" style="display: none">
                     <div class="col-6 text-warning">
-                        <button class="btn btn-success btn-sm link-btn-flutuante-2">
-                            <i class="fas fa-shipping-fast"></i>
-                            Entregar Pacote
-                        </button>
-                    </div>
-                    <div class="col-6 text-warning">
                         <button class="btn btn-warning btn-sm link-btn-flutuante-1">
                             <i class="fas fa-plus-circle"></i>
                             Adicionar Pacote
@@ -47,41 +41,46 @@
                 </div>
 
             </div>
-            <div class="card-body p-1 p-md-3">
+            <div class="card-body p-0 p-md-3">
                 <div class="row">
                     <div class="col-12 pt-2">
                         @foreach ($pacotes as $pacote)
-                            <div class="card shadow mb-3 info-search">
-                                <div class="row justify-content-between align-items-center row-clickable p-3">
-                                    <div class="col-md-12">
-                                        <p class="mb-0">
-                                            <i class="fas fa-user mr-2 text-primary"></i>
-                                            {{ get_destinatario_pacote($pacote->destinatario)->nome }}
-                                        </p>
-                                        <p class="mb-0">
-                                            <i class="fas fa-map-marker-alt mr-2 text-danger"></i>
-                                            {{ get_endereco($pacote->endereco) }}
-                                        </p>
-
-                                        <p class="text-sm mb-0">
-                                            <i class="fas fa-qrcode mr-2"></i>
-                                            {{ get_origem_pacote($pacote->origem) }}
-                                            @if (!empty($pacote->codigo))
-                                                <b> #{{ $pacote->codigo }}</b>
-                                            @else
-                                                <b> {{ $pacote->rastreio }}</b>
-                                            @endif
-                                        </p>
-
-                                        <a class="btn btn-link p-1"
-                                           href="{{ route('entregadores.entregas.show',  $pacote->id) }}">
-                                            Vou pra lá
-                                        </a>
+                            <div class="card shadow mb-3 p-3 info-search row-clickable small">
+                                <div class="row">
+                                    <div class="col-1 text-right">
+                                        <i class="fas fa-user text-primary"></i>
+                                    </div>
+                                    <div class="col-10 pl-2">
+                                        {{ get_destinatario_pacote($pacote->destinatario)->nome }}
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-1 text-right">
+                                        <i class="fas fa-qrcode"></i>
+                                    </div>
+                                    <div class="col-10 pl-2">
+                                        {{ get_origem_pacote($pacote->origem) }} -
+                                        @if (!empty($pacote->codigo))
+                                            <b> #{{ $pacote->codigo }}</b>
+                                        @else
+                                            <b> {{ $pacote->rastreio }}</b>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-1 text-right">
+                                        <i class="fas fa-map-marker-alt text-danger"></i>
+                                    </div>
+                                    <div class="col-10 pl-2">
+                                        {{ get_endereco($pacote->endereco) }}
+                                    </div>
+                                </div>
+                                <a class="btn btn-link p-1 text-right btn-sm"
+                                   href="{{ route('entregadores.entregas.show',  $pacote->id) }}">
+                                    Vou pra lá
+                                </a>
                             </div>
                         @endforeach
-
                     </div>
                 </div>
 
@@ -102,9 +101,4 @@
     <x-elements.camera-botao-flutuante
         operacao="{{ route('entregadores.qrcode.checkin-pacote', ['user_id' => id_usuario_atual()]) }}"
         retorno="{{ url()->current() }}" icon="fas fa-plus"></x-elements.camera-botao-flutuante>
-
-    <x-elements.camera-botao-flutuante
-        operacao="{{ route('entregadores.qrcode.identificar-pacote-entrega', ['user_id' => id_usuario_atual()]) }}"
-        retorno="{{ url()->current() }}" icon="fas fa-shipping-fast" posicao="2"
-        bg="btn-success"></x-elements.camera-botao-flutuante>
 </x-layout>

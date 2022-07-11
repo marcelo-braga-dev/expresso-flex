@@ -207,3 +207,11 @@ function entregaNaoFinalizada($status): bool
     $statusPacotes = (new StatusPacotes())->statusSobEntrega();
     return in_array($status, $statusPacotes);
 }
+
+function pacoteStatusHistoricoExiste($id, $status)
+{
+    return (new PacotesHistoricos())->newQuery()
+    ->where('pacotes_id', '=', $id)
+    ->where('status', '=', $status)
+    ->exists();
+}

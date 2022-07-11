@@ -14,7 +14,4 @@ Route::name('entregadores.qrcode')
 
         Route::get('checkin-pacote', 'QrCodeController@checkinPacote')
             ->name('.checkin-pacote');
-
-        Route::get('identificar-pacote-entrega', 'QrCodeController@identificarPacoteEntrega')
-            ->name('.identificar-pacote-entrega');
     });

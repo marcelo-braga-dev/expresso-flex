@@ -22,7 +22,7 @@ class Usuarios
                 ]);
 
         } catch (QueryException $e) {
-            session()->flash('erro', 'Já existe um usuário com esse email.');
+            throw new \DomainException('Já existe um usuário com esse email.');
         }
     }
 

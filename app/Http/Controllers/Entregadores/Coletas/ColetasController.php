@@ -27,14 +27,7 @@ class ColetasController extends Controller
 
     public function create()
     {
-        $lojasClientes = new LojasClientes();
-
-        $clientes = $lojasClientes->query()
-            ->where('status', '=', '1')
-            ->orderBy('nome')
-            ->get();
-
-        return view('pages.entregadores.coletas.create', compact('clientes'));
+        return view('pages.entregadores.coletas.create');
     }
 
     public function store(Request $request)

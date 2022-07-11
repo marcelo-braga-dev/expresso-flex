@@ -17,7 +17,7 @@ class EntregaIniciado extends Status
 
     function getNomeStatus(): string
     {
-        return 'Pacote coletado';
+        return 'Pacote em trânsito para destinatário';
     }
 
     public function update($dados, $userId)

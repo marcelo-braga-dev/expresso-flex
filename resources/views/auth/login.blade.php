@@ -8,7 +8,11 @@
                             <img src="/assets/img/brand/logo-x256.png" width="50%"/>
                         </div>
                         @if (env('APP_ENV') == 'local')
-                            DESENVOLVEDOR
+                            DESENVOLVEDOR<br>
+                            cliente1@email.com<br>
+                            entregador1@email.com<br>
+                            conferente1@email.com<br>
+                            admin1@email.com
                         @endif
                         <form role="form" method="POST" action="{{ route('login') }}">
                             @csrf

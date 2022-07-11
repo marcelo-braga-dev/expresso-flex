@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Entregadores\Coletas;
 use App\Http\Controllers\Controller;
 use App\Models\Pacotes;
 use App\Models\SolicitacaoRetiradas;
+use App\src\Pacotes\Status\Base;
+use App\src\Pacotes\Status\Coletado;
 use Illuminate\Http\Request;
 
 class HistoricoController extends Controller
@@ -61,6 +63,10 @@ class HistoricoController extends Controller
             ->where('user_id', '=', $coleta->user_id)
             ->get();
 
-        return view('pages.entregadores.coletas.historico.info', compact('coleta', 'pacotes'));
+        $statusFinalizado = (new Base())->getStatus();
+        $statusColetado = (new Coletado())->getStatus();
+
+        return view('pages.entregadores.coletas.historico.show',
+            compact('coleta', 'pacotes', 'statusFinalizado', 'statusColetado'));
     }
 }
