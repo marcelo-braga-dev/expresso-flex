@@ -18,7 +18,7 @@ class Entregadores extends Usuarios
         $this->precosFretes($request, $user->id);
 
         $email = new NovoUsuario();
-        //$email->enviar($request->nome ?? 'Entregador(a)', $request->email);
+        $email->enviar($request->nome ?? 'Entregador(a)', $request->email);
 
         modalSucesso('Entregador ' . $request['nome'] . ' cadastrado com sucesso.');
     }

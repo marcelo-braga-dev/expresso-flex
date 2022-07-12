@@ -27,9 +27,11 @@ class AdminsController
 
     public function store(Request $request)
     {
-        $clientes = new Admin();
-
-        $clientes->create($request);
+        try {
+            (new Admin())->create($request);
+        } catch (\DomainException $e) {
+            modalErro($e->getMessage());
+        }
 
         return redirect()->route('admins.usuarios.admins.index');
     }

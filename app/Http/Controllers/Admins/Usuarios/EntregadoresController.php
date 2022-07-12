@@ -52,9 +52,11 @@ class EntregadoresController
 
     public function store(Request $request)
     {
-        $entregadores = new Entregadores();
-
-        $entregadores->create($request);
+        try {
+            (new Entregadores())->create($request);
+        } catch (\DomainException $e) {
+            modalErro($e->getMessage());
+        }
 
         return redirect()->route('admins.usuarios.entregadores.index');
     }

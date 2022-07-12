@@ -34,8 +34,11 @@ class ClientesController extends Controller
 
     public function store(Request $request)
     {
-        $clientes = new Clientes();
-        $clientes->cadastrar($request);
+        try {
+            (new Clientes())->create($request);
+        } catch (\DomainException $e) {
+            modalErro($e->getMessage());
+        }
 
         return redirect()->route('admins.usuarios.clientes.index');
     }

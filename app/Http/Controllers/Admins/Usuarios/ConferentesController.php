@@ -28,8 +28,11 @@ class ConferentesController
 
     public function store(Request $request)
     {
-        $clientes = new Conferente();
-        $clientes->create($request);
+        try {
+            (new Conferente())->create($request);
+        } catch (\DomainException $e) {
+            modalErro($e->getMessage());
+        }
 
         return redirect()->route('admins.usuarios.conferentes.index');
     }
