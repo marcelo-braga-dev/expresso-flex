@@ -121,7 +121,6 @@
                                     <th>Valor</th>
                                     <th>Região</th>
                                     <th>Pagamento</th>
-                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody class="list">
@@ -137,11 +136,6 @@
                                             @if ($entrega->regiao == 'grande_sao_paulo') Grande São Paulo @endif
                                         </td>
                                         <td>{{ ucfirst($entrega->status) }}</td>
-                                        <td>
-                                            <a class="btn btn-link btn-sm" href="{{ route('entregadores.pacote.show', $entrega->pacotes_id) }}">
-                                                Detalhes
-                                            </a>
-                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>

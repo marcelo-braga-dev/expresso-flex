@@ -36,15 +36,11 @@ class HistoricoController extends Controller
     // Historico de coletas
     public function historicoDia(Request $request)
     {
-        $solicitacaoRetiradas = new SolicitacaoRetiradas();
-
-        $pacotes = [];
         $dia = $request->data;
 
-        $data = $request->data;
         $data = date('Y-m-d', strtotime($request->data));
 
-        $solicitacoes = $solicitacaoRetiradas->query()
+        $solicitacoes = (new SolicitacaoRetiradas())->newQuery()
             ->where('entregador', '=', id_usuario_atual())
             ->whereDate('updated_at', $data)
             ->get();
@@ -55,12 +51,11 @@ class HistoricoController extends Controller
     // Info Coleta
     public function info(Request $request)
     {
-        $solicitacao = new SolicitacaoRetiradas();
+        $coleta = (new SolicitacaoRetiradas())->newQuery()->find($request->id);
 
-        $coleta = $solicitacao->find($request->id);
-
-        $pacotes = Pacotes::query()
-            ->where('user_id', '=', $coleta->user_id)
+        $pacotes = (new Pacotes)->newQuery()
+            ->where('coleta', '=', $request->id)
+            ->orderBy('rastreio')
             ->get();
 
         $statusFinalizado = (new Base())->getStatus();

@@ -204,7 +204,7 @@ function diferencaDias($dataFinal)
 
 function entregaNaoFinalizada($status): bool
 {
-    $statusPacotes = (new StatusPacotes())->statusSobEntrega();
+    $statusPacotes = (new StatusPacotes())->statusAtivo();
     return in_array($status, $statusPacotes);
 }
 
@@ -214,4 +214,14 @@ function pacoteStatusHistoricoExiste($id, $status)
     ->where('pacotes_id', '=', $id)
     ->where('status', '=', $status)
     ->exists();
+}
+
+function statusPacotesColeta(): array
+{
+    return (new StatusPacotes())->coleta();
+}
+
+function statusPacotesEntrega(): array
+{
+    return (new StatusPacotes())->entrega();
 }

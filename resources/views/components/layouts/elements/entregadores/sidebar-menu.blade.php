@@ -33,13 +33,19 @@
                     <li class="nav-item @if (SUBMENU === 'solicitacoes') active @endif">
                         <a class="nav-link pl-5"
                            href="{{ route('entregadores.coletas.index') }}">
-                            Solicitações de Coletas
+                            Realizar Coleta
                         </a>
                     </li>
                     <li class="nav-item @if (SUBMENU === 'historico-coletas') active @endif">
                         <a class="nav-link pl-5"
                            href="{{ route('entregadores.coletas.historico-coleta') }}">
                             Histórico de Coletas
+                        </a>
+                    </li>
+                    <li class="nav-item @if (SUBMENU === 'historico-pacotes-coletados') active @endif">
+                        <a class="nav-link pl-5"
+                           href="{{ route('entregadores.coletas.historico-pacotes.index') }}">
+                            Histórico de Pacotes Coletados
                         </a>
                     </li>
                 </ul>
@@ -61,29 +67,10 @@
                             Entregas para Realizar
                         </a>
                     </li>
-                </ul>
-            </div>
-        </li>
-
-        <!-- Historicos -->
-        <li class="nav-item border-bottom py-2">
-            <span class="nav-link p-0 ml-3 m-2" href="#navbar-historico" data-toggle="collapse" role="button"
-                  aria-expanded="true" aria-controls="navbar-historico">
-                <i class="fas fa-clock text-principal"></i>
-                <span class="nav-link-text text-principal">Historicos</span>
-            </span>
-            <div class="collapse  @if (MENU === 'historico') show @endif" id="navbar-historico">
-                <ul class="nav nav-sm flex-column">
-                    <li class="nav-item @if (SUBMENU === 'historico-pacotes') active @endif">
+                    <li class="nav-item @if (SUBMENU === 'historico-entregas') active @endif">
                         <a class="nav-link pl-5"
-                           href="{{ route('entregadores.pacotes.historico') }}">
-                            Histórico de Pacotes
-                        </a>
-                    </li>
-                    <li class="nav-item @if (SUBMENU === 'entregas-finalizadas') active @endif">
-                        <a class="nav-link pl-5"
-                           href="{{ route('entregadores.historicos.entregas-finalizadas.index') }}">
-                            Entregas Finalizadas
+                           href="{{ route('entregadores.entrega.historico.index') }}">
+                            Histórico de Entregas
                         </a>
                     </li>
                 </ul>

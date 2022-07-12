@@ -20,18 +20,18 @@
                     @foreach ($solicitacoes as $solicitacao)
                         <li
                             class="list-group-item row-clickable d-flex justify-content-between align-items-center px-4">
-                            <div>
+                            <div class="d-block">
                                 <p class="mb-0">
                                     <b>{{ get_dados_usuario($solicitacao->user_id)->name }}</b>
                                 </p>
                                 <p class="text-mb mb-0">
                                     {{ get_endereco_loja($solicitacao->loja) }}
                                 </p>
+                                <a class="btn btn-link p-0 btn-sm"
+                                   href="{{ route('entregadores.coletas.info', ['id' => $solicitacao->id]) }}">
+                                    Ver detalhes
+                                </a>
                             </div>
-                            <a class="btn btn-link p-0 btn-sm"
-                               href="{{ route('entregadores.coletas.info', ['id' => $solicitacao->id]) }}">
-                                Ver detalhes
-                            </a>
                         </li>
                     @endforeach
                 </ul>
@@ -40,11 +40,11 @@
 
 
         <!-- Botão para acionar modal -->
-    {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalExemplo">
-        Abrir modal de demonstração
-    </button> --}}
+        {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalExemplo">
+            Abrir modal de demonstração
+        </button> --}}
 
-    <!-- Modal -->
+        <!-- Modal -->
         <div class="modal fade" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
              aria-hidden="true">
             <div class="modal-dialog" role="document">

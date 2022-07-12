@@ -29,8 +29,7 @@ class FinanceiroController extends Controller
         if ($quinzena < 1 || $quinzena > 2 ) return redirect('/');
 
         $valores = [];
-        $financeiroService = new FinanceiroService();
-        $fretes = $financeiroService->historicoQuinzenal($mes, $ano);
+        $fretes = (new FinanceiroService())->historicoQuinzenal($mes, $ano);
 
         if ($quinzena == 1) {
             $valores['receber'] = $fretes['aberto_quinzena1'];

@@ -20,6 +20,7 @@ Route::name('entregadores.')
             ->name('coleta.alterar-status');
     });
 
+// Historico de coletas
 Route::name('entregadores.coletas.')
     ->namespace('Coletas')
     ->controller('HistoricoController')
@@ -33,4 +34,17 @@ Route::name('entregadores.coletas.')
 
         Route::get('coleta/detalhes', 'info')
             ->name('info');
+    });
+
+// Historico de pacotes coletas
+Route::name('entregadores.coletas.historico-pacotes.')
+    ->namespace('Coletas')
+    ->controller('HistoricoPacotesController')
+    ->group(function () {
+
+        Route::get('coleta/historico-pacotes-dia', 'index')
+            ->name('index');
+
+        Route::get('coleta/historico-pacotes-dia/show', 'show')
+            ->name('show');
     });

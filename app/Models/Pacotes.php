@@ -46,7 +46,7 @@ class Pacotes extends Model
                 ]);
 
             DB::commit();
-            atualizarHistoricoPacote($pacote->cliente(), $pacoteCadastrado->id, $pacote->status());
+            atualizarHistoricoPacote($pacote->entregador(), $pacoteCadastrado->id, $pacote->status());
 
             return $pacoteCadastrado->id;
         } catch (QueryException $e) {

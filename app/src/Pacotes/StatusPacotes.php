@@ -9,6 +9,7 @@ use App\src\Pacotes\Status\EntregaCanceladaCliente;
 use App\src\Pacotes\Status\EntregaCanceladaEntregador;
 use App\src\Pacotes\Status\EntregaFinalizado;
 use App\src\Pacotes\Status\EntregaIniciado;
+use App\src\Pacotes\Status\PerdidoEntregador;
 
 class StatusPacotes
 {
@@ -21,6 +22,7 @@ class StatusPacotes
         $entregaCanceladaEntregador = new EntregaCanceladaEntregador();
         $entregaFinalizada = new EntregaFinalizado();
         $entregaIniciado = new EntregaIniciado();
+        $perdidoEntregador = (new PerdidoEntregador());
 
         return [
             $base->getStatus() => $base->getNomeStatus(),
@@ -29,11 +31,12 @@ class StatusPacotes
             $entregaCanceladaCliente->getStatus() => $entregaCanceladaCliente->getNomeStatus(),
             $entregaCanceladaEntregador->getStatus() => $entregaCanceladaEntregador->getNomeStatus(),
             $entregaFinalizada->getStatus() => $entregaFinalizada->getNomeStatus(),
-            $entregaIniciado->getStatus() => $entregaIniciado->getNomeStatus()
+            $entregaIniciado->getStatus() => $entregaIniciado->getNomeStatus(),
+            $perdidoEntregador->getStatus() => $perdidoEntregador->getNomeStatus(),
         ];
     }
 
-    public function statusSobEntrega()
+    public function statusAtivo()
     {
         $coletado = new Coletado();
         $base = new Base();
@@ -43,6 +46,36 @@ class StatusPacotes
             $coletado->getStatus(),
             $base->getStatus(),
             $entregaIniciado->getStatus(),
+        ];
+    }
+
+    public function coleta()
+    {
+        $base = new Base();
+        $coletado = new Coletado();
+
+        return [
+            $base->getStatus(),
+            $coletado->getStatus()
+        ];
+    }
+
+    public function entrega()
+    {
+        $iniciado = (new EntregaIniciado())->getStatus();
+        $finalizado = (new EntregaFinalizado())->getStatus();
+        $destinatarioAusente = (new DestinatarioAusente())->getStatus();
+        $entregaCanceladaCliente = (new EntregaCanceladaCliente())->getStatus();
+        $entregaCanceladaEntregador = (new EntregaCanceladaEntregador())->getStatus();
+        $perdidoEntregador = (new PerdidoEntregador())->getStatus();
+
+        return [
+            $iniciado,
+            $finalizado,
+            $destinatarioAusente,
+            $entregaCanceladaCliente,
+            $entregaCanceladaEntregador,
+            $perdidoEntregador
         ];
     }
 }

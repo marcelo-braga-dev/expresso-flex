@@ -4,9 +4,9 @@ namespace App\src\Pacotes\Status;
 
 use App\Models\Pacotes;
 
-class DestinatarioAusente extends Status
+class PerdidoEntregador extends Status
 {
-    private string $status = 'pacote_destinatario_ausente';
+    private string $status = 'pacote_perdido_entregador';
 
     function getStatus(): string
     {
@@ -15,7 +15,7 @@ class DestinatarioAusente extends Status
 
     function getNomeStatus(): string
     {
-        return 'Destinatário ausente';
+        return 'Pacote perdido';
     }
 
     public function update($id, $mensagem)

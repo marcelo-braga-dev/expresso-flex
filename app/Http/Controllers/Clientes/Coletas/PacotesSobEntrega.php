@@ -13,7 +13,7 @@ class PacotesSobEntrega extends Controller
 {
     public function index()
     {
-        $statusPacotes = (new StatusPacotes())->statusSobEntrega();
+        $statusPacotes = (new StatusPacotes())->statusAtivo();
 
         $pacotesQuery = (new Pacotes())->newQuery()
             ->where('user_id', '=', id_usuario_atual());

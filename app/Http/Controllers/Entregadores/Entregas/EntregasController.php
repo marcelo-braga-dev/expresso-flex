@@ -6,8 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\DestinatarioRecebedor;
 use App\Models\Pacotes;
 use App\src\Pacotes\Pacote;
+use App\src\Pacotes\Status\DestinatarioAusente;
+use App\src\Pacotes\Status\EntregaCanceladaEntregador;
 use App\src\Pacotes\Status\EntregaFinalizado;
 use App\src\Pacotes\Status\EntregaIniciado;
+use App\src\Pacotes\Status\PerdidoEntregador;
 use Illuminate\Http\Request;
 
 class EntregasController extends Controller
@@ -16,13 +19,12 @@ class EntregasController extends Controller
     {
         $status = new EntregaIniciado();
 
-        $pacotes = new Pacotes();
-        $pacotes = $pacotes->newQuery()
+        $pacotes = (new Pacotes())->newQuery()
             ->where([
                 ['status', '=', $status->getStatus()],
                 ['entregador', '=', id_usuario_atual()]
             ])
-            ->orderBy('cep','ASC')
+            ->orderBy('cep', 'ASC')
             ->get();
 
         return view('pages.entregadores.entregas.index', compact('pacotes'));
@@ -30,16 +32,14 @@ class EntregasController extends Controller
 
     public function show($id)
     {
-        $pacotes = new Pacotes();
-        $pacote = $pacotes->newQuery()->find($id);
+        $pacote = (new Pacotes())->newQuery()->find($id);
 
         return view('pages.entregadores.entregas.show', compact('pacote'));
     }
 
     public function edit($id)
     {
-        $pacotes = new Pacotes();
-        $pacote = $pacotes->newQuery()->find($id);
+        $pacote = (new Pacotes())->newQuery()->find($id);
 
         return view('pages.entregadores.entregas.edit', compact('pacote'));
     }
@@ -50,8 +50,7 @@ class EntregasController extends Controller
 
         if (!empty($request->imagem)) $imagem = $request->imagem->store('images');
 
-        $recebedor = new DestinatarioRecebedor();
-        $recebedor->newQuery()
+        (new DestinatarioRecebedor())->newQuery()
             ->create([
                 'pacotes_id' => $id,
                 'recebedor' => $request->recebedor,
@@ -69,9 +68,26 @@ class EntregasController extends Controller
 
     public function cancel($id)
     {
-        $pacotes = new Pacotes();
-        $pacote = $pacotes->newQuery()->find($id);
+        (new Pacotes())->newQuery()->findOrFail($id);
 
-        return view('pages.entregadores.entregas.cancelar-entrega', compact('pacote'));
+        return view('pages.entregadores.entregas.cancelar-entrega', compact('id'));
+    }
+
+    public function destroy($id, Request $request)
+    {
+        if ($request->motivo_cancelamento == 'destinatario_ausente') {
+            (new DestinatarioAusente())->update($id, $request->texto_cancelamento);
+        }
+
+        if ($request->motivo_cancelamento == 'entregador_cancelou') {
+            (new EntregaCanceladaEntregador())->update($id, $request->texto_cancelamento);
+        }
+
+        if ($request->motivo_cancelamento == 'perda_pacote') {
+            (new PerdidoEntregador())->update($id, $request->texto_cancelamento);
+        }
+
+        modalSucesso('Entrega cancelada com sucesso!');
+        return redirect()->route('entregadores.entregas.index');
     }
 }

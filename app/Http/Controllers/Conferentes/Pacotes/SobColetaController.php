@@ -11,12 +11,10 @@ class SobColetaController extends Controller
     public function index()
     {
         $status = new Coletado();
-        $data = date('Y-m-d');
 
         $pacotes = (new Pacotes())->newQuery()
             ->where('entregador', '!=', '')
             ->where('status', '=', $status->getStatus())
-            ->whereDate('updated_at', '=', $data)
             ->orderBy('updated_at', 'DESC')
             ->get(['id', 'entregador']);
 
@@ -31,15 +29,13 @@ class SobColetaController extends Controller
     public function show($id)
     {
         $status = new Coletado();
-        $data = date('Y-m-d');
 
         $pacotes = (new Pacotes())->newQuery()
             ->where('entregador', '=', $id)
             ->where('status', '=', $status->getStatus())
-            ->whereDate('updated_at', '=', $data)
             ->orderBy('updated_at', 'DESC')
             ->get();
 
-        return view('pages.conferente.pacotes.sob-coleta.show', compact('pacotes'));
+        return view('pages.conferente.pacotes.sob-coleta.show', compact('id', 'pacotes'));
     }
 }

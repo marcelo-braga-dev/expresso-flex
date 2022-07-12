@@ -1,4 +1,4 @@
-<x-layout menu="historico" submenu="historico-pacotes">
+<x-layout menu="coletas" submenu="historico-pacotes-coletados">
     <div class="header bg-principal bg-height-top"></div>
 
     <div class="container-fluid mt--9 p-1 mb-6">
@@ -26,7 +26,7 @@
                                     {{ count($pacote) }} pacotes
                                 </small>
                                 <a class="btn btn-link p-0 btn-sm"
-                                    href="{{ route('entregadores.pacotes.historico-dia', ['data' => "$pacote[0]"]) }}">
+                                    href="{{ route('entregadores.coletas.historico-pacotes.show', ['data' => "$pacote[0]"]) }}">
                                     Ver pacotes
                                 </a>
                             </span>

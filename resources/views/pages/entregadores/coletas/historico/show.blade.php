@@ -11,7 +11,7 @@
                 </div>
             </div>
 
-            <div class="card-body">
+            <div class="card-body p-1">
                 <!-- Cliente -->
                 <div class="card p-3 mb-4">
                     <div class="row mb-3">
@@ -39,10 +39,8 @@
                 </div>
 
                 <div class="card p-3 mb-4">
-                    <div class="row justify-content-between px-3">
-                        <h3 class="mb-3">Pacotes Coletados</h3>
-                        <small>Quantidade: {{ count($pacotes) }} pacotes.</small>
-                    </div>
+                    <h3 class="mb-1">Pacotes Coletados</h3>
+                    <small class="mb-3">Quantidade: {{ count($pacotes) }} pacotes.</small>
                     <div class="row mb-2">
                         <div class="col-12">
                             <div class="table-responsive">
@@ -71,7 +69,7 @@
                                                         <i class="fas fa-dolly"></i>
                                                         {{ get_status_pacote($pacote->status) }}
                                                     </span>
-                                                    @else
+                                                @else
                                                     <span class="text-danger">
                                                         <i class="fas fa-times"></i>
                                                     {{ get_status_pacote($pacote->status) }}

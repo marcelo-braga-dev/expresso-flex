@@ -20,8 +20,8 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card p-3">
-                            <form method="POST" action="">
-                                @csrf @method('put')
+                            <form method="POST" action="{{ route('entregadores.entregas.destroy', $id) }}">
+                                @csrf @method('DELETE')
                                 <div class="row">
                                     <div class="col-12">
                                         <h3 class="d-block mb-3">
@@ -32,26 +32,26 @@
                                 <div class="row mb-3">
                                     <div class="col-12">
                                         <div class="custom-control custom-radio custom-control-inline">
-                                            <input type="radio" id="destinatario_ausente-{{ $pacote->id }}"
+                                            <input type="radio" id="destinatario_ausente"
                                                 name="motivo_cancelamento" class="custom-control-input"
                                                 value="destinatario_ausente" required>
                                             <label class="custom-control-label"
-                                                for="destinatario_ausente-{{ $pacote->id }}">Destinatário
+                                                for="destinatario_ausente">Destinatário
                                                 Ausente</label>
                                         </div>
                                         <div class="custom-control custom-radio custom-control-inline">
-                                            <input type="radio" id="entregador_cancelou-{{ $pacote->id }}"
+                                            <input type="radio" id="entregador_cancelou"
                                                 name="motivo_cancelamento" class="custom-control-input"
                                                 value="entregador_cancelou" required>
                                             <label class="custom-control-label"
-                                                for="entregador_cancelou-{{ $pacote->id }}">Desistir da
-                                                Entrega</label>
+                                                for="entregador_cancelou">
+                                                Desistir da Entrega</label>
                                         </div>
                                         <div class="custom-control custom-radio custom-control-inline">
-                                            <input type="radio" id="perda_pacote-{{ $pacote->id }}"
+                                            <input type="radio" id="perda_pacote"
                                                 name="motivo_cancelamento" class="custom-control-input"
                                                 value="perda_pacote">
-                                            <label class="custom-control-label" for="perda_pacote-{{ $pacote->id }}">
+                                            <label class="custom-control-label" for="perda_pacote">
                                                 Perda do Pacote
                                             </label>
                                         </div>
@@ -63,7 +63,6 @@
                                     </div>
                                 </div>
                                 <div class="col-12 text-center mb-3">
-                                    <input type="hidden" name="id" value="{{ $pacote->id }}">
                                     <button type="submit" class="btn btn-primary">Enviar</button>
                                 </div>
                             </form>
