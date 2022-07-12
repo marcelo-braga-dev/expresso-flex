@@ -6,21 +6,40 @@ use App\Http\Controllers\Controller;
 use App\Models\Pacotes;
 use App\src\Pacotes\Pacote;
 use App\src\Pacotes\Status\Base;
+use App\src\Pacotes\Status\Coletado;
 use Illuminate\Http\Request;
 
 class CheckinController extends Controller
 {
     public function index()
     {
-        $status = new Base();
+        $status = new Coletado();
 
-        $pacotes = new Pacotes();
-        $pacotes = $pacotes->newQuery()
+        $pacotes = (new Pacotes())->newQuery()
+            ->where('entregador', '!=', '')
             ->where('status', '=', $status->getStatus())
-            ->orderBy('id', 'DESC')
-            ->paginate();
+            ->orderBy('updated_at', 'DESC')
+            ->get(['id', 'entregador']);
 
-        return view('pages.conferente.checkin.index', compact('pacotes'));
+        $entregadores = [];
+        foreach ($pacotes as $item) {
+            $entregadores[$item->entregador][] = $item->entregador;
+        }
+
+        return view('pages.conferente.checkin.index', compact('entregadores'));
+    }
+
+    public function show($id)
+    {
+        $status = new Coletado();
+
+        $pacotes = (new Pacotes())->newQuery()
+            ->where('entregador', '=', $id)
+            ->where('status', '=', $status->getStatus())
+            ->orderBy('updated_at', 'DESC')
+            ->get();
+
+        return view('pages.conferente.checkin.show', compact('id', 'pacotes'));
     }
 
     public function create(Request $request)
@@ -29,30 +48,5 @@ class CheckinController extends Controller
         $pacote->alterarStatus($request, id_usuario_atual());
 
         return redirect()->route('conferentes.checkin.index');
-    }
-
-    public function store(Request $request)
-    {
-        //
-    }
-
-    public function show($id)
-    {
-        //
-    }
-
-    public function edit($id)
-    {
-        //
-    }
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    public function destroy($id)
-    {
-        //
     }
 }

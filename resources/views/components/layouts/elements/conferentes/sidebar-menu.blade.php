@@ -35,13 +35,13 @@
                         <a class="nav-link ml-1 pl-4" href="{{ route('conferentes.checkin.index') }}">
                             Check-in de Pacotes
                         </a>
-                    </li>
-                    <li class="nav-item @if (SUBMENU === 'sendo-coletados') active @endif">
-                        <a class="nav-link ml-1 pl-4"
-                           href="{{ route('conferentes.pacotes.sob-coleta.index') }}">
-                            Pacotes Coletados
-                        </a>
-                    </li>
+{{--                    </li>--}}
+{{--                    <li class="nav-item @if (SUBMENU === 'sendo-coletados') active @endif">--}}
+{{--                        <a class="nav-link ml-1 pl-4"--}}
+{{--                           href="{{ route('conferentes.pacotes.sob-coleta.index') }}">--}}
+{{--                            Pacotes Coletados--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
 {{--                    <li class="nav-item @if (SUBMENU === 'pacotes-base') active @endif">--}}
 {{--                        <a class="nav-link ml-1 pl-4" href="{{ route('conferentes.checkin.pacotes-base') }}">--}}
 {{--                            Pacotes Presentes na Base--}}
