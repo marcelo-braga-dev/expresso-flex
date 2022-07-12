@@ -1,4 +1,4 @@
-<meta http-equiv="refresh" content="3">
+<meta http-equiv="refresh" content="5">
 <x-layout menu="checkin" submenu="checkin-pacotes">
     <div class="header bg-principal bg-height-top"></div>
 

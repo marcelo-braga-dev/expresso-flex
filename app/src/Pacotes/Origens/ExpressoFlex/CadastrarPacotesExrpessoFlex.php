@@ -27,8 +27,10 @@ class CadastrarPacotesExrpessoFlex
 
     private function getEtiqueta($id)
     {
-        return
-            (new Etiquetas)->newQuery()->where('id', '=', $id)->first();
+        $etiqueta = (new Etiquetas)->newQuery()
+            ->where('id', '=', $id)->first();
+        if (empty($etiqueta)) throw new \DomainException('Etiqueta não encontrada.');
+        return $etiqueta;
     }
 
     public function cadastrar()
@@ -62,6 +64,7 @@ class CadastrarPacotesExrpessoFlex
 
     private function jaCadastrado(): void
     {
+
         $exist = (new Pacotes())->newQuery()
             ->where('rastreio', '=', $this->etiqueta->rastreio)
             ->exists();
