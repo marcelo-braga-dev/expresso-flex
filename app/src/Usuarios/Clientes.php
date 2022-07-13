@@ -10,7 +10,7 @@ use App\src\Emails\NovoUsuario;
 
 class Clientes extends Usuarios
 {
-    public function cadastrar($request)
+    public function create($request, $setFrete = true, $status = '1')
     {
         try {
             $user = $this->cadastraUsuario($request, 'cliente');
@@ -20,25 +20,11 @@ class Clientes extends Usuarios
             $email = new NovoUsuario();
             $email->enviar($request->nome, $request->email);
 
-            session()->flash('sucesso', 'Cliente cadastrado com sucesso.');
+            modalSucesso('Cliente ' . $request['nome'] . ' cadastrado com sucesso.
+            Foi enviado um email ao usuário para criação da senha.');
         } catch (\ErrorException $e) {
-
+            modalErro('Erro ao cadastrar o cliente.');
         }
-
-    }
-
-    public function create($request, $setFrete = true, $status = '1')
-    {
-        // Cria Usuario
-        $user = $this->cadastraUsuario($request, 'cliente', $status);
-
-        if (session('erro')) return;
-
-        // MataValues do Cliente
-        $this->metaValues($request, $user->id);
-
-        session()->flash('sucesso', 'Cliente ' . $request['nome'] . ' cadastrado com sucesso.
-        Foi enviado um email ao usuário para criação da senha.');
     }
 
     public function update($request, $id)

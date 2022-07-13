@@ -39,7 +39,6 @@ class ClientesController extends Controller
         } catch (\DomainException $e) {
             modalErro($e->getMessage());
         }
-
         return redirect()->route('admins.usuarios.clientes.index');
     }
 

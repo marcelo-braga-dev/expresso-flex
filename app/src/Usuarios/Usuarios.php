@@ -11,9 +11,7 @@ class Usuarios
     public function cadastraUsuario($dados, $tipo, $status = 1)
     {
         try {
-            $users = new User();
-
-            return $users->newQuery()
+            return (new User())->newQuery()
                 ->create([
                     'tipo' => $tipo,
                     'name' => $dados['nome'],
